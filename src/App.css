@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100vh;
+}
+
+#root {
+  height: inherit;
+}
+
+.App {
+  height: inherit;
+}
+
+.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.hide {
+  visibility: hidden;
+  opacity: 0;
+}
+
+/* vertical center horizontal space between */
+.vc-hsb {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* vertical center horizontal center */
+.vc-hc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* text emphasis */
+.text-emphais1 {
+  font-weight: 800;
+}

@@ -1,20 +1,15 @@
-:root {
-	--modal-header-height: 40px;
-}
-
 .modal-container {
-	background-color: hsla(0, 0%, 98%, 0.881);
+	background-color: rgba(255, 255, 255, 0.808);
 	position: absolute;
-	top: 0;
-	right: 0;
-	width: 100%;
-	height: 100%;
+	top: 3rem;
+	left: 0;
+	height: -webkit-fill-available;
+	width: -webkit-fill-available;
 }
 
 .modal-background {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 100%;
-	/* height: 100%; */
+	/* width: 100%; */
 }

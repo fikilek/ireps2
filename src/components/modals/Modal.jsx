@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import "./Modal.css";
 
 import { ModalContext } from "../../contexts/ModalContext";
 
-import Signin from "../../components/forms/authForms/Signin";
-import Signout from "../../components/forms/authForms/Signout";
-import Signup from "../../components/forms/authForms/Signup";
-import ForgottenPassword from "../../components/forms/authForms/ForgottenPassword";
+import Signin from "../forms/auth/FormSignin";
+import Signout from "../forms/auth/FormSignout";
+import Signup from "../forms/auth/FormSignup";
+import FormFpw from "../forms/auth/FormFpw";
 
 const Modal = () => {
 	const { toOpen, modalOpened } = useContext(ModalContext);
@@ -14,20 +14,18 @@ const Modal = () => {
 	// console.log(`toOpen`, toOpen);
 
 	const { modalName } = toOpen;
-	// console.log(`modalName`, modalName)
+	// console.log(`modalName`, modalName);
 	// console.log(`payload`, payload);
 
 	return (
-		<div className={`modal ${modalOpened ? "show" : "hide"}`}>
+		<div className={`modal-container ${modalOpened ? "show" : "hide"}`}>
 			<div className="modal-background" id="modal-background">
 				<div className="modal-payload">
-					<div className="modal-body">
-						{/* auth forms */}
-						{modalName === "signin" && <Signin />}
-						{modalName === "signout" && <Signout />}
-						{modalName === "signup" && <Signup />}
-						{modalName === "fpw" && <ForgottenPassword />}
-					</div>
+					{/* auth forms */}
+					{modalName === "signin" && <Signin />}
+					{modalName === "signout" && <Signout />}
+					{modalName === "signup" && <Signup />}
+					{modalName === "fpw" && <FormFpw />}
 				</div>
 			</div>
 		</div>

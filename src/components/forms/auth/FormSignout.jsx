@@ -1,5 +1,4 @@
-import React from "react";
-import "./Signout.css";
+import "../Form.css";
 
 const Signout = () => {
 	return <div>Signout</div>;

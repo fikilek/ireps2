@@ -1,0 +1,64 @@
+:root {
+  /* form btn heights */
+  --fb-h1p4: 1.4rem;
+  --fb-h1p6: 1.6rem;
+  --fb-h1p8: 1.8rem;
+  --fb-h2: 2rem;
+
+  /* widths */
+  --fb-w3: 3rem;
+  --fb-w5: 5rem;
+  --fb-w7: 7rem;
+  --fb-w9: 9rem;
+  --fb-w11: 11rem;
+
+  /* font-sizes */
+  --fb-fs-1p5: 1.5rem;
+  --fb-fs-2: 2rem;
+  --fb-fs-2p5: 2.5rem;
+
+  /* colours - grew shades */
+  --fb-cl-grey1: rgba(150, 149, 149, 0.539);
+  --fb-cl-grey2: #dae4fa99;
+  --fb-cl-grey3: lightgray;
+  --fb-cl-grey4: #e8fee8b5;
+  --fb-cl-grey5: #b9b9b9;
+
+  /* colours - green shades */
+  --fb-cl-green1: rgb(121, 255, 121);
+  /* border radius */
+  --fb-br1-0p2: 0.2rem;
+  --fb-br2-0p4: 0.4rem;
+  --fb-br3-0p6: 0.6rem;
+  --fb-br4-0p8: 0.8rem;
+
+}
+
+form .form-btn {
+  background-color: var(--fb-cl-grey2);
+  color: var(--fb-cl-grey1);
+  border: 1px solid var(--fb-cl-grey3);
+  border-radius: var(--fb-br2-0p4);
+  height: var(--fb-h1p6);
+  font-size: var(--fb-fs-1p5);
+}
+
+form .form-btn:hover {
+  cursor: pointer;
+  outline: 0.1rem solid var(--fb-cl-green1)
+}
+
+form button:disabled {
+  pointer-events: none;
+  background-color: var(--fb-cl-grey5);
+}
+
+
+form .form-submit-btn svg {
+  color: rgb(255 0 255);
+}
+
+form .form-footer button {
+  width: var(--fb-w3);
+  height: var(--fb-h1p8);
+}

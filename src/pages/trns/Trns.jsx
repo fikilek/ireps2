@@ -1,4 +1,3 @@
-import React from "react";
 import "./Trns.css";
 
 const Trns = () => {

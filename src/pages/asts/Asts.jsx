@@ -1,4 +1,3 @@
-import React from "react";
 import "./Asts.css";
 
 const Asts = () => {

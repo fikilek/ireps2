@@ -1,0 +1,136 @@
+:root {
+  --form-background: rgb(241, 255, 255);
+  --form-margin-top: 3rem;
+  --form-border-radius: 1rem;
+  --form-padding: 0.7rem;
+  --form-border-color: lightcyan;
+  --form-label-color: #333333;
+
+  /* form fields */
+  --form-field-input-focus: #effaff;
+  --form-field-border-focus: #62cbff;
+  --form-field-border-error: #ff5959;
+
+  /* form header */
+  --form-header-btn-close-width: 2rem;
+
+
+}
+
+.form-container.signup {
+  width: 30rem;
+}
+
+.form-container.signin,
+.form-container.fpw {
+  width: 20rem;
+}
+
+.form-container {
+  background-color: var(--form-background);
+  border: 0.1rem solid var(--form-border-color);
+  padding: var(--form-padding);
+  margin-top: var(--form-margin-top);
+  box-shadow: 0px 0px 24px 2px rgba(139, 166, 158, 1);
+}
+
+.form-container form .form-control input,
+.form-container form .form-control select {
+  width: 100%;
+  border-radius: 0.6rem;
+  border: 0.1rem solid;
+  height: 3rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.form-container form .form-control input:focus,
+.form-container form .form-control select:focus {
+  background-color: var(--form-field-input-focus);
+  border: 0.2rem solid var(--form-field-border-focus);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.form-container form .form-control input.error,
+.form-container form .form-control select.error {
+  border: 0.05rem solid var(--form-field-border-error);
+}
+
+.form-container form .form-control {
+  height: 5.5rem;
+  position: relative;
+}
+
+.form-container form .form-control label {
+  position: absolute;
+  left: 1rem;
+  top: 0.8rem;
+  cursor: text;
+  transition: 250ms;
+  background-color: white;
+  padding: 0.1rem;
+  font-size: 1rem;
+  color: var(--form-label-color);
+}
+
+.form-container form .form-control button:focus~label,
+.form-container form .form-control button:not(:placeholder-shown)~label,
+.form-container form .form-control input:focus~label,
+.form-container form .form-control input:not(:placeholder-shown)~label,
+.form-container form .form-control .react-datepicker-wrapper~label,
+.form-container form .form-control select:not(:placeholder-shown)~label {
+  top: -1rem;
+  font-size: 1rem;
+  left: 0.8rem;
+  /* color: white; */
+  background-color: rgb(236, 220, 220);
+  border: 0.1rem solid rgb(156, 149, 255);
+  border-radius: 0.2rem;
+}
+
+.form-container .form-control button {
+  width: 100%;
+  border-radius: 0.6rem;
+  border: 0.1rem solid;
+  height: 4rem;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.form-container form .password {
+  position: relative;
+}
+
+.form-container form .password .icon-password {
+  position: absolute;
+  top: 0.7rem;
+  right: 1rem;
+  font-size: 1.5rem;
+}
+
+/* about form */
+
+.form-container form .form-msg {
+  padding: 0.1rem 0.1rem 0.1rem 0.1rem;
+  margin: 0.3rem 0rem 1.2rem 0rem;
+  border-radius: 0.3rem;
+  background-color: antiquewhite;
+}
+
+.form-container form .form-msg .text-msg {
+  text-align: center;
+}
+
+.form-container form .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 1200px) {}
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 475px) {}

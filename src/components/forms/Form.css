@@ -108,13 +108,18 @@
   font-size: 1.5rem;
 }
 
-/* about form */
-
 .form-container form .form-msg {
   padding: 0.1rem 0.1rem 0.1rem 0.1rem;
   margin: 0.3rem 0rem 1.2rem 0rem;
   border-radius: 0.3rem;
-  background-color: antiquewhite;
+  background-color: rgb(250, 215, 215);
+}
+
+.form-container form .form-error {
+  padding: 0.1rem 0.1rem 0.1rem 0.1rem;
+  margin: 0rem 0rem 1.2rem 0rem;
+  border-radius: 0.3rem;
+  background-color: rgb(255, 162, 162);
 }
 
 .form-container form .form-msg .text-msg {

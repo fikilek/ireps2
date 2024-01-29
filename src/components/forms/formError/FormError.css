@@ -1,3 +1,11 @@
-.form-field-error {
+.form-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(233 167 167);
+}
+
+.form-field-error,
+.form-error {
   color: rgb(255, 0, 0)
 }

@@ -62,8 +62,8 @@ const FormFpw = () => {
 											autoFocus={true}
 										/>
 									</div>
+									{/* {error && <FormError errorMsg={error} />} */}
 									<FormFooter formik={formik} linkTo={linkTo} currentForm="fpw" />
-									<FormError className="form-error auth-error">{authError}</FormError>
 								</Form>
 							</>
 						);

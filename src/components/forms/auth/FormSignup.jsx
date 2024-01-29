@@ -7,8 +7,13 @@ import { object, ref, string } from "yup";
 import { CiLogin } from "react-icons/ci";
 import FormMsg from "../formMsg/FormMsg";
 import { formSelectOptions } from "../formUtils/utils";
-
-console.log(`formSelectOptions`, formSelectOptions);
+import { useSignup } from "../../../hooks/useSignup";
+import FormError from "../formError/FormError";
+import { useFirebase } from "../../../hooks/useFirebase";
+import useModal from "../../../hooks/useModal";
+import { useEffect } from "react";
+import { toast } from "react-toastify";
+import useAuthContext from "../../../hooks/useAuthContext";
 
 const linkTo = {
 	icon: <CiLogin />,
@@ -22,25 +27,32 @@ const phoneRegExp =
 const Signup = () => {
 	// console.log(`Signup`);
 
+	const { getCustomError } = useFirebase();
+
+	const { signup, error, isPending, success } = useSignup();
+	console.log(`error`, error);
+	console.log(`isPending`, isPending);
+	console.log(`success`, success);
+
+	const { closeModal } = useModal();
+
+	const { user } = useAuthContext();
+	console.log(`user`, user);
+
 	const initialValues = {
-		surname: "",
-		name: "",
-		companyName: "",
-		email: "",
-		password: "",
-		confirmPassword: "",
-		cellNo: "",
-		workbase: "",
+		surname: "kentane",
+		name: "fikile",
+		companyName: "rste",
+		email: "fikilekentane@gmail.com",
+		password: "fkpass123",
+		confirmPassword: "fkpass123",
+		phoneNumber: "0817262352",
+		workbase: "Lesedi LM",
 	};
 
 	const onSubmit = values => {
-		console.log(`Form values`, values);
-
-		// if (values.id) {
-		// 	updateDocument(values);
-		// } else {
-		// 	addDocument(values);
-		// }
+		// console.log(`Form values`, values);
+		signup(values);
 	};
 
 	const validationSchema = object({
@@ -54,12 +66,24 @@ const Signup = () => {
 		confirmPassword: string()
 			.oneOf([ref("password"), null], "Passwords must match")
 			.required("Confirn password is required."),
-		cellNo: string()
+		phoneNumber: string()
 			.min(10, "At least 10 characters")
 			.matches(phoneRegExp, "Phone number is not valid")
 			.required("Cell number is required."),
 		workbase: string().required("Workbase is required"),
 	});
+
+	useEffect(() => {
+		if (success) {
+			closeModal();
+			toast.success(
+				`User "${user?.displayName}" succesfully signedup with iREPS`,
+				{
+					position: "bottom-left",
+				}
+			);
+		}
+	}, [success, closeModal, user?.displayName]);
 
 	return (
 		<div className="form-wrapper">
@@ -123,8 +147,8 @@ const Signup = () => {
 											<FormikControl
 												control="input"
 												type="text"
-												label="Cell No"
-												name={"cellNo"}
+												label="Phone No"
+												name={"phoneNumber"}
 												placeholder=""
 											/>
 										</div>
@@ -148,7 +172,13 @@ const Signup = () => {
 											/>
 										</div>
 									</div>
-									<FormFooter formik={formik} linkTo={linkTo} currentForm="signup" />
+									{error && <FormError errorMsg={getCustomError(error)} />}
+									<FormFooter
+										formik={formik}
+										linkTo={linkTo}
+										currentForm="signup"
+										isPending={isPending}
+									/>
 								</Form>
 							</>
 						);

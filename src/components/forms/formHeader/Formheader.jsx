@@ -4,7 +4,6 @@ import FormCloseBtn from "../formBtns/FormCloseBtn";
 
 const Formheader = props => {
 	const { fhl1, fhl2, fhr1, fhr2 } = props;
-	const { closeModal } = useModal();
 
 	return (
 		<div className="form-header">

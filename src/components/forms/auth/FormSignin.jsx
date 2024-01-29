@@ -6,6 +6,13 @@ import FormFooter from "../formFooter/FormFooter";
 import { object, string } from "yup";
 import { MdOutlinePassword } from "react-icons/md";
 import FormMsg from "../formMsg/FormMsg";
+import { useSignin } from "../../../hooks/useSignin";
+import { useFirebase } from "../../../hooks/useFirebase";
+import useModal from "../../../hooks/useModal";
+import useAuthContext from "../../../hooks/useAuthContext";
+import { useEffect } from "react";
+import { toast } from "react-toastify";
+import FormError from "../formError/FormError";
 
 const linkTo = {
 	icon: <MdOutlinePassword />,
@@ -16,6 +23,18 @@ const linkTo = {
 const Signin = () => {
 	// console.log(`Signin`);
 
+	const { getCustomError } = useFirebase();
+
+	const { signin, error, isPending, success } = useSignin();
+	console.log(`error`, error);
+	console.log(`isPending`, isPending);
+	console.log(`success`, success);
+
+	const { closeModal } = useModal();
+
+	const { user } = useAuthContext();
+	console.log(`user`, user);
+
 	const initialValues = {
 		email: "",
 		password: "",
@@ -23,18 +42,25 @@ const Signin = () => {
 
 	const onSubmit = values => {
 		console.log(`Form values`, values);
-
-		// if (values.id) {
-		// 	updateDocument(values);
-		// } else {
-		// 	addDocument(values);
-		// }
+		signin(values);
 	};
 
 	const validationSchema = object({
 		email: string().email("Email is NOT valid.").required("Email is required."),
 		password: string().required("Password is required."),
 	});
+
+	useEffect(() => {
+		if (success) {
+			closeModal();
+			toast.success(
+				`User "${user?.displayName}" succesfully signedin with iREPS`,
+				{
+					position: "bottom-left",
+				}
+			);
+		}
+	}, [success, closeModal, user?.displayName]);
 
 	return (
 		<div className="form-wrapper">
@@ -69,7 +95,14 @@ const Signin = () => {
 											autoComplete="user password"
 										/>
 									</div>
-									<FormFooter formik={formik} linkTo={linkTo} currentForm="signin" />
+									{error && <FormError errorMsg={getCustomError(error)} />}
+
+									<FormFooter
+										formik={formik}
+										linkTo={linkTo}
+										currentForm="signin"
+										isPending={isPending}
+									/>
 								</Form>
 							</>
 						);

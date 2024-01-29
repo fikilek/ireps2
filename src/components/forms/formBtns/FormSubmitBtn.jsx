@@ -1,11 +1,12 @@
+import { ClipLoader, CSSProperties } from "react-spinners";
 import "./FormBtn.css";
 import "./FormSubmitBtn.css";
 import { BsSend } from "react-icons/bs";
 
 const FormSubmitBtn = props => {
 	// console.log(`props`, props);
-	const { formik, title } = props;
-	const disable = !(formik.isValid && formik.dirty);
+	const { formik, title, isPending } = props;
+	const disable = !(formik.isValid && formik.dirty) || isPending;
 	// console.log(`disable`, disable);
 
 	return (
@@ -16,7 +17,17 @@ const FormSubmitBtn = props => {
 				className="form-btn btn-submit-form"
 				type="submit"
 			>
-				<BsSend />
+				{isPending ? (
+					<ClipLoader
+						color={"#F86F03"}
+						loading={isPending}
+						size={20}
+						aria-label="Loading Spinner"
+						data-testid="loader"
+					/>
+				) : (
+					<BsSend />
+				)}
 			</button>
 		</div>
 	);

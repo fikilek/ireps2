@@ -1,10 +1,11 @@
 import React from "react";
 import "./FormError.css";
 
-const FormError = ({ formError }) => {
+const FormError = props => {
+	const { errorMsg } = props;
 	return (
-		<div className="formError">
-			<p>{formError}</p>
+		<div className="form-error">
+			<p>{errorMsg}</p>
 		</div>
 	);
 };

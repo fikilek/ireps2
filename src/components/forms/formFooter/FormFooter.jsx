@@ -6,7 +6,7 @@ import FormSubmitBtn from "../formBtns/FormSubmitBtn";
 import { IoIosPersonAdd } from "react-icons/io";
 
 const FormFooter = props => {
-	const { formik, linkTo, currentForm } = props;
+	const { formik, linkTo, currentForm, isPending } = props;
 	// console.log(`linkTo`, linkTo);
 	return (
 		<div className="form-footer vc-hsb">
@@ -21,7 +21,7 @@ const FormFooter = props => {
 				""
 			)}
 			<FormResetBtn formik={formik} title={"Reset Form"} />
-			<FormSubmitBtn formik={formik} title={"Submit Form"} />
+			<FormSubmitBtn formik={formik} title={"Submit Form"} isPending={isPending} />
 		</div>
 	);
 };

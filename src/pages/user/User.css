@@ -1,0 +1,56 @@
+.user-profile {}
+
+.user-profile .user-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+
+/* User details */
+
+.user-data {
+  display: grid;
+  grid-template-columns: 1fr;
+  border: 0.1rem solid;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  gap: 1rem;
+  font-size: 1.6rem;
+}
+
+
+.user-profile-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0.3rem;
+}
+
+.user-profile-header .uph {
+  display: flex;
+  align-items: center;
+}
+
+.user-profile-header .uph-right,
+.user-profile-header .uph-right {
+  gap: 0.5rem
+}
+
+.user-profile-header .uph-right {
+  justify-content: flex-end;
+}
+
+.user-profile-header button {
+  text-decoration: none;
+  width: 10rem;
+  background-color: rgb(161, 212, 179);
+  text-align: center;
+  padding: 0.5rem;
+}
+
+
+@media (max-width: 850px) {
+  .user-profile {
+    grid-template-columns: 1fr;
+  }
+}

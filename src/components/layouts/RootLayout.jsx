@@ -5,10 +5,10 @@ import SignedOutLayout from "./SignedOutLayout";
 import useAuthContext from "../../hooks/useAuthContext";
 
 const RootLayout = () => {
-	const { user } = useAuthContext();
+	const { user, isAuthReady } = useAuthContext() || {};
 	return (
 		<div className="root-layout">
-			{user ? <SignedInLayout /> : <SignedOutLayout />}
+			{isAuthReady && (user ? <SignedInLayout /> : <SignedOutLayout />)}
 		</div>
 	);
 };

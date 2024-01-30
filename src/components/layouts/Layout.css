@@ -60,4 +60,6 @@
   width: fit-content;
 }
 
-.root-layout .layout .navigation nav.right-nav button {}
+.root-layout .layout .navigation nav.right-nav button#signin {
+  margin-right: 0.5rem;
+}

@@ -1,10 +1,10 @@
 import React from "react";
-import UserDetails from "./UserDetails";
+import UserDetails from "./UserData";
 import UserProfileHeader from "./UserProfileHeader";
 import UserStats from "./UserStats";
 
 const UserProfile = props => {
-	console.log(`props`, props);
+	// console.log(`props`, props);
 
 	// console.log(userId);
 	return (

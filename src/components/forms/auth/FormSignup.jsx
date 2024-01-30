@@ -36,7 +36,7 @@ const Signup = () => {
 
 	const { closeModal } = useModal();
 
-	const { user } = useAuthContext();
+	const { user } = useAuthContext() || {};
 	console.log(`user`, user);
 
 	const initialValues = {

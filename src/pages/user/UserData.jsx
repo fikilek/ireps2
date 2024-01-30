@@ -1,15 +1,16 @@
 import "./User.css";
 import React from "react";
-import { MdAddAPhoto, MdPhoto } from "react-icons/md";
-import userPicPlaceHolder from "../../images/userPics/userPicPlaceHolder.png";
 import useAuthContext from "../../hooks/useAuthContext";
+import UserDataHeader from "./UserDataHeader";
+import UserPhoto from "./UserPhoto";
+import UserDataEditBtn from "./UserDataEditBtn";
 
-const UserDetails = () => {
+const UserData = () => {
 	// console.log(`props`, props)
 
 	// get user data from userContext
-	const { user } = useAuthContext();
-	console.log(`user`, user);
+	const { user } = useAuthContext() || {};
+	// console.log(`user`, user);
 
 	// const { email, emailVerified, photoUrl, uid } = user;
 	// const { createdAtDatetime } = metaData;
@@ -19,20 +20,13 @@ const UserDetails = () => {
 	// console.log(`error`, error)
 	// console.log(`document`, document)
 
+	const udLl = <p>User Details</p>;
+	const udLr = <p></p>;
+	const udRl = <p className="data-emphasis">Acc Status: Active</p>;
+	const udRr = <p className="data-emphasis">Online: Yes</p>;
 	return (
 		<div className="user-data user-details">
-			<div className="header">
-				<h3>User Details</h3>
-				<p>
-					Acc Status :<span className="data-emphasis">Active</span>{" "}
-				</p>
-				<div>
-					online:{" "}
-					<span className="data-emphasis">
-						{document?.online ? "online" : "offline"}
-					</span>
-				</div>
-			</div>
+			<UserDataHeader udLl={udLl} udLr={udLr} udRl={udRl} udRr={udRr} />
 			<div className="body user-details-body">
 				<div className="body-section body-left">
 					<p> Company: </p>
@@ -48,26 +42,12 @@ const UserDetails = () => {
 					<p> Last signon : </p>
 				</div>
 				<div className="body-section body-right ">
-					<div className="user-photo">
-						<img
-							// src={photoUrl || userPicPlaceHolder}
-							alt="user profile pic"
-							width="150"
-							height={"150"}
-						/>
-					</div>
-					<div className="photo-btns">
-						<button title="take a photo">
-							<MdAddAPhoto />
-						</button>
-						<button title="get saved photo">
-							<MdPhoto />
-						</button>
-					</div>
+					<UserPhoto />
+					<UserDataEditBtn />
 				</div>
 			</div>
 		</div>
 	);
 };
 
-export default UserDetails;
+export default UserData;

@@ -11,7 +11,7 @@ import Home from "./pages/home/Home";
 import Erfs from "./pages/erfs/Erfs";
 import Trns from "./pages/trns/Trns";
 import Asts from "./pages/asts/Asts";
-import AdminLayout from "./pages/admin/AdminLayout";
+import AdminLayout from "./components/layouts/AdminLayout";
 // import User from "./pages/users/User";
 import UserProfile from "./pages/user/UserProfile";
 import Users from "./pages/users/Users";
@@ -28,6 +28,7 @@ import AuthContextProvider from "./contexts/AuthContextProvider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { RequireAuth } from "./components/forms/auth/FormRequiredAuth";
+import SystemTables from "./pages/systemTables/SystemTables";
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -70,6 +71,14 @@ const router = createBrowserRouter(
 					element={
 						<RequireAuth>
 							<Users />
+						</RequireAuth>
+					}
+				/>
+				<Route
+					path="systemTables"
+					element={
+						<RequireAuth>
+							<SystemTables />
 						</RequireAuth>
 					}
 				/>

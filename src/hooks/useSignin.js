@@ -1,7 +1,10 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { auth } from "../firebaseConfig/fbConfig";
 import useAuthContext from "./useAuthContext";
+import {
+	sendPasswordResetEmail,
+	signInWithEmailAndPassword,
+} from "firebase/auth";
 
 export const useSignin = () => {
 	const [error, setError] = useState(null);
@@ -22,14 +25,15 @@ export const useSignin = () => {
 			// console.log(`result`, result);
 			const { user } = result;
 
-			const idToken = await auth.currentUser.getIdTokenResult(true)
+			const idToken = await auth.currentUser.getIdTokenResult(true);
 			// console.log(`idToken.claims.roles`, idToken.claims.roles)
 
 			dispatch({
-				type: "SIGNIN", payload: {
+				type: "SIGNIN",
+				payload: {
 					...user,
 					claims: idToken.claims.roles,
-				}
+				},
 			});
 			setIsPending(false);
 			setError(null);
@@ -42,5 +46,24 @@ export const useSignin = () => {
 		}
 	};
 
-	return { signin, error, isPending, success };
+	const passwordReset = async userCredentials => {
+		const { email } = userCredentials;
+		try {
+			setIsPending(true);
+			setError(null);
+			setSuccess(false);
+
+			await sendPasswordResetEmail(auth, email);
+
+			setIsPending(false);
+			setError(null);
+			setSuccess(true);
+		} catch (err) {
+			setIsPending(false);
+			setError(`password reset error: ${err.message}`);
+			setSuccess(false);
+		}
+	};
+
+	return { signin, passwordReset, error, isPending, success };
 };

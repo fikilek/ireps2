@@ -18,8 +18,8 @@ import FormLinkBtn from "../formBtns/FormLinkBtn";
 
 const linkTo = {
 	icon: <MdOutlinePassword />,
-	title: "Forgot Password",
-	linkName: "fpw",
+	title: "Password Reset",
+	linkName: "passwordReset",
 };
 
 const Signin = () => {
@@ -107,8 +107,8 @@ const Signin = () => {
 										/>
 										<FormLinkBtn
 											icon={<MdOutlinePassword />}
-											title="Forgot Password"
-											linkName="fpw"
+											title="Password Reset"
+											linkName="passwordReset"
 										/>
 									</FormFooter>
 								</Form>

@@ -5,7 +5,7 @@ import UserDataField from "./UserDataField";
 import UserEmailVerified from "./UserEmailVerified";
 
 const UserAuthField = props => {
-	console.log(`props`, props);
+	// console.log(`props`, props);
 	const { fieldKey, fieldValue, verified } = props;
 	const { user } = useAuthContext();
 

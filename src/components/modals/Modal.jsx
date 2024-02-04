@@ -6,9 +6,9 @@ import { ModalContext } from "../../contexts/ModalContext";
 import Signin from "../forms/auth/FormSignin";
 import Signout from "../forms/auth/FormSignout";
 import Signup from "../forms/auth/FormSignup";
-import FormFpw from "../forms/auth/FormFpw";
 import UpdateUser from "../forms/auth/FormUpdateUser";
 import EditUserEmail from "../forms/auth/FormEditUserEmail";
+import FormPasswordReset from "../forms/auth/FormPasswordReset";
 
 const Modal = () => {
 	const { toOpen, modalOpened } = useContext(ModalContext);
@@ -27,7 +27,7 @@ const Modal = () => {
 					{modalName === "signin" && <Signin />}
 					{modalName === "signout" && <Signout />}
 					{modalName === "signup" && <Signup />}
-					{modalName === "fpw" && <FormFpw />}
+					{modalName === "passwordReset" && <FormPasswordReset />}
 					{modalName === "updateUser" && <UpdateUser formData={payload} />}
 					{modalName === "editUserEmail" && <EditUserEmail formData={payload} />}
 				</div>

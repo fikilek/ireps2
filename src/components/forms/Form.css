@@ -23,7 +23,7 @@
 
 .form-container.edit-user-email,
 .form-container.signin,
-.form-container.fpw {
+.form-container.password-reset {
   width: 20rem;
 }
 

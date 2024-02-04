@@ -7,6 +7,11 @@ import { object, string } from "yup";
 import { CiLogin } from "react-icons/ci";
 import FormMsg from "../formMsg/FormMsg";
 import FormLinkBtn from "../formBtns/FormLinkBtn";
+import FormError from "../formError/FormError";
+import { useSignin } from "../../../hooks/useSignin";
+import { useEffect } from "react";
+import useModal from "../../../hooks/useModal";
+import { toast } from "react-toastify";
 
 const linkTo = {
 	icon: <CiLogin />,
@@ -14,24 +19,41 @@ const linkTo = {
 	linkName: "signin",
 };
 
-const FormFpw = () => {
-	// console.log(`FormFpw`);
+const FormPasswordReset = props => {
+	// console.log(`FormPasswordReset`, props);
+
+	const { closeModal } = useModal();
+
+	const { passwordReset, error, success } = useSignin();
 
 	const initialValues = {
 		email: "",
 	};
 
 	const onSubmit = values => {
-		console.log(`Form values`, values);
+		console.log(`Password Reset Form values`, values);
+		passwordReset(values);
 	};
 
 	const validationSchema = object({
 		email: string().email("Email is NOT valid.").required("Email is required."),
 	});
 
+	useEffect(() => {
+		if (success) {
+			closeModal();
+			toast.success(
+				`Visit inbox for the email adr and follow the instructins to reset iREPS password.`,
+				{
+					position: "bottom-left",
+				}
+			);
+		}
+	}, [success, closeModal]);
+
 	return (
 		<div className="form-wrapper">
-			<div className="form-container fpw">
+			<div className="form-container password-reset">
 				<Formik
 					initialValues={initialValues}
 					onSubmit={onSubmit}
@@ -42,9 +64,9 @@ const FormFpw = () => {
 						return (
 							<>
 								<Form>
-									<Formheader fhl1="Forgot Password" fhr1="" />
+									<Formheader fhl1="Password Reset" fhr1="" />
 									<FormMsg msg="A password RESET email will be sent to the inbox that signup/registered with iREPS." />
-									<div className="forgot-password-form">
+									<div className="password-reset-form">
 										<FormikControl
 											control="input"
 											type="email"
@@ -54,7 +76,7 @@ const FormFpw = () => {
 											autoFocus={true}
 										/>
 									</div>
-									{/* {error && <FormError errorMsg={error} />} */}
+									{error && <FormError errorMsg={error} />}
 									<FormFooter formik={formik} linkTo={linkTo} currentForm="fpw">
 										<FormLinkBtn icon={<CiLogin />} title="Signin" linkName="signin" />
 									</FormFooter>
@@ -68,4 +90,4 @@ const FormFpw = () => {
 	);
 };
 
-export default FormFpw;
+export default FormPasswordReset;

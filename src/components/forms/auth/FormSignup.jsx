@@ -15,7 +15,6 @@ import { useEffect } from "react";
 import { toast } from "react-toastify";
 import useAuthContext from "../../../hooks/useAuthContext";
 import { capitalizeFirstLetters } from "../../../utils/utils";
-import { sendEmailVerification } from "firebase/auth";
 import FormLinkBtn from "../formBtns/FormLinkBtn";
 
 const phoneRegExp =

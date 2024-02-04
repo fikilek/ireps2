@@ -100,11 +100,9 @@ export const useSignup = () => {
 			const docRef = doc(db, "users", user.uid);
 			const datetime = Timestamp.now();
 			await updateDoc(docRef, {
-				metaData: {
-					createdByName: `${surname} ${name}`,
-					createdByUid: user.uid,
-					createdAtDatetime: datetime,
-				},
+				"metaData.updatedByName": `${surname} ${name}`,
+				"metaData.updatedByUid": user.uid,
+				"metaData.updatedAtDatetime": datetime,
 				companyName,
 				workbase,
 				surname,
@@ -127,7 +125,7 @@ export const useSignup = () => {
 	};
 
 	const updateUserEmail = async userCredentials => {
-		const { newEmail, email, password } = userCredentials;
+		const { newEmail, password } = userCredentials;
 		try {
 			setIsPending(true);
 			setError(null);

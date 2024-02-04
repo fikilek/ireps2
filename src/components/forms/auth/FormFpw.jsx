@@ -6,7 +6,7 @@ import FormFooter from "../formFooter/FormFooter";
 import { object, string } from "yup";
 import { CiLogin } from "react-icons/ci";
 import FormMsg from "../formMsg/FormMsg";
-import FormError from "../formError/FormError";
+import FormLinkBtn from "../formBtns/FormLinkBtn";
 
 const linkTo = {
 	icon: <CiLogin />,
@@ -21,16 +21,8 @@ const FormFpw = () => {
 		email: "",
 	};
 
-	const authError = "Data not know";
-
 	const onSubmit = values => {
 		console.log(`Form values`, values);
-
-		// if (values.id) {
-		// 	updateDocument(values);
-		// } else {
-		// 	addDocument(values);
-		// }
 	};
 
 	const validationSchema = object({
@@ -63,7 +55,9 @@ const FormFpw = () => {
 										/>
 									</div>
 									{/* {error && <FormError errorMsg={error} />} */}
-									<FormFooter formik={formik} linkTo={linkTo} currentForm="fpw" />
+									<FormFooter formik={formik} linkTo={linkTo} currentForm="fpw">
+										<FormLinkBtn icon={<CiLogin />} title="Signin" linkName="signin" />
+									</FormFooter>
 								</Form>
 							</>
 						);

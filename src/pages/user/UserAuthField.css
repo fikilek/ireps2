@@ -1,0 +1,19 @@
+.user-auth-field {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr;
+  background-color: burlywood;
+  padding: 0 0.2rem;
+}
+
+.user-auth-field .user-auth-field-btn {
+  padding: 0.2rem;
+}
+
+.user-auth-field .user-auth-field-btn button {
+  width: 100%;
+  height: 100%;
+}
+
+.user-auth-field .verified {
+  color: green;
+}

@@ -1,4 +1,4 @@
-import React from "react";
+import "./UserPhoto.css";
 import { MdAddAPhoto, MdPhoto } from "react-icons/md";
 import userPicPlaceHolder from "../../images/userPics/userPicPlaceHolder.png";
 import useAuthContext from "../../hooks/useAuthContext";

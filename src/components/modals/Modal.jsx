@@ -7,13 +7,15 @@ import Signin from "../forms/auth/FormSignin";
 import Signout from "../forms/auth/FormSignout";
 import Signup from "../forms/auth/FormSignup";
 import FormFpw from "../forms/auth/FormFpw";
+import UpdateUser from "../forms/auth/FormUpdateUser";
+import EditUserEmail from "../forms/auth/FormEditUserEmail";
 
 const Modal = () => {
 	const { toOpen, modalOpened } = useContext(ModalContext);
 	// console.log(`modalOpened`, modalOpened);
 	// console.log(`toOpen`, toOpen);
 
-	const { modalName } = toOpen;
+	const { modalName, payload } = toOpen;
 	// console.log(`modalName`, modalName);
 	// console.log(`payload`, payload);
 
@@ -26,6 +28,8 @@ const Modal = () => {
 					{modalName === "signout" && <Signout />}
 					{modalName === "signup" && <Signup />}
 					{modalName === "fpw" && <FormFpw />}
+					{modalName === "updateUser" && <UpdateUser formData={payload} />}
+					{modalName === "editUserEmail" && <EditUserEmail formData={payload} />}
 				</div>
 			</div>
 		</div>

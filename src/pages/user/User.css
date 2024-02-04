@@ -23,10 +23,10 @@
 
 .user-profile-header button {
   text-decoration: none;
-  width: 10rem;
   background-color: rgb(161, 212, 179);
   text-align: center;
   padding: 0.5rem;
+  border: none;
 }
 
 /* user section */

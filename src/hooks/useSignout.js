@@ -2,11 +2,14 @@ import { signOut } from "firebase/auth";
 import { useState } from "react";
 import { auth } from "../firebaseConfig/fbConfig";
 import useAuthContext from "./useAuthContext";
+import { useNavigate } from "react-router-dom";
 
 export const useSignout = () => {
 	const [error, setError] = useState(null);
 	const [isPending, setIsPending] = useState(false);
 	const { dispatch } = useAuthContext();
+
+	const navigate = useNavigate();
 
 	const signout = async () => {
 		try {
@@ -16,6 +19,7 @@ export const useSignout = () => {
 			dispatch({ type: "SIGNOUT" });
 			setIsPending(false);
 			setError(null);
+			navigate("/");
 		} catch (err) {
 			setIsPending(false);
 			setError(err.message);

@@ -27,18 +27,61 @@ import AuthContextProvider from "./contexts/AuthContextProvider";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { RequireAuth } from "./components/forms/auth/FormRequiredAuth";
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
 		<Route path="/" element={<RootLayout />}>
 			<Route index element={<Home />} />
-			<Route path="erfs" element={<Erfs />} />
-			<Route path="trns" element={<Trns />} />
-			<Route path="asts" element={<Asts />} />
-			<Route path="admin" element={<AdminLayout />}>
-				<Route path="users" element={<Users />} />
+			<Route
+				path="erfs"
+				element={
+					<RequireAuth>
+						<Erfs />
+					</RequireAuth>
+				}
+			/>
+			<Route
+				path="trns"
+				element={
+					<RequireAuth>
+						<Trns />
+					</RequireAuth>
+				}
+			/>
+			<Route
+				path="asts"
+				element={
+					<RequireAuth>
+						<Asts />
+					</RequireAuth>
+				}
+			/>
+			<Route
+				path="admin"
+				element={
+					<RequireAuth>
+						<AdminLayout />
+					</RequireAuth>
+				}
+			>
+				<Route
+					path="users"
+					element={
+						<RequireAuth>
+							<Users />
+						</RequireAuth>
+					}
+				/>
 			</Route>
-			<Route path="user" element={<UserProfile />} />
+			<Route
+				path="user"
+				element={
+					<RequireAuth>
+						<UserProfile />
+					</RequireAuth>
+				}
+			/>
 			<Route path="*" element={<NotFound />} />
 		</Route>
 	)

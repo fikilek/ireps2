@@ -13,6 +13,8 @@ import useAuthContext from "../../../hooks/useAuthContext";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
 import FormError from "../formError/FormError";
+import { IoIosPersonAdd } from "react-icons/io";
+import FormLinkBtn from "../formBtns/FormLinkBtn";
 
 const linkTo = {
 	icon: <MdOutlinePassword />,
@@ -97,12 +99,18 @@ const Signin = () => {
 									</div>
 									{error && <FormError errorMsg={getCustomError(error)} />}
 
-									<FormFooter
-										formik={formik}
-										linkTo={linkTo}
-										currentForm="signin"
-										isPending={isPending}
-									/>
+									<FormFooter formik={formik} isPending={isPending}>
+										<FormLinkBtn
+											icon={<IoIosPersonAdd />}
+											title="Signun"
+											linkName="signup"
+										/>
+										<FormLinkBtn
+											icon={<MdOutlinePassword />}
+											title="Forgot Password"
+											linkName="fpw"
+										/>
+									</FormFooter>
 								</Form>
 							</>
 						);

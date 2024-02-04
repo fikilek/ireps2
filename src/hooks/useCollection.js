@@ -7,7 +7,6 @@ import {
 	query,
 	where,
 } from "firebase/firestore";
-import { BsFillNutFill } from "react-icons/bs";
 
 const useCollection = (fbCollection, _query) => {
 	const [data, setData] = useState([]);
@@ -16,7 +15,6 @@ const useCollection = (fbCollection, _query) => {
 	const [success, setSuccess] = useState(null);
 
 	const q = useRef(_query).current;
-	// console.log(`q`, q);
 
 	let colRef = collection(db, fbCollection);
 
@@ -40,7 +38,6 @@ const useCollection = (fbCollection, _query) => {
 		const unsubscribe = onSnapshot(
 			newQuery,
 			snapShot => {
-				console.log(`snapShot`, snapShot);
 				const results = [];
 				snapShot.docs.forEach(doc => {
 					results.push({ id: doc.id, ...doc.data() });
@@ -59,7 +56,7 @@ const useCollection = (fbCollection, _query) => {
 		setError("");
 
 		return () => unsubscribe();
-	}, [fbCollection]);
+	}, []);
 
 	return { data, error, isPending, success };
 };

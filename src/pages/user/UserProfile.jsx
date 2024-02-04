@@ -1,17 +1,14 @@
 import React from "react";
-import UserDetails from "./UserData";
+import UserDeta from "./UserData";
 import UserProfileHeader from "./UserProfileHeader";
 import UserStats from "./UserStats";
 
-const UserProfile = props => {
-	// console.log(`props`, props);
-
-	// console.log(userId);
+const UserProfile = () => {
 	return (
 		<div className="user-profile">
 			<UserProfileHeader />
 			<div className="user-section">
-				<UserDetails />
+				<UserDeta />
 				<UserStats />
 			</div>
 		</div>

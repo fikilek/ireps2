@@ -11,7 +11,6 @@ const UserProfileHeader = () => {
 				<p></p>
 			</div>
 			<div className="uph uph-right">
-				<button>Edit Profile</button>
 				<button onClick={() => signout()}>Signout</button>
 			</div>
 		</div>

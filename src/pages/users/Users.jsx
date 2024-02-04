@@ -6,7 +6,6 @@ const Users = () => {
 		"==",
 		"kentane fikile",
 	]);
-	console.log(`result`, result);
 	return (
 		<div>
 			<h2>Users Page</h2>

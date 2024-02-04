@@ -1,50 +1,55 @@
 import "./User.css";
-import React from "react";
+import React, { useEffect } from "react";
 import useAuthContext from "../../hooks/useAuthContext";
 import UserDataHeader from "./UserDataHeader";
-import UserPhoto from "./UserPhoto";
-import UserDataEditBtn from "./UserDataEditBtn";
+import UserDetail from "./UserDetail";
+import { useFirestore } from "../../hooks/useFirestore";
 
 const UserData = () => {
-	// console.log(`props`, props)
+	// console.log(`UserData`);
 
 	// get user data from userContext
 	const { user } = useAuthContext() || {};
 	// console.log(`user`, user);
 
-	// const { email, emailVerified, photoUrl, uid } = user;
-	// const { createdAtDatetime } = metaData;
-
 	// get user details from firestore on snapshot
-	// const { document } = useDocumentSync("users", uid);
-	// console.log(`error`, error)
-	// console.log(`document`, document)
+	const { getDocument, response } = useFirestore("users");
+	// console.log(`response`, response);
+
+	useEffect(() => {
+		if (user?.uid) {
+			getDocument(user?.uid);
+		}
+	}, [user?.uid]);
+
+	const userDetailData = {
+		// from firebase  firestore
+		companyName: response?.document?.companyName,
+		email: response?.document?.email,
+		phoneNumber: response?.document?.phoneNumber,
+		accStatus: response?.document?.status,
+		surname: response?.document?.surname,
+		name: response?.document?.name,
+		workbase: response?.document?.workbase,
+		createdAtDatetime: response?.document?.metaData?.createdAtDatetime,
+
+		// from firebase auth
+		emailVerified: user?.emailVerified,
+		lastSignInTime: user?.metadata?.lastSignInTime,
+	};
 
 	const udLl = <p>User Details</p>;
 	const udLr = <p></p>;
 	const udRl = <p className="data-emphasis">Acc Status: Active</p>;
 	const udRr = <p className="data-emphasis">Online: Yes</p>;
 	return (
-		<div className="user-data user-details">
+		<div className="user-data">
 			<UserDataHeader udLl={udLl} udLr={udLr} udRl={udRl} udRr={udRr} />
-			<div className="body user-details-body">
-				<div className="body-section body-left">
-					<p> Company: </p>
-					<p> Workbase: </p>
-					<p> Surname: </p>
-					<p> Name: </p>
-					<p>
-						{" "}
-						Email: xxxxx <span>{"verified: yes"}</span>{" "}
-					</p>
-					<p> Phone No : </p>
-					<p> Created At : </p>
-					<p> Last signon : </p>
+			<div className="user-data-body">
+				<div className="udb-section">
+					<UserDetail userDetailData={userDetailData} />
 				</div>
-				<div className="body-section body-right ">
-					<UserPhoto />
-					<UserDataEditBtn />
-				</div>
+				<div className="udb-section body-right"></div>
 			</div>
 		</div>
 	);

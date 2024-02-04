@@ -14,12 +14,9 @@ import useModal from "../../../hooks/useModal";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
 import useAuthContext from "../../../hooks/useAuthContext";
-
-const linkTo = {
-	icon: <CiLogin />,
-	title: "Signin",
-	linkName: "signin",
-};
+import { capitalizeFirstLetters } from "../../../utils/utils";
+import { sendEmailVerification } from "firebase/auth";
+import FormLinkBtn from "../formBtns/FormLinkBtn";
 
 const phoneRegExp =
 	/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
@@ -30,14 +27,13 @@ const Signup = () => {
 	const { getCustomError } = useFirebase();
 
 	const { signup, error, isPending, success } = useSignup();
-	console.log(`error`, error);
-	console.log(`isPending`, isPending);
-	console.log(`success`, success);
+	// console.log(`error`, error);
+	// console.log(`isPending`, isPending);
+	// console.log(`success`, success);
 
 	const { closeModal } = useModal();
 
 	const { user } = useAuthContext() || {};
-	console.log(`user`, user);
 
 	const initialValues = {
 		surname: "kentane",
@@ -52,7 +48,8 @@ const Signup = () => {
 
 	const onSubmit = values => {
 		// console.log(`Form values`, values);
-		signup(values);
+		const newValues = capitalizeFirstLetters(values);
+		signup(newValues);
 	};
 
 	const validationSchema = object({
@@ -173,12 +170,9 @@ const Signup = () => {
 										</div>
 									</div>
 									{error && <FormError errorMsg={getCustomError(error)} />}
-									<FormFooter
-										formik={formik}
-										linkTo={linkTo}
-										currentForm="signup"
-										isPending={isPending}
-									/>
+									<FormFooter formik={formik} isPending={isPending}>
+										<FormLinkBtn icon={<CiLogin />} title="Signin" linkName="signin" />
+									</FormFooter>
 								</Form>
 							</>
 						);

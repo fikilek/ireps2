@@ -1,0 +1,14 @@
+.user-detail {
+  display: grid;
+  gap: 1rem;
+}
+
+.user-detail .editable,
+.user-detail .non-editable {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  background-color: burlywood;
+  padding: 0 0.2rem;
+}
+
+.user-detail .non-editable {}

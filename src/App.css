@@ -45,3 +45,8 @@ body {
 .text-emphais1 {
   font-weight: 800;
 }
+
+.text-emphasis2 {
+  font-weight: 700;
+  color: rgb(42, 94, 248);
+}

@@ -6,9 +6,10 @@ import {
 	getDoc,
 	arrayUnion,
 	Timestamp,
+	onSnapshot,
 } from "firebase/firestore";
-import cloneDeep from "lodash.clonedeep";
-import { useEffect, useReducer, useState } from "react";
+// import cloneDeep from "lodash.clonedeep";
+import { useEffect, useReducer, useRef, useState } from "react";
 import { db } from "../firebaseConfig/fbConfig";
 import useAuthContext from "./useAuthContext";
 
@@ -62,122 +63,101 @@ const firestoreReducer = (state, action) => {
 };
 
 export const useFirestore = fbCollection => {
-	// get currnet user data
+	// console.log(`useFirestore fbCollection:`, fbCollection);
 	const { user } = useAuthContext();
-	// console.log(`user`, user)
 
 	const [response, dispatch] = useReducer(firestoreReducer, initData);
 	const [isCancelled, setIsCancelled] = useState(false);
-	// console.log(`isCancelled`, isCancelled);
 	// console.log(`response`, response);
-	// console.log(`myDoc`, myDoc);
 
 	const dispatchIfNotCancelled = action => {
 		if (!isCancelled) {
-			// console.log(`action NOT CANCELLED`, action);
 			dispatch(action);
 		}
 	};
 
 	const ref = collection(db, fbCollection);
 
-	const addDocument = async doc => {
-		// console.log(`addDocument`, doc)
+	// const addDocument = async doc => {
+	// 	dispatch({ type: "IS_PENDING" });
+	// 	try {
+	// 		const addedDocument = await addDoc(ref, {
+	// 			...doc,
+	// 			metaData: {
+	// 				...doc.metaData,
+	// 				updatedAtDatetime: Timestamp.now(),
+	// 				updatedByUser: user.displayName,
+	// 				updatedByUserId: user.uid,
+	// 			},
+	// 		});
+	// 		dispatchIfNotCancelled({ type: "ADD_DOCUMENT", payload: addedDocument });
+	// 	} catch (err) {
+	// 		dispatchIfNotCancelled({ type: "ERROR", payload: err.message });
+	// 	}
+	// };
 
+	// const deleteDocument = async id => {};
+
+	// const updateDocument = async document => {
+	// 	document = {
+	// 		...document,
+	// 		metaData: {
+	// 			...document.metaData,
+	// 			updatedAtDatetime: Timestamp.now(),
+	// 			updatedByUser: user.displayName,
+	// 			updatedByUserId: user.uid,
+	// 		},
+	// 	};
+
+	// 	const id = document.id;
+	// 	const newObj = cloneDeep(document);
+	// 	dispatch({ type: "IS_PENDING", payload: newObj });
+	// 	const docToUpdateRef = doc(db, fbCollection, id);
+	// 	try {
+	// 		const updatedDoc = await updateDoc(docToUpdateRef, newObj);
+	// 		dispatchIfNotCancelled({ type: "UPDATED_DOCUMENT", payload: updatedDoc });
+	// 	} catch (err) {
+	// 		console.log(`ERROR: `, err.message);
+	// 		dispatchIfNotCancelled({
+	// 			type: "ERROR",
+	// 			payload: err.message,
+	// 		});
+	// 	}
+	// };
+
+	// const updateDocumentArray = async (id, arrayData, arrayName) => {
+	// 	dispatch({ type: "IS_PENDING", payload: arrayData });
+	// 	const docToUpdateRef = doc(db, fbCollection, id);
+	// 	try {
+	// 		const updatedDoc = await updateDoc(docToUpdateRef, {
+	// 			astNoMedia: arrayUnion(arrayData),
+	// 		});
+	// 		dispatchIfNotCancelled({ type: "UPDATED_DOCUMENT", payload: updatedDoc });
+	// 		return updatedDoc;
+	// 	} catch (err) {
+	// 		dispatchIfNotCancelled({
+	// 			type: "ERROR",
+	// 			payload: err.message,
+	// 		});
+	// 	}
+	// };
+
+	const getDocument = async id => {
+		// console.log(`getDocument id:`, id);
+		const docRef = doc(db, fbCollection, id);
 		dispatch({ type: "IS_PENDING" });
 		try {
-			// console.log(`po`, po);
-			const addedDocument = await addDoc(ref, {
-				...doc,
-				metaData: {
-					...doc.metaData,
-					updatedAtDatetime: Timestamp.now(),
-					updatedByUser: user.displayName,
-					updatedByUserId: user.uid,
-				},
+			const unsub = onSnapshot(docRef, doc => {
+				// console.log(`doc.data()`, doc.data());
+				if (doc.exists()) {
+					dispatchIfNotCancelled({
+						type: "UPDATED_DOCUMENT",
+						payload: doc.data(),
+					});
+				} else {
+					console.log("No such document!");
+				}
 			});
-			dispatchIfNotCancelled({ type: "ADD_DOCUMENT", payload: addedDocument });
-			// console.log(`addedDocument`, addedDocument);
-		} catch (err) {
-			dispatchIfNotCancelled({ type: "ERROR", payload: err.message });
-		}
-	};
-
-	const deleteDocument = async id => {};
-
-	const updateDocument = async document => {
-		// console.log(`updateDocument`, document);
-
-		document = {
-			...document,
-			metaData: {
-				...document.metaData,
-				updatedAtDatetime: Timestamp.now(),
-				updatedByUser: user.displayName,
-				updatedByUserId: user.uid,
-			},
-		};
-
-		const id = document.id;
-		const newObj = cloneDeep(document);
-		// delete newObj.id;
-		dispatch({ type: "IS_PENDING", payload: newObj });
-		// console.log(`id`, id)
-		const docToUpdateRef = doc(db, fbCollection, id);
-		try {
-			// console.log(`po`, po)
-			const updatedDoc = await updateDoc(docToUpdateRef, newObj);
-			dispatchIfNotCancelled({ type: "UPDATED_DOCUMENT", payload: updatedDoc });
-			// return updatedDoc;
-		} catch (err) {
-			console.log(`ERROR: `, err.message);
-			dispatchIfNotCancelled({
-				type: "ERROR",
-				payload: err.message,
-			});
-		}
-	};
-
-	const updateDocumentArray = async (id, arrayData, arrayName) => {
-		// console.log(`id`, id);
-		// console.log(`arrayData`, arrayData);
-		// console.log(`arrayName`, arrayName);
-
-		dispatch({ type: "IS_PENDING", payload: arrayData });
-		const docToUpdateRef = doc(db, fbCollection, id);
-		try {
-			const updatedDoc = await updateDoc(docToUpdateRef, {
-				astNoMedia: arrayUnion(arrayData),
-			});
-			// console.log(`updatedDoc`, updatedDoc);
-			dispatchIfNotCancelled({ type: "UPDATED_DOCUMENT", payload: updatedDoc });
-			return updatedDoc;
-		} catch (err) {
-			// console.log(`err`, err.message);
-			dispatchIfNotCancelled({
-				type: "ERROR",
-				payload: err.message,
-			});
-		}
-	};
-
-	const getDocument = async uid => {
-		// console.log(`uid`, uid);
-		const docRef = doc(db, fbCollection, uid);
-		// console.log(`docRef`, docRef);
-		dispatch({ type: "IS_PENDING" });
-		try {
-			const docSnap = await getDoc(docRef);
-			if (docSnap.exists()) {
-				// console.log("Document data:", docSnap.data());
-				dispatchIfNotCancelled({
-					type: "UPDATED_DOCUMENT",
-					payload: docSnap.data(),
-				});
-			} else {
-				// doc.data() will be undefined in this case
-				console.log("No such document!");
-			}
 		} catch (err) {
 			dispatchIfNotCancelled({ type: "ERROR", payload: err.message });
 		}
@@ -185,17 +165,16 @@ export const useFirestore = fbCollection => {
 
 	useEffect(() => {
 		return () => {
-			// console.log(`useEffect returning`);
 			setIsCancelled(true);
 		};
 	}, []);
 
 	return {
 		response,
-		addDocument,
-		deleteDocument,
-		updateDocument,
-		updateDocumentArray,
+		// addDocument,
+		// deleteDocument,
+		// updateDocument,
+		// updateDocumentArray,
 		getDocument,
 	};
 };

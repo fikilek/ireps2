@@ -64,14 +64,14 @@
   margin-right: 0.5rem;
 }
 
-.root-layout .layout .admin-layout {
+.root-layout .layout .sidebar-main-layout {
   display: grid;
-  grid-template-columns: 10.9rem auto;
+  grid-template-columns: 10.94rem auto;
   width: 100%;
   height: 100%;
 }
 
-.root-layout .layout .admin-layout .admin-layout-nav {
+.root-layout .layout .sidebar-main-layout .sidebar-main-nav {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -80,10 +80,14 @@
   background-color: #FFE4C4;
 }
 
-.root-layout .layout .admin-layout .admin-layout-nav a {
+.root-layout .layout .sidebar-main-layout .sidebar-main-nav a {
   text-decoration: none;
   background-color: darkkhaki;
-  text-align: centerrgb(224, 222, 194);
+  text-align: center;
   padding: 0.5rem;
   margin: 0 0 0 0.5rem;
+}
+
+.root-layout .layout .sidebar-main-layout .sidebar-main-nav a.active {
+  background-color: aqua;
 }

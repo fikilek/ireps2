@@ -1,4 +1,3 @@
-import useAuthContext from "../../hooks/useAuthContext";
 import { useUser } from "../../hooks/useUser";
 import "./Layout.css";
 import { NavLink, Outlet } from "react-router-dom";

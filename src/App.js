@@ -11,24 +11,30 @@ import Home from "./pages/home/Home";
 import Erfs from "./pages/erfs/Erfs";
 import Trns from "./pages/trns/Trns";
 import Asts from "./pages/asts/Asts";
-import AdminLayout from "./components/layouts/AdminLayout";
+
+// import tables
+import TableTrnStates from "./components/tables/TableTrnStates";
+import TableAstStates from "./components/tables/TableAstStates";
+
 // import User from "./pages/users/User";
 import UserProfile from "./pages/user/UserProfile";
 import Users from "./pages/users/Users";
 
 // Layouts
 import RootLayout from "./components/layouts/RootLayout";
+import AdminLayout from "./components/layouts/AdminLayout";
+import SystemTablesLayout from "./components/layouts/SystemTablesLayout";
+
+// others
 import NotFound from "./pages/error/NotFound";
-
 import Modal from "./components/modals/Modal";
-
-import ModalContextProvider from "./contexts/ModalContext";
-import AuthContextProvider from "./contexts/AuthContextProvider";
-
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { RequireAuth } from "./components/forms/auth/FormRequiredAuth";
-import SystemTables from "./pages/systemTables/SystemTables";
+
+// Context providers
+import ModalContextProvider from "./contexts/ModalContext";
+import AuthContextProvider from "./contexts/AuthContextProvider";
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -78,10 +84,27 @@ const router = createBrowserRouter(
 					path="systemTables"
 					element={
 						<RequireAuth>
-							<SystemTables />
+							<SystemTablesLayout />
 						</RequireAuth>
 					}
-				/>
+				>
+					<Route
+						path="astStates"
+						element={
+							<RequireAuth>
+								<TableAstStates />
+							</RequireAuth>
+						}
+					/>
+					<Route
+						path="trnStates"
+						element={
+							<RequireAuth>
+								<TableTrnStates />
+							</RequireAuth>
+						}
+					/>
+				</Route>
 			</Route>
 			<Route
 				path="user"

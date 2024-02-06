@@ -58,7 +58,11 @@ const useCollection = (fbCollection, _query) => {
 		return () => unsubscribe();
 	}, []);
 
-	return { data, error, isPending, success };
+	const getData = () => {
+		return { data, error, isPending, success };
+	};
+
+	return { data, error, isPending, success, getData };
 };
 
 export default useCollection;

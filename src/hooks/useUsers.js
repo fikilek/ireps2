@@ -1,6 +1,5 @@
 import { format } from "date-fns";
-import TableBtn from "../components/tables/TableBtn";
-import { FaPenAlt } from "react-icons/fa";
+import TableDropdownSelect from "../components/tables/TableDropdownSelect";
 
 export const useUsers = props => {
 	const usersTableFields = [
@@ -14,11 +13,7 @@ export const useUsers = props => {
 			field: "status",
 			headerName: "Acc Status",
 			width: 150,
-			cellRenderer: TableBtn,
-			cellRendererParams: {
-				viewToOpen: "user",
-				icon: <FaPenAlt />,
-			},
+			cellRenderer: TableDropdownSelect,
 		},
 		{
 			field: "metadata.createdAtDatetime",
@@ -29,18 +24,9 @@ export const useUsers = props => {
 				return <p>{format(datetime.toDate(), "yyyy-MMM-dd HH:mm")}</p>;
 			},
 		},
-		// {
-		// 	field: "lastSigninDate",
-		// 	headerName: "Last Signin Date",
-		// 	width: 170,
-		// 	cellRenderer: params => {
-		// 		console.log(`params`, params);
-		// 		return "Datetime";
-		// 	},
-		// },
 		{
 			field: "displayName",
-			headerName: "display name",
+			headerName: "Display Name",
 			width: 170,
 			cellRenderer: params => {
 				const { surname, name } = params.data;
@@ -49,17 +35,17 @@ export const useUsers = props => {
 		},
 		{
 			field: "email",
-			headerName: "email adr",
+			headerName: "Email Adr",
 			width: 200,
 		},
 		{
 			field: "photoURL",
-			headerName: "photo",
+			headerName: "Photo",
 			width: 100,
 		},
 		{
 			field: "phoneNumber",
-			headerName: "phone number",
+			headerName: "Phone Number",
 			width: 150,
 		},
 		{
@@ -74,7 +60,7 @@ export const useUsers = props => {
 		},
 		{
 			field: "online",
-			headerName: "online",
+			headerName: "Online",
 			width: 100,
 		},
 	];

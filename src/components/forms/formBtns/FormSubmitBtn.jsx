@@ -1,4 +1,4 @@
-import { ClipLoader, CSSProperties } from "react-spinners";
+import { ClipLoader } from "react-spinners";
 import "./FormBtn.css";
 import "./FormSubmitBtn.css";
 import { BsSend } from "react-icons/bs";

@@ -4,7 +4,6 @@ import FormikControl from "../formik/FormikControl";
 import Formheader from "../formHeader/Formheader";
 import FormFooter from "../formFooter/FormFooter";
 import { object, string } from "yup";
-import { CiLogin } from "react-icons/ci";
 import FormMsg from "../formMsg/FormMsg";
 import { formSelectOptions } from "../formUtils/utils";
 import FormError from "../formError/FormError";

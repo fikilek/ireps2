@@ -1,9 +1,7 @@
 // import { CiLogin } from "react-icons/ci";
 import "./FormFooter.css";
-import FormLinkBtn from "../formBtns/FormLinkBtn";
 import FormResetBtn from "../formBtns/FormResetBtn";
 import FormSubmitBtn from "../formBtns/FormSubmitBtn";
-import { IoIosPersonAdd } from "react-icons/io";
 
 const FormFooter = props => {
 	const { formik, isPending, children } = props;

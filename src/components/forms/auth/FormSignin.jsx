@@ -16,12 +16,6 @@ import FormError from "../formError/FormError";
 import { IoIosPersonAdd } from "react-icons/io";
 import FormLinkBtn from "../formBtns/FormLinkBtn";
 
-const linkTo = {
-	icon: <MdOutlinePassword />,
-	title: "Password Reset",
-	linkName: "passwordReset",
-};
-
 const Signin = () => {
 	// console.log(`Signin`);
 

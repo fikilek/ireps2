@@ -1,4 +1,3 @@
-import useModal from "../../../hooks/useModal";
 import "./FormHeader.css";
 import FormCloseBtn from "../formBtns/FormCloseBtn";
 

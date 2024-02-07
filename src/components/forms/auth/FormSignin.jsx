@@ -22,14 +22,10 @@ const Signin = () => {
 	const { getCustomError } = useFirebase();
 
 	const { signin, error, isPending, success } = useSignin();
-	console.log(`error`, error);
-	console.log(`isPending`, isPending);
-	console.log(`success`, success);
 
 	const { closeModal } = useModal();
 
 	const { user } = useAuthContext();
-	console.log(`user`, user);
 
 	const initialValues = {
 		email: "",
@@ -37,7 +33,6 @@ const Signin = () => {
 	};
 
 	const onSubmit = values => {
-		console.log(`Form values`, values);
 		signin(values);
 	};
 

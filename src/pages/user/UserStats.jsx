@@ -1,15 +1,8 @@
 import "./User.css";
 import React from "react";
-import useAuthContext from "../../hooks/useAuthContext";
 import UserDataHeader from "./UserDataHeader";
 
 const UserStats = () => {
-	// console.log(`props`, props)
-
-	// get user data from userContext
-	const { user } = useAuthContext() || {};
-	// console.log(`user`, user);
-
 	const udLl = <p className="data-emphasis">User Stats</p>;
 	const udLr = <p className="data-emphasis"></p>;
 	const udRl = <p className="data-emphasis"></p>;

@@ -1,15 +1,16 @@
 .modal-container {
-	background-color: rgba(255, 255, 255, 0.808);
-	position: absolute;
-	top: 3rem;
-	left: 0;
+	background-color: rgba(231, 231, 231, 0.808);
 	height: -webkit-fill-available;
+	left: 0;
+	position: absolute;
+	top: 0;
 	width: -webkit-fill-available;
 }
 
 .modal-background {
+	align-items: center;
 	display: flex;
 	justify-content: center;
-	align-items: center;
-	/* width: 100%; */
+	width: inherit;
+	height: inherit;
 }

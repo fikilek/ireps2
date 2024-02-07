@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { Suspense, useContext } from "react";
 import "./Modal.css";
 
 import { ModalContext } from "../../contexts/ModalContext";
@@ -9,6 +9,7 @@ import Signup from "../forms/auth/FormSignup";
 import UpdateUser from "../forms/auth/FormUpdateUser";
 import EditUserEmail from "../forms/auth/FormEditUserEmail";
 import FormPasswordReset from "../forms/auth/FormPasswordReset";
+import { loader } from "../../utils/utils";
 
 const Modal = () => {
 	const { toOpen, modalOpened } = useContext(ModalContext);
@@ -24,12 +25,49 @@ const Modal = () => {
 			<div className="modal-background" id="modal-background">
 				<div className="modal-payload">
 					{/* auth forms */}
-					{modalName === "signin" && <Signin />}
-					{modalName === "signout" && <Signout />}
-					{modalName === "signup" && <Signup />}
-					{modalName === "passwordReset" && <FormPasswordReset />}
-					{modalName === "updateUser" && <UpdateUser formData={payload} />}
-					{modalName === "editUserEmail" && <EditUserEmail formData={payload} />}
+					{modalName === "signin" && (
+						<>
+							<Suspense fallback={loader}>
+								<Signin />
+							</Suspense>
+						</>
+					)}
+					{modalName === "signout" && (
+						<>
+							<Suspense fallback={loader}>
+								<Signout />
+							</Suspense>
+						</>
+					)}
+					{modalName === "signup" && (
+						<>
+							<Suspense fallback={loader}>
+								<Signup />
+							</Suspense>
+						</>
+					)}
+
+					{modalName === "passwordReset" && (
+						<>
+							<Suspense fallback={loader}>
+								<FormPasswordReset />
+							</Suspense>
+						</>
+					)}
+					{modalName === "updateUser" && (
+						<>
+							<Suspense fallback={loader}>
+								<UpdateUser formData={payload} />
+							</Suspense>
+						</>
+					)}
+					{modalName === "editUserEmail" && (
+						<>
+							<Suspense fallback={loader}>
+								<EditUserEmail formData={payload} />
+							</Suspense>
+						</>
+					)}
 				</div>
 			</div>
 		</div>

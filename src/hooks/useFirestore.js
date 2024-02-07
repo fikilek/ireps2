@@ -1,10 +1,4 @@
-import {
-	collection,
-	updateDoc,
-	doc,
-	Timestamp,
-	onSnapshot,
-} from "firebase/firestore";
+import { updateDoc, doc, Timestamp, onSnapshot } from "firebase/firestore";
 // import cloneDeep from "lodash.clonedeep";
 import { useEffect, useReducer, useState } from "react";
 import { db } from "../firebaseConfig/fbConfig";

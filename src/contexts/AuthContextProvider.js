@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import { createContext } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebaseConfig/fbConfig";
@@ -27,7 +27,6 @@ const AuthContextProvider = ({ children }) => {
 		user: null,
 		isAuthReady: false,
 	});
-	console.log(`Auth context state`, state);
 
 	useEffect(() => {
 		const unsub = onAuthStateChanged(auth, user => {

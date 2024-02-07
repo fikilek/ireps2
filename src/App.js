@@ -17,13 +17,13 @@ import TableTrnStates from "./components/tables/TableTrnStates";
 import TableAstStates from "./components/tables/TableAstStates";
 
 // import User from "./pages/users/User";
-import UserProfile from "./pages/user/UserProfile";
-import Users from "./pages/users/Users";
+// import UserProfile from "./pages/user/UserProfile";
+// import Users from "./pages/users/Users";
 
 // Layouts
 import RootLayout from "./components/layouts/RootLayout";
-import AdminLayout from "./components/layouts/AdminLayout";
-import SystemTablesLayout from "./components/layouts/SystemTablesLayout";
+// import AdminLayout from "./components/layouts/AdminLayout";
+// import SystemTablesLayout from "./components/layouts/SystemTablesLayout";
 
 // others
 import NotFound from "./pages/error/NotFound";
@@ -31,10 +31,23 @@ import Modal from "./components/modals/Modal";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { RequireAuth } from "./components/forms/auth/FormRequiredAuth";
+import { loader } from "./utils/utils";
+import { Suspense, lazy } from "react";
 
 // Context providers
 import ModalContextProvider from "./contexts/ModalContext";
 import AuthContextProvider from "./contexts/AuthContextProvider";
+
+// Lazy loading
+const AdminLayout = lazy(() => import("./components/layouts/AdminLayout"));
+const SystemTablesLayout = lazy(() =>
+	import("./components/layouts/SystemTablesLayout")
+);
+
+// Lazy loading User and Users
+// const User = lazy(() => import("./pages/users/User"));
+const UserProfile = lazy(() => import("./pages/user/UserProfile"));
+const Users = lazy(() => import("./pages/users/Users"));
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -67,25 +80,31 @@ const router = createBrowserRouter(
 			<Route
 				path="admin"
 				element={
-					<RequireAuth>
-						<AdminLayout />
-					</RequireAuth>
+					<Suspense fallback={loader}>
+						<RequireAuth>
+							<AdminLayout />
+						</RequireAuth>
+					</Suspense>
 				}
 			>
 				<Route
 					path="users"
 					element={
-						<RequireAuth>
-							<Users />
-						</RequireAuth>
+						<Suspense fallback={loader}>
+							<RequireAuth>
+								<Users />
+							</RequireAuth>
+						</Suspense>
 					}
 				/>
 				<Route
 					path="systemTables"
 					element={
-						<RequireAuth>
-							<SystemTablesLayout />
-						</RequireAuth>
+						<Suspense fallback={loader}>
+							<RequireAuth>
+								<SystemTablesLayout />
+							</RequireAuth>
+						</Suspense>
 					}
 				>
 					<Route
@@ -109,9 +128,11 @@ const router = createBrowserRouter(
 			<Route
 				path="user"
 				element={
-					<RequireAuth>
-						<UserProfile />
-					</RequireAuth>
+					<Suspense fallback={loader}>
+						<RequireAuth>
+							<UserProfile />
+						</RequireAuth>
+					</Suspense>
 				}
 			/>
 			<Route path="*" element={<NotFound />} />

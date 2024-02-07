@@ -27,14 +27,24 @@ export const constants = {
 
 // loaders
 export const loader = (
-	<ClockLoader
-		color="blue"
-		loading={true}
-		size={150}
-		aria-label="Loading Spinner"
-		data-testid="loader"
-		cssOverride={{
-			margin: "auto",
+	<div
+		style={{
+			display: "flex",
+			justifyContent: "space-between",
+			alignItems: "center",
+			width: "100%",
+			height: "100%",
 		}}
-	/>
+	>
+		<ClockLoader
+			color="blue"
+			loading={true}
+			size={150}
+			aria-label="Loading Spinner"
+			data-testid="loader"
+			cssOverride={{
+				margin: "auto",
+			}}
+		/>
+	</div>
 );

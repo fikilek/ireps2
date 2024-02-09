@@ -1,5 +1,5 @@
 import React from "react";
-import UserDeta from "./UserData";
+import UserData from "./UserData";
 import UserProfileHeader from "./UserProfileHeader";
 import UserStats from "./UserStats";
 
@@ -8,7 +8,7 @@ const UserProfile = () => {
 		<div className="user-profile">
 			<UserProfileHeader />
 			<div className="user-section">
-				<UserDeta />
+				<UserData />
 				<UserStats />
 			</div>
 		</div>

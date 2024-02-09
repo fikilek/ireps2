@@ -48,3 +48,12 @@ export const loader = (
 		/>
 	</div>
 );
+
+// auth
+export const userRoles = [
+	{ key: "guest", abreviation: "GST", name: "Guest" },
+	{ key: "fieldworker", abreviation: "FWR", name: "Field Worker" },
+	{ key: "supervisor", abreviation: "SPV", name: "Supervisor" },
+	{ key: "manager", abreviation: "MNG", name: "Manager" },
+	{ key: "superuser", abreviation: "SPU", name: "Super User" },
+];

@@ -2,3 +2,12 @@
   height: 100%;
   width: 100%;
 }
+
+.table .table-btn {
+  background-color: #e8fee8;
+  color: var(--fb-cl-grey1);
+  border: 1px solid var(--fb-cl-grey3);
+  border-radius: var(--fb-br2-0p4);
+  height: var(--fb-h1p6);
+  font-size: var(--fb-fs-1p1);
+}

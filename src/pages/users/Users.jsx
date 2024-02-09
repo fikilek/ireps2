@@ -1,19 +1,14 @@
 import TableUsers from "../../components/tables/TableUsers";
-import useCollection from "../../hooks/useCollection";
 import { useUsers } from "../../hooks/useUsers";
 
 const Users = () => {
-	const result = useCollection("users");
-	// console.log(`result`, result);
-
-	const { usersTableFields } = useUsers();
-	// console.log(`usersTableFields`, usersTableFields);
-
+	const { usersTableFields, users } = useUsers();
 	return (
 		<div className="table">
-			<TableUsers rowData={result.data} colDefs={usersTableFields} />
+			<TableUsers rowData={users} colDefs={usersTableFields} />
 		</div>
 	);
 };
 
 export default Users;
+//

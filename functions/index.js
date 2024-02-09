@@ -1,19 +1,60 @@
-/**
- * Import function triggers from their respective submodules:
- *
- * const {onCall} = require("firebase-functions/v2/https");
- * const {onDocumentWritten} = require("firebase-functions/v2/firestore");
- *
- * See a full list of supported triggers at https://firebase.google.com/docs/functions
- */
+const { initializeApp } = require("firebase-admin/app");
+const admin = require("firebase-admin");
+const functions = require("firebase-functions/v1");
+initializeApp();
 
-const {onRequest} = require("firebase-functions/v2/https");
-const logger = require("firebase-functions/logger");
+exports.addDefaultUserRole = functions.auth.user().onCreate(async user => {
+	let uid = user.uid;
 
-// Create and deploy your first functions
-// https://firebase.google.com/docs/functions/get-started
+	const customClaims = {
+		roles: {
+			guest: true,
+			fieldworker: false,
+			supervisor: false,
+			manager: false,
+			superuser: false,
+		},
+	};
 
-// exports.helloWorld = onRequest((request, response) => {
-//   logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });
+	return admin
+		.auth()
+		.setCustomUserClaims(uid, customClaims)
+		.then(() => {
+			return null;
+		})
+		.catch(err => {
+			console.log("Error setting custom claim:", err.message);
+			return err.msg;
+		});
+});
+
+exports.listAllUsers = functions.https.onCall(async (data, context) => {
+	let users = [];
+	return admin
+		.auth()
+		.listUsers(1000)
+		.then(listUsersResult => {
+			listUsersResult.users.forEach(userRecord => {
+				users.push(userRecord);
+			});
+			return users;
+		})
+		.catch(error => {
+			return `Error listing users: ${error.meesage}`;
+		});
+});
+
+exports.disableUserAcc = functions.https.onCall(async (data, context) => {
+	const { uid, action } = data;
+	return admin
+		.auth()
+		.updateUser(uid, {
+			disabled: action,
+		})
+		.then(() => {
+			return `User Account succesfully ${action ? "ENABLED" : "DISABLED"} `;
+		})
+		.catch(error => {
+			return `Error enabling/disabling users account: ${error.message}`;
+		});
+});

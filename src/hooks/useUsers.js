@@ -63,7 +63,7 @@ export const useUsers = props => {
 			headerName: "Email Verified",
 			width: 150,
 			cellRenderer: params => {
-				console.log(`params.data`, params.data);
+				// console.log(`params.data`, params.data);
 				return <p>{params.data.emailVerified ? "Yes" : "No"}</p>;
 			},
 		},

@@ -16,20 +16,14 @@ import Asts from "./pages/asts/Asts";
 import TableTrnStates from "./components/tables/TableTrnStates";
 import TableAstStates from "./components/tables/TableAstStates";
 
-// import User from "./pages/users/User";
-// import UserProfile from "./pages/user/UserProfile";
-// import Users from "./pages/users/Users";
-
 // Layouts
 import RootLayout from "./components/layouts/RootLayout";
-// import AdminLayout from "./components/layouts/AdminLayout";
-// import SystemTablesLayout from "./components/layouts/SystemTablesLayout";
 
 // others
 import NotFound from "./pages/error/NotFound";
 import Modal from "./components/modals/Modal";
-import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 import { RequireAuth } from "./components/forms/auth/FormRequiredAuth";
 import { loader } from "./utils/utils";
 import { Suspense, lazy } from "react";

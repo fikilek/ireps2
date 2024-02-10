@@ -5,7 +5,7 @@ import useAuthContext from "../../hooks/useAuthContext";
 
 const RootLayout = () => {
 	const { user, isAuthReady } = useAuthContext() || {};
-	console.log("user", user);
+	// console.log("user", user);
 	// console.log("isAuthReady", isAuthReady);
 	return (
 		<div className="root-layout">

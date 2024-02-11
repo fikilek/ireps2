@@ -58,9 +58,9 @@ const UserDetail = props => {
 					<UserDataField
 						fieldKey={"Created At"}
 						fieldValue={
-							props.userDetailData.createdAtDatetime &&
+							props.userDetailData.creationTime &&
 							format(
-								props.userDetailData.createdAtDatetime.toDate(),
+								new Date(props?.userDetailData?.creationTime),
 								constants.dateFormat1
 							)
 						}

@@ -4,18 +4,40 @@ import TableUserAccDisableSelect from "../components/tables/TableUserAccDisableS
 import { useEffect, useState } from "react";
 import TableUsersRoles from "../components/tables/TableUsersRoles";
 import { format } from "date-fns";
+import useCollection from "./useCollection";
 
 export const useUsers = props => {
 	const [users, setUsers] = useState([]);
+	// console.log(`users`, users);
+
+	const { data } = useCollection("users");
+	// console.log(`data`, data);
+
 	const functions = getFunctions();
 
 	const listAllUsers = httpsCallable(functions, "listAllUsers");
 
 	useEffect(() => {
 		listAllUsers().then(result => {
-			setUsers(result.data);
+			// console.log(`result`, result);
+			let newUsers = [];
+			result?.data?.forEach(element => {
+				// console.log(`element`, element);
+				const fromFbCol = data.find(data => element.uid === data.id);
+				if (fromFbCol) {
+					// console.log(`fromFbCol`, fromFbCol);
+					newUsers.push({
+						...element,
+						companyName: fromFbCol.companyName,
+						workbase: fromFbCol.workbase,
+						phoneNumber: fromFbCol.phoneNumber,
+					});
+				}
+			});
+			console.log(`newUsers`, newUsers);
+			setUsers(newUsers);
 		});
-	}, []);
+	}, [data]);
 
 	const usersTableFields = [
 		{
@@ -68,11 +90,6 @@ export const useUsers = props => {
 			},
 		},
 		{
-			field: "photoURL",
-			headerName: "Photo",
-			width: 100,
-		},
-		{
 			field: "customClaims.roles",
 			headerName: "Roles",
 			width: 220,
@@ -93,12 +110,10 @@ export const useUsers = props => {
 			headerName: "Workbase",
 			width: 150,
 		},
-		{
-			field: "online",
-			headerName: "Online",
-			width: 100,
-		},
 	];
 
 	return { usersTableFields, users };
 };
+
+// TODO: Add phpto url column to users tables
+// TODO: Add online column to users table

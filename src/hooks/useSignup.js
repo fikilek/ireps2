@@ -54,13 +54,7 @@ export const useSignup = () => {
 				},
 				companyName,
 				workbase,
-				email,
-				surname,
-				name,
 				phoneNumber,
-				online: true,
-				photoUrl: "",
-				status: "active",
 			});
 
 			// const idToken = await auth.currentUser.getIdTokenResult(true);
@@ -105,8 +99,6 @@ export const useSignup = () => {
 				"metaData.updatedAtDatetime": datetime,
 				companyName,
 				workbase,
-				surname,
-				name,
 			});
 
 			dispatch({

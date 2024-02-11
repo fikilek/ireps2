@@ -41,7 +41,7 @@ const Signup = () => {
 		email: "fikilekentane@gmail.com",
 		password: "fkpass123",
 		confirmPassword: "fkpass123",
-		phoneNumber: "0817262352",
+		phoneNumber: "+27817262352",
 		workbase: "Lesedi LM",
 	};
 
@@ -64,7 +64,7 @@ const Signup = () => {
 			.required("Confirn password is required."),
 		phoneNumber: string()
 			.min(10, "At least 10 characters")
-			.matches(phoneRegExp, "Phone number is not valid")
+			// .matches(phoneRegExp, "Phone number is not valid")
 			.required("Cell number is required."),
 		workbase: string().required("Workbase is required"),
 	});
@@ -141,7 +141,7 @@ const Signup = () => {
 												placeholder=""
 											/>
 											<FormikControl
-												control="input"
+												control="phoneNumberInput"
 												type="text"
 												label="Phone No"
 												name={"phoneNumber"}

@@ -1,6 +1,8 @@
+import "./TableUserAccDisableSelect.css";
 import { getFunctions, httpsCallable } from "firebase/functions";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import useAuthContext from "../../hooks/useAuthContext";
 
 const options = [
 	{ key: "enabled", value: "enabled" },
@@ -8,7 +10,13 @@ const options = [
 ];
 
 const TableUserAccDisableSelect = params => {
+	// console.log(`params.data.uid`, params.data.uid);
 	const { disabled, uid, displayName } = params?.data;
+
+	const { user } = useAuthContext();
+	// console.log(`user.uid`, user.uid);
+
+	const selectDisabled = uid === user.uid ? true : false;
 
 	const [selectValue, setSelectValue] = useState("");
 
@@ -16,14 +24,14 @@ const TableUserAccDisableSelect = params => {
 	const disableUserAcc = httpsCallable(functions, "disableUserAcc");
 
 	const handleChange = e => {
-		console.log(`e.target.value - disabled: `, e.target.value);
+		// console.log(`e.target.value - disabled: `, e.target.value);
 		setSelectValue(e.target.value);
 		disableUserAcc({
 			uid,
 			action: e.target.value === "disabled" ? true : false,
 		})
 			.then(result => {
-				console.log(`result.data`, result);
+				// console.log(`result.data`, result);
 				toast.success(
 					`User acc [${displayName}] succesfully ${
 						e.target.value === "disabled" ? "DISABLED" : "ENABLED"
@@ -43,8 +51,13 @@ const TableUserAccDisableSelect = params => {
 	}, []);
 
 	return (
-		<div className="table-user-acc-disble-select">
-			<select onChange={handleChange} value={selectValue}>
+		<div className="table-user-acc-disable-select">
+			<select
+				onChange={handleChange}
+				value={selectValue}
+				disabled={selectDisabled}
+				className="table-btn"
+			>
 				{options &&
 					options.map(option => {
 						return (

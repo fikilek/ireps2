@@ -10,7 +10,7 @@ const UserData = () => {
 
 	// get user data from userContext
 	const { user } = useAuthContext() || {};
-	// console.log(`user`, user);
+	console.log(`user`, user);
 
 	// get user details from firestore on snapshot
 	const { getDocument, response } = useFirestore("users");
@@ -25,13 +25,13 @@ const UserData = () => {
 	const userDetailData = {
 		// from firebase  firestore
 		companyName: response?.document?.companyName,
-		email: response?.document?.email,
+		email: user?.email,
 		phoneNumber: response?.document?.phoneNumber,
-		accStatus: response?.document?.status,
-		surname: response?.document?.surname,
-		name: response?.document?.name,
+		// accStatus: response?.document?.status,
+		surname: user?.displayName.split(" ")[1],
+		name: user?.displayName.split(" ")[0],
 		workbase: response?.document?.workbase,
-		createdAtDatetime: response?.document?.metaData?.createdAtDatetime,
+		creationTime: user?.metadata?.creationTime,
 
 		// from firebase auth
 		emailVerified: user?.emailVerified,

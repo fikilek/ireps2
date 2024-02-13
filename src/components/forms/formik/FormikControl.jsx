@@ -1,3 +1,4 @@
+import FormikCheckboxGroup from "./FormikCheckboxGroup";
 import FormikInput from "./FormikInput";
 import FormikInputPwd from "./FormikInputPwd";
 import FormikPhoneNumberInput from "./FormikPhoneNumberInput";
@@ -17,6 +18,8 @@ const FormikControl = props => {
 			return <FormikInputPwd {...rest} />;
 		case "select":
 			return <FormikSelect {...rest} />;
+		case "checkbox":
+			return <FormikCheckboxGroup {...rest} />;
 		default:
 			return null;
 	}

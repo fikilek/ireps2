@@ -31,6 +31,7 @@ import { Suspense, lazy } from "react";
 // Context providers
 import ModalContextProvider from "./contexts/ModalContext";
 import AuthContextProvider from "./contexts/AuthContextProvider";
+import ClaimsContextProvider from "./contexts/ClaimsContext";
 
 // Lazy loading
 const AdminLayout = lazy(() => import("./components/layouts/AdminLayout"));
@@ -38,8 +39,6 @@ const SystemTablesLayout = lazy(() =>
 	import("./components/layouts/SystemTablesLayout")
 );
 
-// Lazy loading User and Users
-// const User = lazy(() => import("./pages/users/User"));
 const UserProfile = lazy(() => import("./pages/user/UserProfile"));
 const Users = lazy(() => import("./pages/users/Users"));
 
@@ -136,15 +135,17 @@ const router = createBrowserRouter(
 
 function App() {
 	return (
-		<AuthContextProvider>
-			<ModalContextProvider>
-				<div className="App">
-					<RouterProvider router={router} />
-					<ToastContainer />
-				</div>
-				<Modal />
-			</ModalContextProvider>
-		</AuthContextProvider>
+		<ClaimsContextProvider>
+			<AuthContextProvider>
+				<ModalContextProvider>
+					<div className="App">
+						<RouterProvider router={router} />
+						<ToastContainer />
+					</div>
+					<Modal />
+				</ModalContextProvider>
+			</AuthContextProvider>
+		</ClaimsContextProvider>
 	);
 }
 

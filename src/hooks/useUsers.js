@@ -34,7 +34,7 @@ export const useUsers = props => {
 					});
 				}
 			});
-			console.log(`newUsers`, newUsers);
+			// console.log(`newUsers`, newUsers);
 			setUsers(newUsers);
 		});
 	}, [data]);

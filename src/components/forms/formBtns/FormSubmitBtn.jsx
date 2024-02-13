@@ -6,7 +6,7 @@ import { BsSend } from "react-icons/bs";
 const FormSubmitBtn = props => {
 	// console.log(`props`, props);
 	const { formik, title, isPending } = props;
-	const disable = !(formik.isValid && formik.dirty) || isPending;
+	const disable = !(formik?.isValid && formik?.dirty) || isPending;
 	// console.log(`disable`, disable);
 
 	return (

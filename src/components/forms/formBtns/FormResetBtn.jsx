@@ -6,12 +6,12 @@ const FormResetBtn = props => {
 	const { formik, title } = props;
 	// console.log(`formik.dirty`, formik.dirty);
 	// console.log(`formik.touched`, formik.touched);
-	const disable = !formik.dirty;
+	const disable = !formik?.dirty;
 	// console.log(`disable`, disable);
 
 	const handleReset = e => {
-		formik.resetForm();
-		formik.setFieldValue("password", "");
+		formik?.resetForm();
+		formik?.setFieldValue("password", "");
 	};
 	return (
 		<div className="form-reset-btn">

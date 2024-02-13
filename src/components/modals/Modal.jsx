@@ -10,6 +10,7 @@ import UpdateUser from "../forms/auth/FormUpdateUser";
 import EditUserEmail from "../forms/auth/FormEditUserEmail";
 import FormPasswordReset from "../forms/auth/FormPasswordReset";
 import { loader } from "../../utils/utils";
+import FormUserRoleUpdate from "../forms/auth/FormUserRoleUpdate";
 
 const Modal = () => {
 	const { toOpen, modalOpened } = useContext(ModalContext);
@@ -65,6 +66,13 @@ const Modal = () => {
 						<>
 							<Suspense fallback={loader}>
 								<EditUserEmail formData={payload} />
+							</Suspense>
+						</>
+					)}
+					{modalName === "editUserRoles" && (
+						<>
+							<Suspense fallback={loader}>
+								<FormUserRoleUpdate formData={payload} />
 							</Suspense>
 						</>
 					)}

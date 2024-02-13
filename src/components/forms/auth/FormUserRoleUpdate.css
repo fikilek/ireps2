@@ -1,0 +1,49 @@
+.user-role-update {
+  display: grid;
+  gap: 1rem;
+}
+
+.user-role-update .uru {
+  border: 0.01rem solid;
+  border-radius: 0.6rem;
+  padding: 1rem;
+}
+
+.user-role-update .uru .user-roles .roles {
+  display: flex;
+  gap: 0.2rem;
+}
+
+.user-role-update .uru .user-roles .roles input {
+  height: 1.8rem;
+}
+
+.user-role-update .uru .user-roles .roles input:focus {
+  box-shadow: none;
+}
+
+
+.user-role-update .uru .role {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 0.1rem solid;
+  height: 4rem;
+  border-radius: 0.6rem;
+  flex: 0.7;
+}
+
+@media (max-width: 1200px) {}
+
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {
+
+  .user-role-update {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 475px) {}

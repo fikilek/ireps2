@@ -92,6 +92,10 @@ exports.disableUserAcc = onCall(async request => {
 
 exports.updateUserRole = onCall(async request => {
 	const { data, auth } = request;
+	console.log(`auth`, auth);
+	console.log(`auth.token.email`, auth.token.email);
+
+	const { uid: claimUid, changeSet } = data;
 
 	const customClaims = { roles: data.roles };
 
@@ -104,12 +108,11 @@ exports.updateUserRole = onCall(async request => {
 		}
 	}
 
-	const claimUid = data.uid;
-
-	// check if there is an auth object - if the user is authenticated
+	// validation rules 1: only authenticated user is allowed to set a role
 	if (!auth) {
 		throw new functions.https.HttpsError(
-			`Error in updateUserRole method. User not authenticated`
+			"permission-denied",
+			"only authenticated user is allowed to set a role"
 		);
 	}
 
@@ -127,7 +130,7 @@ exports.updateUserRole = onCall(async request => {
 		}
 	}
 
-	// validation 0: user cannot modify own roles
+	// validation rule 2: user cannot modify own roles
 	if (controllerUid === claimUid) {
 		throw new functions.https.HttpsError(
 			"permission-denied",
@@ -135,7 +138,7 @@ exports.updateUserRole = onCall(async request => {
 		);
 	}
 
-	// validation 1: manager is not allowed to change manager or supervisor. he can change guest, fieldworker or supervisor
+	// validation rule 3: only manager or superuser can modify roles
 	if (
 		!rolesControllerArray.includes("manager") &&
 		!rolesControllerArray.includes("superuser")
@@ -146,11 +149,22 @@ exports.updateUserRole = onCall(async request => {
 		);
 	}
 
-	// validation 2: user must have roles
+	// validation rule 4: user has NO ROLE, CANNOT alter roles
 	if (rolesControllerArray.length === 0) {
 		throw new functions.https.HttpsError(
 			`permission-denied`,
 			`user has NO ROLE, CANNOT alter roles`
+		);
+	}
+
+	// validation rule 5: only fikilekentane@gmail.com can set a superuser rle
+	if (
+		changeSet["superuser"]["change"] === true &&
+		auth.token.email !== "fikilekentane@gmail.com"
+	) {
+		throw new functions.https.HttpsError(
+			`permission-denied`,
+			`user is NOT ALLOWED to modify a SUPERUSER role`
 		);
 	}
 

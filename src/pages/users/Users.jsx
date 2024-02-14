@@ -30,10 +30,11 @@ const Users = () => {
 
 		// find the index of the updated uer
 		const index = unps.findIndex(unp => unp.uid === customClaims?.uid);
+		if (index === -1) return;
 
 		// update unp at the index`
 		const newUnps = unps?.with(index, updatedUser);
-		console.log(`newUnps`, newUnps);
+		// console.log(`newUnps`, newUnps);
 
 		// update the state
 		setUnps(newUnps);

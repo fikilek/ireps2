@@ -92,6 +92,7 @@ const FormUserRoleUpdate = props => {
 	// console.log(`formikClaims`, formikClaims);
 
 	const [claimsChangeSet, setClaimsChangeSet] = useState({});
+	console.log(`claimsChangeSet`, claimsChangeSet);
 
 	const { closeModal } = useModal();
 
@@ -102,7 +103,7 @@ const FormUserRoleUpdate = props => {
 	useEffect(() => {
 		const { changeSet } = areObjectsEqual(formikClaims, customClaims.roles);
 		setClaimsChangeSet(changeSet);
-	}, []);
+	}, [customClaims.roles, formikClaims]);
 
 	const onSubmit = e => {
 		setIsPending(true);

@@ -43,7 +43,7 @@ exports.listAllUsers = onCall(async request => {
 		.listUsers(1000)
 		.then(listUsersResult => {
 			listUsersResult.users.forEach(userRecord => {
-				users.push(userRecord);
+				users.push({ id: userRecord.uid, ...userRecord });
 			});
 			return users;
 		})

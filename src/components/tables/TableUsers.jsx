@@ -15,13 +15,6 @@ ModuleRegistry.registerModules([ClientSideRowModelModule]);
 const TableUsers = props => {
 	const { rowData, colDefs } = props;
 
-	const getRowStyle = params => {
-		// console.log(`params.data`, params.data);
-		if (params.data.disabled) {
-			return { color: "lightgrey" };
-		}
-	};
-
 	const defaultColDef = useMemo(
 		() => ({
 			sortable: true,
@@ -33,6 +26,18 @@ const TableUsers = props => {
 		[]
 	);
 
+	const getRowId = params => {
+		// console.log(`params`, params);
+		return params.data.id;
+	};
+
+	const rowClassRules = {
+		"row-disabled": params => {
+			// console.log(`params?.data?.disabled`, params?.data?.disabled);
+			return params?.data?.disabled;
+		},
+	};
+
 	return (
 		<div className="ag-theme-quartz table table-users">
 			<AgGridReact
@@ -41,7 +46,9 @@ const TableUsers = props => {
 				defaultColDef={defaultColDef}
 				pagination={true}
 				noRowsOverlayComponent={TableCustomNoRowsOverlay}
-				getRowStyle={getRowStyle}
+				getRowId={getRowId}
+				rowClassRules={rowClassRules}
+				reactiveCustomComponents
 			/>
 		</div>
 	);

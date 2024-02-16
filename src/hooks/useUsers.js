@@ -1,10 +1,10 @@
 import { getFunctions, httpsCallable } from "firebase/functions";
 
-import TableUserAccDisableSelect from "../components/tables/TableUserAccDisableSelect";
 import { useEffect, useState } from "react";
 import TableUsersRoles from "../components/tables/TableUsersRoles";
 import { format } from "date-fns";
 import useCollection from "./useCollection";
+import TableSelect from "../components/tables/TableSelect";
 
 export const useUsers = props => {
 	const [users, setUsers] = useState([]);
@@ -48,9 +48,23 @@ export const useUsers = props => {
 		},
 		{
 			field: "disabled",
-			headerName: "Acc Status",
+			headerName: "Disabled?",
 			width: 150,
-			cellRenderer: TableUserAccDisableSelect,
+			// cellRenderer: TableUserAccDisableSelect,
+			editable: true,
+			cellEditor: TableSelect,
+			cellEditorParams: {
+				options: ["enabled", "disabled"],
+			},
+			valueGetter: params => {
+				// console.log(`params.data.disabled`, params.data.disabled);
+				return params.data.disabled ? "disabled" : "enabled";
+			},
+			valueSetter: params => {
+				console.log(`params.newValue`, params.newValue);
+				params.data.disabled = params.newValue === "disabled" ? true : false;
+				return true;
+			},
 		},
 		{
 			field: "metadata.creationTime",
@@ -59,6 +73,9 @@ export const useUsers = props => {
 			cellRenderer: params => {
 				const newDate = new Date(params.data.metadata.creationTime);
 				return <p>{format(newDate, "yyyy-MMM-dd HH:mm")}</p>;
+			},
+			cellStyle: params => {
+				return params.data.disabled ? { color: "red" } : null;
 			},
 		},
 		{

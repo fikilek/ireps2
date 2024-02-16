@@ -5,10 +5,13 @@ import TableUsersRoles from "../components/tables/TableUsersRoles";
 import { format } from "date-fns";
 import useCollection from "./useCollection";
 import TableSelect from "../components/tables/TableSelect";
+import useAuthContext from "./useAuthContext";
 
 export const useUsers = props => {
 	const [users, setUsers] = useState([]);
 	// console.log(`users`, users);
+
+	const { user } = useAuthContext();
 
 	const { data } = useCollection("users");
 	// console.log(`data`, data);
@@ -61,9 +64,23 @@ export const useUsers = props => {
 				return params.data.disabled ? "disabled" : "enabled";
 			},
 			valueSetter: params => {
-				console.log(`params.newValue`, params.newValue);
+				// console.log(`params.newValue`, params.newValue);
 				params.data.disabled = params.newValue === "disabled" ? true : false;
 				return true;
+			},
+			cellStyle: params => {
+				// console.log(params);
+				const { uid } = params.data;
+				const selectDisabled = uid === user.uid ? true : false;
+				return selectDisabled
+					? {
+							color: "grey",
+							fontWeight: "700",
+							pointerEvents: "none",
+							cursor: "none",
+							borderLeft: "0.3rem solid grey",
+					  }
+					: "";
 			},
 		},
 		{
@@ -73,9 +90,6 @@ export const useUsers = props => {
 			cellRenderer: params => {
 				const newDate = new Date(params.data.metadata.creationTime);
 				return <p>{format(newDate, "yyyy-MMM-dd HH:mm")}</p>;
-			},
-			cellStyle: params => {
-				return params.data.disabled ? { color: "red" } : null;
 			},
 		},
 		{
@@ -111,6 +125,9 @@ export const useUsers = props => {
 			headerName: "Roles",
 			width: 220,
 			cellRenderer: TableUsersRoles,
+			valueGetter: params => {
+				return params.value;
+			},
 		},
 		{
 			field: "phoneNumber",

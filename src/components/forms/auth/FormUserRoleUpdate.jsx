@@ -92,7 +92,6 @@ const FormUserRoleUpdate = props => {
 	// console.log(`formikClaims`, formikClaims);
 
 	const [claimsChangeSet, setClaimsChangeSet] = useState({});
-	console.log(`claimsChangeSet`, claimsChangeSet);
 
 	const { closeModal } = useModal();
 

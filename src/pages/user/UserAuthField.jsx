@@ -15,7 +15,7 @@ const UserAuthField = props => {
 	let modalToOpen = null;
 
 	if (fieldKey === "Email") {
-		btnToShow = user.emailVerified ? <UserEmailVerified /> : "Verify";
+		btnToShow = user?.emailVerified ? <UserEmailVerified /> : "Verify";
 		modalToOpen = "editUserEmail";
 	}
 	if (fieldKey === "Phone No") {

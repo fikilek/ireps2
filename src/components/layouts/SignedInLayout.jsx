@@ -1,9 +1,17 @@
+import useAuthContext from "../../hooks/useAuthContext";
 import { useUser } from "../../hooks/useUser";
 import "./Layout.css";
 import { NavLink, Outlet } from "react-router-dom";
 
 const SignedInLayout = () => {
 	const { initials } = useUser();
+	const { user } = useAuthContext();
+
+	let authorised = null;
+	if (user) {
+		authorised = (user.claims["manager"] || user.claims["superuser"]) && user;
+	}
+
 	return (
 		<div className="layout signed-in-layout">
 			<div className="navigation">
@@ -14,7 +22,7 @@ const SignedInLayout = () => {
 					<NavLink to="/asts">ASTS</NavLink>
 				</nav>
 				<nav className="right-nav">
-					<NavLink to="/admin">ADMIN</NavLink>
+					{user && authorised && <NavLink to="/admin">ADMIN</NavLink>}
 					<NavLink to="/user">{initials}</NavLink>
 				</nav>
 			</div>

@@ -21,6 +21,7 @@ export const useUsers = props => {
 	const listAllUsers = httpsCallable(functions, "listAllUsers");
 
 	useEffect(() => {
+		if (!user) return;
 		listAllUsers().then(result => {
 			// console.log(`result`, result);
 			let newUsers = [];
@@ -46,12 +47,12 @@ export const useUsers = props => {
 		{
 			field: "uid",
 			headerName: "users Id",
-			width: 280,
+			width: 250,
 			hide: true,
 		},
 		{
 			field: "disabled",
-			headerName: "Disabled?",
+			headerName: "Acc Status?",
 			width: 150,
 			// cellRenderer: TableUserAccDisableSelect,
 			editable: true,

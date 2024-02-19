@@ -15,13 +15,18 @@ import { toast } from "react-toastify";
 import FormError from "../formError/FormError";
 import { IoIosPersonAdd } from "react-icons/io";
 import FormLinkBtn from "../formBtns/FormLinkBtn";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Signin = () => {
-	// console.log(`Signin`);
+	const location = useLocation();
+
+	const navigate = useNavigate();
+
+	const navigateTo = location?.state?.from?.pathname || "/";
 
 	const { getCustomError } = useFirebase();
 
-	const { signin, error, isPending, success } = useSignin();
+	const { signin, error } = useSignin();
 
 	const { closeModal } = useModal();
 
@@ -33,7 +38,7 @@ const Signin = () => {
 	};
 
 	const onSubmit = values => {
-		signin(values);
+		signin(values).then(result => {});
 	};
 
 	const validationSchema = object({
@@ -42,7 +47,7 @@ const Signin = () => {
 	});
 
 	useEffect(() => {
-		if (success) {
+		if (user) {
 			closeModal();
 			toast.success(
 				`User "${user?.displayName}" succesfully signedin with iREPS`,
@@ -50,8 +55,10 @@ const Signin = () => {
 					position: "bottom-left",
 				}
 			);
+			console.log(`about to navigate to : `, navigateTo);
+			navigate(navigateTo);
 		}
-	}, [success, closeModal, user?.displayName]);
+	}, [user]);
 
 	return (
 		<div className="form-wrapper">
@@ -88,7 +95,7 @@ const Signin = () => {
 									</div>
 									{error && <FormError errorMsg={getCustomError(error)} />}
 
-									<FormFooter formik={formik} isPending={isPending}>
+									<FormFooter formik={formik}>
 										<FormLinkBtn
 											icon={<IoIosPersonAdd />}
 											title="Signun"

@@ -17,6 +17,11 @@
 
 }
 
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
 .form-container .user-role-update,
 .form-container.signup {
   width: 30rem;

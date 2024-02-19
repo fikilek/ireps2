@@ -1,12 +1,17 @@
 import "./FormBtn.css";
 import useModal from "../../../hooks/useModal";
+import { useNavigate } from "react-router-dom";
 
 const FormCloseBtn = () => {
+	const navigate = useNavigate();
 	const { closeModal } = useModal();
+	const handleClick = e => {
+		navigate("/");
+		closeModal();
+	};
 	return (
-		// fbw - form button wrapper
 		<div className="vc-hc form-close-btn">
-			<button onClick={() => closeModal()} className="form-btn btn-close-form">
+			<button onClick={handleClick} className="form-btn btn-close-form">
 				X
 			</button>
 		</div>

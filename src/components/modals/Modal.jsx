@@ -11,6 +11,7 @@ import EditUserEmail from "../forms/auth/FormEditUserEmail";
 import FormPasswordReset from "../forms/auth/FormPasswordReset";
 import { loader } from "../../utils/utils";
 import FormUserRoleUpdate from "../forms/auth/FormUserRoleUpdate";
+import { BrowserRouter } from "react-router-dom";
 
 const Modal = () => {
 	const { toOpen, modalOpened } = useContext(ModalContext);
@@ -22,63 +23,65 @@ const Modal = () => {
 	// console.log(`payload`, payload);
 
 	return (
-		<div className={`modal-container ${modalOpened ? "show" : "hide"}`}>
-			<div className="modal-background" id="modal-background">
-				<div className="modal-payload">
-					{/* auth forms */}
-					{modalName === "signin" && (
-						<>
-							<Suspense fallback={loader}>
-								<Signin />
-							</Suspense>
-						</>
-					)}
-					{modalName === "signout" && (
-						<>
-							<Suspense fallback={loader}>
-								<Signout />
-							</Suspense>
-						</>
-					)}
-					{modalName === "signup" && (
-						<>
-							<Suspense fallback={loader}>
-								<Signup />
-							</Suspense>
-						</>
-					)}
+		<BrowserRouter>
+			<div className={`modal-container ${modalOpened ? "show" : "hide"}`}>
+				<div className="modal-background" id="modal-background">
+					<div className="modal-payload">
+						{/* auth forms */}
+						{modalName === "signin" && (
+							<>
+								<Suspense fallback={loader}>
+									<Signin />
+								</Suspense>
+							</>
+						)}
+						{modalName === "signout" && (
+							<>
+								<Suspense fallback={loader}>
+									<Signout />
+								</Suspense>
+							</>
+						)}
+						{modalName === "signup" && (
+							<>
+								<Suspense fallback={loader}>
+									<Signup />
+								</Suspense>
+							</>
+						)}
 
-					{modalName === "passwordReset" && (
-						<>
-							<Suspense fallback={loader}>
-								<FormPasswordReset />
-							</Suspense>
-						</>
-					)}
-					{modalName === "updateUser" && (
-						<>
-							<Suspense fallback={loader}>
-								<UpdateUser formData={payload} />
-							</Suspense>
-						</>
-					)}
-					{modalName === "editUserEmail" && (
-						<>
-							<Suspense fallback={loader}>
-								<EditUserEmail formData={payload} />
-							</Suspense>
-						</>
-					)}
-					{modalName === "editUserRoles" && (
-						<>
-							<Suspense fallback={loader}>
-								<FormUserRoleUpdate formData={payload} />
-							</Suspense>
-						</>
-					)}
+						{modalName === "passwordReset" && (
+							<>
+								<Suspense fallback={loader}>
+									<FormPasswordReset />
+								</Suspense>
+							</>
+						)}
+						{modalName === "updateUser" && (
+							<>
+								<Suspense fallback={loader}>
+									<UpdateUser formData={payload} />
+								</Suspense>
+							</>
+						)}
+						{modalName === "editUserEmail" && (
+							<>
+								<Suspense fallback={loader}>
+									<EditUserEmail formData={payload} />
+								</Suspense>
+							</>
+						)}
+						{modalName === "editUserRoles" && (
+							<>
+								<Suspense fallback={loader}>
+									<FormUserRoleUpdate formData={payload} />
+								</Suspense>
+							</>
+						)}
+					</div>
 				</div>
 			</div>
-		</div>
+		</BrowserRouter>
 	);
 };
 

@@ -6,10 +6,15 @@ import { auth } from "../firebaseConfig/fbConfig";
 const authReducer = (state, action) => {
 	switch (action.type) {
 		case "SIGNIN":
+			// console.log(`SIGNIN action.payload`, action.payload);
 			return { ...state, user: action.payload };
 		case "SIGNOUT":
-			return { ...state, user: null };
+			return {
+				...state,
+				user: null,
+			};
 		case "AUTH_IS_READY":
+			// console.log(`AUTH_IS_READY action.payload`, action.payload);
 			return {
 				...state,
 				user: action.payload,
@@ -29,12 +34,23 @@ const AuthContextProvider = ({ children }) => {
 	});
 
 	useEffect(() => {
-		const unsub = onAuthStateChanged(auth, user => {
-			dispatch({
-				type: "AUTH_IS_READY",
-				payload: user,
-			});
-			unsub();
+		onAuthStateChanged(auth, user => {
+			if (auth.currentUser) {
+				auth.currentUser?.getIdTokenResult(true).then(userIdToken => {
+					dispatch({
+						type: "AUTH_IS_READY",
+						payload: {
+							...auth.currentUser,
+							claims: userIdToken.claims.roles,
+						},
+					});
+				});
+			} else {
+				dispatch({
+					type: "AUTH_IS_READY",
+					payload: null,
+				});
+			}
 		});
 	}, []);
 

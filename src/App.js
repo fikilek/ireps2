@@ -1,4 +1,5 @@
 import {
+	BrowserRouter,
 	Route,
 	RouterProvider,
 	createBrowserRouter,
@@ -20,18 +21,20 @@ import TableAstStates from "./components/tables/TableAstStates";
 import RootLayout from "./components/layouts/RootLayout";
 
 // others
-import NotFound from "./pages/error/NotFound";
+import NoPageFound from "./pages/error/NoPageFound";
 import Modal from "./components/modals/Modal";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
-import { RequireAuth } from "./components/forms/auth/FormRequiredAuth";
+import RequireAuth from "./components/forms/auth/RequireAuth";
 import { loader } from "./utils/utils";
 import { Suspense, lazy } from "react";
+import FormSignin from "./components/forms/auth/FormSignin";
 
 // Context providers
 import ModalContextProvider from "./contexts/ModalContext";
 import AuthContextProvider from "./contexts/AuthContextProvider";
 import ClaimsContextProvider from "./contexts/ClaimsContext";
+import NotAuthenticated from "./components/forms/auth/NotAuthenticated";
 
 // Lazy loading
 const AdminLayout = lazy(() => import("./components/layouts/AdminLayout"));
@@ -49,7 +52,15 @@ const router = createBrowserRouter(
 			<Route
 				path="erfs"
 				element={
-					<RequireAuth>
+					<RequireAuth
+						allowedRoles={[
+							"guest",
+							"fieldworker",
+							"supervisor",
+							"manager",
+							"superuser",
+						]}
+					>
 						<Erfs />
 					</RequireAuth>
 				}
@@ -57,7 +68,15 @@ const router = createBrowserRouter(
 			<Route
 				path="trns"
 				element={
-					<RequireAuth>
+					<RequireAuth
+						allowedRoles={[
+							"guest",
+							"fieldworker",
+							"supervisor",
+							"manager",
+							"superuser",
+						]}
+					>
 						<Trns />
 					</RequireAuth>
 				}
@@ -65,7 +84,15 @@ const router = createBrowserRouter(
 			<Route
 				path="asts"
 				element={
-					<RequireAuth>
+					<RequireAuth
+						allowedRoles={[
+							"guest",
+							"fieldworker",
+							"supervisor",
+							"manager",
+							"superuser",
+						]}
+					>
 						<Asts />
 					</RequireAuth>
 				}
@@ -74,7 +101,7 @@ const router = createBrowserRouter(
 				path="admin"
 				element={
 					<Suspense fallback={loader}>
-						<RequireAuth>
+						<RequireAuth allowedRoles={["manager", "superuser"]}>
 							<AdminLayout />
 						</RequireAuth>
 					</Suspense>
@@ -94,7 +121,7 @@ const router = createBrowserRouter(
 					path="systemTables"
 					element={
 						<Suspense fallback={loader}>
-							<RequireAuth>
+							<RequireAuth allowedRoles={["superuser"]}>
 								<SystemTablesLayout />
 							</RequireAuth>
 						</Suspense>
@@ -103,7 +130,7 @@ const router = createBrowserRouter(
 					<Route
 						path="astStates"
 						element={
-							<RequireAuth>
+							<RequireAuth allowedRoles={["superuser"]}>
 								<TableAstStates />
 							</RequireAuth>
 						}
@@ -111,7 +138,7 @@ const router = createBrowserRouter(
 					<Route
 						path="trnStates"
 						element={
-							<RequireAuth>
+							<RequireAuth allowedRoles={["superuser"]}>
 								<TableTrnStates />
 							</RequireAuth>
 						}
@@ -122,13 +149,22 @@ const router = createBrowserRouter(
 				path="user"
 				element={
 					<Suspense fallback={loader}>
-						<RequireAuth>
+						<RequireAuth
+							allowedRoles={["fieldworker", "supervisor", "manager", "superuser"]}
+						>
 							<UserProfile />
 						</RequireAuth>
 					</Suspense>
 				}
 			/>
-			<Route path="*" element={<NotFound />} />
+
+			{/* unauthorised section -----------------------------------------------------*/}
+			{/* path to unauthhorised  */}
+
+			<Route path="/unauthorised" element={<NotAuthenticated />} />
+			<Route path="/signin" element={<FormSignin />} />
+
+			<Route path="*" element={<NoPageFound />} />
 		</Route>
 	)
 );

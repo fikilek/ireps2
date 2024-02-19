@@ -10,7 +10,7 @@ const UserData = () => {
 
 	// get user data from userContext
 	const { user } = useAuthContext() || {};
-	console.log(`user`, user);
+	// console.log(`user`, user);
 
 	// get user details from firestore on snapshot
 	const { getDocument, response } = useFirestore("users");

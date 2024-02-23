@@ -8,10 +8,12 @@ import Signout from "../forms/auth/FormSignout";
 import Signup from "../forms/auth/FormSignup";
 import UpdateUser from "../forms/auth/FormUpdateUser";
 import EditUserEmail from "../forms/auth/FormEditUserEmail";
+import FormPhoneNoAuth from "../forms/auth/FormPhoneNoAuth";
 import FormPasswordReset from "../forms/auth/FormPasswordReset";
 import { loader } from "../../utils/utils";
 import FormUserRoleUpdate from "../forms/auth/FormUserRoleUpdate";
 import { BrowserRouter } from "react-router-dom";
+import PhoneNoAuth from "../forms/auth/FormPhoneNoAuth";
 
 const Modal = () => {
 	const { toOpen, modalOpened } = useContext(ModalContext);
@@ -75,6 +77,13 @@ const Modal = () => {
 							<>
 								<Suspense fallback={loader}>
 									<FormUserRoleUpdate formData={payload} />
+								</Suspense>
+							</>
+						)}
+						{modalName === "editUserPhoneNumber" && (
+							<>
+								<Suspense fallback={loader}>
+									<FormPhoneNoAuth formData={payload} />
 								</Suspense>
 							</>
 						)}

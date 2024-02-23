@@ -21,14 +21,9 @@ const phoneRegExp =
 	/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
 const Signup = () => {
-	// console.log(`Signup`);
-
 	const { getCustomError } = useFirebase();
 
-	const { signup, error, isPending, success } = useSignup();
-	// console.log(`error`, error);
-	// console.log(`isPending`, isPending);
-	// console.log(`success`, success);
+	const { signup, signupState } = useSignup();
 
 	const { closeModal } = useModal();
 
@@ -37,11 +32,12 @@ const Signup = () => {
 	const initialValues = {
 		surname: "kentane",
 		name: "fikile",
+		nickName: "Ficks",
 		companyName: "rste",
 		email: "fikilekentane@gmail.com",
 		password: "fkpass123",
 		confirmPassword: "fkpass123",
-		phoneNumber: "+27817262352",
+		phoneNumber: "2781726235", //+27817262352
 		workbase: "Lesedi LM",
 	};
 
@@ -53,7 +49,8 @@ const Signup = () => {
 
 	const validationSchema = object({
 		surname: string().required("Surname is required."),
-		name: string().required("Name is required."),
+		name: string().required("required."),
+		nickName: string().required("required."),
 		companyName: string().ensure().required("Company name is required."),
 		email: string().email("Email is NOT valid.").required("Email is required."),
 		password: string()
@@ -70,7 +67,7 @@ const Signup = () => {
 	});
 
 	useEffect(() => {
-		if (success) {
+		if (signupState.success) {
 			closeModal();
 			toast.success(
 				`User "${user?.displayName}" succesfully signedup with iREPS`,
@@ -79,7 +76,7 @@ const Signup = () => {
 				}
 			);
 		}
-	}, [success, closeModal, user?.displayName]);
+	}, [signupState.success, closeModal, user?.displayName]);
 
 	return (
 		<div className="form-wrapper">
@@ -106,13 +103,22 @@ const Signup = () => {
 												placeholder=""
 												autoFocus={true}
 											/>
-											<FormikControl
-												control="input"
-												type="text"
-												label="Name"
-												name={"name"}
-												placeholder=""
-											/>
+											<div className="row-50-50">
+												<FormikControl
+													control="input"
+													type="text"
+													label="Name"
+													name={"name"}
+													placeholder=""
+												/>
+												<FormikControl
+													control="input"
+													type="text"
+													label="Aka"
+													name={"nickName"}
+													placeholder=""
+												/>
+											</div>
 										</div>
 										<div className="form-row">
 											<FormikControl
@@ -168,8 +174,10 @@ const Signup = () => {
 											/>
 										</div>
 									</div>
-									{error && <FormError errorMsg={getCustomError(error)} />}
-									<FormFooter formik={formik} isPending={isPending}>
+									{signupState.error && (
+										<FormError errorMsg={getCustomError(signupState.error)} />
+									)}
+									<FormFooter formik={formik} signState={signupState}>
 										<FormLinkBtn icon={<CiLogin />} title="Signin" linkName="signin" />
 									</FormFooter>
 								</Form>

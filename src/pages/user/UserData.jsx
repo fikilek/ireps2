@@ -25,23 +25,25 @@ const UserData = () => {
 	const userDetailData = {
 		// from firebase  firestore
 		companyName: response?.document?.companyName,
-		email: user?.email,
 		phoneNumber: response?.document?.phoneNumber,
 		// accStatus: response?.document?.status,
-		surname: user?.displayName.split(" ")[1],
-		name: user?.displayName.split(" ")[0],
+		surname: response?.document?.surname,
+		name: response?.document?.name,
+		nickName: response?.document?.nickName,
 		workbase: response?.document?.workbase,
-		creationTime: user?.metadata?.creationTime,
+		email: response?.document?.email,
 
 		// from firebase auth
+		creationTime: user?.metadata?.creationTime,
 		emailVerified: user?.emailVerified,
 		lastSignInTime: user?.metadata?.lastSignInTime,
+		roles: user?.claims,
 	};
 
 	const udLl = <p>User Details</p>;
 	const udLr = <p></p>;
-	const udRl = <p className="data-emphasis">Acc Status: Active</p>;
-	const udRr = <p className="data-emphasis">Online: Yes</p>;
+	const udRl = <p></p>;
+	const udRr = <p></p>;
 	return (
 		<div className="user-data">
 			<UserDataHeader udLl={udLl} udLr={udLr} udRl={udRl} udRr={udRr} />

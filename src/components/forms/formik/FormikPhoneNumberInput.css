@@ -1,0 +1,32 @@
+.form-container form .phoneNumber label.label {
+  top: -1rem;
+  font-size: 1rem;
+  left: 0.8rem;
+  /* color: white; */
+  background-color: rgb(236, 220, 220);
+  border: 0.1rem solid rgb(156, 149, 255);
+  border-radius: 0.2rem;
+}
+
+.form-container form .form-row .phoneNumber input {
+  padding-left: 3rem;
+}
+
+.form-container form .form-row .phoneNumber .flag-dropdown {
+  border: none;
+}
+
+.form-container form .form-row .phoneNumber .selected-flag {
+  border: 0.1rem solid;
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+
+
+.form-container form .newPhoneNumber {
+  height: 3.5rem;
+}
+
+.form-container form .hide {
+  visibility: hidden;
+  position: absolute;
+}

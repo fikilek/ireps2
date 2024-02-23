@@ -37,7 +37,7 @@
 .root-layout .layout .navigation nav.right-nav button,
 .root-layout .layout .navigation nav a {
   text-decoration: none;
-  width: 5rem;
+  /* width: 6rem; */
   background-color: darkkhaki;
   text-align: center;
   padding: 0.5rem;

@@ -4,10 +4,18 @@ import "./FormSubmitBtn.css";
 import { BsSend } from "react-icons/bs";
 
 const FormSubmitBtn = props => {
-	// console.log(`props`, props);
-	const { formik, title, isPending } = props;
-	const disable = !(formik?.isValid && formik?.dirty) || isPending;
-	// console.log(`disable`, disable);
+	const { formik, title, signState } = props;
+	// console.log(`formik.errors`, formik.errors);
+	// console.log(`formik.isValid`, formik.isValid);
+	// console.log(`formik.dirty`, formik.dirty);
+	// console.log(`signState?.isPending`, signState?.isPending);
+
+	let disable = null;
+	if (Object.keys(formik.values).includes("newPhoneNumber")) {
+		disable = false;
+	} else {
+		disable = !(formik?.isValid && formik?.dirty) || signState?.isPending;
+	}
 
 	return (
 		<div className="form-submit-btn">
@@ -17,10 +25,10 @@ const FormSubmitBtn = props => {
 				className="form-btn btn-submit-form"
 				type="submit"
 			>
-				{isPending ? (
+				{signState?.isPending ? (
 					<ClipLoader
 						color={"#F86F03"}
-						loading={isPending}
+						loading={signState?.isPending}
 						size={20}
 						aria-label="Loading Spinner"
 						data-testid="loader"

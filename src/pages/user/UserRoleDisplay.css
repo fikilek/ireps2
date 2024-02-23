@@ -1,0 +1,7 @@
+.user-role-display {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #c9c99f;
+  margin: 0.1rem;
+  padding: 0.1rem;
+}

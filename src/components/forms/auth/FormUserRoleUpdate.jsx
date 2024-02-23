@@ -110,7 +110,6 @@ const FormUserRoleUpdate = props => {
 		const updateUserRole = httpsCallable(functions, "updateUserRole");
 		updateUserRole({ roles: e, uid: data.uid, changeSet: claimsChangeSet })
 			.then(claimUpdateResult => {
-				console.log(`claimUpdateResult`, claimUpdateResult);
 				setCustomClaims(prev => ({
 					...prev,
 					roles: claimUpdateResult?.data?.userRecord?.customClaims?.roles,

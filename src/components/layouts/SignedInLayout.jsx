@@ -9,7 +9,7 @@ const SignedInLayout = () => {
 
 	let authorised = null;
 	if (user) {
-		authorised = (user.claims["manager"] || user.claims["superuser"]) && user;
+		authorised = (user?.claims["manager"] || user?.claims["superuser"]) && user;
 	}
 
 	return (
@@ -23,6 +23,7 @@ const SignedInLayout = () => {
 				</nav>
 				<nav className="right-nav">
 					{user && authorised && <NavLink to="/admin">ADMIN</NavLink>}
+					{/* <NavLink to="/admin">ADMIN</NavLink> */}
 					<NavLink to="/user">{initials}</NavLink>
 				</nav>
 			</div>

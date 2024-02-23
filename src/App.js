@@ -150,7 +150,13 @@ const router = createBrowserRouter(
 				element={
 					<Suspense fallback={loader}>
 						<RequireAuth
-							allowedRoles={["fieldworker", "supervisor", "manager", "superuser"]}
+							allowedRoles={[
+								"guest",
+								"fieldworker",
+								"supervisor",
+								"manager",
+								"superuser",
+							]}
 						>
 							<UserProfile />
 						</RequireAuth>

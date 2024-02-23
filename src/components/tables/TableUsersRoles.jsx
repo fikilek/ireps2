@@ -7,6 +7,7 @@ import { useContext, useEffect, useState } from "react";
 import { ClaimsContext } from "../../contexts/ClaimsContext";
 
 const TableUsersRoles = params => {
+	// console.log(`params`, params);
 	const { roles: roles_ } = params.data.customClaims;
 
 	const { customClaims, setCustomClaims } = useContext(ClaimsContext);
@@ -30,7 +31,7 @@ const TableUsersRoles = params => {
 
 	const { user } = useAuthContext();
 
-	const selectDisabled = uid === user.uid ? true : false;
+	const selectDisabled = uid === user.uid || params.data.disabled ? true : false;
 
 	const handleClick = e => {
 		setCustomClaims({

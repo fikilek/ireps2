@@ -15,43 +15,46 @@ import { capitalizeFirstLetters } from "../../../utils/utils";
 import { useSignup } from "../../../hooks/useSignup";
 
 const UpdateUser = props => {
-	const { surname, name, companyName, workbase } = props.formData;
+	const { surname, name, nickName, companyName, workbase } = props.formData;
 
 	const { getCustomError } = useFirebase();
 
-	const { updateUser, error, isPending, success } = useSignup();
+	const { updateUser, signupState } = useSignup();
 
 	const { closeModal } = useModal();
 
 	const onSubmit = values => {
-		// console.log(`Form values`, values);
+		console.log(`Form values`, values);
 		const newValues = capitalizeFirstLetters(values);
+		console.log(`Form newValues`, newValues);
 		updateUser(newValues);
 	};
 
 	const validationSchema = object({
 		surname: string().required("Surname is required."),
-		name: string().required("Name is required."),
+		name: string().required("required."),
+		nickName: string().required("required."),
 		companyName: string().ensure().required("Company name is required."),
 		workbase: string().required("Workbase is required"),
 	});
 
 	useEffect(() => {
-		if (success) {
+		if (signupState.success) {
 			closeModal();
 			toast.success(`User "${surname} ${name}" succesfully updated on iREPS`, {
 				position: "bottom-left",
 			});
 		}
-	}, [success, closeModal, surname, name]);
+	}, [signupState.success, closeModal, surname, name]);
 
 	return (
 		<div className="form-wrapper">
-			<div className="form-container updateuser">
+			<div className="form-container update-user">
 				<Formik
 					initialValues={{
 						surname,
 						name,
+						nickName,
 						companyName,
 						workbase,
 					}}
@@ -75,13 +78,22 @@ const UpdateUser = props => {
 												placeholder=""
 												autoFocus={true}
 											/>
-											<FormikControl
-												control="input"
-												type="text"
-												label="Name"
-												name={"name"}
-												placeholder=""
-											/>
+											<div className="row-50-50">
+												<FormikControl
+													control="input"
+													type="text"
+													label="Name"
+													name={"name"}
+													placeholder=""
+												/>
+												<FormikControl
+													control="input"
+													type="text"
+													label="Aka"
+													name={"nickName"}
+													placeholder=""
+												/>
+											</div>
 										</div>
 										<div className="form-row">
 											<FormikControl
@@ -102,8 +114,10 @@ const UpdateUser = props => {
 											/>
 										</div>
 									</div>
-									{error && <FormError errorMsg={getCustomError(error)} />}
-									<FormFooter formik={formik} isPending={isPending} />
+									{signupState.error && (
+										<FormError errorMsg={getCustomError(signupState.error)} />
+									)}
+									<FormFooter formik={formik} signState={signupState} />
 								</Form>
 							</>
 						);

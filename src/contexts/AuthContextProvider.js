@@ -32,6 +32,7 @@ const AuthContextProvider = ({ children }) => {
 		user: null,
 		isAuthReady: false,
 	});
+	console.log(`state`, state);
 
 	useEffect(() => {
 		onAuthStateChanged(auth, user => {

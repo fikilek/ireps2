@@ -15,7 +15,7 @@ const UserAuthField = props => {
 	let modalToOpen = null;
 
 	if (fieldKey === "Email") {
-		btnToShow = user?.emailVerified ? <UserEmailVerified /> : "Verify";
+		btnToShow = <UserEmailVerified verified={user?.emailVerified} />;
 		modalToOpen = "editUserEmail";
 	}
 	if (fieldKey === "Phone No") {
@@ -34,7 +34,7 @@ const UserAuthField = props => {
 		<div className="user-auth-field">
 			<UserDataField fieldKey={fieldKey} fieldValue={fieldValue} />
 			<div className="user-auth-field-btn">
-				<button onClick={handleClick}>Edit</button>
+				<button onClick={handleClick}>Edit/Verify</button>
 			</div>
 			<div className="user-auth-field-btn">
 				{

@@ -1,22 +1,35 @@
 import { ErrorMessage, Field } from "formik";
 import "../Form.css";
+import "./FormikPhoneNumberInput.css";
 import FormFieldError from "../formError/FormFieldError";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 const FormikPhoneNumberInput = props => {
 	// console.log(`props`, props);
-	const { label, name, ...rest } = props;
+	const { label, name, hide, ...rest } = props;
 
 	return (
-		<div className={`form-control ${name} `}>
+		<div className={`form-control ${name} ${hide} `}>
 			<Field name={name} {...rest}>
 				{props => {
 					// console.log(`props`, props);
-					const { field, meta } = props;
+					const { field, form } = props;
 
-					// input border must be red if there is an error and its touched
-					const error = meta.error && meta.touched ? "error" : "";
+					const handleChange = e => {
+						form.setFieldValue(field.name, e);
+						form.validateField(field.name);
+					};
 
-					return <input {...field} {...rest} className={`${error}`} />;
+					return (
+						<PhoneInput
+							placeholder="+(27) 81 444 1234"
+							country={"za"}
+							value={field?.value}
+							onChange={handleChange}
+							masks={{ za: "(..) ...-...." }}
+						/>
+					);
 				}}
 			</Field>
 			<label className={`label`} htmlFor={name}>

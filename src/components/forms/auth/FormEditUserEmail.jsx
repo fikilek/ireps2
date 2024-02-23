@@ -13,7 +13,7 @@ import useModal from "../../../hooks/useModal";
 import useAuthContext from "../../../hooks/useAuthContext";
 
 const EditUserEmail = props => {
-	// console.log(`EditUserEmail`, props);
+	console.log(`props`, props);
 
 	const { user } = useAuthContext();
 
@@ -21,7 +21,7 @@ const EditUserEmail = props => {
 
 	const { formData: email } = props;
 
-	const { updateUserEmail, error, isPending, success } = useSignup();
+	const { updateUserEmail, signupState } = useSignup();
 
 	const initialValues = {
 		newEmail: email,
@@ -30,7 +30,7 @@ const EditUserEmail = props => {
 	};
 
 	const onSubmit = values => {
-		console.log(`Form values`, values);
+		// console.log(`Form values`, values);
 		updateUserEmail(values);
 	};
 
@@ -43,7 +43,7 @@ const EditUserEmail = props => {
 	});
 
 	useEffect(() => {
-		if (success) {
+		if (signupState.success) {
 			closeModal();
 			toast.success(
 				`User email for "${user.displayName}", succesfully updated on iREPS`,
@@ -52,7 +52,7 @@ const EditUserEmail = props => {
 				}
 			);
 		}
-	}, [success, closeModal]);
+	}, [signupState.success, closeModal]);
 
 	return (
 		<div className="form-wrapper">
@@ -68,7 +68,7 @@ const EditUserEmail = props => {
 							<>
 								<Form>
 									<Formheader fhl1="Edit User Email" fhr1="" />
-									<FormMsg msg="Enter the new email address on the 'New Email' field below and submit. If the new email is valid, open it from your inbox for validation and take action." />
+									<FormMsg msg="Enter the new email address on the 'New Email' field below and submit. A valid new email will be delivered into your inbox where you can open it and follow instructions." />
 									<div className="edit-email-form">
 										<FormikControl
 											control="input"
@@ -95,8 +95,8 @@ const EditUserEmail = props => {
 											autoComplete="user password"
 										/>
 									</div>
-									{error && <FormError errorMsg={error} />}
-									<FormFooter formik={formik} isPending={isPending} />
+									{signupState.error && <FormError errorMsg={signupState.error} />}
+									<FormFooter formik={formik} signState={signupState} />
 								</Form>
 							</>
 						);

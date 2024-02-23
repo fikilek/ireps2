@@ -26,7 +26,7 @@ const Signin = () => {
 
 	const { getCustomError } = useFirebase();
 
-	const { signin, error } = useSignin();
+	const { signin, signinState } = useSignin();
 
 	const { closeModal } = useModal();
 
@@ -55,7 +55,6 @@ const Signin = () => {
 					position: "bottom-left",
 				}
 			);
-			console.log(`about to navigate to : `, navigateTo);
 			navigate(navigateTo);
 		}
 	}, [user]);
@@ -93,9 +92,11 @@ const Signin = () => {
 											autoComplete="user password"
 										/>
 									</div>
-									{error && <FormError errorMsg={getCustomError(error)} />}
+									{signinState.error && (
+										<FormError errorMsg={getCustomError(signinState.error)} />
+									)}
 
-									<FormFooter formik={formik}>
+									<FormFooter formik={formik} signState={signinState}>
 										<FormLinkBtn
 											icon={<IoIosPersonAdd />}
 											title="Signun"

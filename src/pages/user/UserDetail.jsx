@@ -3,11 +3,13 @@ import UserDataEditBtn from "./UserDataEditBtn";
 import UserDataField from "./UserDataField";
 import UserPhoto from "./UserPhoto";
 import UserAuthField from "./UserAuthField";
+import UserRoles from "./UserRoles";
 import { format } from "date-fns";
 import { constants } from "../../utils/utils";
 import { CiFaceSmile } from "react-icons/ci";
 
 const UserDetail = props => {
+	// console.log(`props`, props);
 	return (
 		<div className="user-detail">
 			<div className="editable">
@@ -19,6 +21,10 @@ const UserDetail = props => {
 					<UserDataField
 						fieldKey={"Name"}
 						fieldValue={props?.userDetailData?.name}
+					/>
+					<UserDataField
+						fieldKey={"NickName"}
+						fieldValue={props?.userDetailData?.nickName}
 					/>
 					<UserDataField
 						fieldKey={"Company"}
@@ -34,6 +40,7 @@ const UserDetail = props => {
 						formData={{
 							surname: props?.userDetailData?.surname,
 							name: props?.userDetailData?.name,
+							nickName: props?.userDetailData?.nickName,
 							companyName: props?.userDetailData?.companyName,
 							workbase: props?.userDetailData?.workbase,
 						}}
@@ -75,6 +82,7 @@ const UserDetail = props => {
 							)
 						}
 					/>
+					<UserRoles roles={props?.userDetailData?.roles} />
 				</div>
 
 				<UserPhoto />

@@ -22,11 +22,11 @@
   justify-content: center;
 }
 
+.form-container.update-user,
 .form-container .user-role-update,
 .form-container.signup {
   width: 30rem;
 }
-
 
 .form-container.edit-user-email,
 .form-container.signin,
@@ -44,6 +44,12 @@
 
 .form-container .user-role-update-form {
   display: grid;
+  gap: 1rem;
+}
+
+.form-container form .form-row .row-50-50 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 1rem;
 }
 

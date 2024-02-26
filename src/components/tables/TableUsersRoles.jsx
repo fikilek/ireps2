@@ -8,6 +8,7 @@ import { ClaimsContext } from "../../contexts/ClaimsContext";
 
 const TableUsersRoles = params => {
 	// console.log(`params`, params);
+
 	const { roles: roles_ } = params.data.customClaims;
 
 	const { customClaims, setCustomClaims } = useContext(ClaimsContext);

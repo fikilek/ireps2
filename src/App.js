@@ -13,6 +13,7 @@ import Erfs from "./pages/erfs/Erfs";
 import Trns from "./pages/trns/Trns";
 import Asts from "./pages/asts/Asts";
 
+
 // import tables
 import TableTrnStates from "./components/tables/TableTrnStates";
 import TableAstStates from "./components/tables/TableAstStates";
@@ -41,6 +42,13 @@ const AdminLayout = lazy(() => import("./components/layouts/AdminLayout"));
 const SystemTablesLayout = lazy(() =>
 	import("./components/layouts/SystemTablesLayout")
 );
+const AdministrativeAreas = lazy(() =>
+	import("./pages/administrativeAreas/AdministrativeAreas")
+);
+const ServiceProviders = lazy(() =>
+	import("./pages/serviceProviders/ServiceProviders")
+);
+
 
 const UserProfile = lazy(() => import("./pages/user/UserProfile"));
 const Users = lazy(() => import("./pages/users/Users"));
@@ -144,6 +152,26 @@ const router = createBrowserRouter(
 						}
 					/>
 				</Route>
+				<Route
+					path="administrativeAreas"
+					element={
+						<Suspense fallback={loader}>
+							<RequireAuth allowedRoles={["manager", "superuser"]}>
+								<AdministrativeAreas />
+							</RequireAuth>
+						</Suspense>
+					}
+				></Route>{" "}
+				<Route
+					path="serviceProviders"
+					element={
+						<Suspense fallback={loader}>
+							<RequireAuth allowedRoles={["manager", "superuser"]}>
+								<ServiceProviders />
+							</RequireAuth>
+						</Suspense>
+					}
+				></Route>
 			</Route>
 			<Route
 				path="user"

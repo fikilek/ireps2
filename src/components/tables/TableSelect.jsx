@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { useState } from "react";
 
 const TableSelect = props => {
-	// console.log(`props`, props);
+	console.log(`props`, props);
 
 	const { value, options, onValueChange } = props;
 

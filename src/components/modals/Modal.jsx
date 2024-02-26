@@ -14,6 +14,7 @@ import { loader } from "../../utils/utils";
 import FormUserRoleUpdate from "../forms/auth/FormUserRoleUpdate";
 import { BrowserRouter } from "react-router-dom";
 import PhoneNoAuth from "../forms/auth/FormPhoneNoAuth";
+import FormServiceProvider from "../forms/formServiceProvider/FormServiceProvider";
 
 const Modal = () => {
 	const { toOpen, modalOpened } = useContext(ModalContext);
@@ -84,6 +85,13 @@ const Modal = () => {
 							<>
 								<Suspense fallback={loader}>
 									<FormPhoneNoAuth formData={payload} />
+								</Suspense>
+							</>
+						)}
+						{modalName === "serviceProvider" && (
+							<>
+								<Suspense fallback={loader}>
+									<FormServiceProvider formData={payload} />
 								</Suspense>
 							</>
 						)}

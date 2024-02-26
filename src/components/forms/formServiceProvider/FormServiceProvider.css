@@ -1,0 +1,58 @@
+.service-provider {}
+
+.service-provider .form-body .tabs .tabs-header .tabs-btn {
+  height: 2rem;
+  /* border-radius: 0.4rem; */
+}
+
+.service-provider .form-body .tabs .active {
+  background-color:beige
+}
+
+.service-provider .form-body {
+  margin: 0.5rem 0;
+}
+
+.service-provider .form-body .tabs .tabs-header {
+  margin: 0.5rem 0 0 0;
+  border: 0.01rem solid rgb(206, 186, 186);
+  /* border-radius: 0.4rem; */
+  padding: 0.1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3rem;
+}
+
+.service-provider .form-body .tabs .tabs-header .tabs-header-left,
+.service-provider .form-body .tabs .tabs-header .tabs-header-right {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3rem;
+}
+
+.service-provider .form-body .tabs .tabs-body {
+  margin: 0;
+  max-height: 23rem;
+  overflow-y: auto;
+}
+
+.service-provider .form-body .tabs .tabs-body .body-display {
+  background-color: beige;
+padding: 2.5rem 0.3rem 0;
+}
+
+.service-provider .form-body .tabs .tabs-body .row-wrapper {
+  position: relative;
+  height: 4.5rem;
+}
+
+.service-provider .form-body .tabs .tabs-body .row-wrapper .row-add-btn {
+  position: absolute;
+  top: 0;
+  left: -0.3rem;
+  z-index: 10;
+  width: 1rem;
+  height: 3rem;
+  border-radius: 0.5rem 0 0 0.5rem;
+  background-color: aquamarine;
+}

@@ -4,8 +4,8 @@ import FormResetBtn from "../formBtns/FormResetBtn";
 import FormSubmitBtn from "../formBtns/FormSubmitBtn";
 
 const FormFooter = props => {
+	// console.log(`props`, props);
 	const { formik, signState, children } = props;
-	// console.log(`linkTo`, linkTo);
 	return (
 		<div className="form-footer vc-hsb">
 			{children}

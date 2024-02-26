@@ -1,4 +1,11 @@
-import { updateDoc, doc, Timestamp, onSnapshot } from "firebase/firestore";
+import {
+	updateDoc,
+	doc,
+	Timestamp,
+	onSnapshot,
+	collection,
+	addDoc,
+} from "firebase/firestore";
 // import cloneDeep from "lodash.clonedeep";
 import { useEffect, useReducer, useState } from "react";
 import { db } from "../firebaseConfig/fbConfig";
@@ -12,10 +19,10 @@ const initData = {
 };
 
 const firestoreReducer = (state, action) => {
-	// console.log(`firestoreReducer action`, action);
+	console.log(`firestoreReducer action`, action);
 	switch (action.type) {
 		case "IS_PENDING":
-			// console.log(`IS_PENDING`, action.payload);
+			console.log(`IS_PENDING`, action.payload);
 			return {
 				document: null,
 				error: null,
@@ -23,7 +30,7 @@ const firestoreReducer = (state, action) => {
 				success: false,
 			};
 		case "ADD_DOCUMENT":
-			// console.log(`ADD_DOCUMENT`, action.payload);
+			console.log(`ADD_DOCUMENT`, action.payload);
 			return {
 				document: action.payload,
 				error: null,
@@ -31,7 +38,7 @@ const firestoreReducer = (state, action) => {
 				success: true,
 			};
 		case "UPDATED_DOCUMENT":
-			// console.log(`UPDATED_DOCUMENT`, action.payload);
+			console.log(`UPDATED_DOCUMENT`, action.payload);
 			return {
 				document: action.payload,
 				error: null,
@@ -39,7 +46,7 @@ const firestoreReducer = (state, action) => {
 				success: true,
 			};
 		case "ERROR":
-			// console.log(`ERROR`, action.payload);
+			console.log(`ERROR`, action.payload);
 			return {
 				document: null,
 				error: action.payload,
@@ -47,9 +54,11 @@ const firestoreReducer = (state, action) => {
 				success: false,
 			};
 		default:
-			// console.log(`DEFAULT`, action.payload);
-			throw new Error(`Error adding new doc [${action.payload}] to firestore`);
-		// return state;
+			console.log(
+				`DEFAULT - Error adding/updating firestore doc - action.payload`,
+				action.payload
+			);
+			throw new Error(`Error adding/updating firestore doc`);
 	}
 };
 
@@ -61,33 +70,36 @@ export const useFirestore = fbCollection => {
 	// console.log(`response`, response);
 
 	const [isCancelled, setIsCancelled] = useState(false);
-	// console.log(`isCancelled`, isCancelled);
+	console.log(`isCancelled`, isCancelled);
 
 	const dispatchIfNotCancelled = action => {
+		console.log(`action`, action);
+		console.log(`isCancelled`, isCancelled);
 		if (!isCancelled) {
 			dispatch(action);
 		}
 	};
 
-	// const ref = collection(db, fbCollection);
+	const ref = collection(db, fbCollection);
 
-	// const addDocument = async doc => {
-	// 	dispatch({ type: "IS_PENDING" });
-	// 	try {
-	// 		const addedDocument = await addDoc(ref, {
-	// 			...doc,
-	// 			metaData: {
-	// 				...doc.metaData,
-	// 				updatedAtDatetime: Timestamp.now(),
-	// 				updatedByUser: user.displayName,
-	// 				updatedByUserId: user.uid,
-	// 			},
-	// 		});
-	// 		dispatchIfNotCancelled({ type: "ADD_DOCUMENT", payload: addedDocument });
-	// 	} catch (err) {
-	// 		dispatchIfNotCancelled({ type: "ERROR", payload: err.message });
-	// 	}
-	// };
+	const addDocument = async doc => {
+		dispatch({ type: "IS_PENDING" });
+		try {
+			const addedDocument = await addDoc(ref, {
+				...doc,
+				metadata: {
+					...doc.metadata,
+					updatedAtDatetime: Timestamp.now(),
+					updatedByUser: user.displayName,
+					updatedByUid: user.uid,
+				},
+			});
+			console.log(`addedDocument`, addedDocument);
+			dispatchIfNotCancelled({ type: "ADD_DOCUMENT", payload: addedDocument });
+		} catch (err) {
+			dispatchIfNotCancelled({ type: "ERROR", payload: err.message });
+		}
+	};
 
 	// const deleteDocument = async id => {};
 
@@ -95,9 +107,9 @@ export const useFirestore = fbCollection => {
 		// console.log(`updateDocument`, document, id);
 		document = {
 			...document,
-			"metaData.updatedAtDatetime": Timestamp.now(),
-			"metaData.updatedByUser": user.displayName,
-			"metaData.updatedByUserId": user.uid,
+			"metadata.updatedAtDatetime": Timestamp.now(),
+			"metadata.updatedByUser": user.displayName,
+			"metadata.updatedByUserId": user.uid,
 		};
 
 		dispatch({ type: "IS_PENDING" });
@@ -140,12 +152,16 @@ export const useFirestore = fbCollection => {
 	};
 
 	useEffect(() => {
-		return () => setIsCancelled(true);
+		console.log(`running cleanup`)
+			setIsCancelled(false);
+		return () => {
+			setIsCancelled(true);
+		}
 	}, []);
 
 	return {
 		response,
-		// addDocument,
+		addDocument,
 		// deleteDocument,
 		updateDocument,
 		getDocument,

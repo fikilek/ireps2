@@ -4,6 +4,7 @@ import "./FormSubmitBtn.css";
 import { BsSend } from "react-icons/bs";
 
 const FormSubmitBtn = props => {
+	// console.log(`props`, props);
 	const { formik, title, signState } = props;
 	// console.log(`formik.errors`, formik.errors);
 	// console.log(`formik.isValid`, formik.isValid);

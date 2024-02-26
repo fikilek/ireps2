@@ -9,6 +9,8 @@ import {
 } from "firebase/firestore";
 
 const useCollection = (fbCollection, _query) => {
+	// console.log(`fbCollection`, fbCollection);
+	
 	const [data, setData] = useState([]);
 	const [error, setError] = useState("");
 	const [isPending, setIsPending] = useState(null);
@@ -23,11 +25,11 @@ const useCollection = (fbCollection, _query) => {
 	if (q) {
 		newQuery = query(
 			colRef,
-			orderBy("metaData.createdAtDatetime", "desc"),
+			orderBy("metadata.updatedAtDatetime", "desc"),
 			where(...q)
 		);
 	} else {
-		newQuery = query(colRef, orderBy("metaData.createdAtDatetime", "desc"));
+		newQuery = query(colRef, orderBy("metadata.updatedAtDatetime", "desc"));
 	}
 
 	useEffect(() => {
@@ -39,6 +41,7 @@ const useCollection = (fbCollection, _query) => {
 			newQuery,
 			snapShot => {
 				const results = [];
+				// console.log(`snapShot`, snapShot)
 				snapShot.docs.forEach(doc => {
 					results.push({ id: doc.id, ...doc.data() });
 				});

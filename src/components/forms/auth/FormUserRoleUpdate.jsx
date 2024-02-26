@@ -105,7 +105,7 @@ const FormUserRoleUpdate = props => {
 	}, [customClaims.roles, formikClaims]);
 
 	const onSubmit = e => {
-		setIsPending(true);
+		setIsPending(prev => (prev = true));
 
 		const updateUserRole = httpsCallable(functions, "updateUserRole");
 		updateUserRole({ roles: e, uid: data.uid, changeSet: claimsChangeSet })
@@ -125,9 +125,11 @@ const FormUserRoleUpdate = props => {
 					progress: undefined,
 					theme: "light",
 				});
-				setIsPending(false);
 				// close modal
 				closeModal();
+				setIsPending(
+					prev => (prev = claimUpdateResult.data.userRecord ? false : true)
+				);
 			})
 			.catch(err => {
 				console.log(`error updating role: `, err.message);
@@ -199,7 +201,7 @@ const FormUserRoleUpdate = props => {
 										</div>
 									</div>
 
-									<FormFooter formik={formik} isPending={isPending} />
+									<FormFooter formik={formik} signState={{ isPending: isPending }} />
 								</Form>
 							</>
 						);

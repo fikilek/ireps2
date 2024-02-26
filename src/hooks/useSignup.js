@@ -116,7 +116,7 @@ export const useSignup = () => {
 			const docRef = doc(db, "users", user.uid);
 			const datetime = Timestamp.now();
 			await setDoc(docRef, {
-				metaData: {
+				metadata: {
 					createdByName: `${surname} ${name}`,
 					createdByUid: user.uid,
 					createdAtDatetime: datetime,
@@ -151,9 +151,9 @@ export const useSignup = () => {
 			const docRef = doc(db, "users", user.uid);
 			const datetime = Timestamp.now();
 			await updateDoc(docRef, {
-				"metaData.updatedByName": `${surname} ${name}`,
-				"metaData.updatedByUid": user.uid,
-				"metaData.updatedAtDatetime": datetime,
+				"metadata.updatedByName": `${surname} ${name}`,
+				"metadata.updatedByUid": user.uid,
+				"metadata.updatedAtDatetime": datetime,
 				nickName,
 				name,
 				surname,
@@ -202,9 +202,9 @@ export const useSignup = () => {
 			const docRef = doc(db, "users", user.uid);
 			const datetime = Timestamp.now();
 			await updateDoc(docRef, {
-				"metaData.updatedByName": user.displayName,
-				"metaData.updatedByUid": user.uid,
-				"metaData.updatedAtDatetime": datetime,
+				"metadata.updatedByName": user.displayName,
+				"metadata.updatedByUid": user.uid,
+				"metadata.updatedAtDatetime": datetime,
 				email: newEmail,
 			});
 
@@ -336,7 +336,7 @@ export const useSignup = () => {
 // const docRef = doc(db, "users", user.uid);
 // const datetime = Timestamp.now();
 // await setDoc(docRef, {
-// 	metaData: {
+// 	metadata: {
 // 		updateByByName: `${user?.surname} ${user?.name}`,
 // 		updateByByUid: user.uid,
 // 		updateByAtDatetime: datetime,

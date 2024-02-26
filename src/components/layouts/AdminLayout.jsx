@@ -7,6 +7,8 @@ const AdminLayout = () => {
 			<nav className="sidebar-main-nav">
 				<NavLink to="users">Users </NavLink>
 				<NavLink to="systemTables">System Tables </NavLink>
+				<NavLink to="serviceProviders">Service Providers </NavLink>
+				<NavLink to="administrativeAreas">Administrative Areas </NavLink>
 			</nav>
 			<Outlet />
 		</div>

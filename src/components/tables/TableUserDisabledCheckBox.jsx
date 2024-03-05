@@ -17,7 +17,7 @@ const TableUserDisabledCheckBox = props => {
 	const handleChange = e => {
 		console.log(`e.target.value`, e.target.value);
 		onValueChange(e.target.value);
-		setSelectedOption(e.target.value);
+		setSelectedOption(prev => (prev = e.target.value));
 	};
 
 	return (

@@ -1,0 +1,69 @@
+/* user profile header */
+
+.page-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0.5rem;
+  gap: 0.5rem;
+  background: lavender;
+  height: 2.1rem;
+}
+
+.page-header .ph {
+  display: grid;
+  grid-template-columns: 1fr ;
+  align-items: center;
+  gap: 0.5rem
+}
+
+.page-header .ph-right {
+  justify-content: flex-end;
+}
+
+.page-header button {
+  text-decoration: none;
+  background-color: rgb(161, 212, 179);
+  text-align: center;
+  padding: 0.5rem;
+  border: none;
+}
+
+/* user section */
+
+.page .user-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+/* User data */
+
+.user-data {
+  display: grid;
+  grid-template-columns: 1fr;
+  border: 0.1rem solid;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  gap: 1rem;
+}
+
+.user-data .user-data-header {
+  display: grid;
+  background-color: aquamarine;
+  grid-template-columns: 1fr 1fr;
+  height: 2rem;
+  padding: 0.2rem;
+}
+
+.user-data .user-data-header .udL,
+.user-data .user-data-header .udR {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (max-width: 850px) {
+  .page {
+    grid-template-columns: 1fr;
+  }
+}

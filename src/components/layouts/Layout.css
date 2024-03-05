@@ -78,6 +78,7 @@
   height: 100%;
   gap: 0.5rem;
   background-color: #FFE4C4;
+  padding: 0.5rem 0 0 0;
 }
 
 .root-layout .layout .sidebar-main-layout .sidebar-main-nav a {

@@ -1,0 +1,6 @@
+.page-body {
+  margin: 0.5rem;
+  height: calc(93vh - 3.4rem);
+  display: grid;
+  grid-template-columns: minmax(10rem, 22rem) auto;
+}

@@ -4,6 +4,7 @@ import useAuthContext from "./useAuthContext";
 import TableDate from "../components/tables/TableDate";
 import { Timestamp } from "firebase/firestore";
 import TableModalBtn from "../components/tables/TableModalBtn";
+import TableBtnsGroup from "../components/tables/TableBtnsGroup";
 
 export const useServiceProviders = () => {
 	const { user } = useAuthContext();
@@ -174,6 +175,9 @@ export const useServiceProviders = () => {
 			headerName: "Name",
 			width: 150,
 			cellRenderer: TableModalBtn,
+			cellRendererParams: {
+				modalName: "serviceProvider",
+			},
 		},
 		{
 			headerName: "Main Office",
@@ -196,17 +200,22 @@ export const useServiceProviders = () => {
 			],
 		},
 		{
+			field: "clients",
 			headerName: "Clients",
-			children: [],
-		},
-
-		{
-			headerName: "OtherOffices",
-			children: [],
+			width: 150,
+			cellRenderer: TableBtnsGroup,
 		},
 		{
+			field: "otherOffices",
+			headerName: "Other Offices",
+			width: 150,
+			cellRenderer: TableBtnsGroup,
+		},
+		{
+			field: "stores",
 			headerName: "Stores",
-			children: [],
+			width: 150,
+			cellRenderer: TableBtnsGroup,
 		},
 	];
 

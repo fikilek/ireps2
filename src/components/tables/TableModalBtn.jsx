@@ -3,11 +3,11 @@ import useModal from '../../hooks/useModal'
 
 const TableModalBtn = (props) => {
   // console.log(`props`, props)
-  const { data } = props
+  const { data, modalName } = props
   const {openModal} = useModal()
   const handleClick = e => {
     openModal({
-      modalName: 'serviceProvider',
+      modalName: modalName,
       payload: data
     })
   }

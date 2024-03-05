@@ -36,6 +36,7 @@ import ModalContextProvider from "./contexts/ModalContext";
 import AuthContextProvider from "./contexts/AuthContextProvider";
 import ClaimsContextProvider from "./contexts/ClaimsContext";
 import NotAuthenticated from "./components/forms/auth/NotAuthenticated";
+import { AreaTreeContextProvider } from "./contexts/AreaTreeContext";
 
 // Lazy loading
 const AdminLayout = lazy(() => import("./components/layouts/AdminLayout"));
@@ -205,17 +206,19 @@ const router = createBrowserRouter(
 
 function App() {
 	return (
-		<ClaimsContextProvider>
-			<AuthContextProvider>
-				<ModalContextProvider>
-					<div className="App">
-						<RouterProvider router={router} />
-						<ToastContainer />
-					</div>
-					<Modal />
-				</ModalContextProvider>
-			</AuthContextProvider>
-		</ClaimsContextProvider>
+		<AreaTreeContextProvider>
+			<ClaimsContextProvider>
+				<AuthContextProvider>
+					<ModalContextProvider>
+						<div className="App">
+							<RouterProvider router={router} />
+							<ToastContainer />
+						</div>
+						<Modal />
+					</ModalContextProvider>
+				</AuthContextProvider>
+			</ClaimsContextProvider>
+		</AreaTreeContextProvider>
 	);
 }
 

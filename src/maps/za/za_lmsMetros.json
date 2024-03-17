@@ -1,0 +1,1493 @@
+[
+ {
+   "lmMetro": "lm",
+   "lm": "Abaqulusi lm",
+   "dm": "Zululand",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Alfred Duma lm",
+   "dm": "Uthukela",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Amahlathi lm",
+   "dm": "Amathole",
+   "province": "Eastern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Ba-Phalaborwa lm",
+   "dm": "Mopani",
+   "province": "Limpopo",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Beaufort West lm",
+   "dm": "Central Karoo",
+   "province": "Western Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Bela-Bela lm",
+   "dm": "Waterberg",
+   "province": "Limpopo",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Bergrivier lm",
+   "dm": "West Coast",
+   "province": "Western Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Big Five Hlabisa lm",
+   "dm": "Umkhanyakude",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Bitou lm",
+   "dm": "Eden",
+   "province": "Western Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Blouberg lm",
+   "dm": "Capricorn",
+   "province": "Limpopo",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Blue Crane Route lm",
+   "dm": "Cacadu",
+   "province": "Eastern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Breede Valley lm",
+   "dm": "Cape Winelands",
+   "province": "Western Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "metro",
+   "lm": "Buffalo City metro",
+   "dm": "Buffalo City",
+   "province": "Eastern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Bushbuckridge lm",
+   "dm": "Ehlanzeni",
+   "province": "Mpumalanga",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Cape Agulhas lm",
+   "dm": "Overberg",
+   "province": "Western Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Cederberg lm",
+   "dm": "West Coast",
+   "province": "Western Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Chief Albert Luthuli lm",
+   "dm": "Gert Sibande",
+   "province": "Mpumalanga",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "metro",
+   "lm": "City of Cape Town metro",
+   "dm": "City of Cape Town",
+   "province": "Western Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "metro",
+   "lm": "City of Johannesburg metro",
+   "dm": "City of Johannesburg",
+   "province": "Gauteng",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "City of Matlosana lm",
+   "dm": "Dr Kenneth Kaunda",
+   "province": "North West",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "metro",
+   "lm": "City of Tshwane metro",
+   "dm": "City of Tshwane",
+   "province": "Gauteng",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Collins Chabane lm",
+   "dm": "Vhembe",
+   "province": "Limpopo",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Dannhauser lm",
+   "dm": "Amajuba",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Dawid Kruiper lm",
+   "dm": "Z F Mgcawu",
+   "province": "Nothern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Dihlabeng lm",
+   "dm": "Thabo Mofutsanyane",
+   "province": "Free State",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Dikgatlong lm",
+   "dm": "Frances Baard",
+   "province": "Nothern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Dipaleseng lm",
+   "dm": "Gert Sibande",
+   "province": "Mpumalanga",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Ditsobotla lm",
+   "dm": "Ngaka Modiri Molema",
+   "province": "North West",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Dr Beyers Naude lm",
+   "dm": "Cacadu",
+   "province": "Eastern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Dr JS Moroka lm",
+   "dm": "Nkangala",
+   "province": "Mpumalanga",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Dr Nkosazana Dlamini Zuma lm",
+   "dm": "Sisonke",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Dr Pixley Ka Isaka Seme lm",
+   "dm": "Gert Sibande",
+   "province": "Mpumalanga",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Drakenstein lm",
+   "dm": "Cape Winelands",
+   "province": "Western Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "eDumbe lm",
+   "dm": "Zululand",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "metro",
+   "lm": "Ekurhuleni metro",
+   "dm": "Ekurhuleni",
+   "province": "Gauteng",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Elias Motsoaledi lm",
+   "dm": "Sekhukhune",
+   "province": "Limpopo",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Elundini lm",
+   "dm": "Joe Gqabi",
+   "province": "Eastern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Emadlangeni lm",
+   "dm": "Amajuba",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Emakhazeni lm",
+   "dm": "Nkangala",
+   "province": "Mpumalanga",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Emalahleni lm",
+   "dm": "Chris Hani",
+   "province": "Eastern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Emalahleni lm",
+   "dm": "Nkangala",
+   "province": "Mpumalanga",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Emfuleni lm",
+   "dm": "Sedibeng",
+   "province": "Gauteng",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Emthanjeni lm",
+   "dm": "Pixley ka Seme",
+   "province": "Nothern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Endumeni lm",
+   "dm": "Umzinyathi",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Engcobo lm",
+   "dm": "Chris Hani",
+   "province": "Eastern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Enoch Mgijima lm",
+   "dm": "Chris Hani",
+   "province": "Eastern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Ephraim Mogale lm",
+   "dm": "Sekhukhune",
+   "province": "Limpopo",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "metro",
+   "lm": "eThekwini metro",
+   "dm": "eThekwini",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Ga-Segonyana lm",
+   "dm": "John Taolo Gaetsewe",
+   "province": "Nothern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Gamagara lm",
+   "dm": "John Taolo Gaetsewe",
+   "province": "Nothern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "George lm",
+   "dm": "Eden",
+   "province": "Western Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Govan Mbeki lm",
+   "dm": "Gert Sibande",
+   "province": "Mpumalanga",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Great Kei lm",
+   "dm": "Amathole",
+   "province": "Eastern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Giyani lm",
+   "dm": "Mopani",
+   "province": "Limpopo",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Kokstad lm",
+   "dm": "Sisonke",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Letaba lm",
+   "dm": "Mopani",
+   "province": "Limpopo",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Taung lm",
+   "dm": "Dr Ruth Segomotsi Mompati",
+   "province": "North West",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Tubatse lm",
+   "dm": "Sekhukhune",
+   "province": "Limpopo",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Tzaneen lm",
+   "dm": "Mopani",
+   "province": "Limpopo",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Hantam lm",
+   "dm": "Namakwa",
+   "province": "Nothern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Hessequa lm",
+   "dm": "Eden",
+   "province": "Western Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Impendle lm",
+   "dm": "Umgungundlovu",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Inkosi Langalibalele lm",
+   "dm": "Uthukela",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Intsika Yethu lm",
+   "dm": "Chris Hani",
+   "province": "Eastern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Inxuba Yethemba lm",
+   "dm": "Chris Hani",
+   "province": "Eastern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Joe Morolong lm",
+   "dm": "John Taolo Gaetsewe",
+   "province": "Nothern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Jozini lm",
+   "dm": "Umkhanyakude",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Kagisano/Molopo lm",
+   "dm": "Dr Ruth Segomotsi Mompati",
+   "province": "North West",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Kai Garib lm",
+   "dm": "Z F Mgcawu",
+   "province": "Nothern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Kamiesberg lm",
+   "dm": "Namakwa",
+   "province": "Nothern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Kannaland lm",
+   "dm": "Eden",
+   "province": "Western Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Kareeberg lm",
+   "dm": "Pixley ka Seme",
+   "province": "Nothern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Karoo Hoogland lm",
+   "dm": "Namakwa",
+   "province": "Nothern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Kgatelopele lm",
+   "dm": "Z F Mgcawu",
+   "province": "Nothern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Kgetlengrivier lm",
+   "dm": "Bojanala",
+   "province": "North West",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Khâi-Ma lm",
+   "dm": "Namakwa",
+   "province": "Nothern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Kheis lm",
+   "dm": "Z F Mgcawu",
+   "province": "Nothern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "King Sabata Dalindyebo lm",
+   "dm": "O.R.Tambo",
+   "province": "Eastern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Knysna lm",
+   "dm": "Eden",
+   "province": "Western Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Kopanong lm",
+   "dm": "Xhariep",
+   "province": "Free State",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Kou-Kamma lm",
+   "dm": "Cacadu",
+   "province": "Eastern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Kouga lm",
+   "dm": "Cacadu",
+   "province": "Eastern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "KwaDukuza lm",
+   "dm": "iLembe",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Laingsburg lm",
+   "dm": "Central Karoo",
+   "province": "Western Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Langeberg lm",
+   "dm": "Cape Winelands",
+   "province": "Western Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Lekwa lm",
+   "dm": "Gert Sibande",
+   "province": "Mpumalanga",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Lekwa-Teemane lm",
+   "dm": "Dr Ruth Segomotsi Mompati",
+   "province": "North West",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Lepele-Nkumpi lm",
+   "dm": "Capricorn",
+   "province": "Limpopo",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Lephalale lm",
+   "dm": "Waterberg",
+   "province": "Limpopo",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Lesedi lm",
+   "dm": "Sedibeng",
+   "province": "Gauteng",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Letsemeng lm",
+   "dm": "Xhariep",
+   "province": "Free State",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Madibeng lm",
+   "dm": "Bojanala",
+   "province": "North West",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Mafikeng lm",
+   "dm": "Ngaka Modiri Molema",
+   "province": "North West",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Mafube lm",
+   "dm": "Fezile Dabi",
+   "province": "Free State",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Magareng lm",
+   "dm": "Frances Baard",
+   "province": "Nothern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Makana lm",
+   "dm": "Cacadu",
+   "province": "Eastern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Makhado lm",
+   "dm": "Vhembe",
+   "province": "Limpopo",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Makhuduthamaga lm",
+   "dm": "Sekhukhune",
+   "province": "Limpopo",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Maluti a Phofung lm",
+   "dm": "Thabo Mofutsanyane",
+   "province": "Free State",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Mamusa lm",
+   "dm": "Dr Ruth Segomotsi Mompati",
+   "province": "North West",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Mandeni lm",
+   "dm": "iLembe",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "metro",
+   "lm": "Mangaung metro",
+   "dm": "Mangaung",
+   "province": "Free State",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Mantsopa lm",
+   "dm": "Thabo Mofutsanyane",
+   "province": "Free State",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Maphumulo lm",
+   "dm": "iLembe",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Maquassi Hills lm",
+   "dm": "Dr Kenneth Kaunda",
+   "province": "North West",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Maruleng lm",
+   "dm": "Mopani",
+   "province": "Limpopo",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Masilonyana lm",
+   "dm": "Lejweleputswa",
+   "province": "Free State",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Matatiele lm",
+   "dm": "Alfred Nzo",
+   "province": "Eastern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Matjhabeng lm",
+   "dm": "Lejweleputswa",
+   "province": "Free State",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Matzikama lm",
+   "dm": "West Coast",
+   "province": "Western Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Mbhashe lm",
+   "dm": "Amathole",
+   "province": "Eastern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Mbizana lm",
+   "dm": "Alfred Nzo",
+   "province": "Eastern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Mbombela lm",
+   "dm": "Ehlanzeni",
+   "province": "Mpumalanga",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Merafong City lm",
+   "dm": "West Rand",
+   "province": "Gauteng",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Metsimaholo lm",
+   "dm": "Fezile Dabi",
+   "province": "Free State",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Mfolozi lm",
+   "dm": "Uthungulu",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Mhlontlo lm",
+   "dm": "O.R.Tambo",
+   "province": "Eastern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Midvaal lm",
+   "dm": "Sedibeng",
+   "province": "Gauteng",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Mkhambathini lm",
+   "dm": "Umgungundlovu",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Mkhondo lm",
+   "dm": "Gert Sibande",
+   "province": "Mpumalanga",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Mnquma lm",
+   "dm": "Amathole",
+   "province": "Eastern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Modimolle/Mookgophong lm",
+   "dm": "Waterberg",
+   "province": "Limpopo",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Mogalakwena lm",
+   "dm": "Waterberg",
+   "province": "Limpopo",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Mogale City lm",
+   "dm": "West Rand",
+   "province": "Gauteng",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Mohokare lm",
+   "dm": "Xhariep",
+   "province": "Free State",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Molemole lm",
+   "dm": "Capricorn",
+   "province": "Limpopo",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Moqhaka lm",
+   "dm": "Fezile Dabi",
+   "province": "Free State",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Moretele lm",
+   "dm": "Bojanala",
+   "province": "North West",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Moses Kotane lm",
+   "dm": "Bojanala",
+   "province": "North West",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Mossel Bay lm",
+   "dm": "Eden",
+   "province": "Western Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Mpofana lm",
+   "dm": "Umgungundlovu",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Msinga lm",
+   "dm": "Umzinyathi",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Msukaligwa lm",
+   "dm": "Gert Sibande",
+   "province": "Mpumalanga",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Mthonjaneni lm",
+   "dm": "Uthungulu",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Mtubatuba lm",
+   "dm": "Umkhanyakude",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Musina lm",
+   "dm": "Vhembe",
+   "province": "Limpopo",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Nala lm",
+   "dm": "Lejweleputswa",
+   "province": "Free State",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Naledi lm",
+   "dm": "Dr Ruth Segomotsi Mompati",
+   "province": "North West",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Nama Khoi lm",
+   "dm": "Namakwa",
+   "province": "Nothern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Ndlambe lm",
+   "dm": "Cacadu",
+   "province": "Eastern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Ndwedwe lm",
+   "dm": "iLembe",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "metro",
+   "lm": "Nelson Mandela Bay metro",
+   "dm": "Nelson Mandela Bay",
+   "province": "Eastern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Newcastle lm",
+   "dm": "Amajuba",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Ngqushwa lm",
+   "dm": "Amathole",
+   "province": "Eastern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Ngquza Hill lm",
+   "dm": "O.R.Tambo",
+   "province": "Eastern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Ngwathe lm",
+   "dm": "Fezile Dabi",
+   "province": "Free State",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Nkandla lm",
+   "dm": "Uthungulu",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Nketoana lm",
+   "dm": "Thabo Mofutsanyane",
+   "province": "Free State",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Nkomazi lm",
+   "dm": "Ehlanzeni",
+   "province": "Mpumalanga",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Nongoma lm",
+   "dm": "Zululand",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Nqutu lm",
+   "dm": "Umzinyathi",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Ntabankulu lm",
+   "dm": "Alfred Nzo",
+   "province": "Eastern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Nyandeni lm",
+   "dm": "O.R.Tambo",
+   "province": "Eastern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Okhahlamba lm",
+   "dm": "Uthukela",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Oudtshoorn lm",
+   "dm": "Eden",
+   "province": "Western Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Overstrand lm",
+   "dm": "Overberg",
+   "province": "Western Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Phokwane lm",
+   "dm": "Frances Baard",
+   "province": "Nothern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Phumelela lm",
+   "dm": "Thabo Mofutsanyane",
+   "province": "Free State",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Polokwane lm",
+   "dm": "Capricorn",
+   "province": "Limpopo",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Port St Johns lm",
+   "dm": "O.R.Tambo",
+   "province": "Eastern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Prince Albert lm",
+   "dm": "Central Karoo",
+   "province": "Western Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Ramotshere Moiloa lm",
+   "dm": "Ngaka Modiri Molema",
+   "province": "North West",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Rand West City lm",
+   "dm": "West Rand",
+   "province": "Gauteng",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Ratlou lm",
+   "dm": "Ngaka Modiri Molema",
+   "province": "North West",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Ray Nkonyeni lm",
+   "dm": "Ugu",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Raymond Mhlaba lm",
+   "dm": "Amathole",
+   "province": "Eastern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Renosterberg lm",
+   "dm": "Pixley ka Seme",
+   "province": "Nothern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Richmond lm",
+   "dm": "Umgungundlovu",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Richtersveld lm",
+   "dm": "Namakwa",
+   "province": "Nothern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Rustenburg lm",
+   "dm": "Bojanala",
+   "province": "North West",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Sakhisizwe lm",
+   "dm": "Chris Hani",
+   "province": "Eastern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Saldanha Bay lm",
+   "dm": "West Coast",
+   "province": "Western Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Senqu lm",
+   "dm": "Joe Gqabi",
+   "province": "Eastern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Setsoto lm",
+   "dm": "Thabo Mofutsanyane",
+   "province": "Free State",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Siyancuma lm",
+   "dm": "Pixley ka Seme",
+   "province": "Nothern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Siyathemba lm",
+   "dm": "Pixley ka Seme",
+   "province": "Nothern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Sol Plaatjie lm",
+   "dm": "Frances Baard",
+   "province": "Nothern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Stellenbosch lm",
+   "dm": "Cape Winelands",
+   "province": "Western Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Steve Tshwete lm",
+   "dm": "Nkangala",
+   "province": "Mpumalanga",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Sundays River Valley lm",
+   "dm": "Cacadu",
+   "province": "Eastern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Swartland lm",
+   "dm": "West Coast",
+   "province": "Western Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Swellendam lm",
+   "dm": "Overberg",
+   "province": "Western Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Thaba Chweu lm",
+   "dm": "Ehlanzeni",
+   "province": "Mpumalanga",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Thabazimbi lm",
+   "dm": "Waterberg",
+   "province": "Limpopo",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Msunduzi lm",
+   "dm": "Umgungundlovu",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Theewaterskloof lm",
+   "dm": "Overberg",
+   "province": "Western Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Thembelihle lm",
+   "dm": "Pixley ka Seme",
+   "province": "Nothern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Thembisile lm",
+   "dm": "Nkangala",
+   "province": "Mpumalanga",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Thulamela lm",
+   "dm": "Vhembe",
+   "province": "Limpopo",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Tokologo lm",
+   "dm": "Lejweleputswa",
+   "province": "Free State",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Tsantsabane lm",
+   "dm": "Z F Mgcawu",
+   "province": "Nothern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Tswaing lm",
+   "dm": "Ngaka Modiri Molema",
+   "province": "North West",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Tswelopele lm",
+   "dm": "Lejweleputswa",
+   "province": "Free State",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Ubuhlebezwe lm",
+   "dm": "Sisonke",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Ubuntu lm",
+   "dm": "Pixley ka Seme",
+   "province": "Nothern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Ulundi lm",
+   "dm": "Zululand",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Umdoni lm",
+   "dm": "Ugu",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Umhlabuyalingana lm",
+   "dm": "Umkhanyakude",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "uMhlathuze lm",
+   "dm": "Uthungulu",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "uMlalazi lm",
+   "dm": "Uthungulu",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "uMngeni lm",
+   "dm": "Umgungundlovu",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "uMshwathi lm",
+   "dm": "Umgungundlovu",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Umsobomvu lm",
+   "dm": "Pixley ka Seme",
+   "province": "Nothern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "uMuziwabantu lm",
+   "dm": "Ugu",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Umvoti lm",
+   "dm": "Umzinyathi",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Umzimkhulu lm",
+   "dm": "Sisonke",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Umzimvubu lm",
+   "dm": "Alfred Nzo",
+   "province": "Eastern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Umzumbe lm",
+   "dm": "Ugu",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "uPhongolo lm",
+   "dm": "Zululand",
+   "province": "KwaZulu-Natal",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Ventersdorp/Tlokwe lm",
+   "dm": "Dr Kenneth Kaunda",
+   "province": "North West",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Victor Khanye lm",
+   "dm": "Nkangala",
+   "province": "Mpumalanga",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Walter Sisulu lm",
+   "dm": "Joe Gqabi",
+   "province": "Eastern Cape",
+   "country": "South Africa"
+ },
+ {
+   "lmMetro": "lm",
+   "lm": "Witzenberg lm",
+   "dm": "Cape Winelands",
+   "province": "Western Cape",
+   "country": "South Africa"
+ }
+]

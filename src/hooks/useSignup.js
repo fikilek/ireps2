@@ -7,9 +7,10 @@ import {
 	updateProfile,
 } from "firebase/auth";
 import { doc, setDoc, Timestamp, updateDoc } from "firebase/firestore";
-import { useReducer } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { auth, db } from "../firebaseConfig/fbConfig";
 import useAuthContext from "./useAuthContext";
+import useCollection from "./useCollection";
 
 const initSignup = {
 	error: null,
@@ -80,6 +81,7 @@ export const useSignup = () => {
 			nickName,
 			phoneNumber,
 			companyName,
+			spId,
 			workbase,
 		} = userCredentials;
 		try {
@@ -88,13 +90,13 @@ export const useSignup = () => {
 			if (!result) {
 				throw new Error("User signup failed");
 			}
-			console.log(`result`, result);
+			// console.log(`result`, result);
 
 			const { user } = result;
-			console.log(`user`, user);
+			// console.log(`user`, user);
 
 			const idToken = await auth.currentUser.getIdTokenResult(true);
-			console.log(`idToken`, idToken);
+			// console.log(`idToken`, idToken);
 
 			// send emil verification
 			await sendEmailVerification(user);
@@ -120,12 +122,16 @@ export const useSignup = () => {
 					createdByName: `${surname} ${name}`,
 					createdByUid: user.uid,
 					createdAtDatetime: datetime,
+					updatedByName: `${surname} ${name}`,
+					updatedByUid: user.uid,
+					updatedAtDatetime: datetime,
 				},
 				email,
 				name,
 				surname,
 				nickName,
 				companyName,
+				spId,
 				workbase,
 				phoneNumber,
 			});
@@ -138,7 +144,7 @@ export const useSignup = () => {
 	};
 
 	const updateUser = async userCredentials => {
-		console.log(`userCredentials`, userCredentials);
+		// console.log(`userCredentials`, userCredentials);
 		const { surname, name, nickName, companyName, workbase } = userCredentials;
 		try {
 			signupDispatch({ type: "IS_PENDING" });

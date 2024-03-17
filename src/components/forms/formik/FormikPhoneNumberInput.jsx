@@ -23,7 +23,7 @@ const FormikPhoneNumberInput = props => {
 
 					return (
 						<PhoneInput
-							placeholder="+(27) 81 444 1234"
+							placeholder="+(27) 81 123 1234"
 							country={"za"}
 							value={field?.value}
 							onChange={handleChange}

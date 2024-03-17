@@ -6,7 +6,6 @@ import FormFooter from "../formFooter/FormFooter";
 import { object, ref, string } from "yup";
 import { CiLogin } from "react-icons/ci";
 import FormMsg from "../formMsg/FormMsg";
-import { formSelectOptions } from "../formUtils/utils";
 import { useSignup } from "../../../hooks/useSignup";
 import FormError from "../formError/FormError";
 import { useFirebase } from "../../../hooks/useFirebase";
@@ -16,37 +15,43 @@ import { toast } from "react-toastify";
 import useAuthContext from "../../../hooks/useAuthContext";
 import { capitalizeFirstLetters } from "../../../utils/utils";
 import FormLinkBtn from "../formBtns/FormLinkBtn";
-
-const phoneRegExp =
-	/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+import { useServiceProviders } from "../../../hooks/useServiceProviders";
 
 const Signup = () => {
 	const { getCustomError } = useFirebase();
 
 	const { signup, signupState } = useSignup();
 
+	const {
+		serviceProviders,
+		getSpClients,
+		getSpDetailsFromSpName,
+		getSpClientsFromName,
+	} = useServiceProviders();
+
 	const { closeModal } = useModal();
 
 	const { user } = useAuthContext() || {};
 
 	const initialValues = {
-		surname: "kentane",
-		name: "fikile",
-		nickName: "Ficks",
-		companyName: "rste",
-		email: "fikilekentane@gmail.com",
-		password: "fkpass123",
-		confirmPassword: "fkpass123",
-		phoneNumber: "2781726235", //+27817262352
-		workbase: "Lesedi LM",
+		surname: "",
+		name: "",
+		nickName: "",
+		companyName: "",
+		email: "",
+		password: "",
+		confirmPassword: "",
+		phoneNumber: "", //+27817262352
+		workbase: "",
 	};
 
 	const onSubmit = values => {
-		// console.log(`Form values`, values);
+		console.log(`Form values`, values);
 		const newValues = capitalizeFirstLetters(values);
 		signup(newValues);
 	};
 
+	// TODO: bug  - does not show formik error
 	const validationSchema = object({
 		surname: string().required("Surname is required."),
 		name: string().required("required."),
@@ -64,6 +69,7 @@ const Signup = () => {
 			// .matches(phoneRegExp, "Phone number is not valid")
 			.required("Cell number is required."),
 		workbase: string().required("Workbase is required"),
+		spId: string().required("spId is required"),
 	});
 
 	useEffect(() => {
@@ -85,9 +91,35 @@ const Signup = () => {
 					initialValues={initialValues}
 					onSubmit={onSubmit}
 					validationSchema={validationSchema}
+					enableReinitialize={true}
 				>
 					{formik => {
 						// console.log(`formik`, formik);
+
+						// This will use regular ecpresion to search for matching companyName form list of all service providers
+						const sp = getSpDetailsFromSpName(formik.values.companyName);
+						// console.log(`sp`, sp);
+
+						let spClients = getSpClients(sp);
+
+						const result = spClients.find(client => {
+							const clientStr = client.key.toLowerCase().trim();
+							// console.log(`clientStr`, clientStr);
+
+							// user regular expresions to search doe a matching nameStr in spStr
+							const re = new RegExp("rste", "gi");
+							// console.log(`re`, re);
+
+							return re.test(clientStr);
+						});
+						// console.log(`result`, result);
+
+						if (result) {
+							// const sp = getSpDetails("rste");
+							spClients = getSpClientsFromName("rste");
+						}
+						// console.log(`spClients`, spClients);
+
 						return (
 							<>
 								<Form>
@@ -127,7 +159,7 @@ const Signup = () => {
 												label="Company Name"
 												name={"companyName"}
 												placeholder=""
-												options={formSelectOptions.companiesOptions}
+												options={serviceProviders.spOptions}
 											/>
 											<FormikControl
 												control="select"
@@ -135,7 +167,7 @@ const Signup = () => {
 												label="Workbase"
 												name={"workbase"}
 												placeholder=""
-												options={formSelectOptions.workbaseOptions}
+												options={spClients}
 											/>
 										</div>
 										<div className="form-row">
@@ -172,6 +204,9 @@ const Signup = () => {
 												placeholder=""
 												autoComplete="Confirm password"
 											/>
+										</div>
+										<div className="form-row-hidden">
+											<FormikControl control="input" type="hidden" name={"spId"} />
 										</div>
 									</div>
 									{signupState.error && (

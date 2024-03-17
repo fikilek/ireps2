@@ -13,8 +13,8 @@ import FormPasswordReset from "../forms/auth/FormPasswordReset";
 import { loader } from "../../utils/utils";
 import FormUserRoleUpdate from "../forms/auth/FormUserRoleUpdate";
 import { BrowserRouter } from "react-router-dom";
-import PhoneNoAuth from "../forms/auth/FormPhoneNoAuth";
 import FormServiceProvider from "../forms/formServiceProvider/FormServiceProvider";
+import ServiceProviderData from "../irepsInfoWindow/ServiceProviderData";
 
 const Modal = () => {
 	const { toOpen, modalOpened } = useContext(ModalContext);
@@ -92,6 +92,13 @@ const Modal = () => {
 							<>
 								<Suspense fallback={loader}>
 									<FormServiceProvider formData={payload} />
+								</Suspense>
+							</>
+						)}
+						{modalName === "serviceProviderData" && (
+							<>
+								<Suspense fallback={loader}>
+									<ServiceProviderData data={payload} />
 								</Suspense>
 							</>
 						)}

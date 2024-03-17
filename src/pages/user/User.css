@@ -1,4 +1,10 @@
 /* user profile header */
+.user-profile {
+  grid-template-columns: 1fr;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
 
 .user-profile-header {
   display: grid;
@@ -61,8 +67,18 @@
   align-items: center;
 }
 
-@media (max-width: 850px) {
+@media (max-width: 1200px) {}
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {
   .user-profile {
     grid-template-columns: 1fr;
   }
+
+  .user-profile .user-section {
+    grid-template-columns: 1fr;
+  }
 }
+
+@media (max-width: 475px) {}

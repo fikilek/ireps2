@@ -5,8 +5,8 @@ import { ClaimsContext } from "../../contexts/ClaimsContext";
 
 const Users = () => {
 	const { usersTableFields, users } = useUsers();
+	console.log(`users`, users);
 	const [unps, setUnps] = useState([]);
-	// console.log(`unps`, unps);
 
 	const { customClaims } = useContext(ClaimsContext);
 

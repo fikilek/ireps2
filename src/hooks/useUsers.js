@@ -2,10 +2,10 @@ import { getFunctions, httpsCallable } from "firebase/functions";
 
 import { useEffect, useState } from "react";
 import TableUsersRoles from "../components/tables/TableUsersRoles";
-import { format } from "date-fns";
 import useCollection from "./useCollection";
 import TableSelect from "../components/tables/TableSelect";
 import useAuthContext from "./useAuthContext";
+import TableDate from "../components/tables/TableDate";
 
 export const useUsers = props => {
 	const [users, setUsers] = useState([]);
@@ -14,7 +14,7 @@ export const useUsers = props => {
 	const { user } = useAuthContext();
 
 	const { data } = useCollection("users");
-	// console.log(`data`, data);
+	// console.log(`users`, users);
 
 	const functions = getFunctions();
 
@@ -41,7 +41,7 @@ export const useUsers = props => {
 			// console.log(`newUsers`, newUsers);
 			setUsers(newUsers);
 		});
-	}, [data]);
+	}, [data, user]);
 
 	const usersTableFields = [
 		{
@@ -89,17 +89,18 @@ export const useUsers = props => {
 			headerName: "Date Created",
 			width: 180,
 			cellRenderer: params => {
-				const newDate = new Date(params.data.metadata.creationTime);
-				return <p>{format(newDate, "yyyy-MMM-dd HH:mm")}</p>;
+				// console.log(`params`, params);
+				const newDate = new Date(params.data.metadata?.creationTime);
+				return <TableDate date={newDate} dateFormat={"yyyy-MMM-dd HH:mm"} />;
 			},
 		},
 		{
-			field: "metadata.lastSignInTimee",
+			field: "metadata.lastSignInTime",
 			headerName: "Last Signin",
 			width: 180,
 			cellRenderer: params => {
-				const newDate = new Date(params.data.metadata.lastSignInTime);
-				return <p>{format(newDate, "yyyy-MMM-dd HH:mm")}</p>;
+				const newDate = new Date(params.data.metadata?.lastSignInTime);
+				return <TableDate date={newDate} dateFormat={"yyyy-MMM-dd HH:mm"} />;
 			},
 		},
 		{

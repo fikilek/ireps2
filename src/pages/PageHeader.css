@@ -17,6 +17,7 @@
 }
 
 .page-header .ph-right {
+  display: flex;
   justify-content: flex-end;
 }
 

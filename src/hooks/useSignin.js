@@ -9,27 +9,27 @@ import {
 const initSignin = {
 	error: null,
 	isPending: null,
-	success: null
+	success: null,
 };
 
 const signinReducer = (state, action) => {
 	switch (action.type) {
 		case "IS_PENDING":
-			console.log(`IS_PENDING action: `, action);
+			// console.log(`IS_PENDING action: `, action);
 			return {
 				error: "",
 				isPending: true,
 				success: false,
 			};
 		case "SUCCESS":
-			console.log(`SUCCESS: `, action);
+			// console.log(`SUCCESS: `, action);
 			return {
 				error: "",
 				isPending: false,
 				success: true,
 			};
 		case "ERROR":
-			console.log(`ERROR: `, action);
+			// console.log(`ERROR: `, action);
 			return {
 				error: action.payload,
 				isPending: false,
@@ -47,7 +47,7 @@ export const useSignin = () => {
 	const signin = async userCredentials => {
 		const { email, password } = userCredentials;
 		try {
-			signinDispatch({ type: 'IS_PENDING' }) 
+			signinDispatch({ type: "IS_PENDING" });
 			const result = await signInWithEmailAndPassword(auth, email, password);
 
 			if (!result) {
@@ -66,10 +66,10 @@ export const useSignin = () => {
 					claims: idToken.claims.roles,
 				},
 			});
-			signinDispatch({type: 'SUCCESS'})
+			signinDispatch({ type: "SUCCESS" });
 		} catch (err) {
 			console.log(`Signin Error`, err.message);
-			signinDispatch({type: 'ERROR', payload: err.message})
+			signinDispatch({ type: "ERROR", payload: err.message });
 		}
 	};
 
@@ -77,7 +77,7 @@ export const useSignin = () => {
 		const { email } = userCredentials;
 
 		try {
-			signinDispatch({ type: "IS_PENDING" }); 
+			signinDispatch({ type: "IS_PENDING" });
 			await sendPasswordResetEmail(auth, email);
 			signinDispatch({ type: "SUCCESS" });
 		} catch (err) {

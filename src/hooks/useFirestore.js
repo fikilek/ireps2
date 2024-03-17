@@ -19,10 +19,10 @@ const initData = {
 };
 
 const firestoreReducer = (state, action) => {
-	console.log(`firestoreReducer action`, action);
+	// console.log(`firestoreReducer action`, action);
 	switch (action.type) {
 		case "IS_PENDING":
-			console.log(`IS_PENDING`, action.payload);
+			// console.log(`IS_PENDING`, action.payload);
 			return {
 				document: null,
 				error: null,
@@ -30,7 +30,7 @@ const firestoreReducer = (state, action) => {
 				success: false,
 			};
 		case "ADD_DOCUMENT":
-			console.log(`ADD_DOCUMENT`, action.payload);
+			// console.log(`ADD_DOCUMENT`, action.payload);
 			return {
 				document: action.payload,
 				error: null,
@@ -38,7 +38,7 @@ const firestoreReducer = (state, action) => {
 				success: true,
 			};
 		case "UPDATED_DOCUMENT":
-			console.log(`UPDATED_DOCUMENT`, action.payload);
+			// console.log(`UPDATED_DOCUMENT`, action.payload);
 			return {
 				document: action.payload,
 				error: null,
@@ -70,11 +70,11 @@ export const useFirestore = fbCollection => {
 	// console.log(`response`, response);
 
 	const [isCancelled, setIsCancelled] = useState(false);
-	console.log(`isCancelled`, isCancelled);
+	// console.log(`isCancelled`, isCancelled);
 
 	const dispatchIfNotCancelled = action => {
-		console.log(`action`, action);
-		console.log(`isCancelled`, isCancelled);
+		// console.log(`action`, action);
+		// console.log(`isCancelled`, isCancelled);
 		if (!isCancelled) {
 			dispatch(action);
 		}
@@ -152,11 +152,11 @@ export const useFirestore = fbCollection => {
 	};
 
 	useEffect(() => {
-		console.log(`running cleanup`)
-			setIsCancelled(false);
+		// console.log(`running cleanup`);
+		setIsCancelled(false);
 		return () => {
 			setIsCancelled(true);
-		}
+		};
 	}, []);
 
 	return {

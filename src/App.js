@@ -1,5 +1,4 @@
 import {
-	BrowserRouter,
 	Route,
 	RouterProvider,
 	createBrowserRouter,
@@ -37,6 +36,7 @@ import AuthContextProvider from "./contexts/AuthContextProvider";
 import ClaimsContextProvider from "./contexts/ClaimsContext";
 import NotAuthenticated from "./components/forms/auth/NotAuthenticated";
 import { AreaTreeContextProvider } from "./contexts/AreaTreeContext";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 // Lazy loading
 const AdminLayout = lazy(() => import("./components/layouts/AdminLayout"));
@@ -49,8 +49,6 @@ const AdministrativeAreas = lazy(() =>
 const ServiceProviders = lazy(() =>
 	import("./pages/serviceProviders/ServiceProviders")
 );
-
-
 const UserProfile = lazy(() => import("./pages/user/UserProfile"));
 const Users = lazy(() => import("./pages/users/Users"));
 
@@ -110,7 +108,7 @@ const router = createBrowserRouter(
 				path="admin"
 				element={
 					<Suspense fallback={loader}>
-						<RequireAuth allowedRoles={["manager", "superuser"]}>
+						<RequireAuth allowedRoles={["supervisor", "manager", "superuser"]}>
 							<AdminLayout />
 						</RequireAuth>
 					</Suspense>
@@ -120,7 +118,7 @@ const router = createBrowserRouter(
 					path="users"
 					element={
 						<Suspense fallback={loader}>
-							<RequireAuth>
+							<RequireAuth allowedRoles={["supervisor", "manager", "superuser"]}>
 								<Users />
 							</RequireAuth>
 						</Suspense>
@@ -157,7 +155,7 @@ const router = createBrowserRouter(
 					path="administrativeAreas"
 					element={
 						<Suspense fallback={loader}>
-							<RequireAuth allowedRoles={["manager", "superuser"]}>
+							<RequireAuth allowedRoles={["supervisor","manager", "superuser"]}>
 								<AdministrativeAreas />
 							</RequireAuth>
 						</Suspense>
@@ -167,7 +165,7 @@ const router = createBrowserRouter(
 					path="serviceProviders"
 					element={
 						<Suspense fallback={loader}>
-							<RequireAuth allowedRoles={["manager", "superuser"]}>
+							<RequireAuth allowedRoles={["supervisor", "manager", "superuser"]}>
 								<ServiceProviders />
 							</RequireAuth>
 						</Suspense>
@@ -177,6 +175,7 @@ const router = createBrowserRouter(
 			<Route
 				path="user"
 				element={
+					// TODO: bug: upon signup, the user does not have roles updated until refresh. Roles shoud update immediaetly 
 					<Suspense fallback={loader}>
 						<RequireAuth
 							allowedRoles={[
@@ -187,7 +186,7 @@ const router = createBrowserRouter(
 								"superuser",
 							]}
 						>
-							<UserProfile />
+						<UserProfile />
 						</RequireAuth>
 					</Suspense>
 				}
@@ -204,21 +203,25 @@ const router = createBrowserRouter(
 	)
 );
 
+const queryClient = new QueryClient();
+
 function App() {
 	return (
-		<AreaTreeContextProvider>
-			<ClaimsContextProvider>
-				<AuthContextProvider>
-					<ModalContextProvider>
-						<div className="App">
-							<RouterProvider router={router} />
-							<ToastContainer />
-						</div>
-						<Modal />
-					</ModalContextProvider>
-				</AuthContextProvider>
-			</ClaimsContextProvider>
-		</AreaTreeContextProvider>
+		<QueryClientProvider client={queryClient}>
+			<AreaTreeContextProvider>
+				<ClaimsContextProvider>
+					<AuthContextProvider>
+						<ModalContextProvider>
+							<div className="App">
+								<RouterProvider router={router} />
+								<ToastContainer />
+							</div>
+							<Modal />
+						</ModalContextProvider>
+					</AuthContextProvider>
+				</ClaimsContextProvider>
+			</AreaTreeContextProvider>
+		</QueryClientProvider>
 	);
 }
 

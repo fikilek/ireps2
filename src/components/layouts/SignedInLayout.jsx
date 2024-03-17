@@ -6,10 +6,14 @@ import { NavLink, Outlet } from "react-router-dom";
 const SignedInLayout = () => {
 	const { initials } = useUser();
 	const { user } = useAuthContext();
+	// console.log(`user`, user)
 
 	let authorised = null;
-	if (user) {
-		authorised = (user?.claims["manager"] || user?.claims["superuser"]) && user;
+	if (user.claims) {
+		authorised =
+			(user?.claims["supervisor"] ||
+				user?.claims["manager"] ||
+				user?.claims["superuser"]);
 	}
 
 	return (

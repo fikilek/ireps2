@@ -1,81 +1,113 @@
-import useCollection from "./useCollection";
 import TableSelect from "../components/tables/TableSelect";
 import useAuthContext from "./useAuthContext";
 import TableDate from "../components/tables/TableDate";
 import { Timestamp } from "firebase/firestore";
 import TableModalBtn from "../components/tables/TableModalBtn";
-import TableBtnsGroup from "../components/tables/TableBtnsGroup";
+import { useEffect, useState } from "react";
+import useCollection from "./useCollection";
 
 export const useServiceProviders = () => {
 	const { user } = useAuthContext();
 
+	const [serviceProviders, setServiceProviders] = useState({});
+	// console.log(`serviceProviders`, serviceProviders);
+
+	const { data } = useCollection("serviceProviders");
+	// console.log(`data`, data)
+
+	useEffect(() => {
+		const spOptions = [{ key: "choose", value: "choose" }];
+		data &&
+			data.forEach(sp => {
+				spOptions.push({
+					key: sp.registeredName,
+					value: sp.registeredName,
+					spId: sp.id,
+				});
+			});
+
+		setServiceProviders({
+			sps: data,
+			spOptions,
+		});
+	}, [data]);
+
+	const getSpDetails = spName => {
+		return (
+			serviceProviders.sps &&
+			serviceProviders.sps.find(sp => sp.registeredName === spName)
+		);
+	};
+
+	// Get sp details from given the sp name. Use reguar expresions to look for a matching name on the avaialbe list of service providers
+	const getSpDetailsFromSpName = name => {
+		return (
+			serviceProviders.sps &&
+			serviceProviders.sps.find(sp => {
+				if (!(sp.registeredName && name)) return false;
+				const spStr = sp.registeredName.toLowerCase().trim();
+				// console.log(`spStr`, spStr);
+				const nameStr = name.toLowerCase().trim();
+				// console.log(`nameStr`, nameStr);
+				// user regular expresions to search doe a matching nameStr in spStr
+				const re = new RegExp(nameStr, "gi");
+				return re.test(spStr);
+			})
+		);
+	};
+
+	const getSpClientsFromName = name => {
+		// console.log(`name`, name)
+		if (!name) return;
+		const sp = getSpDetailsFromSpName(name);
+		// console.log(`sp`, sp)
+		if (!sp) return;
+		return getSpClients(sp);
+	};
+
+	const getSpClients = sp => {
+		const { clients } = sp || {};
+		const clnts = [{ key: "choose", value: "choose" }];
+		clients &&
+			clients?.forEach(client => {
+				clnts.push({ key: client.name, value: client.name });
+			});
+		return clnts;
+	};
+
+	const getSpFromId = id => {
+		if (!id) return null;
+		return serviceProviders.sps && serviceProviders.sps.find(sp => sp.id === id);
+	};
+
+	const getSpClientsFromId = id => {
+		console.log(`id`, id);
+		if (!id) return null;
+		return serviceProviders.sps.filter(sp => sp.id.trim() === id.trim()).clients;
+	};
+
 	const newFormData = {
 		disabled: false,
 		metadata: {
-			createdByUser: "Fikile Kentane",
-			createdByUid: user.uid,
-			createdAtDatetime: Timestamp.now(),
+			createdByUser: user?.displayName,
+			createdByUid: user?.uid,
+			createdAtDatetime: Timestamp?.now(),
 		},
-		name: "smars",
+		contactPerson: {
+			surnameAndName: "",
+			cellNo: "",
+		},
+		registeredName: "",
+		tradingName: "",
 		mainOffice: {
-			address: "Ormonde",
-			email: "info@rset.co.za",
-			phone: "011 123 1234",
+			address: "",
+			email: "",
+			phone: "",
 		},
-		clients: [
-			{
-				name: "Lesedi LM",
-				address: "Heidelburg",
-				email: "info@lesedi.gov.za",
-				phone: "011 123 1234",
-			},
-			{
-				name: "Victor Khanye LM",
-				address: "Delmas",
-				email: "info@vk.gov.za",
-				phone: "011 123 1234",
-			},
-			{
-				name: "Nkandla LM",
-				address: "Nkandla",
-				email: "info@nkandla.gov.za",
-				phone: "011 123 1234",
-			},
-			{
-				name: "eDumbe LM",
-				address: "Pail Petersburg",
-				email: "info@edumbe.gov.za",
-				phone: "023 123 3456",
-			},
-		],
-		otherOffices: [
-			{
-				name: "Heidelburg",
-				address: "123 Str, Heidelburg",
-				email: "heidelburg@rste.co.za",
-				phone: "",
-			},
-			{
-				name: "Nkandla",
-				address: "123 Str, Nkandla",
-				email: "heidelburg@rste.co.za",
-				phone: "011 456 8754",
-			},
-		],
-		stores: [
-			{
-				name: "Heidelburg",
-				address: "123 Str",
-				email: "storeshb@rste.co.za",
-				phone: "-11 123 1234",
-			},
-			{
-				name: "Paul Petersburg",
-				address: "123 Str",
-				email: "storespp@rste.co.za",
-				phone: "-11 123 1234",
-			},
-		],
+		clients: [],
+		otherOffices: [],
+		stores: [],
+		users: [],
 	};
 
 	const tableFields = [
@@ -141,6 +173,10 @@ export const useServiceProviders = () => {
 						const newDate = new Date(params.data.metadata.createdAtDatetime.toDate());
 						return <TableDate date={newDate} dateFormat={"yyyy-MMM-dd HH:mm"} />;
 					},
+					valueGetter: params => {
+						// console.log(`params.data.disabled`, params.data.disabled);
+						return params.data.metadata.createdAtDatetime;
+					},
 				},
 			],
 		},
@@ -167,17 +203,29 @@ export const useServiceProviders = () => {
 						const newDate = params.data.metadata.updatedAtDatetime.toDate();
 						return <TableDate date={newDate} dateFormat={"yyyy-MMM-dd HH:mm"} />;
 					},
+					valueGetter: params => {
+						// console.log(`params.data.disabled`, params.data.disabled);
+						return params.data.metadata.updatedAtDatetime;
+					},
 				},
 			],
 		},
 		{
-			field: "name",
-			headerName: "Name",
-			width: 150,
-			cellRenderer: TableModalBtn,
+			field: "registeredName",
+			headerName: "Registered Name",
+			width: 190,
+			cellRenderer: props => {
+				// console.log(`props`, props);
+				return <TableModalBtn props={props}>{props.value}</TableModalBtn>;
+			},
 			cellRendererParams: {
 				modalName: "serviceProvider",
 			},
+		},
+		{
+			field: "tradingName",
+			headerName: "Trading Name",
+			width: 150,
 		},
 		{
 			headerName: "Main Office",
@@ -200,24 +248,96 @@ export const useServiceProviders = () => {
 			],
 		},
 		{
+			field: "fieldworkers",
+			headerName: "Fieldworkers",
+			width: 140,
+			cellRenderer: props => {
+				// console.log(`props`, props);
+				return (
+					<TableModalBtn props={props}>{props.data?.users?.length}</TableModalBtn>
+				);
+			},
+			cellRendererParams: {
+				modalName: "serviceProviderData",
+				infoName: "users",
+			},
+			valueGetter: params => {
+				// console.log(`params.data.disabled`, params.data.disabled);
+				return params;
+			},
+			valueSetter: params => {
+				// console.log(`params.newValue`, params.newValue);
+				return params;
+			},
+		},
+		{
 			field: "clients",
 			headerName: "Clients",
-			width: 150,
-			cellRenderer: TableBtnsGroup,
+			width: 140,
+			cellRenderer: props => {
+				return (
+					<TableModalBtn props={props}>{props.data?.clients?.length}</TableModalBtn>
+				);
+			},
+			cellRendererParams: {
+				modalName: "serviceProviderData",
+				infoName: "clients",
+			},
+			valueGetter: params => {
+				// console.log(`params.data.disabled`, params.data.disabled);
+				return params;
+			},
+			valueSetter: params => {
+				// console.log(`params.newValue`, params.newValue);
+				return params;
+			},
 		},
 		{
 			field: "otherOffices",
 			headerName: "Other Offices",
-			width: 150,
-			cellRenderer: TableBtnsGroup,
+			width: 140,
+			cellRenderer: props => {
+				return (
+					// <TableModalBtn props={props}>{props.data.fws.length}</TableModalBtn>
+					<TableModalBtn props={props}>
+						{props.data?.otherOffices?.length}
+					</TableModalBtn>
+				);
+			},
+			cellRendererParams: {
+				modalName: "serviceProviderData",
+				infoName: "otherOffices",
+			},
+			valueGetter: params => {
+				// console.log(`params.data.disabled`, params.data.disabled);
+				return params;
+			},
+			valueSetter: params => {
+				// console.log(`params.newValue`, params.newValue);
+				return params;
+			},
 		},
-		{
-			field: "stores",
-			headerName: "Stores",
-			width: 150,
-			cellRenderer: TableBtnsGroup,
-		},
+		// {
+		// 	field: "stores",
+		// 	headerName: "Stores",
+		// 	width: 150,
+		// 	cellRenderer: TableSpStoresModalBtn,
+		// 	cellRendererParams: {
+		// 		modalName: "ServiceProviderStores",
+		// infoName: 'stores',
+		// 	},
+		// },
 	];
 
-	return { tableFields, newFormData };
+	return {
+		tableFields,
+		newFormData,
+		serviceProviders,
+		getSpDetails,
+		getSpClients,
+		getSpFromId,
+		getSpClientsFromId,
+		getSpDetailsFromSpName,
+		getSpClientsFromName,
+	};
 };

@@ -1,10 +1,11 @@
 import { getFunctions, httpsCallable } from "firebase/functions";
 import "./TableSelect.css";
 import { toast } from "react-toastify";
-import { useState } from "react";
 
 const TableSelect = props => {
-	console.log(`props`, props);
+	// console.log(`props`, props);
+
+	// TODO: implement access control and allow only managers to alter user state
 
 	const { value, options, onValueChange } = props;
 

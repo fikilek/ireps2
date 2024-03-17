@@ -61,7 +61,6 @@ import za_mp_nkangala_vk_w7 from "../maps/za/za_mp_nkangala_vk_w7.geojson";
 import za_mp_nkangala_vk_w8 from "../maps/za/za_mp_nkangala_vk_w8.geojson";
 import za_mp_nkangala_vk_w9 from "../maps/za/za_mp_nkangala_vk_w9.geojson";
 import { useMapsLibrary } from "@vis.gl/react-google-maps";
-import { useState } from "react";
 
 // import za_gp_sed_lsd_obn_A from "../maps/za/za_gp_sed_lsd_obn_A.geojson";
 // import za_gp_sed_lsd_obn_B from "../maps/za/za_gp_sed_lsd_obn_B.geojson";
@@ -83,7 +82,8 @@ const useIrepsMap = () => {
 		switch (name) {
 			// Country
 			case "South Africa":
-				map?.data?.loadGeoJson(za);
+				// map?.data?.loadGeoJson(za);
+				displayMap(map, za, isSelected);
 				break;
 
 			// Province
@@ -350,19 +350,6 @@ const useIrepsMap = () => {
 			myBounds.extend({ lat: latLng[1], lng: latLng[0] });
 		});
 		map.fitBounds(myBounds);
-
-		// // step 1: get array of the geometries from the geojson file
-		// import za_gp from "../maps/za/za_gp.geojson";
-		// // step 2: create a bounds object that will extend all the geometries of the geojson file
-		// const bounds = map.bound
-		// // step 3: iterate through the za_gp array and get each lat/lng
-		// za_gp.forEah((geometry)=> { ....})
-		// // step 4: on each iteration use lat/lng from the geojson geometries to create LatLng or LatLngLiteral instance
-		// const latLngLiteral = { lat: xxx, lng: yyy }
-		// // step 5: use the LatLng instance to extend the bounds
-		// bounds.extend(LatLng or latLngLiteral instance)
-		// // step 6: when the loop is done. use map fitBounds to tell the mep to extend all bounds on the bounds object
-		// map.fitBounds(LatLngBounds)
 	};
 
 	return { showBoundaries };

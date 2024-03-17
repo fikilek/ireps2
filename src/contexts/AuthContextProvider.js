@@ -36,8 +36,10 @@ const AuthContextProvider = ({ children }) => {
 
 	useEffect(() => {
 		onAuthStateChanged(auth, user => {
+			// console.log(`user`, user);
 			if (auth.currentUser) {
 				auth.currentUser?.getIdTokenResult(true).then(userIdToken => {
+					// console.log(`userIdToken`, userIdToken);
 					dispatch({
 						type: "AUTH_IS_READY",
 						payload: {

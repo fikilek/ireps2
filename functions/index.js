@@ -1,9 +1,43 @@
+const { onDocumentCreated } = require("firebase-functions/v2/firestore");
 const { onCall, HttpsError } = require("firebase-functions/v2/https");
 const { initializeApp } = require("firebase-admin/app");
 const admin = require("firebase-admin");
 const functions = require("firebase-functions/v1");
+const { getFirestore, FieldValue } = require("firebase-admin/firestore");
 
 initializeApp();
+const db = getFirestore();
+
+// Update service provider when a user is created. This is done by adding 'user'
+// credentials(uid, name, email and phone) onto a 'user' array in the 'serviceProvider' document.
+// TODO: take care of the situation where the user migrates from one sp to another or is deleted
+exports.updateServiceProvider = onDocumentCreated(
+	"users/{spId}",
+	async event => {
+		console.log(`event`, event);
+
+		// step X: Get an object representing the document created
+		const snapshot = event.data;
+		if (!snapshot) {
+			console.log("No data associated with the event");
+			return;
+		}
+		const data = snapshot.data();
+		console.log(`data------------------------------`, data);
+
+		// step X: update the 'serviceProvider' document with the user details
+		const spRef = db.collection("serviceProviders").doc(data.spId);
+		await spRef.update({
+			users: FieldValue.arrayUnion({
+				name: data?.name,
+				email: data?.email,
+				phone: data?.phoneNumber,
+				uid: data?.metadata?.createdByUid
+			}),
+		});
+		// console.log(`unionRes`, unionRes);
+	}
+);
 
 exports.addDefaultUserRole = functions.auth.user().onCreate(async user => {
 	let uid = user.uid;

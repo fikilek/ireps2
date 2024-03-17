@@ -6,7 +6,7 @@
 }
 
 .service-provider .form-body .tabs .active {
-  background-color:beige
+  background-color: beige
 }
 
 .service-provider .form-body {
@@ -32,27 +32,39 @@
 
 .service-provider .form-body .tabs .tabs-body {
   margin: 0;
-  max-height: 23rem;
+  max-height: 35rem;
+  min-height: 25rem;
   overflow-y: auto;
 }
 
 .service-provider .form-body .tabs .tabs-body .body-display {
   background-color: beige;
-padding: 2.5rem 0.3rem 0;
+}
+
+.service-provider .form-body .tabs .tabs-body .main.body-display {
+  margin: 1.1rem 0 0;
+}
+
+.service-provider .form-body .tabs .tabs-body .body-display .body-display-header {
+  margin: 0.1rem 0 1.1rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .service-provider .form-body .tabs .tabs-body .row-wrapper {
   position: relative;
-  height: 4.5rem;
+  /* height: 4.5rem; */
 }
 
-.service-provider .form-body .tabs .tabs-body .row-wrapper .row-add-btn {
-  position: absolute;
-  top: 0;
-  left: -0.3rem;
-  z-index: 10;
-  width: 1rem;
+.service-provider .form-body .tabs .tabs-body .row-add-btn,
+.service-provider .form-body .tabs .tabs-body .row-remove-btn {
+  width: 100%;
+  height: 2rem;
+  border-radius: 0.4rem;
+  background-color: rgb(200, 203, 163);
+}
+
+.service-provider .form-body .tabs .tabs-body .row-remove-btn {
   height: 3rem;
-  border-radius: 0.5rem 0 0 0.5rem;
-  background-color: aquamarine;
 }

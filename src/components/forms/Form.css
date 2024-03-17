@@ -22,8 +22,8 @@
   justify-content: center;
 }
 
-.form-container.service-provider{
-  width: 40rem;
+.form-container.service-provider {
+  width: 50rem;
 }
 
 
@@ -56,6 +56,11 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.3rem;
+}
+
+.form-container form .form-row .row-10-45-45 {
+  display: grid;
+  grid-template-columns: 10% 45% 45%;
 }
 
 
@@ -103,7 +108,9 @@
 .form-container form .form-control input:focus~label,
 .form-container form .form-control input:not(:placeholder-shown)~label,
 .form-container form .form-control .react-datepicker-wrapper~label,
-.form-container form .form-control select:not(:placeholder-shown)~label {
+.form-container form .form-control select:not(:placeholder-shown)~label,
+.form-container form .form-control .label-react-select
+ {
   top: -1rem;
   font-size: 1rem;
   left: 0.8rem;
@@ -157,10 +164,30 @@
   gap: 0.3rem;
 }
 
+.form-container form .form-row-hidden {
+  position: absolute;
+  top: -110rem;
+}
+
 @media (max-width: 1200px) {}
 
 @media (max-width: 1024px) {}
 
 @media (max-width: 768px) {}
 
-@media (max-width: 475px) {}
+@media (max-width: 475px) {
+  .form-container.service-provider {
+    width: 20rem;
+  }
+
+
+  .form-container.update-user,
+  .form-container .user-role-update,
+  .form-container.signup {
+    width: 20rem;
+  }
+
+  .form-container form .form-row {
+    grid-template-columns: 1fr;
+  }
+}

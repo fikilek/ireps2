@@ -5,7 +5,7 @@ import PageBody from "../PageBody";
 import { flattenTree } from "react-accessible-treeview";
 import MapAdministrativeAreas from "../../components/maps/MapAdminstrativeAreas";
 
-const tree = {
+export const tree = {
 	name: "",
 	children: [
 		{
@@ -371,7 +371,7 @@ const tree = {
 
 const AdministrativeAreas = () => {
 	const flattenedTree = flattenTree(tree);
-	// console.log(`flattenedTree`, flattenedTree);
+	console.log(`flattenedTree`, flattenedTree);
 
 	return (
 		<div className="administrative-areas">

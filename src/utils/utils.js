@@ -6,10 +6,10 @@ export const capitalizeFirstLetter = string => {
 	return string.charAt(0).toUpperCase() + string.slice(1);
 };
 
-// capitalize first letter of name and surname
+// capitalize first letter of surnamem, name and nickName
 export const capitalizeFirstLetters = obj => {
 	for (const property in obj) {
-		if (property === "surname" || property === "name") {
+		if (property === "surname" || property === "name"|| property === "nickName") {
 			const newStr = capitalizeFirstLetter(obj[property]);
 			obj = {
 				...obj,

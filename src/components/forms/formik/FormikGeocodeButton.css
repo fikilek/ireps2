@@ -1,0 +1,15 @@
+form .ast .ast-row .form-control .geocoding-btn {
+  font-size: 1.2rem;
+  background-color: rgb(255, 77, 0);
+  color: aqua;
+}
+
+form .ast .ast-row .form-control .reverse-geocoding-btn {
+  font-size: 1.2rem;
+  background-color: rgb(0, 255, 17);
+  color: rgb(2, 2, 2);
+}
+
+/* form .meter-gps .form-control input {
+  font-size: 1.2rem;
+} */

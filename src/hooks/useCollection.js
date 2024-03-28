@@ -10,13 +10,15 @@ import {
 
 const useCollection = (fbCollection, _query) => {
 	// console.log(`fbCollection`, fbCollection);
-	
+	// console.log(`_query`, _query);
+
 	const [data, setData] = useState([]);
 	const [error, setError] = useState("");
 	const [isPending, setIsPending] = useState(null);
 	const [success, setSuccess] = useState(null);
 
 	const q = useRef(_query).current;
+	// console.log(`q`,q)
 
 	let colRef = collection(db, fbCollection);
 

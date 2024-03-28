@@ -1,0 +1,20 @@
+.map-zoom-control button {
+  margin: 0 0.2rem;
+  width: 3rem;
+  height: 3rem;
+  font-size: 2rem;
+  box-shadow: 0 1rem 1.25rem 0 rgba(22, 75, 195, 0.50),
+    0 -0.25rem 1.5rem rgb(208, 216, 92) inset,
+    0 0.75rem 0.5rem rgba(255, 255, 255, 0.4) inset,
+    0 0.25rem 0.5rem 0 rgb(181, 158, 187) inset;
+}
+
+
+.map-zoom-control button:hover {
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.map-zoom-control .activeZoom {
+  color: rgb(68, 29, 185);font-weight: 600;
+}

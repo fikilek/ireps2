@@ -1,0 +1,22 @@
+.header-generic {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: var(--hh-3rem);
+  background-color: bisque;
+}
+
+.header-generic .hl,
+.header-generic .hr {
+  display: grid;
+  grid-template-columns: auto;
+  /* justify-content: space-between; */
+  align-items: center;
+}
+
+.header-generic .hf {
+  margin: 0 1rem;
+}
+
+.header-generic button.mah-btn {
+  margin: 0.5rem;
+}

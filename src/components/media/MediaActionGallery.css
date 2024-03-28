@@ -1,0 +1,40 @@
+.media-action-gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 0 ;
+}
+
+.media-action-gallery .mag {
+  background-color: rgb(234, 233, 222);
+
+}
+
+.media-action-gallery form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.media-action-gallery form input,
+.media-action-gallery form .upload-btns
+ {display: flex;
+  justify-content: right;
+  gap: 0.5rem;
+ }
+
+.media-action-gallery .photo-preview {
+height: 26rem;
+}
+
+.media-action-gallery .img-preview {
+  width: 100%;
+  height: 100%;
+}
+
+.media-action-gallery button.mah-btn {
+height: 1.6rem;
+}
+
+

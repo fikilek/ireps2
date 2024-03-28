@@ -1,0 +1,5 @@
+.media-footer {
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+  gap: 0.3rem;
+}

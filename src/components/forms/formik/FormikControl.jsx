@@ -1,8 +1,10 @@
 import FormikCheckboxGroup from "./FormikCheckboxGroup";
 import FormikInput from "./FormikInput";
 import FormikInputPwd from "./FormikInputPwd";
+import FormikMediaButton from "./FormikMediaButton";
 import FormikPhoneNumberInput from "./FormikPhoneNumberInput";
 import FormikReactSelect from "./FormikReactSelect";
+import FormikReverseGeocodeButton from "./FormikReverseGeocodeButton";
 import FormikSelect from "./FormikSelect";
 
 const FormikControl = props => {
@@ -23,6 +25,11 @@ const FormikControl = props => {
 			return <FormikReactSelect {...rest} />;
 		case "checkbox":
 			return <FormikCheckboxGroup {...rest} />;
+		case "mediaButton":
+			return <FormikMediaButton {...rest} />;
+		// Reverse Geocoding Button
+		case "rgcButton": 
+			return <FormikReverseGeocodeButton {...rest} />;
 		default:
 			return null;
 	}

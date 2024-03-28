@@ -8,10 +8,10 @@ import "./App.css";
 
 // import pages
 import Home from "./pages/home/Home";
-import Erfs from "./pages/erfs/Erfs";
-import Trns from "./pages/trns/Trns";
-import Asts from "./pages/asts/Asts";
 
+// import Erfs from "./pages/erfs/Erfs";
+// import Trns from "./pages/trns/Trns";
+// import Asts from "./pages/asts/Asts";
 
 // import tables
 import TableTrnStates from "./components/tables/TableTrnStates";
@@ -37,8 +37,16 @@ import ClaimsContextProvider from "./contexts/ClaimsContext";
 import NotAuthenticated from "./components/forms/auth/NotAuthenticated";
 import { AreaTreeContextProvider } from "./contexts/AreaTreeContext";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { ErfsContextProvider } from "./contexts/ErfsContext";
+// import PhotoAppContextProvider from "./contexts/MediaContext";
+import ReverseGeocodingContextProvider from "./contexts/ReverseGeocodingContext";
+import MediaContextProvider from "./contexts/MediaContext";
 
 // Lazy loading
+const Erfs = lazy(() => import("./pages/erfs/Erfs"));
+const Trns = lazy(() => import("./pages/trns/Trns"));
+const Asts = lazy(() => import("./pages/asts/Asts"));
+
 const AdminLayout = lazy(() => import("./components/layouts/AdminLayout"));
 const SystemTablesLayout = lazy(() =>
 	import("./components/layouts/SystemTablesLayout")
@@ -59,49 +67,55 @@ const router = createBrowserRouter(
 			<Route
 				path="erfs"
 				element={
-					<RequireAuth
-						allowedRoles={[
-							"guest",
-							"fieldworker",
-							"supervisor",
-							"manager",
-							"superuser",
-						]}
-					>
-						<Erfs />
-					</RequireAuth>
+					<Suspense fallback={loader}>
+						<RequireAuth
+							allowedRoles={[
+								"guest",
+								"fieldworker",
+								"supervisor",
+								"manager",
+								"superuser",
+							]}
+						>
+							<Erfs />
+						</RequireAuth>
+					</Suspense>
 				}
 			/>
 			<Route
 				path="trns"
 				element={
-					<RequireAuth
-						allowedRoles={[
-							"guest",
-							"fieldworker",
-							"supervisor",
-							"manager",
-							"superuser",
-						]}
-					>
-						<Trns />
-					</RequireAuth>
+					<Suspense fallback={loader}>
+						<RequireAuth
+							allowedRoles={[
+								"guest",
+								"fieldworker",
+								"supervisor",
+								"manager",
+								"superuser",
+							]}
+						>
+							<Trns />
+						</RequireAuth>
+					</Suspense>
 				}
 			/>
 			<Route
 				path="asts"
 				element={
-					<RequireAuth
-						allowedRoles={[
-							"guest",
-							"fieldworker",
-							"supervisor",
-							"manager",
-							"superuser",
-						]}
-					>
-						<Asts />
-					</RequireAuth>
+					<Suspense fallback={loader}>
+						<RequireAuth
+							allowedRoles={[
+								"guest",
+								"fieldworker",
+								"supervisor",
+								"manager",
+								"superuser",
+							]}
+						>
+							<Asts />
+						</RequireAuth>
+					</Suspense>
 				}
 			/>
 			<Route
@@ -155,7 +169,7 @@ const router = createBrowserRouter(
 					path="administrativeAreas"
 					element={
 						<Suspense fallback={loader}>
-							<RequireAuth allowedRoles={["supervisor","manager", "superuser"]}>
+							<RequireAuth allowedRoles={["supervisor", "manager", "superuser"]}>
 								<AdministrativeAreas />
 							</RequireAuth>
 						</Suspense>
@@ -175,7 +189,7 @@ const router = createBrowserRouter(
 			<Route
 				path="user"
 				element={
-					// TODO: bug: upon signup, the user does not have roles updated until refresh. Roles shoud update immediaetly 
+					// TODO: bug: upon signup, the user does not have roles updated until refresh. Roles shoud update immediaetly
 					<Suspense fallback={loader}>
 						<RequireAuth
 							allowedRoles={[
@@ -186,7 +200,7 @@ const router = createBrowserRouter(
 								"superuser",
 							]}
 						>
-						<UserProfile />
+							<UserProfile />
 						</RequireAuth>
 					</Suspense>
 				}
@@ -207,21 +221,27 @@ const queryClient = new QueryClient();
 
 function App() {
 	return (
-		<QueryClientProvider client={queryClient}>
-			<AreaTreeContextProvider>
-				<ClaimsContextProvider>
-					<AuthContextProvider>
-						<ModalContextProvider>
-							<div className="App">
-								<RouterProvider router={router} />
-								<ToastContainer />
-							</div>
-							<Modal />
-						</ModalContextProvider>
-					</AuthContextProvider>
-				</ClaimsContextProvider>
-			</AreaTreeContextProvider>
-		</QueryClientProvider>
+		<MediaContextProvider>
+			<ReverseGeocodingContextProvider>
+					<ErfsContextProvider>
+						<QueryClientProvider client={queryClient}>
+							<AreaTreeContextProvider>
+								<ClaimsContextProvider>
+									<AuthContextProvider>
+										<ModalContextProvider>
+											<div className="App">
+												<RouterProvider router={router} />
+												<ToastContainer />
+											</div>
+											<Modal />
+										</ModalContextProvider>
+									</AuthContextProvider>
+								</ClaimsContextProvider>
+							</AreaTreeContextProvider>
+						</QueryClientProvider>
+					</ErfsContextProvider>
+			</ReverseGeocodingContextProvider>
+		</MediaContextProvider>
 	);
 }
 

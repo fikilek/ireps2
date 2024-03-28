@@ -1,17 +1,20 @@
-import { useMap, useMapsLibrary } from "@vis.gl/react-google-maps";
-import React, { useContext, useEffect, useMemo, useState } from "react";
+import { useMap } from "@vis.gl/react-google-maps";
+import React, { useContext, useEffect, useMemo } from "react";
 import useIrepsMap from "../../hooks/useIrepsMap";
 import { AreaTreeContext } from "../../contexts/AreaTreeContext";
+import { flattenTree } from "react-accessible-treeview";
+import { tree } from "../../pages/administrativeAreas/AdministrativeAreas";
 
-const MapBoundaries = props => {
-	// console.log(`props`, props);
-	const { tree } = props;
+const MapBoundaries = () => {
+	
+	const flattenedTree = flattenTree(tree);
+	// console.log(`flattenedTree`, flattenedTree);
 
 	// get map object
 	const map = useMap();
 	// console.log(`map`, map);
 
-	const { selected, setSetSelected } = useContext(AreaTreeContext);
+	const { selected } = useContext(AreaTreeContext);
 	// console.log(`selected`, selected);
 
 	const selectedId = selected?.treeState?.tabbableId;
@@ -26,7 +29,10 @@ const MapBoundaries = props => {
 	// const selectedIdsSize = selected?.treeState?.tabbableIds?.values().next().value;
 	// console.log(`selectedIdsSize`, selectedIdsSize);
 
-	const name = useMemo(() => tree[selectedId]?.name, [tree, selectedId]);
+	const name = useMemo(
+		() => flattenedTree[selectedId]?.name,
+		[flattenedTree, selectedId]
+	);
 	// console.log(`name`, name);
 
 	const { showBoundaries } = useIrepsMap();

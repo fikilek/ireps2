@@ -1,0 +1,8 @@
+.media {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 5fr 1fr;
+  height: 80vh;
+  position: relative;
+  gap: 0.3rem;
+}

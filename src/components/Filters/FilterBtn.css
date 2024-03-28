@@ -1,0 +1,10 @@
+.filter-btn {
+  height: 2rem;
+  padding: 0;
+}
+
+.filter-btn button.flt-btn {
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+}

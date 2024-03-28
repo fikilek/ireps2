@@ -94,7 +94,7 @@ export const useFirestore = fbCollection => {
 					updatedByUid: user.uid,
 				},
 			});
-			console.log(`addedDocument`, addedDocument);
+			// console.log(`addedDocument`, addedDocument);
 			dispatchIfNotCancelled({ type: "ADD_DOCUMENT", payload: addedDocument });
 		} catch (err) {
 			dispatchIfNotCancelled({ type: "ERROR", payload: err.message });
@@ -104,7 +104,7 @@ export const useFirestore = fbCollection => {
 	// const deleteDocument = async id => {};
 
 	const updateDocument = async (document, id) => {
-		// console.log(`updateDocument`, document, id);
+		console.log(`updateDocument`, document, id);
 		document = {
 			...document,
 			"metadata.updatedAtDatetime": Timestamp.now(),

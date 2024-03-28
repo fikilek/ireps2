@@ -3,14 +3,17 @@ import "./MapCenterMap.css";
 import { MdCenterFocusStrong } from "react-icons/md";
 import { IconContext } from "react-icons";
 import { useMap } from "@vis.gl/react-google-maps";
+import useGeoLocation from "../../hooks/useGeolocation";
 
 const MapCenterMap = props => {
-	const { userLocation, mapCentered, setMapCentered } = props;
+	const { mapCentered, setMapCentered } = props;
+
+	const { userLocation } = useGeoLocation();
+	// console.log(`userLocation`, userLocation);
 
 	const map = useMap();
 	// map.onChange();
 	useEffect(() => {
-
 		// console.log(`map: ${mapCentered ? "Centered" : "NOT Centered"} `);
 		// console.log(`map`, map);
 		// console.log(`userLocation`, userLocation);

@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import "./PageHeader.css";
 import { AreaTreeContext } from "../contexts/AreaTreeContext";
+import PageTitle from "./PageTitle";
 
 const PageHeader = props => {
 	const { phLl } = props;
@@ -10,7 +11,7 @@ const PageHeader = props => {
 	return (
 		<div className="page-header">
 			<div className="ph ph-left">
-				<p>{phLl}</p>
+				<PageTitle titel={phLl} />
 			</div>
 
 			<div className="ph ph-right">

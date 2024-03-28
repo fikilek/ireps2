@@ -1,0 +1,12 @@
+.form-header .fh-right .fh-rl .fh-btn {
+  background-color: #dae4fa99;
+  color: rgba(0, 0, 0, 0.539);
+  border: 1px solid lightgray;
+  border-radius: 0.6rem;
+  text-align: center;
+  height: 3rem;
+  width: 15rem;
+  font-weight: 500;
+  font-size: 1.5rem;
+  display: inline;
+}

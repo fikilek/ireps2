@@ -1,0 +1,14 @@
+.media-thumbnails {
+  display: flex;
+  gap: 0.3rem;
+  grid-template-rows: 1fr;
+  padding: 0.5rem;
+  align-items: center;
+  background: #fff0df;
+  overflow-x: scroll;
+}
+
+.media-thumbnails img {
+  padding: 0.2rem;
+  outline: 0.1rem solid;
+}

@@ -37,9 +37,14 @@ import za_kzn_uthungulu_nkandla from "../maps/za/za_kzn_uthungulu_nkandla.geojso
 // Wards
 // za_gp_sedidbeng_lesedi
 import za_gp_sedidbeng_lesedi_w1 from "../maps/za/za_gp_sedibeng_lesedi_w1.geojson";
+import za_gp_sedidbeng_lesedi_w1_cadastral from "../maps/za/gp/sedibeng/lesedi/w1/za_gp_sedibeng_lesedi_w1_cadastral.geojson";
+
 import za_gp_sedidbeng_lesedi_w2 from "../maps/za/za_gp_sedibeng_lesedi_w2.geojson";
+
 import za_gp_sedidbeng_lesedi_w3 from "../maps/za/za_gp_sedibeng_lesedi_w3.geojson";
+
 import za_gp_sedidbeng_lesedi_w4 from "../maps/za/za_gp_sedibeng_lesedi_w4.geojson";
+
 import za_gp_sedidbeng_lesedi_w5 from "../maps/za/za_gp_sedibeng_lesedi_w5.geojson";
 import za_gp_sedidbeng_lesedi_w6 from "../maps/za/za_gp_sedibeng_lesedi_w6.geojson";
 import za_gp_sedidbeng_lesedi_w7 from "../maps/za/za_gp_sedibeng_lesedi_w7.geojson";
@@ -52,6 +57,7 @@ import za_gp_sedidbeng_lesedi_w13 from "../maps/za/za_gp_sedibeng_lesedi_w13.geo
 
 // za_mp_nkangala_vk;
 import za_mp_nkangala_vk_w1 from "../maps/za/za_mp_nkangala_vk_w1.geojson";
+import za_mp_nkangala_vk_w1_cadastral from "../maps/za/mp/nkangala/vk/w1/za_mp_nkangala_vk_w1_cadastral.geojson";
 import za_mp_nkangala_vk_w2 from "../maps/za/za_mp_nkangala_vk_w2.geojson";
 import za_mp_nkangala_vk_w3 from "../maps/za/za_mp_nkangala_vk_w3.geojson";
 import za_mp_nkangala_vk_w4 from "../maps/za/za_mp_nkangala_vk_w4.geojson";
@@ -60,7 +66,6 @@ import za_mp_nkangala_vk_w6 from "../maps/za/za_mp_nkangala_vk_w6.geojson";
 import za_mp_nkangala_vk_w7 from "../maps/za/za_mp_nkangala_vk_w7.geojson";
 import za_mp_nkangala_vk_w8 from "../maps/za/za_mp_nkangala_vk_w8.geojson";
 import za_mp_nkangala_vk_w9 from "../maps/za/za_mp_nkangala_vk_w9.geojson";
-import { useMapsLibrary } from "@vis.gl/react-google-maps";
 
 // import za_gp_sed_lsd_obn_A from "../maps/za/za_gp_sed_lsd_obn_A.geojson";
 // import za_gp_sed_lsd_obn_B from "../maps/za/za_gp_sed_lsd_obn_B.geojson";
@@ -69,12 +74,6 @@ import { useMapsLibrary } from "@vis.gl/react-google-maps";
 
 const useIrepsMap = () => {
 	// console.log(`data.features[0]`, data?.features[0]?.geometry?.coordinates);
-
-	const markerLibrary = useMapsLibrary("marker");
-	// console.log(`markerLibrary`, markerLibrary);
-
-	// const { AdvancedMarkerElement } = markerLibrary;
-	// console.log(`AdvancedMarkerElement`, AdvancedMarkerElement);
 
 	const showBoundaries = (name, isSelected, map, maps) => {
 		if (!name) return;
@@ -201,8 +200,13 @@ const useIrepsMap = () => {
 				break;
 
 			case "Lesedi W1":
-				console.log(`Lesedi W1`, za_gp_sedidbeng_lesedi_w1);
-				displayMap(map, za_gp_sedidbeng_lesedi_w1, isSelected);
+				// console.log(`Lesedi W1`, za_gp_sedidbeng_lesedi_w1);
+				displayMap(
+					map,
+					za_gp_sedidbeng_lesedi_w1,
+					isSelected,
+					za_gp_sedidbeng_lesedi_w1_cadastral
+				);
 				break;
 
 			case "Lesedi W2":
@@ -274,7 +278,12 @@ const useIrepsMap = () => {
 				break;
 
 			case "Victor Khanye W1":
-				displayMap(map, za_mp_nkangala_vk_w1, isSelected);
+				displayMap(
+					map,
+					za_mp_nkangala_vk_w1,
+					isSelected,
+					za_mp_nkangala_vk_w1_cadastral
+				);
 				break;
 			case "Victor Khanye W2":
 				displayMap(map, za_mp_nkangala_vk_w2, isSelected);
@@ -339,7 +348,7 @@ const useIrepsMap = () => {
 		// }
 	};
 
-	const displayMap = async (map, boundaryFile, selected) => {
+	const displayMap = async (map, boundaryFile, selected, cadastralFile) => {
 		// console.log(`map`, map);
 
 		selected && map?.data?.loadGeoJson(boundaryFile);
@@ -350,6 +359,13 @@ const useIrepsMap = () => {
 			myBounds.extend({ lat: latLng[1], lng: latLng[0] });
 		});
 		map.fitBounds(myBounds);
+		selected && map?.data?.loadGeoJson(cadastralFile);
+		  map.data.setStyle({
+					fillColor: "green",
+					fillOpacity: 0.1,
+				strokeWeight: 1,
+					title: 'qqqqqq'
+				});
 	};
 
 	return { showBoundaries };

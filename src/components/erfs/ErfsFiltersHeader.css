@@ -1,0 +1,6 @@
+.erfs-filters-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.2rem;
+  height: 2rem;
+}

@@ -15,6 +15,12 @@ import FormUserRoleUpdate from "../forms/auth/FormUserRoleUpdate";
 import { BrowserRouter } from "react-router-dom";
 import FormServiceProvider from "../forms/formServiceProvider/FormServiceProvider";
 import ServiceProviderData from "../irepsInfoWindow/ServiceProviderData";
+import FormErf from "../forms/formErf/FormErf";
+import IwErfOnMap from "../irepsInfoWindow/IwErfOnMap";
+import IwAstsOnErf from "../irepsInfoWindow/IwAstsOnErf";
+import Media from "../media/Media";
+import IrepsInfoWindow from "../irepsInfoWindow/IrepsInfoWindow";
+import IwMedia from "../irepsInfoWindow/IwMedia";
 
 const Modal = () => {
 	const { toOpen, modalOpened } = useContext(ModalContext);
@@ -52,7 +58,6 @@ const Modal = () => {
 								</Suspense>
 							</>
 						)}
-
 						{modalName === "passwordReset" && (
 							<>
 								<Suspense fallback={loader}>
@@ -88,6 +93,7 @@ const Modal = () => {
 								</Suspense>
 							</>
 						)}
+
 						{modalName === "serviceProvider" && (
 							<>
 								<Suspense fallback={loader}>
@@ -99,6 +105,35 @@ const Modal = () => {
 							<>
 								<Suspense fallback={loader}>
 									<ServiceProviderData data={payload} />
+								</Suspense>
+							</>
+						)}
+
+						{modalName === "erf" && (
+							<>
+								<Suspense fallback={loader}>
+									<FormErf data={payload} />
+								</Suspense>
+							</>
+						)}
+						{modalName === "erfOnMap" && (
+							<>
+								<Suspense fallback={loader}>
+									<IwErfOnMap data={payload} />
+								</Suspense>
+							</>
+						)}
+						{modalName === "astsOnErf" && (
+							<>
+								<Suspense fallback={loader}>
+									<IwAstsOnErf data={payload} />
+								</Suspense>
+							</>
+						)}
+						{modalName === "media" && (
+							<>
+								<Suspense fallback={loader}>
+									<IwMedia data={payload} />
 								</Suspense>
 							</>
 						)}

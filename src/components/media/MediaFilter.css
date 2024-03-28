@@ -1,0 +1,25 @@
+.media-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.media-filter .title {
+  background-color: blanchedalmond;
+}
+
+.media-filter .media-filter-btn {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  background-color: blanchedalmond;
+}
+
+.media-filter .media-filter-btn .mfb {
+  border: none;
+  padding: 0.5rem;
+}
+
+.media-filter .media-filter-btn:hover {
+  cursor: pointer;
+}

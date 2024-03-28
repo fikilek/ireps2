@@ -1,0 +1,19 @@
+.media-main-display {
+  background: #fff0df;
+}
+
+.media-main-display .image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+}
+
+.media-main-display .main-display-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}

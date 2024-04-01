@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from "react";
+import { useEffect, useReducer, useRef } from "react";
 
 const initUserGps = {
 	loaded: false,
@@ -29,13 +29,13 @@ const userGpsReducer = (state, action) => {
 
 const options = {
 	enableHighAccuracy: true,
-	// timeout: 10000,
+	timeout: 1000,
 	maximumAge: 0,
 };
 
 const useGeoLocation = () => {
 	const [userLocation, dispatch] = useReducer(userGpsReducer, initUserGps);
-	// console.log(`userLocation`, userLocation);
+	console.log(`userLocation`, userLocation);
 
 	const onSuccess = userPositionGps => {
 		dispatch({
@@ -63,6 +63,7 @@ const useGeoLocation = () => {
 		});
 	};
 
+	
 	useEffect(() => {
 		if (!("geolocation" in navigator)) {
 			onError({
@@ -70,9 +71,13 @@ const useGeoLocation = () => {
 				message: "Geolocation not supported",
 			});
 		}
-		const watchId = navigator.geolocation.watchPosition(onSuccess, onError, options);
+		const watchId = navigator.geolocation.watchPosition(
+			onSuccess,
+			onError,
+			options
+		);
 		return () => navigator.geolocation.clearWatch(watchId);
-	}, []);
+	});
 
 	return { userLocation };
 };

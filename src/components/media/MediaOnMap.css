@@ -5,6 +5,5 @@
 .media-on-map .map-container {
   display: flex;
   justify-content: center;
-  align-items: center;
   height: 96%;
 }

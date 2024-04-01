@@ -25,7 +25,19 @@
  }
 
 .media-action-gallery .photo-preview {
-height: 26rem;
+  height: 26rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3rem;
+}
+
+.media-action-gallery .photo-preview .magpp {
+  padding: 1rem;
+  background-color: antiquewhite;
+}
+
+.media-action-gallery .photo-preview img {
+  object-fit: contain;
 }
 
 .media-action-gallery .img-preview {

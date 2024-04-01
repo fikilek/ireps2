@@ -1,5 +1,5 @@
 import HeaderGeneric from "../header/HeaderGeneric";
-import "./MadiaMainDisplayHeader.css";
+import "./MediaMainDisplayHeader.css";
 
 const MadiaMainDisplayHeader = props => {
 	const { hl1, hl2, hl3, hr1, hr2, hr3 } = props;

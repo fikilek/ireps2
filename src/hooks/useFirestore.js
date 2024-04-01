@@ -5,6 +5,8 @@ import {
 	onSnapshot,
 	collection,
 	addDoc,
+	deleteDoc,
+	// deleteDoc,
 } from "firebase/firestore";
 // import cloneDeep from "lodash.clonedeep";
 import { useEffect, useReducer, useState } from "react";
@@ -52,6 +54,14 @@ const firestoreReducer = (state, action) => {
 				error: action.payload,
 				isPending: false,
 				success: false,
+			};
+		case "DELETED_DOCUMENT":
+			// console.log(`UPDATED_DOCUMENT`, action.payload);
+			return {
+				document: action.payload,
+				error: null,
+				isPending: false,
+				success: true,
 			};
 		default:
 			console.log(
@@ -101,7 +111,23 @@ export const useFirestore = fbCollection => {
 		}
 	};
 
-	// const deleteDocument = async id => {};
+	const deleteDocument = async id => {
+		console.log(`Delete doc`, id);
+
+		dispatch({ type: "IS_PENDING" });
+		const docToDeleteRef = doc(db, fbCollection, id);
+		try {
+			deleteDoc(docToDeleteRef).then(result => {
+				dispatchIfNotCancelled({ type: "DELETED_DOCUMENT", payload: id });
+			});
+		} catch (err) {
+			console.log(`ERROR deleting doc [${id}]: `, err.message);
+			dispatchIfNotCancelled({
+				type: "ERROR",
+				payload: err.message,
+			});
+		}
+	};
 
 	const updateDocument = async (document, id) => {
 		console.log(`updateDocument`, document, id);
@@ -162,7 +188,7 @@ export const useFirestore = fbCollection => {
 	return {
 		response,
 		addDocument,
-		// deleteDocument,
+		deleteDocument,
 		updateDocument,
 		getDocument,
 	};

@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import MapMediaCreationLocation from "../maps/MapMediaCreationLocation";
-import MadiaMainDisplayHeader from "./MadiaMainDisplayHeader";
+import MediaMainDisplayHeader from "./MediaMainDisplayHeader";
 import "./MediaOnMap.css";
 import { MediaContext } from "../../contexts/MediaContext";
 import { irepsDictionary } from "../../utils/utils";
@@ -33,7 +33,7 @@ const MediaOnMap = () => {
 
 	return (
 		<div className="media-on-map">
-			<MadiaMainDisplayHeader
+			<MediaMainDisplayHeader
 				hl1={mediaCat}
 				hl2={""}
 				hl3={""}

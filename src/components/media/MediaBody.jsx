@@ -9,6 +9,7 @@ const MediaBody = () => {
   return (
     <div className='media-body'>
       <MediaMainDisplay />
+      {/* <MediaMainDisplayMobile /> */}
       <MediaOnMap />
     </div>
   )

@@ -1,4 +1,4 @@
-import "./FormBtn.css";
+import "./FormCloseBtn.css";
 import useModal from "../../../hooks/useModal";
 import { useNavigate } from "react-router-dom";
 

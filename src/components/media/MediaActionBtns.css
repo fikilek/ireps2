@@ -1,19 +1,26 @@
 .media-action-btns {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr ;
-  gap: 1rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 0.3rem;
+  border: 0.01rem solid lightblue;
 }
 
-.media-action-btns button.mab {
-  height: 2.6rem;
-  width: 2.5rem;
-  padding: 0;
-  border: none;
-  cursor: pointer;
-  z-index: 100
-}
 
 .media-action-btns .mab svg {
-font-size: 1.5rem;
-z-index: 0;
+  font-size: 1.5rem;
+  z-index: 0;
+}
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 475px) {
+  .media-action-btns {
+    gap: 0.5rem;
+  }
+
+  .media-action-btns:last-child {
+    margin-right: 0.5rem;
+  }
 }

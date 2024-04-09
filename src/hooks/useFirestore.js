@@ -112,7 +112,7 @@ export const useFirestore = fbCollection => {
 	};
 
 	const deleteDocument = async id => {
-		console.log(`Delete doc`, id);
+		// console.log(`Delete doc`, id);
 
 		dispatch({ type: "IS_PENDING" });
 		const docToDeleteRef = doc(db, fbCollection, id);
@@ -130,7 +130,7 @@ export const useFirestore = fbCollection => {
 	};
 
 	const updateDocument = async (document, id) => {
-		console.log(`updateDocument`, document, id);
+		// console.log(`updateDocument`, document, id);
 		document = {
 			...document,
 			"metadata.updatedAtDatetime": Timestamp.now(),

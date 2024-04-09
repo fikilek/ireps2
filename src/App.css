@@ -24,7 +24,8 @@ body {
 
 .hide {
   visibility: hidden;
-  opacity: 0;
+  opacity: 0;position: absolute;
+  left: -100rem;
 }
 
 /* vertical center horizontal space between */

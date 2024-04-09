@@ -3,18 +3,24 @@
   grid-template-columns: 1fr 1fr;
   height: var(--hh-3rem);
   background-color: bisque;
+  height: 2rem;
 }
 
 .header-generic .hl,
 .header-generic .hr {
-  display: grid;
-  grid-template-columns: auto;
-  /* justify-content: space-between; */
+  display: flex;
   align-items: center;
+  gap: 0.3rem;
+}
+
+.header-generic .hr {
+  justify-content:right;
 }
 
 .header-generic .hf {
   margin: 0 1rem;
+  font-size: 0.8rem;
+  font-weight: 500;
 }
 
 .header-generic button.mah-btn {

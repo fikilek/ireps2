@@ -6,14 +6,14 @@ const HeaderGeneric = props => {
 	return (
 		<div className="header-generic">
 			<div className="hl">
-				<div className="hf hl1">{hl1 || ""}</div>
-				<div className="hf hl2">{hl2 || ""}</div>
-				<div className="hf hl3">{hl3 || ""}</div>
+				{hl1 && <div className="hf hl1">{hl1}</div>}
+				{hl2 && <div className="hf hl2">{hl2}</div>}
+				{hl3 && <div className="hf hl3">{hl3}</div>}
 			</div>
 			<div className="hr">
-				<div className="hf hr1">{hr1 || ""}</div>
-				<div className="hf hr2">{hr2 || ""} </div>
-				<div className="hf hr3">{hr3 || ""}</div>
+				{hr1 && <div className="hf hr1">{hr1}</div>}
+				{hr2 && <div className="hf hr2">{hr2} </div>}
+				{hr3 && <div className="hf hr3">{hr3}</div>}
 				{children}
 			</div>
 		</div>

@@ -1,0 +1,23 @@
+.media-action-btn button.mab {
+  height: 2.6rem;
+  width: 2.5rem;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  z-index: 100
+}
+
+.media-action-btn .mab svg {
+  font-size: 1.5rem;
+  z-index: 0;
+}
+
+.media-action-btn .active {
+  background-color: chartreuse;
+}
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 475px) {}

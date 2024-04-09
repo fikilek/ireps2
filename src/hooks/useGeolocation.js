@@ -35,7 +35,7 @@ const options = {
 
 const useGeoLocation = () => {
 	const [userLocation, dispatch] = useReducer(userGpsReducer, initUserGps);
-	console.log(`userLocation`, userLocation);
+	// console.log(`userLocation`, userLocation);
 
 	const onSuccess = userPositionGps => {
 		dispatch({
@@ -77,7 +77,7 @@ const useGeoLocation = () => {
 			options
 		);
 		return () => navigator.geolocation.clearWatch(watchId);
-	});
+	},[]);
 
 	return { userLocation };
 };

@@ -25,7 +25,9 @@ const MediaOnMap = () => {
 			? ""
 			: `${irepsDictionary.get(mediaCatergory)}`;
 
-	const creationGps = `(${mapState?.lat} / ${mapState?.lng})`;
+	const creationGps = `(${mapState?.lat.toFixed(6)} / ${mapState?.lng.toFixed(
+		6
+	)})`;
 	// console.log(`creationGps`, creationGps);
 
 	const createdAtGps =

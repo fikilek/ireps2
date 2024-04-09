@@ -42,7 +42,7 @@ const Media = props => {
 	}, [data]);
 
 	return (
-		<div className="media">
+		<div className="media"> 
 			<MediaBody data={data} />
 			<MediaFooter data={data} />
 			<MediaAction data={data} />

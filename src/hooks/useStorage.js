@@ -122,13 +122,13 @@ const useStorage = props => {
 	};
 
 	const deleteFile = async (fileRef, id) => {
-		console.log(`fileRef`, fileRef);
+		// console.log(`fileRef`, fileRef);
 	// 	console.log(`id`, id);
 
 	// 	// Delete the file
 		deleteObject(fileRef)
 			.then(() => {
-				console.log(`File ${id} deleted successfully`);
+				// console.log(`File ${id} deleted successfully`);
 				setSuccess(true);
 			})
 			.catch(error => {

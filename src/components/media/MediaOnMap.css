@@ -5,5 +5,11 @@
 .media-on-map .map-container {
   display: flex;
   justify-content: center;
-  height: 96%;
+  height: 20rem;
 }
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 475px) {}

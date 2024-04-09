@@ -1,5 +1,6 @@
 import Media from "../media/Media";
 import MediaActionBtns from '../media/MediaActionBtns'
+import MediaMobile from "../media/MediaMobile";
 import IrepsInfoWindow from "./IrepsInfoWindow";
 import "./IwMedia.css";
 

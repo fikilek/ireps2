@@ -7,7 +7,7 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  height: 100%;
+  height: 20rem;
   padding: 1rem;
 }
 
@@ -17,7 +17,7 @@
   align-items: center;
 }
 
-.media-main-display button.mmd-delete-btn {
+.media-body .media-main-display button.mmd-delete-btn {
   position: absolute;
   bottom: 0;
   border: none;
@@ -26,8 +26,14 @@
   border-radius: inherit;
 }
 
-.media-main-display button.mmd-delete-btn:hover {
+.media-body .media-main-display button.mmd-delete-btn:hover {
   cursor: pointer;
   background: rgb(226, 255, 196);
   border-right: 0.3rem solid orange;
 }
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 475px) {}

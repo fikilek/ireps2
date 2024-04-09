@@ -1,0 +1,6 @@
+.map-user-location-on-map .custom-marker {
+  background-color: chartreuse;
+  border-radius: 50%;
+  width: 2rem;
+  height: 3rem;
+}

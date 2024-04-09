@@ -12,12 +12,8 @@ const MapCenterMap = props => {
 	// console.log(`userLocation`, userLocation);
 
 	const map = useMap();
-	// map.onChange();
 	useEffect(() => {
-		// console.log(`map: ${mapCentered ? "Centered" : "NOT Centered"} `);
-		// console.log(`map`, map);
-		// console.log(`userLocation`, userLocation);
-
+		if(!userLocation.loaded) return 
 		if (mapCentered) {
 			map.panTo(userLocation?.coordinates);
 		}

@@ -2,3 +2,9 @@
   /* width: 10rem;
   height: 10rem; */
 }
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 475px) {}

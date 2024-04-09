@@ -1,0 +1,22 @@
+.iw-header-tablet {
+  opacity: 0;
+  position: absolute;
+  left: -100rem;
+}
+
+/* extra large */
+@media (max-width: 1200px) {}
+
+/* desktop */
+@media (max-width: 1024px) {}
+
+/* tablet */
+@media (max-width: 768px) {
+  .iw-header-tablet {
+    opacity: 1;
+    position: static;
+  }
+}
+
+/* cellphone */
+@media (max-width: 475px) {}

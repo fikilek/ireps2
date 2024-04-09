@@ -5,7 +5,7 @@ import { FaCamera } from "react-icons/fa";
 import { FaMicrophone } from "react-icons/fa";
 import { IoIosVideocam } from "react-icons/io";
 import { IoMdPhotos } from "react-icons/io";
-import { IconContext } from "react-icons";
+import MediaActionBtn from "./MediaActionBtn";
 
 const MediaActionBtns = () => {
 	const { mediaData, setMediaData } = useContext(MediaContext);
@@ -21,46 +21,42 @@ const MediaActionBtns = () => {
 
 	return (
 		<div className="media-action-btns">
-			<button
+			<MediaActionBtn
 				id={"camera"}
-				onClick={handleClick}
-				className="mab mab-photos camera"
-				title="take a photo with camera"
-			>
-				<IconContext.Provider value={{ color: "blue", fontSize: "3rem" }}>
-					<FaCamera  />
-				</IconContext.Provider>
-			</button>
-			<button
+				actionClassname={"mab-photos camera"}
+				title={"take a photo with camera"}
+				actionIcon={<FaCamera />}
+				clickHanderFunction={handleClick}
+				color={"blue"}
+				active={mediaData.activeMediaAction === 'camera' ? 'active' : ""}
+			/>
+			<MediaActionBtn
 				id={"voice"}
-				onClick={handleClick}
-				className="mab mab-voice-clips"
-				title="make a voice clip"
-			>
-				<IconContext.Provider value={{ color: "blue", fontSize: "3rem" }}>
-					<FaMicrophone />
-				</IconContext.Provider>
-			</button>
-			<button
+				actionClassname={"mab-voice voice"}
+				title={"make a voice clipa"}
+				actionIcon={<FaMicrophone />}
+				clickHanderFunction={handleClick}
+				color={"blue"}
+				active={mediaData.activeMediaAction === 'voice' ? 'active' : ""}
+			/>
+			<MediaActionBtn
 				id={"video"}
-				onClick={handleClick}
-				className="mab mab-video-clips"
-				title="make a video clip"
-			>
-				<IconContext.Provider value={{ color: "blue", fontSize: "3rem" }}>
-					<IoIosVideocam />
-				</IconContext.Provider>
-			</button>
-			<button
+				actionClassname={"mab-video video"}
+				title={"take a video shot"}
+				actionIcon={<IoIosVideocam />}
+				clickHanderFunction={handleClick}
+				color={"blue"}
+				active={mediaData.activeMediaAction === 'video' ? 'active' : ""}
+			/>
+			<MediaActionBtn
 				id={"gallery"}
-				onClick={handleClick}
-				className="mab mab-gallery"
-				title="take a photo from gallery"
-			>
-				<IconContext.Provider value={{ color: "blue", fontSize: "3rem" }}>
-					<IoMdPhotos />
-				</IconContext.Provider>
-			</button>
+				actionClassname={"mab-gallery gallery"}
+				title={"take images from the gallery"}
+				actionIcon={<IoMdPhotos />}
+				clickHanderFunction={handleClick}
+				color={"blue"}
+				active={mediaData.activeMediaAction === 'gallery' ? 'active' : ""}
+			/>
 		</div>
 	);
 };

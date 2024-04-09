@@ -1,9 +1,12 @@
 import "./IrepsInfoWindow.css";
 import IrepsInfoWindowHeader from "./IrepsInfoWindowHeader";
+import IwHeaderCellphone from "./IwHeaderCellphone";
+import IwHeaderTablet from "./IwHeaderTablet";
 
 const IrepsInfoWindow = props => {
 	// console.log(`props`, props)
 	const { fhl1, fhl2, fhl3, fhr1, fhr2, fhr3 } = props;
+
 	return (
 		<div className="iw-wrapper">
 			<div className="iw-container">
@@ -15,6 +18,25 @@ const IrepsInfoWindow = props => {
 					fhr2={fhr2}
 					fhr3={fhr3}
 				/>
+				
+				{/* <IwHeaderTablet
+					fhl1={fhl1}
+					fhl2={fhl2}
+					fhl3={fhl3}
+					fhr1={fhr1}
+					fhr2={fhr2}
+					fhr3={fhr3}
+				/> */}
+
+				{/* <IwHeaderCellphone
+					fhl1={fhl1}
+					fhl2={fhl2}
+					fhl3={fhl3}
+					fhr1={fhr1}
+					fhr2={fhr2}
+					fhr3={fhr3}
+				/> */}
+
 				{props.children}
 			</div>
 		</div>

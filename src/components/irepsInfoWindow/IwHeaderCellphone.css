@@ -1,0 +1,18 @@
+.iw-header-cellphone {
+  opacity: 0;
+  position: absolute;
+  left: -100rem;
+}
+
+@media (max-width: 1200px) {}
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 475px) {
+  .iw-header-cellphone {
+    opacity: 1;
+    position: static;
+  }
+}

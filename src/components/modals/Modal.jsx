@@ -1,26 +1,25 @@
-import { Suspense, useContext } from "react";
+import { Suspense, lazy, useContext } from "react";
 import "./Modal.css";
-
-import { ModalContext } from "../../contexts/ModalContext";
-
-import Signin from "../forms/auth/FormSignin";
-import Signout from "../forms/auth/FormSignout";
-import Signup from "../forms/auth/FormSignup";
-import UpdateUser from "../forms/auth/FormUpdateUser";
-import EditUserEmail from "../forms/auth/FormEditUserEmail";
-import FormPhoneNoAuth from "../forms/auth/FormPhoneNoAuth";
-import FormPasswordReset from "../forms/auth/FormPasswordReset";
-import { loader } from "../../utils/utils";
-import FormUserRoleUpdate from "../forms/auth/FormUserRoleUpdate";
 import { BrowserRouter } from "react-router-dom";
-import FormServiceProvider from "../forms/formServiceProvider/FormServiceProvider";
-import ServiceProviderData from "../irepsInfoWindow/ServiceProviderData";
-import FormErf from "../forms/formErf/FormErf";
-import IwErfOnMap from "../irepsInfoWindow/IwErfOnMap";
-import IwAstsOnErf from "../irepsInfoWindow/IwAstsOnErf";
-import Media from "../media/Media";
-import IrepsInfoWindow from "../irepsInfoWindow/IrepsInfoWindow";
-import IwMedia from "../irepsInfoWindow/IwMedia";
+import { loader } from "../../utils/utils";
+import { ModalContext } from "../../contexts/ModalContext";
+import MediaMobile from "../media/MediaMobile";
+
+const Signout = lazy(() => import("../forms/auth/FormSignout"));
+const Signup = lazy(() => import("../forms/auth/FormSignup"));
+const UpdateUser = lazy(() => import("../forms/auth/FormUpdateUser"));
+const EditUserEmail = lazy(() => import("../forms/auth/FormEditUserEmail"));
+const FormPhoneNoAuth = lazy(() => import("../forms/auth/FormPhoneNoAuth"));
+const FormPasswordReset = lazy(() => import("../forms/auth/FormPasswordReset"));
+const FormUserRoleUpdate = lazy(() => import("../forms/auth/FormUserRoleUpdate"));
+const FormServiceProvider = lazy(() =>	import("../forms/formServiceProvider/FormServiceProvider"));
+const ServiceProviderData = lazy(() => 	import("../irepsInfoWindow/ServiceProviderData") );
+const FormErf = lazy(() => import("../forms/formErf/FormErf"));
+const IwErfOnMap = lazy(() => import("../irepsInfoWindow/IwErfOnMap"));
+const IwAstsOnErf = lazy(() => import("../irepsInfoWindow/IwAstsOnErf"));
+const Signin = lazy(() => import("../forms/auth/FormSignin"));
+const IwMedia = lazy(() => import("../irepsInfoWindow/IwMedia"));
+
 
 const Modal = () => {
 	const { toOpen, modalOpened } = useContext(ModalContext);
@@ -134,6 +133,13 @@ const Modal = () => {
 							<>
 								<Suspense fallback={loader}>
 									<IwMedia data={payload} />
+								</Suspense>
+							</>
+						)}
+						{modalName === "mediaMobile" && (
+							<>
+								<Suspense fallback={loader}>
+									<MediaMobile data={payload} />
 								</Suspense>
 							</>
 						)}

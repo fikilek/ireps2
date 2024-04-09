@@ -1,8 +1,28 @@
+
+
 .media {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 5fr 1fr;
-  height: 80vh;
+  grid-template-rows: 3fr 1fr;
+  /* 
+  39rem : height of 1w-container
+  0.3rem : margin top
+  0.1 + 0.1 = 0.2 : border
+  0.7 + 0.7 = 1.7 : padding
+  1 = gap
+  */
+  max-height: calc(39rem - 3rem - 0.2rem - 1.4rem - 1rem - 1rem); 
   position: relative;
   gap: 0.3rem;
+}
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 475px) {
+.media{
+  width: 21.5rem;
+}
+
 }

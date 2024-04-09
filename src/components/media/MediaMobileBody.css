@@ -1,0 +1,21 @@
+.media-mobile-body {
+  background-color: aliceblue;
+  position: relative;
+  height: 21rem;
+}
+
+.media-mobile-body .mmb-btns {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 475px) {}

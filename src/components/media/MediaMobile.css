@@ -1,0 +1,23 @@
+.media-mobile {
+  width: 22rem;
+  height: calc(100vh - 3rem);
+  max-height: 32rem;
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 3rem 1fr 7rem;
+  background-color: rgb(206, 249, 235);
+  position: relative;
+  gap: 0.3rem;
+}
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 475px) {
+  .media-mobile {
+    width: 23.3rem;
+  }
+
+}

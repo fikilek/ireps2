@@ -1,0 +1,13 @@
+
+.header-label {
+  padding: 0 0.3rem;
+  border: 0.1rem solid rosybrown;
+  height: 2.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-label .lable-name {
+  font-size: 1.2rem;
+}

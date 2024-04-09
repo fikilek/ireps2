@@ -16,14 +16,14 @@ import useStorage from "../../hooks/useStorage";
 
 const MediaMainDisplay = () => {
 	const { mediaData, setMediaData } = useContext(MediaContext);
-	console.log(`mediaData`, mediaData);
+	// console.log(`mediaData`, mediaData);
 
 	const { deleteDocument, response } = useFirestore("media");
 
 	const { deleteFile, success } = useStorage();
 
 	const selectedMedia = mediaData?.data[mediaData?.displayPosition];
-	console.log(`selectedMedia`, selectedMedia);
+	// console.log(`selectedMedia`, selectedMedia);
 
 	const src = mediaData?.data[mediaData?.displayPosition]?.url;
 	const alt = mediaData?.data?.metadata?.mediaCatergory;
@@ -40,14 +40,14 @@ const MediaMainDisplay = () => {
 	}
 
 	const handleDelete = async e => {
-		console.log(`image to delte [${e.currentTarget.id}]`);
+		// console.log(`image to delte [${e.currentTarget.id}]`);
 		const id = e.currentTarget.id;
 
 		// get image ref from url
 		try {
-			console.log(`storage`, storage);
+			// console.log(`storage`, storage);
 			let imageRef = ref(storage, selectedMedia.url);
-			console.log(`imageRef`, imageRef);
+			// console.log(`imageRef`, imageRef);
 			await deleteFile(imageRef, selectedMedia.id);
 			await deleteDocument(id);
 			setMediaData({
@@ -89,17 +89,19 @@ const MediaMainDisplay = () => {
 				)}
 			</div>
 			{/* mmd - media main display */}
-			<button
-				id={selectedMedia?.id}
-				className="mmd-delete-btn"
-				onClick={handleDelete}
-			>
-				<IconContext.Provider
-					value={{ color: "blue", className: "global-class-name" }}
+			{selectedMedia && (
+				<button
+					id={selectedMedia?.id}
+					className="mmd-delete-btn"
+					onClick={handleDelete}
 				>
-					<MdDeleteOutline />
-				</IconContext.Provider>
-			</button>
+					<IconContext.Provider
+						value={{ color: "blue", className: "global-class-name" }}
+					>
+						<MdDeleteOutline />
+					</IconContext.Provider>
+				</button>
+			)}
 		</div>
 	);
 };

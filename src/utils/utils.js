@@ -1,16 +1,31 @@
 //  functions
 
+import { MdCamera, MdOutlineDeleteForever, MdOutlinePhotoCameraFront, MdOutlineSettingsVoice } from "react-icons/md";
+import { TbCameraSelfie, TbSum } from "react-icons/tb";
 import { ClockLoader } from "react-spinners";
+import { AiOutlinePicture } from "react-icons/ai";
+import { IoPlaySkipForwardOutline, IoVideocamOutline } from "react-icons/io5";
+import { FaCamera, FaMapMarkedAlt, FaPlay } from "react-icons/fa";
+import { BsStopCircle, BsTerminalSplit } from "react-icons/bs";
+import { GiDoorHandle } from "react-icons/gi";
+import { VscDiscard } from "react-icons/vsc";
+import { IoIosRecording } from "react-icons/io";
+import { BiSolidVideoRecording, BiVideoRecording } from "react-icons/bi";
+import { FcPicture } from "react-icons/fc";
 
 export const capitalizeFirstLetter = string => {
-	if(!string) return 
+	if (!string) return;
 	return string.charAt(0).toUpperCase() + string.slice(1);
 };
 
 // capitalize first letter of surnamem, name and nickName
 export const capitalizeFirstLetters = obj => {
 	for (const property in obj) {
-		if (property === "surname" || property === "name"|| property === "nickName") {
+		if (
+			property === "surname" ||
+			property === "name" ||
+			property === "nickName"
+		) {
 			const newStr = capitalizeFirstLetter(obj[property]);
 			obj = {
 				...obj,
@@ -369,3 +384,25 @@ irepsDictionary.set("systt", "System");
 irepsDictionary.set("user-roles", "User Role");
 irepsDictionary.set("tidKctTokens", "Tid Kct Token");
 irepsDictionary.set("erfPhoto", "Erf Photo");
+
+export const irepsIcons = {
+	ICON_TOTAL: <TbSum />,
+	ICON_IMAGE1: <AiOutlinePicture />,
+	ICON_IMAGE2: <FcPicture />,
+	ICON_VOICE_CLIP: <MdOutlineSettingsVoice />,
+	ICON_VIDEO_CLIP: <IoVideocamOutline />,
+	ICON_DELETE: <MdOutlineDeleteForever />,
+	ICON_MAP: <FaMapMarkedAlt />,
+	ICON_SPLIT: <BsTerminalSplit />,
+	ICON_PERMISSION: <GiDoorHandle />,
+	ICON_START_RECORDING: <IoIosRecording />,
+	ICON_STOP: <BsStopCircle />,
+	ICON_DISCARD: <VscDiscard />,
+	ICON_CAMERA_SELFIE: <TbCameraSelfie />,
+	ICON_CAMERA_FRONT: <FaCamera />,
+	ICON_CAMERA_FRONT2: <MdOutlinePhotoCameraFront />,
+	ICON_START_VIDEO_RECORDING: <BiSolidVideoRecording />,
+	ICON_VIDEO_RECORDING1: <BiSolidVideoRecording />,
+	ICON_VIDEO_RECORDING2: <BiVideoRecording />,
+	ICON_CAMERA_SHOOT: <MdCamera />,
+};

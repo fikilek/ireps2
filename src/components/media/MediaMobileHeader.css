@@ -1,0 +1,22 @@
+.media-mobile-header {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  background-color: rgb(200, 230, 255);
+  align-items: center;
+  height: 3rem;
+}
+
+.media-mobile-header .hl,
+.media-mobile-header .hr {
+  display: flex;
+}
+
+.media-mobile-header .hr {
+  justify-content: right;
+}
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 475px) {}

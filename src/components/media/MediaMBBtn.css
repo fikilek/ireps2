@@ -1,0 +1,30 @@
+
+.media-mb-btn {
+
+}
+
+.media-mb-btn .mmb {
+  width: 2.3rem;
+  height: 2.3rem;
+  font-size: 1.5rem;;
+  border-radius: 0.6rem;
+}
+
+.media-mb-btn .mmb:hover {
+  
+  font-size: 1.5rem;
+  border-radius: 0.6rem;
+  border: 0.2rem solid lightsalmon;
+  cursor: pointer;
+}
+
+.media-mb-btn .mmb  svg{
+color: blueviolet;
+}
+
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 475px) {}

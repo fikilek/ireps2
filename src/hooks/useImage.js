@@ -18,7 +18,7 @@ const useImage = () => {
 	}
 
 	function _resizer(img, size) {
-		console.log(`resize used`)
+		// console.log(`resize used`)
 		let x = 0,
 			y = 0,
 			w = 500,
@@ -40,7 +40,7 @@ const useImage = () => {
 	}
 
 	function _cropper(img, size) {
-		console.log(`cropper used`)
+		// console.log(`cropper used`)
 		let x = 0,
 			y = 0,
 			w = size,
@@ -103,8 +103,11 @@ const useImage = () => {
 		ctx.fillText(`Efr No: ${erfNo}`, 10, 250);
 		ctx.fillText(createdAtDatetime, 10, 100);
 		ctx.fillText(createdByUser, 10, 150);
-		ctx.fillText(`(${createdAtLocation?.lat}/${createdAtLocation?.lng})`, 10, 200);
-
+		ctx.fillText(
+			`(${Number(createdAtLocation?.lat).toFixed(6).trim()}/${Number(createdAtLocation?.lng).toFixed(6).trim()})`,
+			10,
+			200
+		);
 		return new Promise(resolve => {
 			canvas.toBlob(blob => {
 				resolve(blob);

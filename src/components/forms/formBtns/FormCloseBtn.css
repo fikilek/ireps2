@@ -1,0 +1,14 @@
+.form-close-btn {
+  padding: 0 0.2rem;
+}
+
+.form-close-btn .btn-close-form {
+  width: 2rem;
+  height: 2.6rem;
+
+  background-color: var(--fb-cl-grey2);
+  color: var(--fb-cl-grey1);
+  border: 0.1rem solid rosybrown;
+  border-radius: var(--fb-br2-0p2);
+  font-size: var(--fb-fs-1p5);
+}

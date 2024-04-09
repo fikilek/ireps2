@@ -53,7 +53,7 @@ export const useErfs = () => {
 			field: "id",
 			headerName: "System Id",
 			width: 200,
-			hide: false,
+			hide: true,
 		},
 		{
 			headerName: "Created",
@@ -63,6 +63,7 @@ export const useErfs = () => {
 					columnGroupShow: "open",
 					headerName: "Created By",
 					width: 130,
+					hide: true,
 				},
 				{
 					field: "metadata.createdAtDatetime",
@@ -77,8 +78,11 @@ export const useErfs = () => {
 						const newDate = timestamp.toDate();
 						return <TableDate date={newDate} dateFormat={"yyyy-MMM-dd HH:mm"} />;
 					},
+					hide: true,
 				},
 			],
+
+			hide: true,
 		},
 		{
 			headerName: "Updated",
@@ -88,6 +92,7 @@ export const useErfs = () => {
 					columnGroupShow: "open",
 					headerName: "Updated By",
 					width: 130,
+					hide: true,
 				},
 				{
 					field: "metadata.createdAtDatetime",
@@ -102,8 +107,11 @@ export const useErfs = () => {
 						const newDate = timestamp.toDate();
 						return <TableDate date={newDate} dateFormat={"yyyy-MMM-dd HH:mm"} />;
 					},
+					hide: true,
 				},
 			],
+
+			hide: true,
 		},
 		// {
 		// 	field: "edit",
@@ -129,6 +137,7 @@ export const useErfs = () => {
 			cellRendererParams: {
 				modalName: "erf",
 			},
+			hide: true,
 			// checkboxSelection: true,
 			// headerCheckboxSelection: true,
 			// headerCheckboxSelectionFilteredOnly: true,
@@ -153,6 +162,7 @@ export const useErfs = () => {
 				const lng = params.data.address.gps.longitude;
 				return `${Number(lat).toFixed(3)} | ${Number(lng).toFixed(3)}`;
 			},
+			hide: true,
 		},
 		{
 			field: "asts.length",
@@ -172,6 +182,7 @@ export const useErfs = () => {
 				modalName: "astsOnErf",
 				width: "4rem",
 			},
+			hide: true,
 			// tooltipComponent: TableTrnsForAstsTooltip,
 		},
 		{
@@ -183,9 +194,9 @@ export const useErfs = () => {
 				return <TableModalBtn props={props}>{props.value}</TableModalBtn>;
 			},
 			cellRendererParams: {
-				modalName: "media",
+				modalName: "mediaMobile",
 				width: "4rem",
-				irepsKeyItem: 'erfs'
+				irepsKeyItem: "erfs",
 			},
 			valueGetter: params => {
 				// console.log(`params`, params);

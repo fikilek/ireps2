@@ -7,30 +7,35 @@ import useStorage from "../../hooks/useStorage";
 import { MediaContext } from "../../contexts/MediaContext";
 import { BsSend } from "react-icons/bs";
 import { ClipLoader } from "react-spinners";
-import { constants } from "../../utils/utils";
+import { constants, irepsIcons } from "../../utils/utils";
 import { toast } from "react-toastify";
 import useImage from "../../hooks/useImage";
 import imagePlaceHolder from "../../images/place_holder1.png";
+import MediaMBBtn from "./MediaMBBtn";
+import WindowCloseBtn from "../irepsInfoWindow/WindowCloseBtn";
 
 const MediaActionGallery = props => {
 	// console.log(`props`, props);
 	const { data } = props;
 
-	const [file, setFile] = useState(null);
+	const imgRef = useRef(null);
+	const resizeRef = useRef(null);
+
+	const [activeWindow, setActiveWindow] = useState("resized");
+	const selectWindow = selected => {
+		setActiveWindow(selected);
+	};
 
 	const [resizedBase64URL, setResizedBase64URL] = useState(null);
-	// console.log(`resizedBase64URL`, resizedBase64URL);
+
+	const [file, setFile] = useState(null);
 
 	const [isPending, setIsPending] = useState(null);
 	// console.log(`isPending`, isPending);
 
 	const [mediaMetadata, setMediaMetadata] = useState({});
-	// console.log(`mediaMetadata`, mediaMetadata);
 
 	const { uploadFile, url, error: storageError } = useStorage(data);
-	// console.log(`progress`, progress);
-	// console.log(`url`, url);
-	// console.log(`storageError`, storageError);
 
 	const { user } = useAuthContext();
 
@@ -39,8 +44,6 @@ const MediaActionGallery = props => {
 	const { mediaData, setMediaData } = useContext(MediaContext);
 
 	const { userLocation } = useGeoLocation();
-
-	const imgRef = useRef(null);
 
 	const handleFile = e => {
 		const file = e.target.files[0];
@@ -63,11 +66,10 @@ const MediaActionGallery = props => {
 			return;
 		}
 
-		// file is now valid, create file reader object so a to read the file stream
 		const reader = new FileReader();
 		reader.onload = e => {
-			imgRef.current.src = e.target.result;
-			setFile(e.target.result);
+			imgRef.current.src = e.target?.result;
+			setFile(e.target?.result);
 		};
 		reader.readAsDataURL(file);
 		setMediaMetadata({
@@ -88,13 +90,6 @@ const MediaActionGallery = props => {
 		});
 	};
 
-	const handleClick = e => {
-		setMediaData({
-			...mediaData,
-			activeMediaAction: null,
-		});
-	};
-
 	useEffect(() => {
 		resizeImg(file, 1200, true, mediaMetadata).then(blob => {
 			// console.log(`blob`, blob);
@@ -103,15 +98,11 @@ const MediaActionGallery = props => {
 					// console.log(`resizedFile`, resizedFile);
 					setResizedBase64URL(resizedFile);
 				});
-			} else {
-				setResizedBase64URL(imagePlaceHolder);
 			}
 		});
-	}, [file]);
+	}, [file, getBase64URL, resizeImg, mediaMetadata]);
 
 	const uploadMedia = e => {
-		console.log(`uploading media`);
-
 		// Check id data is ready for upload.
 		if (!mediaMetadata.createdAtLocation.lat) {
 			toast.error(`Cannot upload without user Gps coordinates.`, {
@@ -127,9 +118,6 @@ const MediaActionGallery = props => {
 		// console.log(`url`, url);
 		if (Boolean(url) || storageError) {
 			setIsPending(false);
-			// remove file - this will remove image from MediaActionGallery window
-			setFile(null);
-			// hide MediaActionGallery window
 			setMediaData({
 				...mediaData,
 				activeMediaAction: null,
@@ -146,17 +134,107 @@ const MediaActionGallery = props => {
 		};
 	}, [url, storageError, mediaData, setMediaData]);
 
+	const closeMediaAction = e => {
+		setMediaData({
+			...mediaData,
+			activeMediaAction: null,
+		});
+	};
+
+	const discardImg = e => {
+		setResizedBase64URL(null);
+		setFile(null);
+		imgRef.current.src = "";
+		imgRef.current.alt = "";
+		resizeRef.current.src = "";
+		resizeRef.current.alt = "";
+	};
+
 	return (
 		<div className="media-action-gallery">
-			<div className="mag mag-form">
-				<form>
-					<input type="file" accept="image/*" onChange={handleFile} />
-					<div className="upload-btns">
-						<div className="form-submit-btn">
+			<div className="mag">
+				<div className="mag-wrapper">
+					<div className="magw">
+						<div
+							className={`magpp original ${
+								activeWindow === "original" ? "show" : "hide"
+							} `}
+						>
+							<p>Original Picture</p>
+							<img
+								className="img-preview"
+								ref={imgRef}
+								width={150}
+								height={150}
+								src={imagePlaceHolder}
+								alt="ireps pic"
+							/>
+						</div>
+						<div
+							className={`magpp resized ${
+								activeWindow === "resized" ? "show" : "hide"
+							}`}
+						>
+							<p>Resized Picture</p>
+							<img
+								ref={resizeRef}
+								className="img-preview"
+								width={150}
+								height={150}
+								src={resizedBase64URL || imagePlaceHolder}
+								alt="resizedBase64URL"
+							/>
+						</div>
+					</div>
+					<div className="mmb-btns">
+						{/* Btn to select original img window */}
+						{file && (
+							<MediaMBBtn
+								selectWindow={discardImg}
+								mmbIcon={irepsIcons.ICON_DISCARD}
+								color={""}
+								label={"discard"}
+								title={"DISCARD Image / Reset"}
+							/>
+						)}
+
+						{file && (
+							<MediaMBBtn
+								selectWindow={selectWindow}
+								mmbIcon={irepsIcons.ICON_IMAGE1}
+								color={""}
+								label={"original"}
+								title={"View Original Image"}
+							/>
+						)}
+
+						{/* Btn to select resized img window */}
+						{resizedBase64URL && (
+							<MediaMBBtn
+								selectWindow={selectWindow}
+								mmbIcon={irepsIcons.ICON_IMAGE2}
+								color={""}
+								label={"resized"}
+								title={"View Resized Image"}
+							/>
+						)}
+					</div>
+				</div>
+			</div>
+			<div className="mag mac-control-bar">
+				<div className="magcb magcb-left">
+					<form>
+						<input type="file" accept="image/*" onChange={handleFile} />
+					</form>
+				</div>
+
+				<div className="magcb magcb-right">
+					{resizedBase64URL && (
+						<>
 							<button
-								disabled={!Boolean(file)}
+								disabled={!Boolean(resizedBase64URL)}
 								// title={title}
-								className="form-btn btn-submit-form"
+								className="mab btn-submit-form"
 								type="button"
 								onClick={uploadMedia}
 							>
@@ -172,35 +250,9 @@ const MediaActionGallery = props => {
 									<BsSend />
 								)}
 							</button>
-						</div>
-						<button type="button" className="mah-btn" onClick={handleClick}>
-							X
-						</button>
-					</div>
-				</form>
-			</div>
-			{/* {file && ( */}
-			<div className="mag photo-preview">
-				<div className="magpp original">
-					<p>Original Picture</p>
-					<img
-						className="img-preview"
-						ref={imgRef}
-						width={150}
-						height={150}
-						src={imagePlaceHolder}
-						alt="ireps pic"
-					/>
-				</div>
-				<div className="magpp resized">
-					<p>Resized Picture (1000px/1000px)</p>
-					<img
-						className="img-preview"
-						width={150}
-						height={150}
-						src={resizedBase64URL}
-						alt="resizedBase64URL"
-					/>
+						</>
+					)}
+					<WindowCloseBtn handleClose={closeMediaAction} />
 				</div>
 			</div>
 		</div>

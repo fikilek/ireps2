@@ -4,6 +4,7 @@ import {
 	deleteObject,
 	getDownloadURL,
 	ref,
+	uploadBytes,
 	uploadString,
 } from "firebase/storage";
 import { useFirestore } from "./useFirestore";
@@ -34,13 +35,20 @@ const useStorage = props => {
 		}
 	}, [response]);
 
-	const uploadFile = async (file, irepsKeyItem, id, imgMetadata) => {
+	const uploadFile = async (file, irepsKeyItem, id, imgMetadata, mediaType) => {
+		// console.log(`mediaType`, mediaType);
 		// console.log(`file`, file);
 		// console.log(`imgMetadata`, imgMetadata);
 		// mediaCatergory - ['erf', 'ast']
 		// imageCatergory - ['erfPhoto', 'astNo','']
 		// timestamp - "yyyy-MMM-dd_HH:mm:ss"
 		// id = ['erfId', 'astsId']
+		// id = ['erfId', 'astsId']
+		if (!(mediaType === "image" || mediaType === "video" || mediaType === "audio")) {
+			console.log(`Not a valid media type`, mediaType)
+			return;
+		} 
+			
 
 		let filePath = null;
 		if (irepsKeyItem === "erfs") {
@@ -67,8 +75,16 @@ const useStorage = props => {
 		// Upload file and metadata to the object 'images/mountains.jpg'
 		const storageRef = ref(storage, fileStorageRef);
 
-		const snapshot = await uploadString(storageRef, file, "data_url", metadata);
-		// console.log("Uploaded a data_url string!", snapshot);
+		// console.log(`Uploading a : ${mediaType} !`, file);
+		let snapshot;
+		if (mediaType === "video" || mediaType === "audio") {
+			snapshot = await uploadBytes(storageRef, file, metadata);
+		}
+
+		if (mediaType === "image") {
+			snapshot = await uploadString(storageRef, file, "data_url", metadata);
+		}
+
 
 		const downloadURL = await getDownloadURL(snapshot.ref);
 		// console.log("File available at", downloadURL);

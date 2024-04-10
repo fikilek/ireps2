@@ -137,7 +137,7 @@ export const useErfs = () => {
 			cellRendererParams: {
 				modalName: "erf",
 			},
-			hide: true,
+			hide: false,
 			// checkboxSelection: true,
 			// headerCheckboxSelection: true,
 			// headerCheckboxSelectionFilteredOnly: true,

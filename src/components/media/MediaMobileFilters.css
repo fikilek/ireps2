@@ -1,11 +1,12 @@
 
 
 
+
 .media-mobile-filters {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin: 0.2rem;
+  padding: 0.3rem;
 }
 
 @media (max-width: 1024px) {}

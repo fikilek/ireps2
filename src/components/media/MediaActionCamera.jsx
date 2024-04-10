@@ -115,7 +115,7 @@ const MediaActionCamera = props => {
 
 	const uploadMedia = e => {
 		// Check id data is ready for upload.
-		console.log(`uploading camera`, e);
+		// console.log(`uploading camera`, e);
 
 		if (!mediaMetadata.createdAtLocation.lat) {
 			toast.error(`Cannot upload without user Gps coordinates.`, {
@@ -124,7 +124,7 @@ const MediaActionCamera = props => {
 			return null;
 		}
 		setIsPending(true);
-		uploadFile(resizedBase64URL, data.irepsKeyItem, data.id, mediaMetadata);
+		uploadFile(resizedBase64URL, data.irepsKeyItem, data.id, mediaMetadata, 'image');
 	};
 
 	useEffect(() => {

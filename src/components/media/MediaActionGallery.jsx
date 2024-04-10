@@ -111,7 +111,7 @@ const MediaActionGallery = props => {
 			return null;
 		}
 		setIsPending(true);
-		uploadFile(resizedBase64URL, data.irepsKeyItem, data.id, mediaMetadata);
+		uploadFile(resizedBase64URL, data.irepsKeyItem, data.id, mediaMetadata, 'image');
 	};
 
 	useEffect(() => {

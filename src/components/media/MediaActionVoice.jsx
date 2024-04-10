@@ -63,7 +63,7 @@ const MediaActionVoice = props => {
 			return null;
 		}
 		setIsPending(true);
-		uploadFile(audio, data.irepsKeyItem, data.id, mediaMetadata);
+		uploadFile(audio, data.irepsKeyItem, data.id, mediaMetadata, 'audio');
 	};
 
 	useEffect(() => {

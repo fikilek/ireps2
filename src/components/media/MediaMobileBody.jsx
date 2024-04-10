@@ -16,7 +16,7 @@ const MediaMobileBody = () => {
 	// console.log(`mediaData`, mediaData);
 
 	const [activeWindow, setActiveWindow] = useState("image");
-	console.log(`activeWindow`, activeWindow);
+	// console.log(`activeWindow`, activeWindow);
 
 	const selectWindow = selected => {
 		setActiveWindow(selected);

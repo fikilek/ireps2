@@ -64,7 +64,7 @@ const MediaActionVideo = props => {
 
 	const uploadMedia = e => {
 		// Check id data is ready for upload.
-		// console.log(`uploading video`, e);
+		console.log(`uploading video`, e);
 
 		if (!mediaMetadata.createdAtLocation.lat) {
 			toast.error(`Cannot upload without user Gps coordinates.`, {
@@ -73,7 +73,7 @@ const MediaActionVideo = props => {
 			return null;
 		}
 		setIsPending(true);
-		uploadFile(video, data.irepsKeyItem, data.id, mediaMetadata);
+		uploadFile(video, data.irepsKeyItem, data.id, mediaMetadata, 'video');
 	};
 
 	useEffect(() => {

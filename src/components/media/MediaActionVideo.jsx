@@ -18,6 +18,8 @@ const videoConstraints = {
 	facingMode: "user",
 };
 
+const mimeType = "video/webm";
+
 const MediaActionVideo = props => {
 	// console.log(`props`, props);
 	const { data } = props;
@@ -35,6 +37,9 @@ const MediaActionVideo = props => {
 
 	const [video, setVideo] = useState(null);
 	// console.log(`video`, video);
+
+	const [videoBlob, setVideoBlob] = useState(null);
+	// console.log(`videoBlob`, videoBlob);
 
 	const { uploadFile, url, error: storageError } = useStorage(data);
 
@@ -64,7 +69,9 @@ const MediaActionVideo = props => {
 
 	const uploadMedia = e => {
 		// Check id data is ready for upload.
-		console.log(`uploading video`, e);
+		// console.log(`uploading video e: `, e);
+		// console.log(`uploading video : `, video);
+		// console.log(`uploading recordedChunks : `, recordedChunks);
 
 		if (!mediaMetadata.createdAtLocation.lat) {
 			toast.error(`Cannot upload without user Gps coordinates.`, {
@@ -73,7 +80,7 @@ const MediaActionVideo = props => {
 			return null;
 		}
 		setIsPending(true);
-		uploadFile(video, data.irepsKeyItem, data.id, mediaMetadata, 'video');
+		uploadFile(videoBlob, data.irepsKeyItem, data.id, mediaMetadata, "video");
 	};
 
 	useEffect(() => {
@@ -125,8 +132,8 @@ const MediaActionVideo = props => {
 
 	const handleStartCaptureClick = useCallback(() => {
 		setRecording(true);
-		mediaRecorderRef.current = new MediaRecorder(webcamRef.current.stream, {
-			mimeType: "video/webm",
+		mediaRecorderRef.current = new MediaRecorder(webcamRef?.current?.stream, {
+			mimeType: mimeType,
 		});
 		mediaRecorderRef.current.addEventListener(
 			"dataavailable",
@@ -136,16 +143,16 @@ const MediaActionVideo = props => {
 	}, [webcamRef, setRecording, mediaRecorderRef, handleDataAvailable]);
 
 	const handleStopCaptureClick = useCallback(() => {
-		mediaRecorderRef.current.stop();
+		mediaRecorderRef?.current?.stop();
 		setRecording(false);
 		setMediaMetadata({
 			erfId: data.id,
 			erfNo: data.erfNo,
 			// contentType: file?.type,
 			// TODO: revisit - mediaType should not be hardcoded
-			mediaType: "video/webm",
+			mediaType: mimeType,
 			// TODO: revisit - mediaCategory should not be hardcoded
-			mediaCategory: "erfPhoto", // eg meter no photo, meter serail no photo , etc
+			mediaCategory: "erfVideo", // eg meter no photo, meter serail no photo , etc
 			createdByUser: user.displayName,
 			createdByUserId: user.uid,
 			createdAtDatetime: format(new Date(), constants.dateFormat2),
@@ -172,6 +179,7 @@ const MediaActionVideo = props => {
 			});
 			const url = URL.createObjectURL(blob);
 			setVideo(url);
+			setVideoBlob(blob);
 		}
 	}, [recordedChunks]);
 
@@ -179,7 +187,7 @@ const MediaActionVideo = props => {
 		<div className="media-action-camera">
 			{video ? (
 				<div className="macpp ">
-					<video controls src={video}></video>
+					<video controls src={video} autoplay></video>
 				</div>
 			) : (
 				<div className="macpp original">
@@ -190,7 +198,8 @@ const MediaActionVideo = props => {
 						ref={webcamRef}
 						videoConstraints={vc}
 						screenshotFormat="image/jpeg"
-						audio={false}
+						video={true}
+						audio={true}
 					/>
 				</div>
 			)}

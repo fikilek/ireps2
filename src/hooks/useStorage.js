@@ -70,21 +70,23 @@ const useStorage = props => {
 				lat: imgMetadata.createdAtLocation.lat,
 				lng: imgMetadata.createdAtLocation.lng,
 			},
+			contentType: imgMetadata.mediaType,
+			type: imgMetadata.mediaType,
 		};
 
 		// Upload file and metadata to the object 'images/mountains.jpg'
 		const storageRef = ref(storage, fileStorageRef);
 
-		// console.log(`Uploading a : ${mediaType} !`, file);
 		let snapshot;
-		if (mediaType === "video" || mediaType === "audio") {
+		if (mediaType === "audio" || mediaType === "video") {
 			snapshot = await uploadBytes(storageRef, file, metadata);
+
 		}
 
-		if (mediaType === "image") {
+		if (mediaType === "image" ) {
 			snapshot = await uploadString(storageRef, file, "data_url", metadata);
 		}
-
+		// console.log(`snapshot`, snapshot)
 
 		const downloadURL = await getDownloadURL(snapshot.ref);
 		// console.log("File available at", downloadURL);

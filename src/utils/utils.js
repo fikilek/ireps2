@@ -3,9 +3,9 @@
 import { MdCamera, MdOutlineDeleteForever, MdOutlinePhotoCameraFront, MdOutlineSettingsVoice } from "react-icons/md";
 import { TbCameraSelfie, TbSum } from "react-icons/tb";
 import { ClockLoader } from "react-spinners";
-import { AiOutlinePicture } from "react-icons/ai";
+import { AiOutlineAudio, AiOutlinePicture } from "react-icons/ai";
 import { IoPlaySkipForwardOutline, IoVideocamOutline } from "react-icons/io5";
-import { FaCamera, FaMapMarkedAlt, FaPlay } from "react-icons/fa";
+import { FaCamera, FaMapMarkedAlt, FaPlay, FaRegFileVideo } from "react-icons/fa";
 import { BsStopCircle, BsTerminalSplit } from "react-icons/bs";
 import { GiDoorHandle } from "react-icons/gi";
 import { VscDiscard } from "react-icons/vsc";
@@ -384,6 +384,8 @@ irepsDictionary.set("systt", "System");
 irepsDictionary.set("user-roles", "User Role");
 irepsDictionary.set("tidKctTokens", "Tid Kct Token");
 irepsDictionary.set("erfPhoto", "Erf Photo");
+irepsDictionary.set("erfVideo", "Erf Video");
+irepsDictionary.set("erfAudio", "Erf Audio");
 
 export const irepsIcons = {
 	ICON_TOTAL: <TbSum />,
@@ -404,5 +406,7 @@ export const irepsIcons = {
 	ICON_START_VIDEO_RECORDING: <BiSolidVideoRecording />,
 	ICON_VIDEO_RECORDING1: <BiSolidVideoRecording />,
 	ICON_VIDEO_RECORDING2: <BiVideoRecording />,
+	ICON_VIDEO_PLAYBACK1: <FaRegFileVideo />,
 	ICON_CAMERA_SHOOT: <MdCamera />,
+	ICON_AUDIO_PLAYBACK1: <AiOutlineAudio />,
 };

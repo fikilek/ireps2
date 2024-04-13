@@ -69,7 +69,7 @@ const MediaActionCamera = props => {
 				erfNo: data.erfNo,
 				// contentType: file?.type,
 				// TODO: revisit - mediaType should not be hardcoded
-				mediaType: "photo",
+				mediaType: "image/jpeg",
 				// TODO: revisit - mediaCategory should not be hardcoded
 				mediaCategory: "erfPhoto", // eg meter no photo, meter serail no photo , etc
 				createdByUser: user.displayName,
@@ -107,9 +107,6 @@ const MediaActionCamera = props => {
 					setResizedBase64URL(resizedFile);
 				});
 			}
-			// else {
-			// 	setResizedBase64URL(imagePlaceHolder);
-			// }
 		});
 	}, [imgFile, mediaData, getBase64URL, mediaMetadata, resizeImg]);
 

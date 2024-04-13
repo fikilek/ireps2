@@ -77,7 +77,7 @@ const MediaActionGallery = props => {
 			erfNo: data.erfNo,
 			contentType: file?.type,
 			// TODO: revisit - mediaType should not be hardcoded
-			mediaType: "photo",
+			mediaType: file?.type,
 			// TODO: revisit - mediaCategory should not be hardcoded
 			mediaCategory: "erfPhoto", // eg meter no photo, meter serail no photo , etc
 			createdByUser: user.displayName,

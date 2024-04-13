@@ -35,14 +35,13 @@ const MediaActionVoice = props => {
 	const [audio, setAudio] = useState(null);
 	// console.log(`audio`, audio);
 
+	const [audioBlob, setAudioBlob] = useState(null);
+	// console.log(`audioBlob`, audioBlob);
+
 	const [isPending, setIsPending] = useState(null);
 	// console.log(`isPending`, isPending);
 
 	const { uploadFile, url, error: storageError } = useStorage(data);
-
-	// const [file, setFile] = useState(null);
-	const [imgFile, setImgFile] = useState(null);
-	// console.log(`imgFile`, imgFile);
 
 	const [mediaMetadata, setMediaMetadata] = useState({});
 	// console.log(`mediaMetadata`, mediaMetadata);
@@ -63,15 +62,13 @@ const MediaActionVoice = props => {
 			return null;
 		}
 		setIsPending(true);
-		uploadFile(audio, data.irepsKeyItem, data.id, mediaMetadata, 'audio');
+		uploadFile(audioBlob, data.irepsKeyItem, data.id, mediaMetadata, "audio");
 	};
 
 	useEffect(() => {
 		// console.log(`url`, url);
 		if (Boolean(url) || storageError) {
 			setIsPending(false);
-			// remove file - this will remove image from MediaActionVoice window
-			setImgFile(null);
 			// hide MediaActionVoice window
 			setMediaData({
 				...mediaData,
@@ -91,8 +88,9 @@ const MediaActionVoice = props => {
 
 	const discard = e => {
 		console.log(`discard`);
-		setImgFile("");
-		setAudio("");
+		setAudio(null);
+		setAudioBlob(null);
+		setAudioChunks(null);
 	};
 
 	const closeMediaAction = e => {
@@ -119,40 +117,10 @@ const MediaActionVoice = props => {
 		}
 	};
 
-	const stopRecording = () => {
-		setRecordingStatus("inactive");
-		//stops the recording instance
-		mediaRecorder.current.stop();
-		mediaRecorder.current.onstop = () => {
-			//creates a blob file from the audiochunks data
-			const audioBlob = new Blob(audioChunks, { type: mimeType });
-			//creates a playable URL from the blob file.
-			const audioUrl = URL.createObjectURL(audioBlob);
-			setAudio(audioUrl);
-			setAudioChunks([]);
-			setMediaMetadata({
-				erfId: data.id,
-				erfNo: data.erfNo,
-				// contentType: file?.type,
-				// TODO: revisit - mediaType should not be hardcoded
-				mediaType: "photo",
-				// TODO: revisit - mediaCategory should not be hardcoded
-				mediaCategory: "erfPhoto", // eg meter no photo, meter serail no photo , etc
-				createdByUser: user.displayName,
-				createdByUserId: user.uid,
-				createdAtDatetime: format(new Date(), constants.dateFormat2),
-				createdAtLocation: {
-					lat: userLocation?.coordinates?.lat,
-					lng: userLocation?.coordinates?.lng,
-				},
-			});
-		};
-	};
-
 	const startRecording = async () => {
 		setRecordingStatus("recording");
 		//create new Media recorder instance using the stream
-		const media = new MediaRecorder(stream, { type: mimeType });
+		const media = new MediaRecorder(stream, { type: "mime/mp4" });
 		//set the MediaRecorder instance to the mediaRecorder ref
 		mediaRecorder.current = media;
 		//invokes the start method to start the recording process
@@ -164,6 +132,39 @@ const MediaActionVoice = props => {
 			localAudioChunks.push(event.data);
 		};
 		setAudioChunks(localAudioChunks);
+	};
+
+	const stopRecording = () => {
+		// console.log(`stop audio recording`);
+		setRecordingStatus("inactive");
+		//stops the recording instance
+		mediaRecorder.current.stop();
+		mediaRecorder.current.onstop = () => {
+			// console.log(`stop audio recording  callback - audioChunks :`, audioChunks);
+			//creates a blob file from the audiochunks data
+			const audioBlob = new Blob(audioChunks, { type: mimeType });
+			//creates a playable URL from the blob file.
+			const audioUrl = URL.createObjectURL(audioBlob);
+			setAudio(audioUrl);
+			setAudioBlob(audioBlob);
+			// setAudioChunks([]);
+			setMediaMetadata({
+				erfId: data.id,
+				erfNo: data.erfNo,
+				// contentType: file?.type,
+				// TODO: revisit - mediaType should not be hardcoded
+				mediaType: mimeType,
+				// TODO: revisit - mediaCategory should not be hardcoded
+				mediaCategory: "erfAudio", // eg meter no photo, meter serail no photo , etc
+				createdByUser: user.displayName,
+				createdByUserId: user.uid,
+				createdAtDatetime: format(new Date(), constants.dateFormat2),
+				createdAtLocation: {
+					lat: userLocation?.coordinates?.lat,
+					lng: userLocation?.coordinates?.lng,
+				},
+			});
+		};
 	};
 
 	return (
@@ -220,7 +221,7 @@ const MediaActionVoice = props => {
 						/>
 					)}
 					{/* Btn to start voice recording */}
-					{!audio && permission  && (
+					{!audio && permission && (
 						<MediaActionBtn
 							id={""}
 							actionClassname={""}
@@ -241,17 +242,6 @@ const MediaActionVoice = props => {
 							color={"blue"}
 						/>
 					)}
-					{/* Btn to playback voice recording */}
-					{/* {audio && (
-						<MediaActionBtn
-							id={""}
-							actionClassname={""}
-							title={"click to playback vocie recording"}
-							clickHanderFunction={playVoiceRecoding}
-							actionIcon={<MdCamera />}
-							color={"blue"}
-						/>
-					)} */}
 				</div>
 
 				<div className="maccb maccb-right">

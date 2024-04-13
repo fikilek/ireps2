@@ -4,7 +4,7 @@ import "./MapErfsMarkers.css";
 
 const MapErfsMarkers = () => {
 	const { erfs } = useErfs();
-	console.log(`erfs`, erfs);
+	// console.log(`erfs`, erfs);
 	return (
 		<div className="map-erfs-markers">
 			{erfs &&

@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { irepsIcons } from "../../utils/utils";
 import "./MediaMobileBody.css";
 import MediaMBBtn from "./MediaMBBtn";
-import MediaMBImg from "./MediaMBImg";
+import MediaMBMedia from "./MediaMBMedia";
 import MediaMBMap from "./MediaMBMap";
 import { useFirestore } from "../../hooks/useFirestore";
 import useStorage from "../../hooks/useStorage";
@@ -34,8 +34,8 @@ const MediaMobileBody = () => {
 
 	// Delete file - step 3
 	const handleDelete = async e => {
-		console.log(`e`, e);
-		console.log(`image to delete [${e}]`);
+		// console.log(`e`, e);
+		// console.log(`image to delete [${e}]`);
 		const id = e;
 
 		// get image ref from url
@@ -73,11 +73,11 @@ const MediaMobileBody = () => {
 	return (
 		<div className="media-mobile-body">
 			<div className="mmb-main">
-				{activeWindow === "image" && <MediaMBImg />}
+				{activeWindow === "image" && <MediaMBMedia />}
 				{activeWindow === "map" && <MediaMBMap />}
 			</div>
 			<div className="mmb-btns">
-				{selectedMedia && (activeWindow !== 'map') && (
+				{selectedMedia && activeWindow !== "map" && (
 					<MediaMBBtn
 						id={selectedMedia?.id}
 						selectWindow={handleDelete}

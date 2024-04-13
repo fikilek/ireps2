@@ -15,6 +15,10 @@
   height: auto;
 }
 
+.media-thumbnails .m-btn svg {
+font-size: 4rem;
+}
+
 @media (max-width: 1024px) {}
 
 @media (max-width: 768px) {}

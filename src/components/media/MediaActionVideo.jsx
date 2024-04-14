@@ -198,8 +198,8 @@ const MediaActionVideo = props => {
 						ref={webcamRef}
 						videoConstraints={vc}
 						screenshotFormat="image/jpeg"
-						video={true}
-						audio={true}
+						video={'true'}
+						audio={'true'}
 					/>
 				</div>
 			)}

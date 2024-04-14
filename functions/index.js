@@ -3,7 +3,12 @@ const { onCall, HttpsError } = require("firebase-functions/v2/https");
 const { initializeApp } = require("firebase-admin/app");
 const admin = require("firebase-admin");
 const functions = require("firebase-functions/v1");
-const { getFirestore, FieldValue } = require("firebase-admin/firestore");
+const {
+	getFirestore,
+	FieldValue,
+	updateDoc,
+	arrayUnion,
+} = require("firebase-admin/firestore");
 
 initializeApp();
 const db = getFirestore();
@@ -32,7 +37,7 @@ exports.updateServiceProvider = onDocumentCreated(
 				name: data?.name,
 				email: data?.email,
 				phone: data?.phoneNumber,
-				uid: data?.metadata?.createdByUid
+				uid: data?.metadata?.createdByUid,
 			}),
 		});
 		// console.log(`unionRes`, unionRes);
@@ -217,4 +222,57 @@ exports.updateUserRole = onCall(async request => {
 			console.log("Error updating custom claim:", err);
 			return `${err.message}`;
 		});
+});
+
+// When a media (image, audio or video) is created and uploaded into storage, an assosciated document
+// is also created on 'media collection. The creation of a media document is then suppose to trigger a
+// function that will update an assosciated madia property of the erf document.
+exports.erfMedia = onDocumentCreated("media/{mediaId}", async event => {
+	// console.log(`event-------------------------`, event);
+	// console.log(`event.data-------------------------`, event.data);
+	// console.log(
+	// 	`event.params.mediaId-------------------------`,
+	// 	event.params.mediaId
+	// );
+
+	// step : Get an object representing the document created
+	const mediaDocSnapshot = event.data;
+	// console.log(
+	// 	`mediaDocSnapshot------------------------------`,
+	// 	mediaDocSnapshot
+	// );
+
+	if (!mediaDocSnapshot) {
+		console.log("mediaDocSnapshot  ****** No data associated with the event");
+		return;
+	}
+
+	// step : Extract data from the mediaDocSnapshot
+	const data = mediaDocSnapshot.data();
+	// console.log(`data------------------------------`, data);
+
+	// step : Extract the erf id from the data
+	const { erfId } = data.metadata;
+	// console.log(`erfId------------------------------`, erfId);
+
+	// step : get reference object to the erf using the erfId
+	const erfRef = db.collection("erfs").doc(erfId);
+
+	// step : create the media object to update the erf media
+	const erfMedia = {
+		mediaId: event.params.mediaId,
+		mediaCategory: data.metadata.mediaCategory,
+		createdAtDatetime: data?.metadata.createdAtDatetime,
+		createdByUser: data?.metadata.createdByUser,
+		ErfNo: data?.metadata.erfNo,
+		url: data?.url,
+		mediaType: data?.metadata?.mediaType,
+	};
+	console.log(`erfMedia------------------------------`, erfMedia);
+	// console.log(`erfRef------------------------------`, erfRef);
+
+	const updateResult = await erfRef.update({
+		media: FieldValue.arrayUnion(erfMedia),
+	});
+	// console.log(`updateResult------------------------------`, updateResult);
 });

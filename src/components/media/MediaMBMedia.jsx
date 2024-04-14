@@ -2,16 +2,24 @@ import { useContext } from "react";
 import "./MediaMBMedia.css";
 import { MediaContext } from "../../contexts/MediaContext";
 import placeHolder from "../../images/place_holder2.jpg";
+import HeaderGeneric from "../header/HeaderGeneric";
+import { useFirebase } from "../../hooks/useFirebase";
+import { irepsConstants } from "../../utils/utils";
 
 const MediaMBMedia = () => {
 	const { mediaData } = useContext(MediaContext);
 	// console.log(`mediaData`, mediaData);
+	const { getStrFromFbTimestamp } = useFirebase();
 
-	let src, alt, mediaType;
+	let src, alt, mediaType, createdBy, createdAtDatetime;
 	if (mediaData?.data?.length) {
 		src = mediaData?.data[mediaData?.displayPosition]?.url;
 		alt = mediaData?.data?.metadata?.mediaCatergory;
-		mediaType =  mediaData?.data[mediaData?.displayPosition]?.metadata.mediaType;
+		const currentData = mediaData?.data[mediaData?.displayPosition];
+
+		mediaType = currentData?.metadata.mediaType;
+		createdBy = currentData?.metadata?.createdByUser;
+		createdAtDatetime = currentData?.metadata?.createdAtDatetime;
 	} else {
 		src = placeHolder;
 		alt = "no image";
@@ -20,7 +28,7 @@ const MediaMBMedia = () => {
 	return (
 		<div className="media-mb-media">
 			<div className="media">
-				{(mediaType === "image/jpeg" || mediaType === "image/png")  && (
+				{(mediaType === "image/jpeg" || mediaType === "image/png") && (
 					<img
 						className="image displayMedia"
 						src={src}
@@ -30,10 +38,28 @@ const MediaMBMedia = () => {
 					/>
 				)}
 				{mediaType === "video/webm" && (
-					<video className="video displayMedia" controls src={src}></video>
+					<>
+						<HeaderGeneric
+							hl1={createdBy}
+							hr3={getStrFromFbTimestamp(
+								createdAtDatetime,
+								irepsConstants.IC_DATE_FORMAT1
+							)}
+						/>
+						<video className="video displayMedia" controls src={src}></video>
+					</>
 				)}
 				{mediaType === "audio/webm" && (
-					<audio className="audio displayMedia" controls src={src}></audio>
+					<>
+						<HeaderGeneric
+							hl1={createdBy}
+							hr3={getStrFromFbTimestamp(
+								createdAtDatetime,
+								irepsConstants.IC_DATE_FORMAT1
+							)}
+						/>
+						<audio className="audio displayMedia" controls src={src}></audio>
+					</>
 				)}
 			</div>
 		</div>

@@ -31,7 +31,11 @@ const MediaThumbnails = props => {
 							toast.error(`media type not known`, {
 								position: "top-right",
 							});
-							return null;
+							return (
+								<div key={media.id}>
+									<p>Error : media type not known</p>
+								</div>
+							);
 						case "image/jpeg":
 						case "image/png":
 							return (
@@ -71,26 +75,24 @@ const MediaThumbnails = props => {
 						case "audio/webm":
 							// return <video controls src={media.url} ></video>
 							return (
-								<>
-									<button
-										onClick={handleClick}
-										id={index}
-										key={media.id}
-										width={"120rem"}
-										height={"120rem"}
-										className="media-audio-btn m-btn"
+								<button
+									onClick={handleClick}
+									id={index}
+									key={media.id}
+									width={"120rem"}
+									height={"120rem"}
+									className="media-audio-btn m-btn"
+								>
+									<IconContext.Provider
+										value={{
+											color: "blue",
+											className: "global-class-name",
+											fontSize: "4rem",
+										}}
 									>
-										<IconContext.Provider
-											value={{
-												color: "blue",
-												className: "global-class-name",
-												fontSize: "4rem",
-											}}
-										>
-											{irepsIcons.ICON_AUDIO_PLAYBACK1}
-										</IconContext.Provider>
-									</button>
-								</>
+										{irepsIcons.ICON_AUDIO_PLAYBACK1}
+									</IconContext.Provider>
+								</button>
 							);
 					}
 				})}

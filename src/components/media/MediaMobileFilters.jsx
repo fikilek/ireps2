@@ -1,4 +1,3 @@
-import { TbSum } from "react-icons/tb";
 import "./MediaMobileFilters.css";
 import { irepsIcons } from "../../utils/utils";
 import MediaMobileFilter from "./MediaMobileFilter";
@@ -33,25 +32,25 @@ const MediaMobileFilters = props => {
 				mmfIcon={irepsIcons.ICON_TOTAL}
 				label={totalMedia}
 				color={""}
-				name={"total"}
+				name={"Total"}
 			/>
 			<MediaMobileFilter
 				mmfIcon={irepsIcons.ICON_IMAGE1}
 				label={images.length}
 				color={""}
-				name={"images"}
+				name={"Images"}
 			/>
 			<MediaMobileFilter
 				mmfIcon={irepsIcons.ICON_VOICE_CLIP}
 				label={audios.length}
 				color={""}
-				name={"voiceClips"}
+				name={"Voice Clips"}
 			/>
 			<MediaMobileFilter
 				mmfIcon={irepsIcons.ICON_VIDEO_CLIP}
 				label={videos.length}
 				color={""}
-				name={"videoClips"}
+				name={'Video Clips'}
 			/>
 		</div>
 	);

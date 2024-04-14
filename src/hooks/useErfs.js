@@ -78,6 +78,9 @@ export const useErfs = () => {
 						const newDate = timestamp.toDate();
 						return <TableDate date={newDate} dateFormat={"yyyy-MMM-dd HH:mm"} />;
 					},
+					valueGetter: params => {
+						return params.data.metadata.createdAtDatetime;
+					},
 					hide: true,
 				},
 			],
@@ -95,7 +98,7 @@ export const useErfs = () => {
 					hide: true,
 				},
 				{
-					field: "metadata.createdAtDatetime",
+					field: "metadata.updatedAtDatetime",
 					columnGroupShow: "open",
 					headerName: "Date Created",
 					width: 180,
@@ -106,6 +109,9 @@ export const useErfs = () => {
 						);
 						const newDate = timestamp.toDate();
 						return <TableDate date={newDate} dateFormat={"yyyy-MMM-dd HH:mm"} />;
+					},
+					valueGetter: params => {
+						return params.data.metadata.updatedAtDatetime;
 					},
 					hide: true,
 				},
@@ -138,18 +144,12 @@ export const useErfs = () => {
 				modalName: "erf",
 			},
 			hide: false,
-			// checkboxSelection: true,
-			// headerCheckboxSelection: true,
-			// headerCheckboxSelectionFilteredOnly: true,
-			// cellRenderer: memo(ErfBtn),
 		},
 		{
 			field: "",
-			// columnGroupShow: "closed",
 			headerName: "GPS",
 			width: 170,
 			cellRenderer: props => {
-				// console.log(`props`, props);
 				return <TableModalBtn props={props}>{props.value}</TableModalBtn>;
 			},
 			cellRendererParams: {
@@ -157,7 +157,6 @@ export const useErfs = () => {
 				width: "7rem",
 			},
 			valueGetter: params => {
-				// console.log(`params`, params);
 				const lat = params.data.address.gps.latitude;
 				const lng = params.data.address.gps.longitude;
 				return `${Number(lat).toFixed(3)} | ${Number(lng).toFixed(3)}`;
@@ -200,7 +199,8 @@ export const useErfs = () => {
 			},
 			valueGetter: params => {
 				// console.log(`params`, params);
-				return `${Math.floor(Math.random() * 4) + 1}`;
+				const media = params?.data?.media?.length ? params?.data?.media?.length : 0
+				return media;
 			},
 		},
 

@@ -3,17 +3,25 @@ import { ErfsContext } from "../../contexts/ErfsContext";
 import PageTitle from "../../pages/PageTitle";
 import FilterBtn from "../Filters/FilterBtn";
 import "./ErfsHeader.css";
+import useModal from "../../hooks/useModal";
 
 const ErfsHeader = props => {
 	const { phLl } = props;
-	const { ecs, setEcs } = useContext(ErfsContext)
+	const {openModal} = useModal()
+	const { erfsContext, setEcs } = useContext(ErfsContext);
 	const handleClick = e => {
 		setEcs(prev => {
 			return {
 				...prev,
-				activeTab: e.target.id
-			}
-		})
+				activeTab: e.target.id,
+			};
+		});
+	};
+
+	const handleErfSearch = e => {
+				openModal({
+					modalName: e.currentTarget.id,
+				});
 	}
 	return (
 		<div className="erfs-header">
@@ -22,28 +30,36 @@ const ErfsHeader = props => {
 					<FilterBtn />
 					<PageTitle title={phLl} />
 				</div>
-				<div className="phLr"></div>
+				<div className="phLr">
+					<p  className="active-area">
+						ActiveArea
+					</p>
+				</div>
 			</div>
 
 			<div className="ph ph-right">
-				<div className="phRl"></div>
+				<div className="phRl">
+					<button id='erfsSearch' className="erfs-search-btn" onClick={handleErfSearch}>
+						Erf Search
+					</button>
+				</div>
 				<div className="phRr">
 					<button
-						className={ecs.activeTab === "table" ? "active" : null}
+						className={erfsContext.activeTab === "table" ? "active" : null}
 						id="table"
 						onClick={handleClick}
 					>
 						Table
 					</button>
 					<button
-						className={ecs.activeTab === "split" ? "active" : null}
+						className={erfsContext.activeTab === "split" ? "active" : null}
 						id="split"
 						onClick={handleClick}
 					>
 						Split
 					</button>
 					<button
-						className={ecs.activeTab === "map" ? "active" : null}
+						className={erfsContext.activeTab === "map" ? "active" : null}
 						id="map"
 						onClick={handleClick}
 					>

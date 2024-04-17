@@ -6,12 +6,12 @@ import { useContext } from "react";
 import { ErfsContext } from "../../contexts/ErfsContext";
 
 const Erfs = () => {
-	const {ecs} = useContext(ErfsContext)
+	const { erfsContext } = useContext(ErfsContext);
 	return (
 		<div className="erfs">
-			<ErfsHeader phLl="Erfs"/>
+			<ErfsHeader phLl="Erfs" />
 			<div className="erfs-body">
-				{ecs.filterBtn ? <ErfsFilters /> : null}
+				{erfsContext.filterBtn ? <ErfsFilters /> : null}
 				<ErfsMain />
 			</div>
 		</div>

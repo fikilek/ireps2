@@ -4,14 +4,16 @@ export const ErfsContext = createContext();
 
 const initSettings = {
 	filterBtn: false,
-	activeTab: 'table'
+	activeTab: "table",
+	activeArea: "",
+	erfs: [],
 };
 
 export const ErfsContextProvider = props => {
-	const [ecs, setEcs] = useState(initSettings); // ecs - erfContextState
-	// console.log(`ecs`, setEcs);
+	const [erfsContext, setErfsContext] = useState(initSettings);
+	// console.log(`erfsContext`, erfsContext);
 	return (
-		<ErfsContext.Provider value={{ ecs, setEcs }}>
+		<ErfsContext.Provider value={{ erfsContext, setErfsContext }}>
 			{props.children}
 		</ErfsContext.Provider>
 	);

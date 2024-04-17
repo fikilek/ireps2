@@ -9,6 +9,6 @@
   background-color: var(--fb-cl-grey2);
   color: var(--fb-cl-grey1);
   border: 0.1rem solid rosybrown;
-  border-radius: var(--fb-br2-0p2);
+  border-radius: 0.5rem;
   font-size: var(--fb-fs-1p5);
 }

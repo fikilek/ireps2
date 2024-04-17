@@ -11,15 +11,22 @@ const UpdateUser = lazy(() => import("../forms/auth/FormUpdateUser"));
 const EditUserEmail = lazy(() => import("../forms/auth/FormEditUserEmail"));
 const FormPhoneNoAuth = lazy(() => import("../forms/auth/FormPhoneNoAuth"));
 const FormPasswordReset = lazy(() => import("../forms/auth/FormPasswordReset"));
-const FormUserRoleUpdate = lazy(() => import("../forms/auth/FormUserRoleUpdate"));
-const FormServiceProvider = lazy(() =>	import("../forms/formServiceProvider/FormServiceProvider"));
-const ServiceProviderData = lazy(() => 	import("../irepsInfoWindow/ServiceProviderData") );
+const FormUserRoleUpdate = lazy(() =>
+	import("../forms/auth/FormUserRoleUpdate")
+);
+const FormServiceProvider = lazy(() =>
+	import("../forms/formServiceProvider/FormServiceProvider")
+);
+const ServiceProviderData = lazy(() =>
+	import("../irepsInfoWindow/ServiceProviderData")
+);
+
+const FormErfsSearch = lazy(() => import("../forms/formErf/FormErfsSearch"));
 const FormErf = lazy(() => import("../forms/formErf/FormErf"));
 const IwErfOnMap = lazy(() => import("../irepsInfoWindow/IwErfOnMap"));
 const IwAstsOnErf = lazy(() => import("../irepsInfoWindow/IwAstsOnErf"));
 const Signin = lazy(() => import("../forms/auth/FormSignin"));
 const IwMedia = lazy(() => import("../irepsInfoWindow/IwMedia"));
-
 
 const Modal = () => {
 	const { toOpen, modalOpened } = useContext(ModalContext);
@@ -140,6 +147,13 @@ const Modal = () => {
 							<>
 								<Suspense fallback={loader}>
 									<MediaMobile data={payload} />
+								</Suspense>
+							</>
+						)}
+						{modalName === "erfsSearch" && (
+							<>
+								<Suspense fallback={loader}>
+									<FormErfsSearch />
 								</Suspense>
 							</>
 						)}

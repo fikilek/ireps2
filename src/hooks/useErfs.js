@@ -5,20 +5,32 @@ import TableModalBtn from "../components/tables/TableModalBtn.jsx";
 import { Timestamp } from "firebase/firestore";
 import { useFirestore } from "./useFirestore";
 import cloneDeep from "lodash.clonedeep";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { ErfsContext } from "../contexts/ErfsContext.js";
 
 export const useErfs = () => {
-	const { user } = useAuthContext();
 
-	const { data: erfs } = useCollection("erfs");
+	const { erfsContext, setErfsContext } = useContext(ErfsContext);
+	// console.log(`erfsContext`, erfsContext);
+
+	const queryParams = null;
+
+	const { data: erfs } = useCollection("erfs", queryParams);
 	// console.log(`erfs`, erfs);
+
+	useEffect(() => {
+		setErfsContext({
+			...erfsContext,
+			erfs,
+		});
+	}, [erfs, setErfsContext]);
 
 	const { response, addDocument } = useFirestore("erfs");
 
 	// diplicate erf. When dupilcating an erf, strip the erf object of the following
 	// 1. property type unti no
 	// 2. all attached asts
-	// TODO: check what else ot strip when  duplicting an erf
+	// TODO: check what else to strip when  duplicting an erf
 
 	const duplicateErf = erfData => {
 		// console.log(`duplicating erfData`, formData);
@@ -60,10 +72,17 @@ export const useErfs = () => {
 			children: [
 				{
 					field: "metadata.createdByUser",
+					columnGroupShow: "closed",
+					headerName: "Created By",
+					width: 130,
+					hide: false,
+				},
+				{
+					field: "metadata.createdByUser",
 					columnGroupShow: "open",
 					headerName: "Created By",
 					width: 130,
-					hide: true,
+					hide: false,
 				},
 				{
 					field: "metadata.createdAtDatetime",
@@ -81,21 +100,26 @@ export const useErfs = () => {
 					valueGetter: params => {
 						return params.data.metadata.createdAtDatetime;
 					},
-					hide: true,
+					hide: false,
 				},
 			],
-
-			hide: true,
 		},
 		{
 			headerName: "Updated",
 			children: [
 				{
 					field: "metadata.updatedByUser",
+					columnGroupShow: "closed",
+					headerName: "Updated By",
+					width: 130,
+					hide: false,
+				},
+				{
+					field: "metadata.updatedByUser",
 					columnGroupShow: "open",
 					headerName: "Updated By",
 					width: 130,
-					hide: true,
+					hide: false,
 				},
 				{
 					field: "metadata.updatedAtDatetime",
@@ -113,25 +137,10 @@ export const useErfs = () => {
 					valueGetter: params => {
 						return params.data.metadata.updatedAtDatetime;
 					},
-					hide: true,
+					hide: false,
 				},
 			],
-
-			hide: true,
 		},
-		// {
-		// 	field: "edit",
-		// 	headerName: "Edit",
-		// 	width: 80,
-		// 	// cellRenderer: memo(FormEditBtn),
-		// 	cellRendererParams: {
-		// 		fn: "erfsForm",
-		// 		disabled: false,
-		// 		hideHeader: false,
-		// 		breakpoint: "xs",
-		// 	},
-		// 	floatingFilter: false,
-		// },
 		{
 			field: "erfNo",
 			headerName: "Erf No",
@@ -161,7 +170,7 @@ export const useErfs = () => {
 				const lng = params.data.address.gps.longitude;
 				return `${Number(lat).toFixed(3)} | ${Number(lng).toFixed(3)}`;
 			},
-			hide: true,
+			hide: false,
 		},
 		{
 			field: "asts.length",
@@ -181,7 +190,7 @@ export const useErfs = () => {
 				modalName: "astsOnErf",
 				width: "4rem",
 			},
-			hide: true,
+			hide: false,
 			// tooltipComponent: TableTrnsForAstsTooltip,
 		},
 		{
@@ -199,7 +208,7 @@ export const useErfs = () => {
 			},
 			valueGetter: params => {
 				// console.log(`params`, params);
-				const media = params?.data?.media?.length ? params?.data?.media?.length : 0
+				const media = params?.data?.media?.length ? params?.data?.media?.length : 0;
 				return media;
 			},
 		},
@@ -229,22 +238,6 @@ export const useErfs = () => {
 			headerName: "Status",
 			width: 150,
 		},
-		// {
-		// 	field: "trns
-		// 	headerName: "Erf Trns",
-		// 	width: 150,
-		// 	cellRenderer: props => {
-		// 		// console.log(`props`, props);
-		// 		return <TableModalBtn props={props}>{props.value}</TableModalBtn>;
-		// 	},
-		// 	cellRendererParams: {
-		// 		modalName: "erfTrns",
-		// 		width: "4rem",
-		// 	},
-		// 	// cellRenderer: params => params.data?.asts?.length,
-		// 	// cellRenderer: memo(TableTrnsInErfBtn),
-		// },
-
 		{
 			field: "address.systemAdr",
 			headerName: "Street",
@@ -433,109 +426,12 @@ export const useErfs = () => {
 			],
 		},
 	];
-	// 	{
-	// 		field: "uid",
-	// 		headerName: "erfs Id",
-	// 		width: 250,
-	// 		hide: true,
-	// 	},
-	// 	{
-	// 		field: "disabled",
-	// 		headerName: "Acc Status?",
-	// 		width: 150,
-	// 		// cellRenderer: TableUserAccDisableSelect,
-	// 		editable: true,
-	// 		// cellEditor: TableSelect,
-	// 		cellEditorParams: {
-	// 			options: ["enabled", "disabled"],
-	// 		},
-	// 		valueGetter: params => {
-	// 			// console.log(`params.data.disabled`, params.data.disabled);
-	// 			return params.data.disabled ? "disabled" : "enabled";
-	// 		},
-	// 		valueSetter: params => {
-	// 			// console.log(`params.newValue`, params.newValue);
-	// 			params.data.disabled = params.newValue === "disabled" ? true : false;
-	// 			return true;
-	// 		},
-	// 		cellStyle: params => {
-	// 			// console.log(params);
-	// 			const { uid } = params.data;
-	// 			const selectDisabled = uid === user.uid ? true : false;
-	// 			return selectDisabled
-	// 				? {
-	// 						color: "grey",
-	// 						fontWeight: "700",
-	// 						pointerEvents: "none",
-	// 						cursor: "none",
-	// 						borderLeft: "0.3rem solid grey",
-	// 				  }
-	// 				: "";
-	// 		},
-	// 	},
-	// 	{
-	// 		field: "metadata.creationTime",
-	// 		headerName: "Date Created",
-	// 		width: 180,
-	// 		cellRenderer: params => {
-	// 			// console.log(`params`, params);
-	// 			const newDate = new Date(params.data.metadata?.creationTime);
-	// 			return <TableDate date={newDate} dateFormat={"yyyy-MMM-dd HH:mm"} />;
-	// 		},
-	// 	},
-	// 	{
-	// 		field: "metadata.lastSignInTime",
-	// 		headerName: "Last Signin",
-	// 		width: 180,
-	// 		cellRenderer: params => {
-	// 			const newDate = new Date(params.data.metadata?.lastSignInTime);
-	// 			return <TableDate date={newDate} dateFormat={"yyyy-MMM-dd HH:mm"} />;
-	// 		},
-	// 	},
-	// 	{
-	// 		field: "displayName",
-	// 		headerName: "Display Name",
-	// 		width: 170,
-	// 	},
-	// 	{
-	// 		field: "email",
-	// 		headerName: "Email Adr",
-	// 		width: 200,
-	// 	},
-	// 	{
-	// 		field: "emailVerified",
-	// 		headerName: "Email Verified",
-	// 		width: 150,
-	// 		cellRenderer: params => {
-	// 			// console.log(`params.data`, params.data);
-	// 			return <p>{params.data.emailVerified ? "Yes" : "No"}</p>;
-	// 		},
-	// 	},
-	// 	{
-	// 		field: "customClaims.roles",
-	// 		headerName: "Roles",
-	// 		width: 220,
-	// 		// cellRenderer: TableUsersRoles,
-	// 		valueGetter: params => {
-	// 			return params.value;
-	// 		},
-	// 	},
-	// 	{
-	// 		field: "phoneNumber",
-	// 		headerName: "Phone Number",
-	// 		width: 150,
-	// 	},
-	// 	{
-	// 		field: "companyName",
-	// 		headerName: "Company Name",
-	// 		width: 170,
-	// 	},
-	// 	{
-	// 		field: "workbase",
-	// 		headerName: "Workbase",
-	// 		width: 150,
-	// 	},
-	// ];
 
-	return { duplicateErf, erfsTableFields, erfs };
+	const getErfs = queryParam => { 
+		
+	};
+	
+	
+
+	return { duplicateErf, erfsTableFields, getErfs };
 };

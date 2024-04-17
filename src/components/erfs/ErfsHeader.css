@@ -2,7 +2,7 @@
 
 .erfs-header {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr ;
   margin: 0.5rem;
   gap: 0.5rem;
   background: lavender;
@@ -24,7 +24,18 @@
   height: 2rem;
 }
 
-.erfs-header .ph-right {
+.erfs-header .phLr {
+  justify-content: end;
+}
+
+.erfs-header .phRl .erfs-search-btn {
+  width: 7rem;
+  height: 1.5rem;
+  border: 0.01rem solid;
+  border-radius: 1rem;
+}
+
+.erfs-header .ph-right .phRr {
   display: flex;
   justify-content: flex-end;
 }

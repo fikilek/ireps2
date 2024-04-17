@@ -3,13 +3,13 @@ import useModal from "../../hooks/useModal";
 
 const TableModalBtn = props => {
 	// console.log(`props`, props);
-	const { data, modalName, infoName, width, irepsKeyItem } = props.props;
+	const { modalName, data, infoName, irepsKeyItem, width } = props.props;
 	// console.log(`data`, data)
 	const { openModal } = useModal();
 	const handleClick = e => {
 		openModal({
 			modalName: modalName,
-			payload: { ...data, infoName, irepsKeyItem },
+			payload: { ...data, infoName, irepsKeyItem, width },
 		});
 	};
 	return (

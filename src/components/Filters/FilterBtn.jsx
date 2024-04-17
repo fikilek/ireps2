@@ -6,10 +6,10 @@ import { IoMdArrowDropright } from "react-icons/io";
 import { IconContext } from "react-icons";
 
 const FilterBtn = () => {
-	const { ecs, setEcs } = useContext(ErfsContext);
+	const { erfsContext, setErfsContext} = useContext(ErfsContext);
 
 	const handleClick = e => {
-		setEcs(prev => ({
+		setErfsContext(prev => ({
 			...prev,
 			filterBtn: !prev.filterBtn,
 		}));
@@ -17,7 +17,7 @@ const FilterBtn = () => {
 	return (
 		<div className="filter-btn">
 			<button className="flt-btn" onClick={handleClick}>
-				{ecs.filterBtn ? (
+				{erfsContext.filterBtn ? (
 					<IconContext.Provider value={{ color: "blue", size: "2rem" }}>
 						<MdArrowLeft />
 					</IconContext.Provider>

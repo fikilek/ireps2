@@ -1,7 +1,6 @@
 import "../Form.css";
 import { Formik, Form } from "formik";
 import FormikControl from "../formik/FormikControl";
-import Formheader from "../formHeader/Formheader";
 import FormFooter from "../formFooter/FormFooter";
 import { object, ref, string } from "yup";
 import { CiLogin } from "react-icons/ci";
@@ -16,6 +15,7 @@ import useAuthContext from "../../../hooks/useAuthContext";
 import { capitalizeFirstLetters } from "../../../utils/utils";
 import FormLinkBtn from "../formBtns/FormLinkBtn";
 import { useServiceProviders } from "../../../hooks/useServiceProviders";
+import HeaderGeneric2 from "../../header/HeaderGeneric2";
 
 const Signup = () => {
 	const { getCustomError } = useFirebase();
@@ -123,7 +123,7 @@ const Signup = () => {
 						return (
 							<>
 								<Form>
-									<Formheader fhl1="Singup/Register" fhr1="" />
+									<HeaderGeneric2 hl1="Singup/Register" />
 									<FormMsg msg="Complete the fields below so as to gain access to iREPS." />
 									<div className="signup-form">
 										<div className="form-row">

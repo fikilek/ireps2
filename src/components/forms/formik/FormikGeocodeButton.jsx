@@ -1,17 +1,17 @@
 import { Field } from "formik";
-import "./Formik.css";
+// import "./Formik.css";
 import "./FormikGeocodeButton.css";
 import React from "react";
 import { useContext } from "react";
-import { GeocodingContext } from "../../../../contexts/GeocodingContext";
-import { getAstCat } from "../../../../utils/utils";
+import { GeocodingContext } from "../../../contexts/GeocodingContext";
+import { getAstCat } from "../../../utils/utils";
 
 const FormikGeocodeButton = props => {
 	// console.log(`props`, props);
 	const { label, name, ...rest } = props;
 
 	// get reverse geocoding context
-	const { setGcData } = useContext(GeocodingContext);
+	// const { setGcData } = useContext(GeocodingContext);
 
 	const handleClick = (e, props) => {
 		e.preventDefault();
@@ -20,13 +20,13 @@ const FormikGeocodeButton = props => {
 		// const { field, meta, form } = props;
 
 		// open geocoding modal
-		setGcData(prev => {
-			return {
-				...prev,
-				isOpened: true,
-				data: props,
-			};
-		});
+		// setGcData(prev => {
+		// 	return {
+		// 		...prev,
+		// 		isOpened: true,
+		// 		data: props,
+		// 	};
+		// });
 	};
 	return (
 		<div className={`form-control ${name} `}>

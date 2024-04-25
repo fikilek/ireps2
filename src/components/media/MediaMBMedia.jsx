@@ -2,7 +2,7 @@ import { useContext } from "react";
 import "./MediaMBMedia.css";
 import { MediaContext } from "../../contexts/MediaContext";
 import placeHolder from "../../images/place_holder2.jpg";
-import HeaderGeneric from "../header/HeaderGeneric";
+import HeaderGeneric from "../header/HeaderGeneric3";
 import { useFirebase } from "../../hooks/useFirebase";
 import { irepsConstants } from "../../utils/utils";
 

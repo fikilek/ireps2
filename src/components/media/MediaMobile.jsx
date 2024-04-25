@@ -11,8 +11,8 @@ import MediaMobileFooter from "./MediaMobileFooter";
 import MediaMobileAction from "./MediaMobileAction";
 
 const MediaMobile = props => {
-	// console.log(`props`, props)
-	const { data } = props;
+	console.log(`props`, props)
+	const { data } = props?.data;
 
 	const { mediaData, setMediaData } = useContext(MediaContext);
 	// console.log(`mediaData`, mediaData)

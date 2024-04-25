@@ -11,7 +11,7 @@
 
 .page-header .ph {
   display: grid;
-  grid-template-columns: 1fr ;
+  grid-template-columns: 1fr;
   align-items: center;
   gap: 0.5rem
 }
@@ -63,8 +63,12 @@
   align-items: center;
 }
 
-@media (max-width: 850px) {
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {
   .page {
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 475px) {}

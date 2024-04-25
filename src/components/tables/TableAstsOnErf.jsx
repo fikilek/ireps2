@@ -13,6 +13,7 @@ import "@ag-grid-community/styles/ag-theme-quartz.css";
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 const TableAstsOnErf = props => {
+	// console.log(`TableAstsOnErf props`, props);
 	const { rowData, colDefs } = props;
 
 	const defaultColDef = useMemo(

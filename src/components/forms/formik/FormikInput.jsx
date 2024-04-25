@@ -4,7 +4,7 @@ import FormFieldError from "../formError/FormFieldError";
 
 const FormikInput = props => {
 	// console.log(`props`, props);
-	const { label, name, ...rest } = props;
+	const { label, name, hide, ...rest } = props;
 
 	return (
 		<div className={`form-control ${name} `}>
@@ -16,7 +16,7 @@ const FormikInput = props => {
 					// input border must be red if there is an error and its touched
 					const error = meta.error && meta.touched ? "error" : "";
 
-					return <input {...field} {...rest} className={`${error}`} />;
+					return <input {...field} {...rest} className={`${error} ${hide}`} />;
 				}}
 			</Field>
 			<label className={`label`} htmlFor={name}>

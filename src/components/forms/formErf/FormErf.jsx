@@ -3,20 +3,20 @@ import { Formik, Form } from "formik";
 import "./FormErf.css";
 import useModal from "../../../hooks/useModal";
 import { useFirestore } from "../../../hooks/useFirestore";
-import useAuthContext from "../../../hooks/useAuthContext";
 import { toast } from "react-toastify";
 import FormikControl from "../formik/FormikControl";
 import FormSection from "../formSection/FormSection";
 import { formSelectOptions } from "../../../utils/utils";
 import { useCallback } from "react";
-import Formheader from "../formHeader/Formheader";
 import FormFooter from "../formFooter/FormFooter";
+import HeaderGeneric2 from "../../header/HeaderGeneric2";
+import HeaderGeneric from "../../header/HeaderGeneric";
 
 const FormErf = props => {
-	// console.log(`FormErf props`, props);
+	console.log(`FormErf props`, props);
 
-	const { data: formData } = props;
-	// console.log(`formData`, formData);
+	const { data: formData } = props.data;
+	console.log(`formData`, formData);
 
 	const { closeModal, openModal } = useModal();
 
@@ -65,10 +65,10 @@ const FormErf = props => {
 		// console.log(`formmik`, formik)
 		// open infoWindow on modal and display table that shows all asts on erf
 		openModal({
-			modalName: 'astsOnErf',
-			payload: formik.values
+			modalName: "astsOnErf",
+			payload: formik.values,
 		});
-	}
+	};
 
 	return (
 		<div className="form-wrapper">
@@ -82,7 +82,7 @@ const FormErf = props => {
 					// )}
 				>
 					{formik => {
-						const disabled = !(formik.isValid && formik.dirty);
+						// const disabled = !(formik.isValid && formik.dirty);
 						// console.log(`formik`, formik);
 						// console.log(`formik.isValid`, formik.isValid);
 						// console.log(`disabled`, disabled);
@@ -91,27 +91,27 @@ const FormErf = props => {
 						return (
 							<Form>
 								<div className="erf-form">
-									<Formheader
-										fhl1={"Erf Form"}
-										fhl2={
-											<>
+									<HeaderGeneric
+										hl1={"Erf Form"}
+										hl2={
+											<div className="hl2">
 												<span className="gps">
 													{"("}
 													<span className="text-emphasis2">
-														{Number(formData.address.gps.latitude).toFixed(2)}
+														{Number(formData.address.gps.latitude)?.toFixed(2)}
 													</span>
 													<span className="gps-seperator">{"|"}</span>
 													<span className="text-emphasis2">
-														{Number(formData.address.gps.longitude).toFixed(2)}
+														{Number(formData.address.gps.longitude)?.toFixed(2)}
 													</span>
 													{") "}
-												</span>
+												</span>{ ' ' }
 												<span className="erf-no">
-													Erf No : <span className="text-emphasis2">{formData.erfNo}</span>
+													Erf : <span className="text-emphasis2">{formData.erfNo}</span>
 												</span>
-											</>
+											</div>
 										}
-										fhr1={
+										hr1={
 											<>
 												<span>
 													Ward :{" "}
@@ -123,7 +123,7 @@ const FormErf = props => {
 													Media <span className="media-quantities">3</span>
 												</button>
 												<button
-													onClick={(e) => openIwAstsOnErf(e, formik)}
+													onClick={e => openIwAstsOnErf(e, formik)}
 													type={"button"}
 													className="form-btn asts-btn"
 												>
@@ -131,9 +131,8 @@ const FormErf = props => {
 												</button>
 											</>
 										}
-										fhr2={""}
-										closeModal={closeModal}
 									/>
+									{/* property-type */}
 									<FormSection
 										sectionData={{
 											sectionName: "property-type",
@@ -173,6 +172,8 @@ const FormErf = props => {
 											</div>
 										</div>
 									</FormSection>
+
+									{/* customer-adr */}
 									<FormSection
 										sectionData={{
 											sectionName: "customer-adr",
@@ -280,6 +281,8 @@ const FormErf = props => {
 											</div>
 										</div>
 									</FormSection>
+
+									{/* customer */}
 									<FormSection
 										sectionData={{
 											sectionName: "customer",
@@ -391,6 +394,7 @@ const FormErf = props => {
 
 										<div className="custormer-billing"></div>
 									</FormSection>
+
 									{/* contact-person */}
 									<FormSection
 										sectionData={{

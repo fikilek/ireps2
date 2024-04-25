@@ -4,12 +4,12 @@ import "./FormUserRoleUpdate.css";
 import { getFunctions, httpsCallable } from "firebase/functions";
 import useModal from "../../../hooks/useModal";
 import { toast } from "react-toastify";
-import Formheader from "../formHeader/Formheader";
 import FormFooter from "../formFooter/FormFooter";
 import { Form, Formik } from "formik";
 import FormikControl from "../formik/FormikControl";
 import FormError from "../formError/FormError";
 import { ClaimsContext } from "../../../contexts/ClaimsContext";
+import HeaderGeneric2 from "../../header/HeaderGeneric2";
 
 const roles = [
 	{ key: "guest", value: "Guest", roleCode: "GST" },
@@ -172,9 +172,9 @@ const FormUserRoleUpdate = props => {
 						return (
 							<>
 								<Form className="user-role-update" onChange={handleChange}>
-									<Formheader
-										fhl1="User Role Updater Form"
-										fhr1={`${data.displayName}`}
+									<HeaderGeneric2
+										hl1="User Role Updater Form"
+										hr1={`${data.displayName}`}
 									/>
 
 									<div className="user-role-update">

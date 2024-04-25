@@ -1,10 +1,13 @@
 import { AdvancedMarker, Pin } from "@vis.gl/react-google-maps";
 import { useErfs } from "../../hooks/useErfs";
 import "./MapErfsMarkers.css";
+import { useContext } from "react";
+import { ErfsContext } from "../../contexts/ErfsContext";
 
 const MapErfsMarkers = () => {
-	const { erfs } = useErfs();
-	// console.log(`erfs`, erfs);
+	const { erfsContext } = useContext(ErfsContext);
+	console.log(`erfsContext`, erfsContext);
+	const {erfs} = erfsContext
 	return (
 		<div className="map-erfs-markers">
 			{erfs &&

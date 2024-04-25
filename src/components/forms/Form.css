@@ -30,6 +30,7 @@
   width: 40rem;
 }
 
+.form-container.meter-audit-trn,
 .form-container.update-user,
 .form-container .user-role-update,
 .form-container.signup {
@@ -105,6 +106,7 @@
   padding: 0.1rem;
   font-size: 1rem;
   color: var(--form-label-color);
+  font-size: 0.9rem;
 }
 
 .form-container form .form-control button:focus~label,
@@ -113,11 +115,10 @@
 .form-container form .form-control input:not(:placeholder-shown)~label,
 .form-container form .form-control .react-datepicker-wrapper~label,
 .form-container form .form-control select:not(:placeholder-shown)~label,
-.form-container form .form-control .label-react-select
- {
+.form-container form .form-control .label-react-select {
   top: -1rem;
-  font-size: 1rem;
-  left: 0.8rem;
+  /* font-size: 1rem; */
+  left: 0.5rem;
   /* color: white; */
   background-color: rgb(236, 220, 220);
   border: 0.1rem solid rgb(156, 149, 255);
@@ -180,11 +181,9 @@
 @media (max-width: 768px) {}
 
 @media (max-width: 475px) {
-  .form-container.service-provider {
-    width: 20rem;
-  }
 
-
+  .form-container.service-provider,
+  .form-container.meter-audit-trn,
   .form-container.update-user,
   .form-container .user-role-update,
   .form-container.signup {

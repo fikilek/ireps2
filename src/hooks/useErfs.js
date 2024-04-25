@@ -3,13 +3,12 @@ import useAuthContext from "./useAuthContext";
 import TableDate from "../components/tables/TableDate";
 import TableModalBtn from "../components/tables/TableModalBtn.jsx";
 import { Timestamp } from "firebase/firestore";
-import { useFirestore } from "./useFirestore";
+import { useFirestore } from "./useFirestore.js";
 import cloneDeep from "lodash.clonedeep";
 import { useContext, useEffect } from "react";
 import { ErfsContext } from "../contexts/ErfsContext.js";
 
 export const useErfs = () => {
-
 	const { erfsContext, setErfsContext } = useContext(ErfsContext);
 	// console.log(`erfsContext`, erfsContext);
 
@@ -145,9 +144,9 @@ export const useErfs = () => {
 			field: "erfNo",
 			headerName: "Erf No",
 			width: 140,
-			cellRenderer: props => {
+			cellRenderer: params => {
 				// console.log(`props`, props);
-				return <TableModalBtn props={props}>{props.value}</TableModalBtn>;
+				return <TableModalBtn data={params}>{params.value}</TableModalBtn>;
 			},
 			cellRendererParams: {
 				modalName: "erf",
@@ -158,8 +157,9 @@ export const useErfs = () => {
 			field: "",
 			headerName: "GPS",
 			width: 170,
-			cellRenderer: props => {
-				return <TableModalBtn props={props}>{props.value}</TableModalBtn>;
+			cellRenderer: params => {
+				// console.log(`params`, params)
+				return <TableModalBtn data={params}>{params.value}</TableModalBtn>;
 			},
 			cellRendererParams: {
 				modalName: "erfOnMap",
@@ -176,15 +176,13 @@ export const useErfs = () => {
 			field: "asts.length",
 			headerName: "Asts On Erf",
 			width: 130,
-			filterParams: {
-				valueGetter: params => {
-					return params.data.asts.length;
-				},
+			valueGetter: params => {
+				return params.data?.asts?.length ? params.data?.asts?.length : 0;
 			},
-			tooltipField: "asts",
-			cellRenderer: props => {
-				// console.log(`props`, props);
-				return <TableModalBtn props={props}>{props.value}</TableModalBtn>;
+			// tooltipField: "asts",
+			cellRenderer: params => {
+				// console.log(`ast on erf params`, params);
+				return <TableModalBtn data={params}>{params.value}</TableModalBtn>;
 			},
 			cellRendererParams: {
 				modalName: "astsOnErf",
@@ -197,9 +195,9 @@ export const useErfs = () => {
 			field: "",
 			headerName: "Media",
 			width: 100,
-			cellRenderer: props => {
+			cellRenderer: params => {
 				// console.log(`props`, props);
-				return <TableModalBtn props={props}>{props.value}</TableModalBtn>;
+				return <TableModalBtn data={params}>{params.value}</TableModalBtn>;
 			},
 			cellRendererParams: {
 				modalName: "mediaMobile",
@@ -427,11 +425,7 @@ export const useErfs = () => {
 		},
 	];
 
-	const getErfs = queryParam => { 
-		
-	};
-	
-	
+	const getErfs = queryParam => {};
 
 	return { duplicateErf, erfsTableFields, getErfs };
 };

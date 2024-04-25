@@ -11,3 +11,9 @@
   height: var(--fb-h1p6);
   font-size: var(--fb-fs-1p1);
 }
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 475px) {}

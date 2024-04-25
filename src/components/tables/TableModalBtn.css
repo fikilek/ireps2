@@ -1,3 +1,9 @@
 .table-modal-btn button {
   width: 5rem;
 }
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 475px) {}

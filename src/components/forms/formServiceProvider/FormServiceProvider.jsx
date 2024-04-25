@@ -3,7 +3,6 @@ import "./FormServiceProvider.css";
 
 import { Formik, Form, FieldArray } from "formik";
 import FormikControl from "../formik/FormikControl";
-import Formheader from "../formHeader/Formheader";
 import FormFooter from "../formFooter/FormFooter";
 import { object, string } from "yup";
 import FormError from "../formError/FormError";
@@ -12,6 +11,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useFirestore } from "../../../hooks/useFirestore";
 import { useServiceProviders } from "../../../hooks/useServiceProviders";
+import HeaderGeneric2 from "../../header/HeaderGeneric2";
 
 const FormServiceProvider = props => {
 	// console.log(`props`, props);
@@ -78,7 +78,7 @@ const FormServiceProvider = props => {
 						// console.log(`formik`, formik);						const sp = getSpDetails(formik.values.companyName);
 						const sp = getSpDetails(formik.values.companyName);
 						let spClients = getSpClients(sp);
-						
+
 						const result = spClients?.find(
 							client => client.key?.trim().toLowerCase() === "rste"
 						);
@@ -90,7 +90,7 @@ const FormServiceProvider = props => {
 						return (
 							<>
 								<Form>
-									<Formheader fhl1="Service Provider" fhr1="" />
+									<HeaderGeneric2 hl1="Service Provider" />
 									<div className="form-body">
 										<div className="tabs">
 											<div className="tabs-header">

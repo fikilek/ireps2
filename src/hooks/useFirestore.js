@@ -6,6 +6,7 @@ import {
 	collection,
 	addDoc,
 	deleteDoc,
+	setDoc,
 	// deleteDoc,
 } from "firebase/firestore";
 // import cloneDeep from "lodash.clonedeep";
@@ -177,6 +178,33 @@ export const useFirestore = fbCollection => {
 		}
 	};
 
+	const setDocument = async (document, id) => {
+		// console.log(`updateDocument`, document, id);
+		document = {
+			...document,
+			metadata: {
+				...document.metadata,
+				updatedAtDatetime: Timestamp.now(),
+				updatedByUser: user.displayName,
+				updatedByUserId: user.uid,
+			},
+		};
+
+		dispatch({ type: "IS_PENDING" });
+		const docToUpdateRef = doc(db, fbCollection, id);
+		try {
+			setDoc(docToUpdateRef, document).then(result => {
+				dispatchIfNotCancelled({ type: "UPDATED_DOCUMENT" });
+			});
+		} catch (err) {
+			console.log(`ERROR: `, err.message);
+			dispatchIfNotCancelled({
+				type: "ERROR",
+				payload: err.message,
+			});
+		}
+	};
+
 	useEffect(() => {
 		// console.log(`running cleanup`);
 		setIsCancelled(false);
@@ -191,5 +219,6 @@ export const useFirestore = fbCollection => {
 		deleteDocument,
 		updateDocument,
 		getDocument,
+		setDocument,
 	};
 };

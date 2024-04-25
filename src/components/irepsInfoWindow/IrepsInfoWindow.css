@@ -20,11 +20,11 @@
 
 .iw-wrapper .iw-container button {
   border-radius: 0.6rem;
-  padding: 0.5rem;
-  font-size: 1.2rem;
-  display: flex;
+  padding: 0.3rem;
+  /* font-size: 1.2rem; */
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
 }
 
 @media (max-width: 1024px) {}

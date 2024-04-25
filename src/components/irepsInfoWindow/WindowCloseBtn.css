@@ -11,3 +11,9 @@
   border-radius: var(--fb-br2-0p2);
   font-size: var(--fb-fs-1p5);
 }
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 475px) {}

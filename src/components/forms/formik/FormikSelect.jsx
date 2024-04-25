@@ -20,8 +20,9 @@ const FormikSelect = props => {
 
 					const handleChange = e => {
 						// console.log(`e.target.value`, e.target.value);
+						// console.log(`field.name`, field.name);
 						form.setFieldValue(field.name, e.target.value);
-						// form.validateField(field.name);
+						form.validateField(field.name);
 
 						// get spID for the selected sp option
 						if (field.name === "companyName") {

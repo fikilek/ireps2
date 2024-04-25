@@ -41,6 +41,8 @@ import { ErfsContextProvider } from "./contexts/ErfsContext";
 // import PhotoAppContextProvider from "./contexts/MediaContext";
 import ReverseGeocodingContextProvider from "./contexts/ReverseGeocodingContext";
 import MediaContextProvider from "./contexts/MediaContext";
+import { AnomalyContextProvider } from "./contexts/AnomalyContext"; 
+import { TrnsContextProvider } from "./contexts/TrnsContext";
 
 // Lazy loading
 const Erfs = lazy(() => import("./pages/erfs/Erfs"));
@@ -221,27 +223,31 @@ const queryClient = new QueryClient();
 
 function App() {
 	return (
-		<MediaContextProvider>
-			<ReverseGeocodingContextProvider>
-					<ErfsContextProvider>
-						<QueryClientProvider client={queryClient}>
-							<AreaTreeContextProvider>
-								<ClaimsContextProvider>
-									<AuthContextProvider>
-										<ModalContextProvider>
-											<div className="App">
-												<RouterProvider router={router} />
-												<ToastContainer />
-											</div>
-											<Modal />
-										</ModalContextProvider>
-									</AuthContextProvider>
-								</ClaimsContextProvider>
-							</AreaTreeContextProvider>
-						</QueryClientProvider>
-					</ErfsContextProvider>
-			</ReverseGeocodingContextProvider>
-		</MediaContextProvider>
+		<TrnsContextProvider>
+			<AnomalyContextProvider>
+				<MediaContextProvider>
+					<ReverseGeocodingContextProvider>
+						<ErfsContextProvider>
+							<QueryClientProvider client={queryClient}>
+								<AreaTreeContextProvider>
+									<ClaimsContextProvider>
+										<AuthContextProvider>
+											<ModalContextProvider>
+												<div className="App">
+													<RouterProvider router={router} />
+													<ToastContainer />
+												</div>
+												<Modal />
+											</ModalContextProvider>
+										</AuthContextProvider>
+									</ClaimsContextProvider>
+								</AreaTreeContextProvider>
+							</QueryClientProvider>
+						</ErfsContextProvider>
+					</ReverseGeocodingContextProvider>
+				</MediaContextProvider>
+			</AnomalyContextProvider>
+		</TrnsContextProvider>
 	);
 }
 

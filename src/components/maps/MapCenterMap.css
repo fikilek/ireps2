@@ -24,3 +24,9 @@
 .not-centered {
   color: rgba(28, 0, 211, 0.078);
 }
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 475px) {}

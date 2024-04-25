@@ -8,9 +8,9 @@ import { format } from "date-fns";
 import { constants } from "../../utils/utils";
 import { IconContext } from "react-icons";
 import { MdDeleteOutline } from "react-icons/md";
-import { toast } from "react-toastify";import { useFirestore } from "../../hooks/useFirestore";
+import { toast } from "react-toastify";
+import { useFirestore } from "../../hooks/useFirestore";
 import useStorage from "../../hooks/useStorage";
-;
 // import { ref } from "firebase/storage";
 // import useStorage from "../../hooks/useStorage";
 
@@ -52,8 +52,8 @@ const MediaMainDisplay = () => {
 			await deleteDocument(id);
 			setMediaData({
 				...mediaData,
-				displayPosition: 0
-			})
+				displayPosition: 0,
+			});
 		} catch (error) {
 			console.log(`Error deleting image ${error}`);
 			toast.error(`Error deleting image ${error}`, {

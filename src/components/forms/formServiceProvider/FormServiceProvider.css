@@ -68,3 +68,9 @@
 .service-provider .form-body .tabs .tabs-body .row-remove-btn {
   height: 3rem;
 }
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 475px) {}

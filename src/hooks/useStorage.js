@@ -44,11 +44,12 @@ const useStorage = props => {
 		// timestamp - "yyyy-MMM-dd_HH:mm:ss"
 		// id = ['erfId', 'astsId']
 		// id = ['erfId', 'astsId']
-		if (!(mediaType === "image" || mediaType === "video" || mediaType === "audio")) {
-			console.log(`Not a valid media type`, mediaType)
+		if (
+			!(mediaType === "image" || mediaType === "video" || mediaType === "audio")
+		) {
+			console.log(`Not a valid media type`, mediaType);
 			return;
-		} 
-			
+		}
 
 		let filePath = null;
 		if (irepsKeyItem === "erfs") {
@@ -80,10 +81,9 @@ const useStorage = props => {
 		let snapshot;
 		if (mediaType === "audio" || mediaType === "video") {
 			snapshot = await uploadBytes(storageRef, file, metadata);
-
 		}
 
-		if (mediaType === "image" ) {
+		if (mediaType === "image") {
 			snapshot = await uploadString(storageRef, file, "data_url", metadata);
 		}
 		// console.log(`snapshot`, snapshot)
@@ -141,9 +141,9 @@ const useStorage = props => {
 
 	const deleteFile = async (fileRef, id) => {
 		// console.log(`fileRef`, fileRef);
-	// 	console.log(`id`, id);
+		// 	console.log(`id`, id);
 
-	// 	// Delete the file
+		// 	// Delete the file
 		deleteObject(fileRef)
 			.then(() => {
 				// console.log(`File ${id} deleted successfully`);
@@ -155,7 +155,7 @@ const useStorage = props => {
 			});
 	};
 
-	return { uploadFile, progress, error, url, deleteFile,  success };
+	return { uploadFile, progress, error, url, deleteFile, success };
 };
 
 export default useStorage;

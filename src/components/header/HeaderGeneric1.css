@@ -1,0 +1,22 @@
+.header-generic1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 0.6rem;
+  border: 1px solid lightgray;
+  padding: 0.5rem;
+  opacity: 0;
+  position: absolute;
+  left: -110rem;
+}
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 475px) {
+  .header-generic1 {
+    opacity: 1;
+    position: static;
+  }
+}

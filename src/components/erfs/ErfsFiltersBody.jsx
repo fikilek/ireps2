@@ -1,6 +1,6 @@
 import ErfsFilterAreas from "./ErfsFilterAreas";
 import ErfsFilterData from "./ErfsFilterData";
-import "./ErfsFiltersBody.css";
+// import "./ErfsFiltersBody.css";
 
 const ErfsFiltersBody = props => {
 	const { filter } = props;

@@ -1,0 +1,30 @@
+.possible-ast-trns-on-erf {}
+
+.possible-ast-trns-on-erf .patoe {
+  background-color: bisque;
+  margin: 1rem 0;
+  padding: 0.3rem;
+  border-radius: 1rem;
+}
+
+.possible-ast-trns-on-erf .para-header {
+  font-size: 1.3rem;
+}
+
+.possible-ast-trns-on-erf .patoe-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.possible-ast-trns-on-erf .inspections .all-inspection-btn {
+  width: 100%
+}
+
+.possible-ast-trns-on-erf {}
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 475px) {}

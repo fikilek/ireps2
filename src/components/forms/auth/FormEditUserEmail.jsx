@@ -1,7 +1,6 @@
 import "../Form.css";
 import { Formik, Form } from "formik";
 import FormikControl from "../formik/FormikControl";
-import Formheader from "../formHeader/Formheader";
 import FormFooter from "../formFooter/FormFooter";
 import { object, string } from "yup";
 import FormMsg from "../formMsg/FormMsg";
@@ -11,6 +10,7 @@ import { useEffect } from "react";
 import { toast } from "react-toastify";
 import useModal from "../../../hooks/useModal";
 import useAuthContext from "../../../hooks/useAuthContext";
+import HeaderGeneric from "../../header/HeaderGeneric";
 
 const EditUserEmail = props => {
 	console.log(`props`, props);
@@ -67,7 +67,7 @@ const EditUserEmail = props => {
 						return (
 							<>
 								<Form>
-									<Formheader fhl1="Edit User Email" fhr1="" />
+									<HeaderGeneric hl1="Edit User Email" />
 									<FormMsg msg="Enter the new email address on the 'New Email' field below and submit. A valid new email will be delivered into your inbox where you can open it and follow instructions." />
 									<div className="edit-email-form">
 										<FormikControl

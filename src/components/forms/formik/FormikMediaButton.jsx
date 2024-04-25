@@ -9,12 +9,12 @@ const FormikMediaButton = props => {
 	// console.log(`props`, props);
 	const { label, name, ml1, ...rest } = props;
 
-	const { photoAppData, setPhotoAppData } = useContext(MediaContext);
+	const { mediaData, setMediaData } = useContext(MediaContext);
 
 	useEffect(() => {
 		return () => {
-			// console.log(`RESETING photoAppData context`);
-			setPhotoAppData({
+			// console.log(`RESETING mediaData context`);
+			setMediaData({
 				data: "",
 				isPhotoAppOpened: false,
 				ml1: "",
@@ -27,17 +27,17 @@ const FormikMediaButton = props => {
 		// console.log(`e.target`, e.target);
 		// console.log(`btnProps`, btnProps);
 
-		// console.log(`photoApData`, photoAppData);
+		// console.log(`photoApData`, mediaData);
 
-		setPhotoAppData({
-			...photoAppData,
+		setMediaData({
+			...mediaData,
 			data: { ...btnProps },
 			isPhotoAppOpened: true,
 			ml1,
 		});
 	};
 	return (
-		<div className={`form-control ${name} `}>
+		<div className={`form-control ${name} formik-media-btn`}>
 			<Field name={name} {...rest}>
 				{btnProps => {
 					// console.log(`btnProps`, btnProps);

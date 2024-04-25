@@ -1,7 +1,6 @@
 import "../Form.css";
 import { Formik, Form } from "formik";
 import FormikControl from "../formik/FormikControl";
-import Formheader from "../formHeader/Formheader";
 import FormFooter from "../formFooter/FormFooter";
 import { object, string } from "yup";
 import { MdOutlinePassword } from "react-icons/md";
@@ -16,6 +15,7 @@ import FormError from "../formError/FormError";
 import { IoIosPersonAdd } from "react-icons/io";
 import FormLinkBtn from "../formBtns/FormLinkBtn";
 import { useLocation, useNavigate } from "react-router-dom";
+import HeaderGeneric from "../../header/HeaderGeneric";
 
 const Signin = () => {
 	const location = useLocation();
@@ -72,7 +72,7 @@ const Signin = () => {
 						return (
 							<>
 								<Form>
-									<Formheader fhl1="Singin/Login" fhr1="" />
+									<HeaderGeneric hl1="Singin/Login" />
 									<FormMsg msg="Type in the email and password to signin/logon to iREPS." />
 									<div className="signin-form">
 										<FormikControl

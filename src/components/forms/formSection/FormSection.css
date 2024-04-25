@@ -10,6 +10,7 @@ form .fs .fsh {
 
 form .fs .fsh .open-colse-icons {
   display: flex;
+  align-items: center;
 }
 
 form .fs .fsh .open-colse-icons button {
@@ -38,4 +39,14 @@ form .fs .hide-section {
 form .fs .show-section {
   visibility: visible;
   opacity: 100;
+}
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 475px) {
+  form .fs .fsh .open-colse-icons .section-title {
+    font-size: 0.8rem;
+    }
 }

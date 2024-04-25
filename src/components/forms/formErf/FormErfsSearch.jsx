@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import useModal from "../../../hooks/useModal";
 import useGetCollection from "../../../hooks/useGetCollection";
-import FormHeader1 from "../../forms/formHeader/FormHeader1";
+import HeaderGeneric from "../../header/HeaderGeneric";
 
 const ErfsSearch = () => {
 	const { closeModal } = useModal();
@@ -21,7 +21,7 @@ const ErfsSearch = () => {
 	// console.log(`state`);
 
 	const onSubmit = values => {
-		getCollection(["erfNo", "==", values.erfNo]);
+		getCollection(["erfNo", "==", (values.erfNo).trim()]);
 	};
 
 	const validationSchema = object({
@@ -66,7 +66,7 @@ const ErfsSearch = () => {
 						return (
 							<>
 								<Form>
-									<FormHeader1 title="Erfs Search" />
+									<HeaderGeneric hl1="Erfs Search" />
 									<FormMsg msg="Enter the Erf No to search for." />
 									<div className="search-erfs-form">
 										<FormikControl

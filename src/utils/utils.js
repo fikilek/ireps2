@@ -22,6 +22,7 @@ import { VscDiscard } from "react-icons/vsc";
 import { IoIosRecording } from "react-icons/io";
 import { BiSolidVideoRecording, BiVideoRecording } from "react-icons/bi";
 import { FcPicture } from "react-icons/fc";
+import { RiDraftLine } from "react-icons/ri";
 
 export const capitalizeFirstLetter = string => {
 	if (!string) return;
@@ -100,20 +101,18 @@ export const formSelectOptions = {
 		},
 		{ key: "other", value: "other" },
 	],
-	sealCommentsOptions: [
+	sealCommentOptions: [
 		{ key: "choose", value: "choose" },
-		{ key: "nsn (sealed)", value: "nsn (sealed)" },
-		{
-			key: "snnv (sealed)",
-			value: "snnv (sealed)",
-		},
+		{ key: "seal has no seal no", value: "seal has no seal no" },
+		{ key: "seal hard to read", value: "seal no hard to read" },
 	],
 	anomaliesOptions: [
 		{ key: "choose", value: "choose" },
-		{ key: "Meter damaged", value: "Meter damaged" },
-		{ key: "Meter faulty", value: "Meter faulty" },
-		{ key: "Illegal Connection", value: "Illegal Connection" },
-		{ key: "Meter Ok", value: "Meter Ok" },
+		{ key: "meterDamaged", value: "meterDamaged" },
+		{ key: "meterFaulty", value: "meterFaulty" },
+		{ key: "meterIllegalyConnected", value: "meterIllegalyConnected" },
+		{ key: "meterOk", value: "meterOk" },
+		{ key: "meterMissing", value: "meterMissing" },
 	],
 	tidRolloverStatusOptions: [
 		{ key: "choose", value: "choose" },
@@ -139,10 +138,10 @@ export const formSelectOptions = {
 	keyPadNoAccessOptions: [
 		{ key: "choose", value: "choose" },
 		{ key: "gate locked", value: "gate locked" },
-		{ key: "occupant refused", value: "occupant refused" },
+		{ key: "property locked", value: "property locked" },
+		{ key: "occupant refused access", value: "occupant refused access" },
 		{ key: "dogs danger", value: "dogs danger" },
 		{ key: "resident not available", value: "resident not available" },
-		{ key: "propert lockd", value: "propert lockd" },
 	],
 
 	erfStatusOptions: [
@@ -343,6 +342,11 @@ export const formSelectOptions = {
 		{ key: "pole bottom", value: "pole bottom" },
 		{ key: "stand alone", value: "stand alone" },
 	],
+	cbCommentsOptions: [
+		{ key: "choose", value: "choose" },
+		{ key: "cb missing", value: "cb missing" },
+		{ key: "cb removed", value: "cb removed" },
+	],
 };
 
 export const getAstCatMediaCat = namePath => {
@@ -401,6 +405,20 @@ irepsDictionary.set("erfAudio", "Erf Audio");
 irepsDictionary.set("voiceClips", "Voice Clips");
 irepsDictionary.set("videoClips", "Video Clips");
 
+irepsDictionary.set("meterDetail", "Meter Detail");
+irepsDictionary.set("meterLocation", "Meter Location");
+irepsDictionary.set("anomalies", "Anomalies");
+irepsDictionary.set("keypad", "Keypad");
+irepsDictionary.set("access", "Access");
+irepsDictionary.set("meterDescription", "Meter Description");
+irepsDictionary.set("serviceConnection", "Service Connection");
+
+irepsDictionary.set("property-type", "Property Type");
+irepsDictionary.set("customer-adr", "Customer Address");
+irepsDictionary.set("customer", "Customer");
+irepsDictionary.set("customer-contact-person", "Contact Person");
+irepsDictionary.set("billing", "Billing");
+
 export const irepsIcons = {
 	ICON_TOTAL: <TbSum />,
 	ICON_IMAGE1: <AiOutlinePicture />,
@@ -423,10 +441,25 @@ export const irepsIcons = {
 	ICON_VIDEO_PLAYBACK1: <FaRegFileVideo />,
 	ICON_CAMERA_SHOOT: <MdCamera />,
 	ICON_AUDIO_PLAYBACK1: <AiOutlineAudio />,
+	ICON_SAVE_DRAFT: <RiDraftLine />,
 };
 
 // IC - Ireps Contants
 export const irepsConstants = {
 	IC_DATE_FORMAT1: "yyyy-MMM-dd HH:mm",
 	IC_DATE_FORMAT2: "yyyy-MMM-dd HH:mm:ss",
+};
+
+export const getAstCat = fieldNameStr => {
+	// if (!gcData) return null;
+	// let fieldNameStr = gcData?.data?.field?.name;
+	if (!fieldNameStr) return null;
+	// console.log(`fieldNameStr`, fieldNameStr);
+	fieldNameStr = fieldNameStr?.replaceAll("[", ".");
+	fieldNameStr = fieldNameStr?.replaceAll("]", ".");
+	fieldNameStr = fieldNameStr?.replaceAll("..", ".");
+	const fieldNameArray = fieldNameStr?.split(".");
+	const astCategory = fieldNameArray[1];
+	// console.log(`astCategory`, astCategory);
+	return astCategory;
 };

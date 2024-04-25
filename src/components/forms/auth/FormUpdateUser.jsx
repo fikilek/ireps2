@@ -1,7 +1,6 @@
 import "../Form.css";
 import { Formik, Form } from "formik";
 import FormikControl from "../formik/FormikControl";
-import Formheader from "../formHeader/Formheader";
 import FormFooter from "../formFooter/FormFooter";
 import { object, string } from "yup";
 import FormMsg from "../formMsg/FormMsg";
@@ -13,6 +12,7 @@ import { toast } from "react-toastify";
 import { capitalizeFirstLetters } from "../../../utils/utils";
 import { useSignup } from "../../../hooks/useSignup";
 import { useServiceProviders } from "../../../hooks/useServiceProviders";
+import HeaderGeneric2 from "../../header/HeaderGeneric2";
 
 const UpdateUser = props => {
 	// console.log(`props`, props)
@@ -100,7 +100,7 @@ const UpdateUser = props => {
 						return (
 							<>
 								<Form>
-									<Formheader fhl1="Update User Info" fhr1="" />
+									<HeaderGeneric2 fhl1="Update User Info" />
 									<FormMsg msg="Complete the fields below and submit to update user info on iREPS." />
 									<div className="updateuser-form">
 										<div className="form-row">

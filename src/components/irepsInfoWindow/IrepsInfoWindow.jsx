@@ -1,41 +1,27 @@
+import HeaderGeneric from "../header/HeaderGeneric";
 import "./IrepsInfoWindow.css";
-import IrepsInfoWindowHeader from "./IrepsInfoWindowHeader";
-import IwHeaderCellphone from "./IwHeaderCellphone";
-import IwHeaderTablet from "./IwHeaderTablet";
 
 const IrepsInfoWindow = props => {
 	// console.log(`props`, props)
-	const { fhl1, fhl2, fhl3, fhr1, fhr2, fhr3 } = props;
+	const { hl1, hl2, hl3, hr1, hr2, hr3, windowWidth, windowHeight } = props;
 
 	return (
-		<div className="iw-wrapper">
-			<div className="iw-container">
-				<IrepsInfoWindowHeader
-					fhl1={fhl1}
-					fhl2={fhl2}
-					fhl3={fhl3}
-					fhr1={fhr1}
-					fhr2={fhr2}
-					fhr3={fhr3}
+		<div
+			className="iw-wrapper"
+			style={{ width: windowWidth, height: windowHeight }}
+		>
+			<div
+				className="iw-container"
+				style={{ width: windowWidth, height: windowHeight }}
+			>
+				<HeaderGeneric
+					hl1={hl1}
+					hl2={hl2}
+					hl3={hl3}
+					hr1={hr1}
+					hr2={hr2}
+					hr3={hr3}
 				/>
-				
-				{/* <IwHeaderTablet
-					fhl1={fhl1}
-					fhl2={fhl2}
-					fhl3={fhl3}
-					fhr1={fhr1}
-					fhr2={fhr2}
-					fhr3={fhr3}
-				/> */}
-
-				{/* <IwHeaderCellphone
-					fhl1={fhl1}
-					fhl2={fhl2}
-					fhl3={fhl3}
-					fhr1={fhr1}
-					fhr2={fhr2}
-					fhr3={fhr3}
-				/> */}
 
 				{props.children}
 			</div>

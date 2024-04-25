@@ -216,7 +216,7 @@ export const useServiceProviders = () => {
 			width: 190,
 			cellRenderer: props => {
 				// console.log(`props`, props);
-				return <TableModalBtn props={props}>{props.value}</TableModalBtn>;
+				return <TableModalBtn data={props}>{props.value}</TableModalBtn>;
 			},
 			cellRendererParams: {
 				modalName: "serviceProvider",
@@ -254,7 +254,7 @@ export const useServiceProviders = () => {
 			cellRenderer: props => {
 				// console.log(`props`, props);
 				return (
-					<TableModalBtn props={props}>{props.data?.users?.length}</TableModalBtn>
+					<TableModalBtn data={props}>{props.data?.users?.length}</TableModalBtn>
 				);
 			},
 			cellRendererParams: {
@@ -276,7 +276,7 @@ export const useServiceProviders = () => {
 			width: 140,
 			cellRenderer: props => {
 				return (
-					<TableModalBtn props={props}>{props.data?.clients?.length}</TableModalBtn>
+					<TableModalBtn data={props}>{props.data?.clients?.length}</TableModalBtn>
 				);
 			},
 			cellRendererParams: {
@@ -299,7 +299,7 @@ export const useServiceProviders = () => {
 			cellRenderer: props => {
 				return (
 					// <TableModalBtn props={props}>{props.data.fws.length}</TableModalBtn>
-					<TableModalBtn props={props}>
+					<TableModalBtn data={props}>
 						{props.data?.otherOffices?.length}
 					</TableModalBtn>
 				);

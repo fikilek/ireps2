@@ -1,7 +1,6 @@
 import "../Form.css";
 import { Formik, Form } from "formik";
 import FormikControl from "../formik/FormikControl";
-import Formheader from "../formHeader/Formheader";
 import FormFooter from "../formFooter/FormFooter";
 import { object, string } from "yup";
 import { CiLogin } from "react-icons/ci";
@@ -12,6 +11,7 @@ import { useSignin } from "../../../hooks/useSignin";
 import { useEffect } from "react";
 import useModal from "../../../hooks/useModal";
 import { toast } from "react-toastify";
+import HeaderGeneric from "../../header/HeaderGeneric";
 
 const linkTo = {
 	icon: <CiLogin />,
@@ -64,7 +64,7 @@ const FormPasswordReset = props => {
 						return (
 							<>
 								<Form>
-									<Formheader fhl1="Password Reset" fhr1="" />
+									<HeaderGeneric hl1="Password Reset" />
 									<FormMsg msg="A password RESET email will be sent to the inbox that signup/registered with iREPS." />
 									<div className="password-reset-form">
 										<FormikControl

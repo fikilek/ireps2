@@ -1,4 +1,5 @@
 import FormikCheckboxGroup from "./FormikCheckboxGroup";
+import FormikGeocodeButton from "./FormikGeocodeButton";
 import FormikInput from "./FormikInput";
 import FormikInputPwd from "./FormikInputPwd";
 import FormikMediaButton from "./FormikMediaButton";
@@ -6,6 +7,8 @@ import FormikPhoneNumberInput from "./FormikPhoneNumberInput";
 import FormikReactSelect from "./FormikReactSelect";
 import FormikReverseGeocodeButton from "./FormikReverseGeocodeButton";
 import FormikSelect from "./FormikSelect";
+import FormikSelectSetAnomalyDetail from "./FormikSelectSetAnomalyDetail";
+import FormikSelectSetAnomaly from "./FormikSelectSetAnomaly";
 
 const FormikControl = props => {
 	// console.log(`props`, props);
@@ -21,6 +24,10 @@ const FormikControl = props => {
 			return <FormikInputPwd {...rest} />;
 		case "select":
 			return <FormikSelect {...rest} />;
+		case "selectSetAnomalyDetail":
+			return <FormikSelectSetAnomalyDetail {...rest} />;
+		case "selectSetAnomaly":
+			return <FormikSelectSetAnomaly {...rest} />;
 		case "reactSelect":
 			return <FormikReactSelect {...rest} />;
 		case "checkbox":
@@ -28,8 +35,10 @@ const FormikControl = props => {
 		case "mediaButton":
 			return <FormikMediaButton {...rest} />;
 		// Reverse Geocoding Button
-		case "rgcButton": 
+		case "rgcButton":
 			return <FormikReverseGeocodeButton {...rest} />;
+		case "gcButton":
+			return <FormikGeocodeButton {...rest} />;
 		default:
 			return null;
 	}

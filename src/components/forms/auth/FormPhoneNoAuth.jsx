@@ -1,7 +1,6 @@
 import "../Form.css";
 import { Formik, Form } from "formik";
 import FormikControl from "../formik/FormikControl";
-import Formheader from "../formHeader/Formheader";
 import FormFooter from "../formFooter/FormFooter";
 import { number, object, string } from "yup";
 import FormMsg from "../formMsg/FormMsg";
@@ -11,6 +10,7 @@ import { useEffect } from "react";
 import { toast } from "react-toastify";
 import useModal from "../../../hooks/useModal";
 import useAuthContext from "../../../hooks/useAuthContext";
+import HeaderGeneric from "../../header/HeaderGeneric";
 
 const PhoneNoAuth = props => {
 	// console.log(`PhoneNoAuth`, props);
@@ -80,7 +80,7 @@ const PhoneNoAuth = props => {
 							return (
 								<>
 									<Form>
-										<Formheader fhl1="Verifiy Cell No" fhr1="" />
+										<HeaderGeneric hl1="Verifiy Cell No" />
 										<div className="phone-no">
 											<FormMsg
 												msg={`Click SUBMIT to send a pin to the phone number. (Edit the phone number if necessary)`}

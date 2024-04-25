@@ -8,9 +8,9 @@ import useModal from "../../hooks/useModal";
 const ErfsHeader = props => {
 	const { phLl } = props;
 	const {openModal} = useModal()
-	const { erfsContext, setEcs } = useContext(ErfsContext);
+	const { erfsContext, setErfsContext } = useContext(ErfsContext);
 	const handleClick = e => {
-		setEcs(prev => {
+		setErfsContext(prev => {
 			return {
 				...prev,
 				activeTab: e.target.id,

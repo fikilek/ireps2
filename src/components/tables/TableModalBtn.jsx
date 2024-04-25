@@ -1,15 +1,17 @@
 import "./TableModalBtn.css";
 import useModal from "../../hooks/useModal";
 
-const TableModalBtn = props => {
+const TableModalBtn = (props) => {
 	// console.log(`props`, props);
-	const { modalName, data, infoName, irepsKeyItem, width } = props.props;
+	const { modalName, data, infoName, irepsKeyItem, width, validationSchema } = props.data;
 	// console.log(`data`, data)
+	// console.log(`modalName`, modalName);
+
 	const { openModal } = useModal();
 	const handleClick = e => {
 		openModal({
 			modalName: modalName,
-			payload: { ...data, infoName, irepsKeyItem, width },
+			payload: { data, infoName, irepsKeyItem, width, validationSchema },
 		});
 	};
 	return (

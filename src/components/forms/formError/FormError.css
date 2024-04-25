@@ -9,3 +9,9 @@
 .form-error {
   color: rgb(255, 0, 0)
 }
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 475px) {}

@@ -33,7 +33,7 @@ export const useTrnAudit = () => {
 		meter: {
 			audit: {
 				access: {
-					meterAccess: "", // ['yes', 'no']
+					meterAccess: "yes", // ['yes', 'no']
 					noAccessReason: "", //['', '', ''] - reuquired if access === 'no
 				},
 				metadata: {
@@ -45,35 +45,35 @@ export const useTrnAudit = () => {
 					createdByUid: user.uid,
 					trnHistory: 0, // how many times transaction has been updated
 					trnType: "audit", //['installation', 'commissioning', 'vending', 'missing', 'found', 'disconnection', 'reconnection', 'sale', 'decomissioning', "dispose", 'inspection', 'audit']
-					trnNo: "",
+					trnNo: "1234",
 					trnId: uuidv4(),
 					trnState: "draft",
 				},
 				astData: {
-					id: "", // id of the ast
-					astNo: null, // for meters this is a meter no
+					astId: uuidv4(),
+					astNo: '04 1233 34566', // for meters this is a meter no
 					astCatergory: "meter", // [ 'pole', 'box', 'meter', 'curcuit breaker', 'seal'],
 					astState: "service", // ['stores', 'field', 'service', 'etc']
-					astManufacturer: "",
-					astName: '',
+					astManufacturer: "Conlog",
+					astName: 'BEC44',
 					meter: {
-						phase: "", // ['single', 'three', ]
-						type: "", // ['pre-paid', 'conventional']
+						phase: "single", // ['single', 'three', ]
+						type: "pre-paid", // ['pre-paid', 'conventional']
 						keypad: {
-							isThereKeypad: "", // [ 'yes', 'no']
-							keypadAccess: "", // [ 'yes', 'no'] - required if 'isThereKeypad' is 'yes'
-							comment: "", // required if 'keypadAccess' is 'no' (no access reason)
-							serialNo: "", // required if 'isThereKeypad' === 'yes' && 'keypadAccess' === 'yes'
+							isThereKeypad: "yes", // [ 'yes', 'no']
+							keypadAccess: "yes", // [ 'yes', 'no'] - required if 'isThereKeypad' is 'yes'
+							serialNo: "1q1q1q1q", // required if 'isThereKeypad' === 'yes' && 'keypadAccess' === 'yes'
+							comment: "good condition", // required if 'keypadAccess' is 'no' (no access reason)
 						},
 						cb: {
-							isThereCb: "", // [ 'yes', 'no']
-							cbSize: "", // number (Amps) - required if 'isThereCb' === 'yes'
-							comment: "", // required if 'isThereCb' === 'yes' && 'cbSize' !== null
+							isThereCb: "yes", // [ 'yes', 'no']
+							size: "80", // number (Amps) - required if 'isThereCb' === 'yes'
+							comment: "good condition", // required if 'isThereCb' === 'yes' && 'cbSize' !== null
 						},
 						seal: {
-							meterSeal: "", // [ 'yes', 'no']
-							sealNo: "", // text - required if 'isThereSeal' is yes
-							comment: "", // required if 'isThereSeal' === 'yes' && sealNo === null
+							meterSealed: "yes", // [ 'yes', 'no']
+							sealNo: "qaqaqaqaqaq", // text - required if 'isThereSeal' is yes
+							comment: "good condition", // required if 'isThereSeal' === 'yes' && sealNo === null
 						},
 					},
 				},
@@ -92,12 +92,12 @@ export const useTrnAudit = () => {
 						lat: "", // long - Required
 						lng: "", // long - Required
 					},
-					premises: "", // ['inside', 'outside'] - Required
-					insideBox: "", // ['yes', 'no'] - Required
+					premises: "inside", // ['inside', 'outside'] - Required
+					insideBox: "yes", // ['yes', 'no'] - Required
 				},
 				anomalies: {
-					anomaly: "choose", // ['', '', '', '', '', ''] - required
-					anomalyDetail: "choose", // ['', '', '', '', '', ''] - required based on 'anomaly'
+					anomaly: "meter ok", // ['', '', '', '', '', ''] - required
+					anomalyDetail: "operationally ok", // ['', '', '', '', '', ''] - required based on 'anomaly'
 				},
 				erf: {
 					erfNo: "",
@@ -105,7 +105,7 @@ export const useTrnAudit = () => {
 					erfAdr: "",
 				},
 				serviceConnection: {
-					configuration: "",
+					configuration: "overhead",
 				},
 			},
 			installation: {},

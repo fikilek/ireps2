@@ -7,7 +7,7 @@ import { irepsConstants } from "../../utils/utils";
 import useModal from "../../hooks/useModal";
 
 const IwAstsOnErf = props => {
-	console.log(`IwAstsOnErf props`, props);
+	// console.log(`IwAstsOnErf props`, props);
 
 	const { asts, erfNo, id } = props.data.data;
 	// console.log(`asts`, asts);

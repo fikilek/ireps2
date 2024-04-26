@@ -12,16 +12,19 @@ import useModal from "../../../../hooks/useModal";
 import HeaderGeneric from "../../../header/HeaderGeneric";
 import FormBtn from "../../formBtns/FormBtn";
 import { useLocalStorage } from "../../../../hooks/useLocalStorage";
+import useAuthContext from "../../../../hooks/useAuthContext";
 
 const FormMeterAudit = props => {
 	// console.log(`props`, props);
 
+	const { user } = useAuthContext();
+
 	const { data, validationSchema } = props?.data;
 	// console.log(`data`, data);
-	const {erfNo, erfId} = data.erf
+	const { erfNo, erfId } = data.erf;
 
 	const [formState, setFormState] = useState(null);
-	console.log(`formState`, formState);
+	// console.log(`formState`, formState);
 
 	const [formData, setFormData] = useState(null);
 	// console.log(`formData`, formData);
@@ -54,7 +57,7 @@ const FormMeterAudit = props => {
 
 	const onSubmit = useCallback(
 		values => {
-			console.log(`values`, values);
+			// console.log(`values`, values);
 			setDocument(
 				{
 					...values,
@@ -96,9 +99,9 @@ const FormMeterAudit = props => {
 		// 	`formik.values.access.meterAccess: `,
 		// 	formik.values.access.meterAccess
 		// );
-		let state = formik.values.metadata.trnState
-		if (formik.values.access.meterAccess === 'no') {
-			state = 'N/A';
+		let state = formik.values.metadata.trnState;
+		if (formik.values.access.meterAccess === "no") {
+			state = "N/A";
 		}
 		if (
 			formik.isValid &&
@@ -129,7 +132,7 @@ const FormMeterAudit = props => {
 				>
 					{formik => {
 						// const disabled = !(formik.isValid && formik.dirty);
-						console.log(`formik`, formik);
+						// console.log(`formik`, formik);
 						// console.log(`formik.isValid`, formik.isValid);
 						// console.log(`disabled`, disabled);
 						// console.log(`formik.values`, formik.values);
@@ -207,7 +210,7 @@ const FormMeterAudit = props => {
 														control="mediaButton"
 														type="button"
 														label="meter no media"
-														name={`astData.media.astN`}
+														name={`astData.media.astNo`}
 														ml1="asts"
 													/>
 												</div>
@@ -233,13 +236,13 @@ const FormMeterAudit = props => {
 													control="input"
 													type="text"
 													label="manufaturer"
-													name={`astData.astName`}
+													name={`astData.astManufacturer`}
 												/>
 												<FormikControl
 													control="input"
 													type="text"
 													label="product name"
-													name={`astData.astManufacturer`}
+													name={`astData.astName`}
 												/>
 											</div>
 										</div>

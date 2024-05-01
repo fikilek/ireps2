@@ -1,0 +1,17 @@
+.table-btns-possible-trns-on-ast {}
+
+.table-btns-possible-trns-on-ast .ptoa-btn {
+  width: 3rem;
+  height: 1.5rem;
+  background-color: #fff2ae;
+  border-radius: 0.2rem;
+  margin: 0 0.1rem;
+}
+
+.table-btns-possible-trns-on-ast .trns-on-ast-btn {
+  width: 2rem;
+  height: 1.5rem;
+  background-color: #aeffb7;
+  border-radius: 0.2rem;
+  margin: 0 0.1rem;
+}

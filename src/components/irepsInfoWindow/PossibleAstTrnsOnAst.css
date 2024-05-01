@@ -1,0 +1,34 @@
+.possible-ast-trns-on-ast {}
+
+.possible-ast-trns-on-ast .patoa {
+  background-color: bisque;
+  margin: 1rem 0;
+  padding: 0.3rem;
+  border-radius: 1rem;
+}
+
+.possible-ast-trns-on-ast .para-header {
+  font-size: 1.3rem;
+}
+
+.possible-ast-trns-on-ast .patoa-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.possible-ast-trns-on-ast .meter-tid-btn,
+.possible-ast-trns-on-ast .meter-removal-btn,
+.possible-ast-trns-on-ast .meter-disconnection-btn,
+.possible-ast-trns-on-ast .meter-reconnection-btn
+ {
+  width: 100%
+}
+
+.possible-ast-trns-on-ast {}
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 475px) {}

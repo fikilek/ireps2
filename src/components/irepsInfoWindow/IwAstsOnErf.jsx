@@ -5,28 +5,29 @@ import IrepsInfoWindow from "./IrepsInfoWindow";
 import "./IwAstsOnErf.css";
 import { irepsConstants } from "../../utils/utils";
 import useModal from "../../hooks/useModal";
+import TableModalBtn from "../tables/TableModalBtn";
 
 const IwAstsOnErf = props => {
-	// console.log(`IwAstsOnErf props`, props);
+	console.log(`IwAstsOnErf props`, props);
 
-	const { asts, erfNo, id } = props.data.data;
+	const { asts, erfNo, id, address } = props.data.data;
 	// console.log(`asts`, asts);
 
 	const { openModal } = useModal();
 
 	const astsOnErfTableFields = [
 		{
-			field: "astData.astCartegory",
+			field: "astCat",
 			headerName: "Ast Category",
 			width: 100,
 		},
 		{
-			field: "trnmetadata.createdByUser",
+			field: "createdByUser",
 			headerName: "Created By",
 			width: 150,
 		},
 		{
-			field: "trnmetadata.createdAtDatetime",
+			field: "createdAtDatetime",
 			headerName: "Created At Datetime",
 			cellRenderer: params => {
 				// console.log(`params`, params);
@@ -36,37 +37,30 @@ const IwAstsOnErf = props => {
 				);
 			},
 			valueGetter: params => {
-				return params.data.trnmetadata.createdAtDatetime;
+				return params.data.createdAtDatetime;
 			},
 			width: 150,
 		},
 		{
-			field: "astData.astNo",
-			headerName: "Ast Serial No",
+			field: "astNo",
+			headerName: "Ast No",
 			width: 150,
 		},
 		{
-			field: "astData.astState",
-			headerName: "Ast State",
+			field: "astCreatorTrnName",
+			headerName: "Created Through ",
 			width: 150,
-		},
-		{
-			field: "astData.cb.size",
-			headerName: "Ast Size",
-			width: 150,
-			hide: false,
 		},
 		{
 			field: "",
 			headerName: "Ast Trns",
 			cellRenderer: params => {
-				return <button>Trns</button>;
+				console.log(`props`, props);
+				return <TableModalBtn data={params}>Possible Trns</TableModalBtn>;
 			},
-			width: 150,
-			hide: false,
-			headerTooltip: "Possible Transactions On The Ast",
-			tooltipValueGetter: params => {
-				return `Possible Transactions on the ${params.data.astData.astCartegory}`;
+			cellRendererParams: {
+				modalName: "iwPossibleAstTrnsOnAst",
+				width: "6rem",
 			},
 		},
 	];
@@ -77,7 +71,8 @@ const IwAstsOnErf = props => {
 			modalName: "possibleAstTrnsOnErf",
 			payload: {
 				erfNo,
-				erfId: id 
+				erfId: id ,
+				address,
 			}
 		});
 	};

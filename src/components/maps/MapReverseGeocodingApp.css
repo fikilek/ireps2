@@ -1,0 +1,142 @@
+.map-reverse-geocoding-app {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgb(249, 252, 244);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 10;
+  border: 0.1rem solid rgb(255, 77, 0);
+  border-radius: 1.5%;
+  overflow: hidden;
+}
+
+.show-gc-app {
+  display: block;
+}
+
+.hide-gc-app {
+  display: none;
+}
+
+.map-reverse-geocoding-app .header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 1.5%;
+  outline: dashed;
+  border-bottom: 0.3rem dashed;
+  padding: 0.4rem;
+}
+
+.map-reverse-geocoding-app .header .header-subsection-left,
+.map-reverse-geocoding-app .header .header-subsection-right {
+  display: flex;
+  justify-content: space-between;
+  border: 0.1rem solid grey;
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+
+.map-reverse-geocoding-app .header .header-subsection-right .header-subsection {
+  display: flex;
+  align-items: center;
+}
+
+.map-reverse-geocoding-app .header .header-name {
+  /* grid-area: header-name; */
+
+}
+
+.map-reverse-geocoding-app .header .address {
+  /* grid-area: address; */
+
+}
+
+.map-reverse-geocoding-app .header .ast-no {}
+
+.map-reverse-geocoding-app .header .map-reverse-geocoding-app-close-btn {}
+
+.map-reverse-geocoding-app .header .header-subsection-right button {
+  border-radius: 0.6rem;
+  border: 0.1rem solid;
+  padding: 0.5rem;
+  margin: 0.2rem;
+  font-size: 1.2rem;
+  width: 3rem;
+}
+
+.map-reverse-geocoding-app .header .header-subsection-left button {
+  padding: 0 0.6rem;
+  font-size: 1.2rem;
+  background-color: rgb(249, 252, 244);
+  border: none;
+}
+
+.map-reverse-geocoding-app .header button {
+  height: 2.5rem;
+}
+
+.map-reverse-geocoding-app .header .header-subsection-right button:hover {
+  outline: 0.1rem solid rgb(121, 255, 121);
+  cursor: pointer;
+  background-color: #d5ffd5b5;
+}
+
+.map-reverse-geocoding-app .body {
+  width: 100%;
+  height: 100%;
+}
+
+.map-reverse-geocoding-app .body .map-reverse-geocoding-map {
+  width: 60rem;
+  height: 40rem;
+}
+
+.map-reverse-geocoding-app .body .map-reverse-geocoding-map .map-container {
+  width: 60rem;
+  height: 50rem;
+}
+
+@media (max-width: 700px) {
+  .map-reverse-geocoding-app {
+    width: 27.8rem;
+  }
+
+  .map-reverse-geocoding-app .body .map-reverse-geocoding-map .map-container {
+    width: 30rem;
+    /* height: 30rem; */
+  }
+
+  .map-reverse-geocoding-app .header {
+    grid-template-columns: 5fr 5fr 1fr;
+    grid-template-rows: 2fr;
+    gap: 1rem;
+  }
+
+  .map-reverse-geocoding-app .header .address {
+    /* grid-area: address; */
+    text-align: center;
+    grid-column: 1/4;
+    grid-row: 2/3
+  }
+
+  .map-reverse-geocoding-app .header .erf-no {
+    display: flex;
+    grid-area: erf-no;
+    grid-column: 1/4;
+    grid-row: 1/2
+  }
+
+  .map-reverse-geocoding-app .header .map-reverse-geocoding-app-close-btn {
+    /* grid-area: map-reverse-geocoding-app-close-btn; */
+    grid-column: 3/4;
+    grid-row: 1/2
+  }
+
+}

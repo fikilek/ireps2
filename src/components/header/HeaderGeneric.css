@@ -1,0 +1,5 @@
+.header-generic .hl .hf,
+.header-generic .hr .hf
+ {
+  font-size: 0.9rem;
+}

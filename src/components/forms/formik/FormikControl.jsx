@@ -34,7 +34,6 @@ const FormikControl = props => {
 			return <FormikCheckboxGroup {...rest} />;
 		case "mediaButton":
 			return <FormikMediaButton {...rest} />;
-		// Reverse Geocoding Button
 		case "rgcButton":
 			return <FormikReverseGeocodeButton {...rest} />;
 		case "gcButton":

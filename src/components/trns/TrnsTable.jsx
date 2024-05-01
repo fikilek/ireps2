@@ -1,8 +1,8 @@
-import { useContext } from 'react';
-import TableTrns from '../tables/TableTrns';
-import './TrnsTable.css'
-import { TrnsContext } from '../../contexts/TrnsContext';
-import { useTrnAudit } from '../../hooks/useTrnAudit';
+import { useContext } from "react";
+import TableTrns from "../tables/TableTrns";
+import "./TrnsTable.css";
+import { TrnsContext } from "../../contexts/TrnsContext";
+import { useTrnAudit } from "../../hooks/useTrnAudit";
 
 const TrnsTable = () => {
 	const { trnsTableFields } = useTrnAudit();
@@ -13,6 +13,6 @@ const TrnsTable = () => {
 			<TableTrns rowData={trnsContext.trns} colDefs={trnsTableFields} />
 		</div>
 	);
-}
+};
 
 export default TrnsTable;

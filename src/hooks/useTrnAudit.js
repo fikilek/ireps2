@@ -4,12 +4,9 @@ import { lazy, number, object, string } from "yup";
 import { v4 as uuidv4 } from "uuid";
 import TableDate from "../components/tables/TableDate";
 import TableModalBtn from "../components/tables/TableModalBtn";
-import useGetTrnsCollection from "./useGetTrnsCollection";
 import { useContext, useEffect } from "react";
 import { TrnsContext } from "../contexts/TrnsContext";
 import useCollection from "./useCollection";
-import { useDocument } from "./useDocument";
-import ShowOnMap from "../components/irepsInfoWindow/ShowOnMap";
 
 export const useTrnAudit = () => {
 	const { user } = useAuthContext();
@@ -20,7 +17,7 @@ export const useTrnAudit = () => {
 	const { data, error, isPending, success } = useCollection("trns");
 	// console.log(`data`, data);
 
-	const {error: docFetchError, document, getDocument} = useDocument()
+	// const {error: docFetchError, document, getDocument} = useDocument()
 
 	useEffect(() => {
 		setTrnsContext({

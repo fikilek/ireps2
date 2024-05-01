@@ -3,3 +3,8 @@
   background-color: rgb(217, 172, 82);
   color: rgb(222, 239, 90);
 }
+
+.reverse-geocoding-btn .geocoding-btn-p {
+  font-size: 0.8rem;
+  color: black;
+}

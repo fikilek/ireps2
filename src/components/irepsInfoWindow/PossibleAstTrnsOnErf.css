@@ -17,7 +17,10 @@
   align-items: center;
 }
 
-.possible-ast-trns-on-erf .inspections .all-inspection-btn {
+.possible-ast-trns-on-erf .meter-installation-btn,
+.possible-ast-trns-on-erf .meter-audit-btn,
+.possible-ast-trns-on-erf .all-inspection-btn
+ {
   width: 100%
 }
 

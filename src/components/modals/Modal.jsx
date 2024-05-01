@@ -7,6 +7,8 @@ import MediaMobile from "../media/MediaMobile";
 import IwPossibleAstTrnsOnErf from "../irepsInfoWindow/IwPossibleAstTrnsOnErf";
 import FormMeterAudit from "../forms/formTrn/audit/FormMeterAudit";
 import ShowOnMap from "../irepsInfoWindow/ShowOnMap";
+import IwTrnsOnAst from "../irepsInfoWindow/IwTrnsOnAst";
+import IwPossibleAstTrnsOnAst from "../irepsInfoWindow/IwPossibleAstTrnsOnAst";
 
 const Signout = lazy(() => import("../forms/auth/FormSignout"));
 const Signup = lazy(() => import("../forms/auth/FormSignup"));
@@ -167,6 +169,13 @@ const Modal = () => {
 								</Suspense>
 							</>
 						)}
+						{modalName === "iwPossibleAstTrnsOnAst" && (
+							<>
+								<Suspense fallback={loader}>
+									<IwPossibleAstTrnsOnAst data={payload} />
+								</Suspense>
+							</>
+						)}
 						{modalName === "meter-audit" && (
 							<>
 								<Suspense fallback={loader}>
@@ -178,6 +187,13 @@ const Modal = () => {
 							<>
 								<Suspense fallback={loader}>
 									<ShowOnMap data={payload} />
+								</Suspense>
+							</>
+						)}
+						{modalName === "iwTrnsOnAst" && (
+							<>
+								<Suspense fallback={loader}>
+									<IwTrnsOnAst data={payload} />
 								</Suspense>
 							</>
 						)}

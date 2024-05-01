@@ -9,12 +9,13 @@ const FormikReverseGeocodeButton = props => {
 	const { label, name, ...rest } = props;
 
 	// get reverse geocoding context
-	const { setRgcData } = useContext(ReverseGeocodingContext);
+	const { rgcData, setRgcData } = useContext(ReverseGeocodingContext);
+	// console.log(`rgcData`, rgcData)
 
-	const handleClick = (e, props) => {
+	const handleClick = (e, pprops) => {
 		e.preventDefault();
 		// console.log(`e.target`, e.target);
-		// console.log(`props`, props);
+		// console.log(`pprops`, pprops);
 		// const { field, meta, form } = props;
 
 		// open geocoding modal
@@ -22,7 +23,7 @@ const FormikReverseGeocodeButton = props => {
 			return {
 				...prev,
 				isOpened: true,
-				data: props,
+				data: pprops,
 			};
 		});
 	};
@@ -35,7 +36,7 @@ const FormikReverseGeocodeButton = props => {
 					// console.log(`madiaCat`, mediaCat, field.value.length)
 					// console.log(`form.values`, form.values)
 					return (
-						<button className="reverse-geocoding-btn" onClick={e => handleClick(e, props)}>
+						<button className="reverse-geocoding-btn" onClick={(e) => handleClick(e, props)}>
 							{/* <p className="geocoding-btn-p">{field?.value}</p> */}
 							<p className="geocoding-btn-p">{ meta.value ? meta.value : 'Google Address' } </p>
 						</button>

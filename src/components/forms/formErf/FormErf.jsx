@@ -9,14 +9,14 @@ import FormSection from "../formSection/FormSection";
 import { formSelectOptions } from "../../../utils/utils";
 import { useCallback } from "react";
 import FormFooter from "../formFooter/FormFooter";
-import HeaderGeneric2 from "../../header/HeaderGeneric2";
 import HeaderGeneric from "../../header/HeaderGeneric";
+import MapReverseGeocodingApp from "../../maps/MapReverseGeocodingApp";
 
 const FormErf = props => {
-	console.log(`FormErf props`, props);
+	// console.log(`FormErf props`, props);
 
 	const { data: formData } = props.data;
-	console.log(`formData`, formData);
+	// console.log(`formData`, formData);
 
 	const { closeModal, openModal } = useModal();
 
@@ -60,15 +60,15 @@ const FormErf = props => {
 		}
 	}, [response]);
 
-	const openIwAstsOnErf = (e, formik) => {
-		// console.log(`e`, e)
-		// console.log(`formmik`, formik)
-		// open infoWindow on modal and display table that shows all asts on erf
-		openModal({
-			modalName: "astsOnErf",
-			payload: formik.values,
-		});
-	};
+	// const openIwAstsOnErf = (e, formik) => {
+	// 	// console.log(`e`, e)
+	// 	// console.log(`formmik`, formik)
+	// 	// open infoWindow on modal and display table that shows all asts on erf
+	// 	openModal({
+	// 		modalName: "astsOnErf",
+	// 		payload: formik.values,
+	// 	});
+	// };
 
 	return (
 		<div className="form-wrapper">
@@ -95,17 +95,6 @@ const FormErf = props => {
 										hl1={"Erf Form"}
 										hl2={
 											<div className="hl2">
-												<span className="gps">
-													{"("}
-													<span className="text-emphasis2">
-														{Number(formData.address.gps.latitude)?.toFixed(2)}
-													</span>
-													<span className="gps-seperator">{"|"}</span>
-													<span className="text-emphasis2">
-														{Number(formData.address.gps.longitude)?.toFixed(2)}
-													</span>
-													{") "}
-												</span>{ ' ' }
 												<span className="erf-no">
 													Erf : <span className="text-emphasis2">{formData.erfNo}</span>
 												</span>
@@ -119,17 +108,22 @@ const FormErf = props => {
 														{formData.address.ward ? formData.address.ward : "?"}
 													</span>
 												</span>
-												<button type={"button"} className="form-btn media-btn">
-													Media <span className="media-quantities">3</span>
-												</button>
-												<button
-													onClick={e => openIwAstsOnErf(e, formik)}
-													type={"button"}
-													className="form-btn asts-btn"
-												>
-													Asts {formData.asts.length}
-												</button>
 											</>
+										}
+										hr2={
+											<div className="hl2">
+												<span className="gps">
+													{"("}
+													<span className="text-emphasis2">
+														{Number(formData.address.gps.latitude)?.toFixed(3)}
+													</span>
+													<span className="gps-seperator">{"|"}</span>
+													<span className="text-emphasis2">
+														{Number(formData.address.gps.longitude)?.toFixed(3)}
+													</span>
+													{") "}
+												</span>
+											</div>
 										}
 									/>
 									{/* property-type */}
@@ -203,6 +197,7 @@ const FormErf = props => {
 												</div>
 
 												<div>
+													{/* This is the user completed field if dont agre with google adr */}
 													<FormikControl
 														control="input"
 														type="text"
@@ -511,7 +506,7 @@ const FormErf = props => {
 						);
 					}}
 				</Formik>
-				{/* <ReverseGeocodingApp /> */}
+				<MapReverseGeocodingApp geocoding="erf"/>
 				{/* <PhotoAppErf /> */}
 			</div>
 		</div>

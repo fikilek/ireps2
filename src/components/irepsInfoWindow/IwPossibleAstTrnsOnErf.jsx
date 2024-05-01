@@ -3,7 +3,7 @@ import "./IwPossibleAstTrnsOnErf.css";
 import PossibleAstTrnsOnErf from "./PossibleAstTrnsOnErf";
 
 const IwPossibleAstTrnsOnErf = props => {
-	// console.log(`props`, props);
+	console.log(`props`, props);
 	const { data } = props;
 	return (
 		<IrepsInfoWindow
@@ -14,7 +14,7 @@ const IwPossibleAstTrnsOnErf = props => {
 				</>
 			}
 			windowWidth="20rem"
-			windowHeight="22rem"
+			windowHeight="20rem"
 			headerType="headerType1"
 		>
 			<PossibleAstTrnsOnErf data={data} />

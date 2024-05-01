@@ -1,0 +1,99 @@
+/* user profile header */
+
+.asts-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0.5rem;
+  gap: 0.5rem;
+  background: lavender;
+  height: 2rem;
+}
+
+.asts-header .ph {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 0.5rem;
+  height: 2rem;
+}
+
+.asts-header .phLl,
+.asts-header .phLr {
+  display: flex;
+  align-items: center;
+  height: 2rem;
+}
+
+.asts-header .phLr {
+  justify-content: end;
+}
+
+.asts-header .phRl .asts-search-btn {
+  width: 7rem;
+  height: 1.5rem;
+  border: 0.01rem solid;
+  border-radius: 1rem;
+}
+
+.asts-header .ph-right .phRr {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.asts-header button {
+  background: none;
+  text-align: center;
+  border: none;
+  height: 2rem;
+  width: 4em;
+  margin: 0 0.1rem;
+}
+
+.asts-header button:hover {
+  border: 0.01rem solid rgb(67, 204, 249);
+  background-color: rgba(230, 249, 255, 0.543);
+}
+
+.asts-header .active {
+  background-color: blanchedalmond;
+}
+
+/* user section */
+
+.asts .user-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+/* User data */
+
+.user-data {
+  display: grid;
+  grid-template-columns: 1fr;
+  border: 0.1rem solid;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  gap: 1rem;
+}
+
+.user-data .user-data-header {
+  display: grid;
+  background-color: aquamarine;
+  grid-template-columns: 1fr 1fr;
+  height: 2rem;
+  padding: 0.2rem;
+}
+
+.user-data .user-data-header .udL,
+.user-data .user-data-header .udR {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (max-width: 850px) {
+  .asts {
+    grid-template-columns: 1fr;
+  }
+}

@@ -4,7 +4,7 @@ import "./PossibleAstTrnsOnErf.css";
 
 const PossibleAstTrnsOnErf = props => {
 	// console.log(`props`, props);
-	const { erfNo, erfId } = props.data;
+	const { erfNo, erfId, address } = props.data;
 
 	const { openModal } = useModal();
 
@@ -23,7 +23,8 @@ const PossibleAstTrnsOnErf = props => {
 					...newAuditTrnData[astCat][trnType],
 					erf: {
 						erfNo,
-						erfId
+						erfId,
+						address,
 					}
 				},
 				validationSchema: auditTrnValidationSchema[astCat][trnType],
@@ -45,8 +46,6 @@ const PossibleAstTrnsOnErf = props => {
 					>
 						Meter Inst
 					</button>
-					<button className="cb-installation-btn">CB Inst</button>
-					<button className="seal-installation-btn">Seal Inst</button>
 				</div>
 			</div>
 
@@ -58,8 +57,6 @@ const PossibleAstTrnsOnErf = props => {
 					<button id="meter-audit" onClick={handleClick} className="meter-audit-btn">
 						Meter Audit
 					</button>
-					<button className="cb-audit-btn">CB Audit</button>
-					<button className="seal-audit-btn">Seal Audit</button>
 				</div>
 			</div>
 
@@ -68,7 +65,7 @@ const PossibleAstTrnsOnErf = props => {
 					<p className="para-header">Inspections</p>
 				</div>
 				<div className="patoe-body">
-					<button className="all-inspection-btn">Any Ast Inspection on Erf </button>
+					<button className="all-inspection-btn">Ast Inspection</button>
 				</div>
 			</div>
 		</div>

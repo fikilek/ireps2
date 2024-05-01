@@ -73,25 +73,26 @@ export const useErfs = () => {
 					field: "metadata.createdByUser",
 					columnGroupShow: "closed",
 					headerName: "Created By",
-					width: 130,
+					width: 150,
 					hide: false,
 				},
 				{
 					field: "metadata.createdByUser",
 					columnGroupShow: "open",
 					headerName: "Created By",
-					width: 130,
+					width: 150,
 					hide: false,
 				},
 				{
 					field: "metadata.createdAtDatetime",
 					columnGroupShow: "open",
 					headerName: "Date Created",
-					width: 180,
+					width: 150,
 					cellRenderer: params => {
+						console.log(`params`, params)
 						const timestamp = new Timestamp(
-							params.value.seconds,
-							params.value.nanoseconds
+							params?.value?.seconds,
+							params?.value?.nanoseconds
 						);
 						const newDate = timestamp.toDate();
 						return <TableDate date={newDate} dateFormat={"yyyy-MMM-dd HH:mm"} />;
@@ -110,25 +111,25 @@ export const useErfs = () => {
 					field: "metadata.updatedByUser",
 					columnGroupShow: "closed",
 					headerName: "Updated By",
-					width: 130,
+					width: 150,
 					hide: false,
 				},
 				{
 					field: "metadata.updatedByUser",
 					columnGroupShow: "open",
 					headerName: "Updated By",
-					width: 130,
+					width: 150,
 					hide: false,
 				},
 				{
 					field: "metadata.updatedAtDatetime",
 					columnGroupShow: "open",
 					headerName: "Date Created",
-					width: 180,
+					width: 150,
 					cellRenderer: params => {
 						const timestamp = new Timestamp(
-							params.value.seconds,
-							params.value.nanoseconds
+							params?.value?.seconds,
+							params?.value?.nanoseconds
 						);
 						const newDate = timestamp.toDate();
 						return <TableDate date={newDate} dateFormat={"yyyy-MMM-dd HH:mm"} />;
@@ -145,7 +146,7 @@ export const useErfs = () => {
 			headerName: "Erf No",
 			width: 140,
 			cellRenderer: params => {
-				// console.log(`props`, props);
+				// console.log(`params`, params);
 				return <TableModalBtn data={params}>{params.value}</TableModalBtn>;
 			},
 			cellRendererParams: {
@@ -196,7 +197,7 @@ export const useErfs = () => {
 			headerName: "Media",
 			width: 100,
 			cellRenderer: params => {
-				// console.log(`props`, props);
+				// console.log(`params`, params);
 				return <TableModalBtn data={params}>{params.value}</TableModalBtn>;
 			},
 			cellRendererParams: {
@@ -238,7 +239,7 @@ export const useErfs = () => {
 		},
 		{
 			field: "address.systemAdr",
-			headerName: "Street",
+			headerName: "Google Address",
 			width: 300,
 		},
 		{

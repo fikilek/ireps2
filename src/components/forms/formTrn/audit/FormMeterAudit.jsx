@@ -13,6 +13,7 @@ import HeaderGeneric from "../../../header/HeaderGeneric";
 import FormBtn from "../../formBtns/FormBtn";
 import { useLocalStorage } from "../../../../hooks/useLocalStorage";
 import useAuthContext from "../../../../hooks/useAuthContext";
+import MapReverseGeocodingApp from "../../../maps/MapReverseGeocodingApp";
 
 const FormMeterAudit = props => {
 	// console.log(`props`, props);
@@ -21,7 +22,7 @@ const FormMeterAudit = props => {
 
 	const { data, validationSchema } = props?.data;
 	// console.log(`data`, data);
-	const { erfNo, erfId } = data.erf;
+	const { erfNo, erfId, address } = data.erf;
 
 	const [formState, setFormState] = useState(null);
 	// console.log(`formState`, formState);
@@ -91,14 +92,6 @@ const FormMeterAudit = props => {
 	}, [response]);
 
 	const handleChange = formik => {
-		// console.log(`form changed`, formik);
-		// save the updated form on local storage
-		// console.log(`isValid: `, formik.isValid);
-		// console.log(`dirty: `, formik.dirty);
-		// console.log(
-		// 	`formik.values.access.meterAccess: `,
-		// 	formik.values.access.meterAccess
-		// );
 		let state = formik.values.metadata.trnState;
 		if (formik.values.access.meterAccess === "no") {
 			state = "N/A";
@@ -112,12 +105,15 @@ const FormMeterAudit = props => {
 		}
 
 		setFormState(state);
-		setItem(formik.values);
+		// submitted form must not be saved to useLocalStorage
+		if (formik.values.metadata.trnState !== "submitted") {
+			setItem(formik.values);
+		}
 	};
 
 	return formData ? (
 		<div className="form-wrapper">
-			<div className="form-container trn meter-audit-trn">
+			<div className="form-container trn form-meter-audit">
 				<Formik
 					initialValues={{
 						...formData,
@@ -125,6 +121,7 @@ const FormMeterAudit = props => {
 							...formData?.erf,
 							erfNo,
 							erfId,
+							address,
 						},
 					}}
 					onSubmit={onSubmit}
@@ -261,7 +258,7 @@ const FormMeterAudit = props => {
 											<div className="row-2 form-row">
 												<div>
 													<FormikControl
-														control="gcButton"
+														control="rgcButton"
 														type="button"
 														label="click for meter address"
 														name={`location.address`}
@@ -525,6 +522,7 @@ const FormMeterAudit = props => {
 										}}
 										active={active}
 										setActive={setActive}
+										hideShow="hide"
 									>
 										<div className="form-row-wrapper">
 											<div className="row-8 form-row">
@@ -545,14 +543,17 @@ const FormMeterAudit = props => {
 											</div>
 										</div>
 									</FormSection>
-
-									<FormFooter formik={formik} signState={response} />
+									{formik.values.metadata.trnState === "submitted" ? (
+										""
+									) : (
+										<FormFooter formik={formik} signState={response} />
+									)}
 								</div>
 							</Form>
 						);
 					}}
 				</Formik>
-				{/* <ReverseGeocodingApp /> */}
+				<MapReverseGeocodingApp geocoding={'ast'} />
 				{/* <PhotoAppErf /> */}
 			</div>
 		</div>

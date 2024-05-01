@@ -26,11 +26,12 @@
   width: 50rem;
 }
 
-.form-container.erf {
+/* .form-container.erf {
   width: 40rem;
-}
+} */
 
-.form-container.meter-audit-trn,
+.form-container.erf,
+.form-container.form-meter-audit,
 .form-container.update-user,
 .form-container .user-role-update,
 .form-container.signup {
